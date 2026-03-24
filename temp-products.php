@@ -4,32 +4,32 @@ get_header();
 ?>
 
 
-<section class="mt-14 py-8">
+<section class="mt-14 py-8 mb-[100px]">
     <section
-		class="py-16 sm:h-[350px] h-[260px] flex items-center justify-center bg-cover bg-no-repeat bg-center bg-black/50 bg-blend-overlay"
-		style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/s2.webp'">
-		<div class="hale_container">
-			<h1 class="text-white font-bold text-3xl md:text-5xl lg:text-[51px]">
-				<?php the_title(); ?>
-			</h1>
-		</div>
-	</section>
+        class="py-16 sm:h-[350px] h-[260px] flex items-center justify-center bg-cover bg-no-repeat bg-center bg-black/50 bg-blend-overlay"
+        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/s2.webp'">
+        <div class="hale_container">
+            <h1 class="text-white font-bold text-3xl md:text-5xl lg:text-[51px]">
+                <?php the_title(); ?>
+            </h1>
+        </div>
+    </section>
 
 
     <div class="hale_container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <?php
 
-$query_args = [
-    'post_type'      => 'product',
-    'posts_per_page' => 100,
-    'post_status'    => 'publish',
-];
+                $query_args = [
+                    'post_type'      => 'product',
+                    'posts_per_page' => 100,
+                    'post_status'    => 'publish',
+                ];
 
 
 
-$products = new WP_Query($query_args);
-?>
+                $products = new WP_Query($query_args);
+                ?>
 
         <?php if ( $products->have_posts() ) : ?>
 
