@@ -9,5 +9,5 @@ function remove_product_category_base() {
     $wp_rewrite->extra_permastructs['product_cat']['struct'] = '/%product_cat%';
 
     // Flush rewrite rules (do once!)
-    flush_rewrite_rules(); // Uncomment only once to flush
+   // flush_rewrite_rules(); // Uncomment only once to flush
 }
