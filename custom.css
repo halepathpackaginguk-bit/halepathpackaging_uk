@@ -134,6 +134,6 @@ ul.career_list li {
   margin-bottom: 0 !important;
 }
 
-.gt_option {
-  position: absolute;
+.gt_container--chew40 .gt_switcher .gt_option {
+  position: absolute !important;
 }
