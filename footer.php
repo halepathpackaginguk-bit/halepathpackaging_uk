@@ -153,32 +153,77 @@
     <button id="scrollToTopBtn"
         class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg hidden hover:bg-secondary transition"
         aria-label="Scroll to top">
-        ↑ 
+        ↑
     </button>
 </footer>
 
+<div id="quotePopup" class="fixed inset-0 w-full bg-black/30 flex flex-col items-end justify-center z-50 
+     translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
 
-
+    <?php get_template_part('template-parts/main-popup'); ?>
+</div>
 
 <?php wp_footer(); ?>
 <script>
-const scrollBtn = document.getElementById('scrollToTopBtn');
+document.addEventListener("DOMContentLoaded", function () {
 
-// Show button after scrolling down 300px
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollBtn.classList.remove('hidden');
-    } else {
-        scrollBtn.classList.add('hidden');
-    }
-});
+    const scrollBtn = document.getElementById('scrollToTopBtn');
+    const popup = document.getElementById('quotePopup');
+    const closeBtn = document.getElementById('closeQuote_Popup');
 
-// Smooth scroll to top on click
-scrollBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    let popupShown = false;
+
+    // Scroll Event
+    window.addEventListener('scroll', () => {
+
+        // Scroll-to-top button
+        if (window.scrollY > 300) {
+            scrollBtn?.classList.remove('hidden');
+        } else {
+            scrollBtn?.classList.add('hidden');
+        }
+
+        // Show popup once
+        if (window.scrollY > 300 && !popupShown) {
+            popup.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+            popup.classList.add('translate-x-0', 'opacity-100');
+            popupShown = true;
+        }
     });
+
+    // Close popup (icon click)
+    closeBtn?.addEventListener('click', () => {
+        closePopup();
+    });
+
+    // Close when clicking outside (overlay)
+    popup?.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+
+    // ESC key close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") {
+            closePopup();
+        }
+    });
+
+    // Reusable close function
+    function closePopup() {
+        popup.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+        popup.classList.remove('translate-x-0', 'opacity-100');
+    }
+
+    // Scroll to top
+    scrollBtn?.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
 });
 </script>
 
