@@ -10,6 +10,7 @@
 
 include_once get_template_directory() . '/inc/extra.php';
 include_once get_template_directory() . '/inc/ajax.php';
+include_once get_template_directory() . '/inc/woo-extra.php';
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
@@ -180,46 +181,7 @@ function custom_woocommerce_image_sizes() {
 
 
 
-// Remove product-category base safely
-add_filter('term_link', 'custom_remove_product_category_slug', 10, 3);
-function custom_remove_product_category_slug($url, $term, $taxonomy) {
-    if ($taxonomy === 'product_cat') {
-        $path = trim((string) wp_parse_url($url, PHP_URL_PATH), '/');
-        $path = str_replace('product-category/', '', $path);
-        $url = home_url($path . '/');
-    }
-    return $url;
-}
 
-// Add rewrite rules safely
-add_action('init', 'custom_product_category_rewrite', 20);
-function custom_product_category_rewrite() {
-    $terms = get_terms([
-        'taxonomy' => 'product_cat',
-        'hide_empty' => false,
-    ]);
-
-    if (!empty($terms) && !is_wp_error($terms)) {
-        foreach ($terms as $term) {
-            $slug = $term->slug;
-
-            // Only add rule if no page or post exists with this slug
-            if (!get_page_by_path($slug) && !get_post_type_object($slug)) {
-                add_rewrite_rule(
-                    '^' . $slug . '/?$',
-                    'index.php?product_cat=' . $slug,
-                    'top'
-                );
-            }
-        }
-    }
-}
-
-// Flush rewrite rules on theme activation
-add_action('after_switch_theme', function () {
-    custom_product_category_rewrite();
-    flush_rewrite_rules();
-});
 
 
 
