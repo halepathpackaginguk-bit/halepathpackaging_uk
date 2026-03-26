@@ -24,7 +24,7 @@ $offset_products = get_field('offset_printing_products');
             'direction' => 'ltr'
         ]
     ); ?>
-    <a href="<?php echo home_url('/product-category/commercial-printing/'); ?>"
+    <a href="<?php echo home_url('/all-offset-printing'); ?>"
         class="btn_secondry flex items-center gap-2 mt-12 w-fit mx-auto">
         See All Offset Printing
     </a>

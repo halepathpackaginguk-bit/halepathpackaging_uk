@@ -291,48 +291,54 @@ add_filter('request', function ($vars) {
 	return $new_vars;
 }, 99);
 
-
 add_action('admin_footer', function () {
-    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
-
-    if (
-        ! $screen ||
-        $screen->base !== 'post' ||
-        $screen->post_type !== 'product'
-    ) {
-        return;
-    }
     ?>
     <script>
     jQuery(function($) {
-        const $box   = $('#taxonomy-product_cat');
-        const $panel = $('#product_cat-all');
-        const $list  = $('#product_catchecklist');
 
-        if (!$box.length || !$panel.length || !$list.length || $panel.find('.wc-cat-search').length) {
-            return;
-        }
+        function addCategorySearch(context) {
+            const $panel = $(context).find('#product_cat-all');
+            const $list  = $(context).find('#product_catchecklist');
 
-        const $search = $(
-            '<input type="text" class="widefat wc-cat-search" placeholder="Search product categories..." style="margin:0 0 8px;">'
-        );
-
-        $panel.prepend($search);
-
-        $search.on('input', function () {
-            const keyword = $.trim($(this).val()).toLowerCase();
-
-            if (!keyword) {
-                $list.find('li').show();
+            if (!$panel.length || !$list.length || $panel.find('.wc-cat-search').length) {
                 return;
             }
 
-            $list.find('li').each(function () {
-                const $li = $(this);
-                const labelText = $li.children('label').text().toLowerCase();
-                $li.toggle(labelText.indexOf(keyword) !== -1);
+            const $search = $(
+                '<input type="text" class="widefat wc-cat-search" placeholder="Search product categories..." style="margin:0 0 8px;">'
+            );
+
+            $panel.prepend($search);
+
+            $search.on('input', function () {
+                const keyword = $.trim($(this).val()).toLowerCase();
+
+                if (!keyword) {
+                    $list.find('li').show();
+                    return;
+                }
+
+                $list.find('li').each(function () {
+                    const $li = $(this);
+                    const labelText = $li.children('label').text().toLowerCase();
+                    $li.toggle(labelText.indexOf(keyword) !== -1);
+                });
             });
+        }
+
+        // ✅ Single product edit
+        const screen = typeof wp !== 'undefined' && wp.data ? wp.data.select('core/editor') : null;
+        addCategorySearch(document);
+
+        // ✅ Bulk edit (AJAX loaded)
+        $(document).on('click', '#bulk_edit', function () {
+            setTimeout(function () {
+                $('#bulk-edit').each(function () {
+                    addCategorySearch(this);
+                });
+            }, 300);
         });
+
     });
     </script>
     <?php

@@ -22,7 +22,7 @@ $flexible_products = get_field('flexible_packaging');
                 'direction'    => 'ltr'
             ]
         );?>
-    <a href="<?php echo home_url('/product-category/flexible-packaging-pouches'); ?>" class="btn_secondry flex items-center gap-2 mt-12 w-fit mx-auto">
+    <a href="<?php echo home_url('/all-flexible-packaging'); ?>" class="btn_secondry flex items-center gap-2 mt-12 w-fit mx-auto">
         See All Flexible Packaging
     </a>
 </section>
