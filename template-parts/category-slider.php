@@ -11,7 +11,15 @@ if (!empty($categories)):
             if (!$category || is_wp_error($category)) {
                 continue;
             }
+
+            // Get clean category link (without product-category)
             $category_link = get_term_link($category);
+            if (!is_wp_error($category_link)) {
+                // Force remove '/product-category/' from URL
+                $category_link = str_replace('/product-category/', '/', $category_link);
+            }
+
+            // Get category image
             $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
             $image_url = $thumbnail_id
                 ? wp_get_attachment_url($thumbnail_id)
