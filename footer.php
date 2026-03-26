@@ -90,12 +90,12 @@
             </h6>
             <ul class="flex flex-col gap-2.5">
                 <li>
-                   Unit 229, 32A Birmingham Road Bromsgrove B61 0DD
+                    Unit 229, 32A Birmingham Road Bromsgrove B61 0DD
                 </li>
                 <li><a href="tel:+4401213186768" class="footer_link">
-                   01213186768</a></li>
+                        01213186768</a></li>
                 <li><a href="mailto:sales@halepathpackaging.co.uk" target="_blank" class="footer_link">
-                 sales@halepathpackaging.co.uk</a></li>
+                        sales@halepathpackaging.co.uk</a></li>
             </ul>
         </div>
     </div>
@@ -124,7 +124,8 @@
     </div>
 
     <!-- Logo & Social -->
-    <div class="hale_container flex md:flex-row flex-col md:items-center justify-between 2xl:gap-7 md:gap-4 gap-7 mt-7 py-2.5">
+    <div
+        class="hale_container flex md:flex-row flex-col md:items-center justify-between 2xl:gap-7 md:gap-4 gap-7 mt-7 py-2.5">
         <div class="flex gap-3 items-center">
             <a href="<?php echo home_url(); ?>"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo"></a>
@@ -149,11 +150,37 @@
             </p>
         </div>
     </div>
+    <button id="scrollToTopBtn"
+        class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg hidden hover:bg-secondary transition"
+        aria-label="Scroll to top">
+        ↑ 
+    </button>
 </footer>
 
 
 
+
 <?php wp_footer(); ?>
+<script>
+const scrollBtn = document.getElementById('scrollToTopBtn');
+
+// Show button after scrolling down 300px
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollBtn.classList.remove('hidden');
+    } else {
+        scrollBtn.classList.add('hidden');
+    }
+});
+
+// Smooth scroll to top on click
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+</script>
 
 </body>
 
