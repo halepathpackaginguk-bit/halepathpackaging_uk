@@ -13,7 +13,7 @@
 
 
 <footer class="pt-14 relative bg-[#f5f5f5]">
-    <div class="hale_container grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 justify-between 2xl:gap-7 md:gap-4 gap-7">
+    <div class="hale_container grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 justify-between 2xl:gap-5 md:gap-4 gap-5">
         <!-- Company -->
         <div>
             <h6 class="footer_title">
