@@ -216,7 +216,7 @@ $featureproductsRes = [
         <?php endforeach; ?>
     </div>
 </section>
-<section class="overflow-hidden bg-[#e7d2b5]">
+<!-- <section class="overflow-hidden bg-[#e7d2b5]">
     <div class="flex md:flex-row flex-col gap-8 items-center">
         <div class="md:w-1/2 w-full py-16 sm:px-[70px] px-6">
             <div class="md:w-[455px] mx-auto">
@@ -242,13 +242,13 @@ $featureproductsRes = [
                     style="background-image:url('https://cdn.accentuate.io/9094396117245/16023346118809/AFTER-1-v1767822904409.png')">
                 </div>
             </div>
-            <!-- Divider -->
+        
             <div id="divider" class="absolute top-0 bottom-0 w-[1px] bg-white" style="left:50%">
             </div>
             <input id="baslider" type="range" min="0" max="100" value="50" class="absolute inset-0 cursor-pointer">
         </div>
     </div>
-</section>
+</section> -->
 <script>
     const baslider = document.getElementById("baslider");
     const afterImage = document.getElementById("afterImage");
