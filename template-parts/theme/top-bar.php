@@ -16,11 +16,13 @@
                     sales@halepathpackaging.co.uk
                 </a>
             </li>
+        </ul>
+        <ul class="flex items-center divide-x-2 divide-white">
             <li>
                 <a href="https://halepathpackaging.co.uk/products/"
                     class="text-sm font-normal text-white flex items-center gap-1 px-2 cursor-pointer">
-                   
-                  All Products
+
+                    All Products
                 </a>
             </li>
             <li>
