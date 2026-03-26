@@ -25,7 +25,7 @@
                     All Products
                 </a>
             </li>
-            <li>
+            <li class="px-2">
                 <?php echo do_shortcode('[gtranslate]'); ?>
             </li>
         </ul>

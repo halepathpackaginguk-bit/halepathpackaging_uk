@@ -1,33 +1,35 @@
 .maskimage {
-    -webkit-mask-image: url('./assets/images/masking.png');
-    mask-image: url('./assets/images/masking.png');
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-size: contain;
-    mask-size: contain;
+  -webkit-mask-image: url('./assets/images/masking.png');
+  mask-image: url('./assets/images/masking.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 .slider-full .slick-dots {
-    bottom: 10px;
+  bottom: 10px;
 }
 
 .slider-full .slick-dots li button:before {
-    font-size: 16px;
-    opacity: 1;
-    color: #a6a6a6 !important;
+  font-size: 16px;
+  opacity: 1;
+  color: #a6a6a6 !important;
 }
 
 .slider-full .slick-dots li.slick-active button:before {
-    opacity: 1;
-    color: #f1f1f1 !important;
+  opacity: 1;
+  color: #f1f1f1 !important;
 }
+
 ul.career_list li::marker {
   content: '✔';
 }
+
 ul.career_list li {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .desc_content h4,
@@ -92,6 +94,7 @@ ul.career_list li {
 .content .slick-next:before {
   color: #000;
 }
+
 .single .slick-list,
 .testimonials .slick-list,
 .about .slick-list {
@@ -122,9 +125,15 @@ ul.career_list li {
   object-position: center;
   object-fit: cover;
 }
+
 .singleproducts::-webkit-scrollbar {
   display: none;
 }
-.slick-dotted.slick-slider{
+
+.slick-dotted.slick-slider {
   margin-bottom: 0 !important;
+}
+
+.gt_option {
+  position: absolute;
 }
