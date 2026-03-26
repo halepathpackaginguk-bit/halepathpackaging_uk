@@ -2,7 +2,7 @@
     <div class="relative container mx-auto px-8 bg-cover bg-no-repeat bg-center rounded-[20px] xl:pt-14 xl:pl-14 xl:pr-0 p-10 xl:pb-0 pb-0"
         style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/career-bg.png'">
         <div class="flex md:flex-row flex-col md:gap-8 gap-8">
-            <!-- Left Content -->
+        
             <div class="md:w-2/5 w-full">
                 <p
                     class="text-lg font-normal text-white mb-7 uppercase tracking-[5px] border-l-2 border-secondary pl-1.5">
@@ -32,7 +32,7 @@
                 </ul>
             </div>
 
-            <!-- Right Content / Team Images -->
+       
             <div class="md:w-3/5 w-full flex md:flex-row flex-col items-start gap-5 md:-mr-20">
                 <div class="w-full rounded-[13px] shadow-[0_233px_93px_0_rgba(1,97,207,0.05)]">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/team/team1.png" alt="team1"
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- Background Main Image -->
+  
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/team/teammain.png" alt="teammain"
                 class="absolute bottom-0 right-0 ml-auto mr-0 md:w-2/3">
         </div>
