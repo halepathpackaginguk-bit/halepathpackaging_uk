@@ -22,7 +22,7 @@
 <?php get_template_part('template-parts/home-reviews'); ?>
 <?php get_template_part('template-parts/testimonial-and-faq'); ?>
 <?php //get_template_part('template-parts/home-career'); ?>
-<section class="py-16 px-4">
+<section class="pt-16 px-4">
   <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-banner.png" alt="about us"
                 class="w-full">
                 </section>
