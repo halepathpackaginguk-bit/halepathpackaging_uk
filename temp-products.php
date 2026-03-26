@@ -4,7 +4,7 @@ get_header();
 ?>
 
 
-<section class="mt-14 py-8 mb-[100px]">
+<section class="mb-[100px]">
     <section
         class="py-16 sm:h-[350px] h-[260px] flex items-center justify-center bg-cover bg-no-repeat bg-center bg-black/50 bg-blend-overlay"
         style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/s2.webp'">
