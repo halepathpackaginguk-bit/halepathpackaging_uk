@@ -71,19 +71,19 @@ $megaMenus = [
                 "image" => true,
                 "items" => [
                     ["title" => "Food & Restaurant", "link" => "https://halepathpackaging.co.uk/food-restaurant/"],
-                    ["title" => "Bakery & Confectionery", "link" => "https://halepathpackaging.co.uk/bakery-confectionery-food-beverage-industries-we-serve/"],
+                    ["title" => "Bakery & Confectionery", "link" => "https://halepathpackaging.co.uk/bakery-confectionery"],
                     ["title" => "Chocolate", "link" => "https://halepathpackaging.co.uk/chocolate/"],
-                    ["title" => "Candy & Sweets", "link" => "https://halepathpackaging.co.uk/candy-sweets-food-beverage-industries-we-serve/"],
+                    ["title" => "Candy & Sweets", "link" => "https://halepathpackaging.co.uk/candy-sweets"],
                     ["title" => "Coffee & Tea", "link" => "https://halepathpackaging.co.uk/coffee-tea/"],
-                    ["title" => "Beverages & Drinks", "link" => "https://halepathpackaging.co.uk/beverages-drinks-food-beverage-industries-we-serve/"],
-                    ["title" => "Snacks & Chips", "link" => "https://halepathpackaging.co.uk/snacks-chips-food-beverage-industries-we-serve/"],
-                    ["title" => "Frozen Foods", "link" => "https://halepathpackaging.co.uk/frozen-foods-food-beverage-industries-we-serve/"],
-                    ["title" => "Dairy Products", "link" => "https://halepathpackaging.co.uk/dairy-products-food-beverage-industries-we-serve/"],
+                    ["title" => "Beverages & Drinks", "link" => "https://halepathpackaging.co.uk/beverages-drinks"],
+                    ["title" => "Snacks & Chips", "link" => "https://halepathpackaging.co.uk/snacks-chips/"],
+                    ["title" => "Frozen Foods", "link" => "https://halepathpackaging.co.uk/frozen-foods/"],
+                    ["title" => "Dairy Products", "link" => "https://halepathpackaging.co.uk/dairy-products/"],
                     ["title" => "Wine & Spirits", "link" => "https://halepathpackaging.co.uk/wine-spirits/"],
-                    ["title" => "Energy Drinks & Juice", "link" => "https://halepathpackaging.co.uk/energy-drinks-juice-food-beverage-industries-we-serve/"],
-                    ["title" => "Ice Cream & Desserts", "link" => "https://halepathpackaging.co.uk/ice-cream-desserts-food-beverage-industries-we-serve/"],
-                    ["title" => "Food Delivery Packaging", "link" => "https://halepathpackaging.co.uk/food-delivery-packaging-food-beverage-industries-we-serve/"],
-                    ["title" => "Meal Kits", "link" => "https://halepathpackaging.co.uk/meal-kits-food-beverage-industries-we-serve/"],
+                    ["title" => "Energy Drinks & Juice", "link" => "https://halepathpackaging.co.uk/energy-drinks-juice"],
+                    ["title" => "Ice Cream & Desserts", "link" => "https://halepathpackaging.co.uk/ice-cream-desserts"],
+                    ["title" => "Food Delivery Packaging", "link" => "https://halepathpackaging.co.uk/food-delivery-packaging"],
+                    ["title" => "Meal Kits", "link" => "https://halepathpackaging.co.uk/meal-kits"],
                 ]
             ],
 
@@ -744,7 +744,7 @@ $megaMenus = [
         "link" => "https://halepathpackaging.co.uk/innovation/",
         "groups" => [
             "Branded Finishes" => [
-                "link" => "https://halepathpackaging.co.uk/branded-finishes-innovation/",
+                "link" => "https://halepathpackaging.co.uk/branded-finishes/",
                 "image" => true,
                 "items" => [
                     ["title" => "UV Printing Technology", "link" => "https://halepathpackaging.co.uk/uv-printing-technology/", "image" => true],
