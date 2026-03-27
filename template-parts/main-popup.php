@@ -126,40 +126,34 @@
         const uploadBtn = document.getElementById("uploadBtn");
         const fileInput = document.getElementById("fileInput");
 
-        // Open file picker on button click
         uploadBtn.addEventListener("click", () => {
             fileInput.click();
         });
 
-        // Handle form submit
         form.addEventListener("submit", function (e) {
-            e.preventDefault(); // prevent reload
+            e.preventDefault();
 
             const formData = new FormData(form);
 
-            // Get file manually
-            const file = fileInput.files[0];
-
-            // Convert formData to object
-            let data = {};
-
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            // Add file separately
-            if (file) {
-                data.file = {
-                    name: file.name,
-                    size: file.size,
-                    type: file.type
-                };
-            } else {
-                data.file = null;
+            // Append file
+            if (fileInput.files[0]) {
+                formData.append("file", fileInput.files[0]);
             }
 
-            // Log everything
-            console.log("Form Data:", data);
+            fetch("send-mail.php", {
+                method: "POST",
+                body: formData
+            })
+                .then(res => res.text())
+                .then(data => {
+                    // alert("Form submitted successfully!");
+                    form.reset();
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Something went wrong!");
+                });
+
         });
 
     });
