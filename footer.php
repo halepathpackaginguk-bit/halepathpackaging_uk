@@ -9,7 +9,21 @@
  * @package halepath_theme
  */
 
-?>
+
+ $instagram_feed = get_instagram_feed(); ?>
+<?php if (!empty($instagram_feed)) : ?>
+    <div class="instagram-feed">
+        <?php foreach ($instagram_feed as $post) : ?>
+            <div class="instagram-post">
+                <img src="<?php echo esc_url($post['media_url']); ?>" 
+                     alt="<?php echo esc_attr($post['caption'] ?? ''); ?>">
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+
+
 
 
 <footer class="pt-14 relative bg-[#f5f5f5]">
