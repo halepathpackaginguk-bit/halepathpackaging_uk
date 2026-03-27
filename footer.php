@@ -165,66 +165,71 @@
 
 <?php wp_footer(); ?>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
 
-    const scrollBtn = document.getElementById('scrollToTopBtn');
-    const popup = document.getElementById('quotePopup');
-    const closeBtn = document.getElementById('closeQuote_Popup');
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        const popup = document.getElementById('quotePopup');
+        const closeBtn = document.getElementById('closeQuote_Popup');
+        const footer = document.querySelector('footer'); // target footer
 
-    let popupShown = false;
+        let popupShown = false;
 
-    // Scroll Event
-    window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () => {
 
-        // Scroll-to-top button
-        if (window.scrollY > 300) {
-            scrollBtn?.classList.remove('hidden');
-        } else {
-            scrollBtn?.classList.add('hidden');
-        }
+            // Scroll-to-top button
+            if (window.scrollY > 300) {
+                scrollBtn?.classList.remove('hidden');
+            } else {
+                scrollBtn?.classList.add('hidden');
+            }
 
-        // Show popup once
-        if (window.scrollY > 300 && !popupShown) {
-            popup.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-            popup.classList.add('translate-x-0', 'opacity-100');
-            popupShown = true;
-        }
-    });
+            // Check if footer is visible
+            if (footer && !popupShown) {
+                const footerTop = footer.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
 
-    // Close popup (icon click)
-    closeBtn?.addEventListener('click', () => {
-        closePopup();
-    });
-
-    // Close when clicking outside (overlay)
-    popup?.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopup();
-        }
-    });
-
-    // ESC key close
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") {
-            closePopup();
-        }
-    });
-
-    // Reusable close function
-    function closePopup() {
-        popup.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-        popup.classList.remove('translate-x-0', 'opacity-100');
-    }
-
-    // Scroll to top
-    scrollBtn?.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+                // Footer enters viewport
+                if (footerTop <= windowHeight) {
+                    popup.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+                    popup.classList.add('translate-x-0', 'opacity-100');
+                    popupShown = true;
+                }
+            }
         });
-    });
 
-});
+        // Close popup (icon click)
+        closeBtn?.addEventListener('click', () => {
+            closePopup();
+        });
+
+        // Close when clicking outside
+        popup?.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+
+        // ESC key close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                closePopup();
+            }
+        });
+
+        function closePopup() {
+            popup.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+            popup.classList.remove('translate-x-0', 'opacity-100');
+        }
+
+        // Scroll to top
+        scrollBtn?.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    });
 </script>
 
 </body>

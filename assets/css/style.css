@@ -1033,6 +1033,9 @@
   .bg-no-repeat {
     background-repeat: no-repeat;
   }
+  .mask-repeat {
+    mask-repeat: repeat;
+  }
   .object-contain {
     object-fit: contain;
   }
@@ -1594,13 +1597,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-black);
-      }
-    }
-  }
-  .hover\:bg-blue-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-blue-700);
       }
     }
   }
