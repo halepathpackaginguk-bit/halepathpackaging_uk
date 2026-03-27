@@ -26,5 +26,6 @@
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-banner.png" alt="about us"
         class="w-full">
 </section>
+
 <?php get_template_part('template-parts/temp-instagram'); ?>
 <?php get_footer() ?>
