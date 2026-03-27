@@ -157,12 +157,6 @@
     </button>
 </footer>
 
-<div id="quotePopup" class="fixed inset-0 w-full bg-black/30 flex flex-col items-end justify-center z-50 
-     translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
-
-    <?php get_template_part('template-parts/main-popup'); ?>
-</div>
-
 <?php wp_footer(); ?>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -170,7 +164,7 @@
         const scrollBtn = document.getElementById('scrollToTopBtn');
         const popup = document.getElementById('quotePopup');
         const closeBtn = document.getElementById('closeQuote_Popup');
-        const footer = document.querySelector('footer'); // target footer
+        const footer = document.querySelector('footer');
 
         let popupShown = false;
 
@@ -183,16 +177,20 @@
                 scrollBtn?.classList.add('hidden');
             }
 
-            // Check if footer is visible
-            if (footer && !popupShown) {
+            if (footer) {
                 const footerTop = footer.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
 
-                // Footer enters viewport
-                if (footerTop <= windowHeight) {
-                    popup.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-                    popup.classList.add('translate-x-0', 'opacity-100');
+                // Show popup when footer enters viewport
+                if (footerTop <= windowHeight && !popupShown) {
+                    popup?.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+                    popup?.classList.add('translate-x-0', 'opacity-100');
                     popupShown = true;
+                }
+
+                // Reset when footer leaves viewport (so it can trigger again)
+                if (footerTop > windowHeight) {
+                    popupShown = false;
                 }
             }
         });
@@ -217,8 +215,8 @@
         });
 
         function closePopup() {
-            popup.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-            popup.classList.remove('translate-x-0', 'opacity-100');
+            popup?.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+            popup?.classList.remove('translate-x-0', 'opacity-100');
         }
 
         // Scroll to top

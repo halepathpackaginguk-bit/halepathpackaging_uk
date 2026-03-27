@@ -1,8 +1,8 @@
-<div class="max-w-[850px] m-auto rounded-[19px] bg-[#e5e5e5] px-3 sm:px-5 py-6 md:py-10">
+<div class="max-w-[850px] m-auto rounded-[19px] bg-secondary/30 backdrop-blur-[10px] px-3 sm:px-5 py-6 md:py-10">
     <div class="pb-5 w-full flex flex-row justify-between items-center">
-        <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-title_Clr">
+        <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-white">
             Get Custom Quote</h2>
-        <button>
+        <button class="text-white cursor-pointer">
             <svg id="closeQuote_Popup" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
                 viewBox="0 0 24 24">
                 <!-- Close -->
@@ -94,7 +94,7 @@
 
         <!-- Agree Checkbox -->
         <div class="grid gap-2">
-            <div class="flex gap-2 my-3 col-span-5 items-center">
+            <div class="flex gap-2 my-3 col-span-5 items-center text-white">
                 <input type="checkbox" id="agree" name="agree" class="p-2 w-4 h-4" required>
                 <label for="agree" class="cursor-pointer text-sm">
                     I Agree that my data is <strong>collected and Stored.</strong>
