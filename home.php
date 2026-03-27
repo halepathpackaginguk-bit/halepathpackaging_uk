@@ -26,9 +26,6 @@
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-banner.png" alt="about us"
         class="w-full">
 </section>
-<div id="quotePopup" class="fixed inset-0 w-full bg-transparent flex flex-col items-end justify-center z-50 
-     translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
-    <?php get_template_part('template-parts/main-popup'); ?>
-</div>
+
 <?php get_template_part('template-parts/temp-instagram'); ?>
 <?php get_footer() ?>

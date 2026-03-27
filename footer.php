@@ -156,80 +156,61 @@
         ↑
     </button>
 </footer>
-
+<button id="openQuotePopup"
+    class="fixed top-1/2 -translate-y-1/2 right-0 h-full bg-secondary/30 backdrop-blur-[10px] text-2xl text-white px-3 sm:px-5 ">
+    <span>Get Quote</span>
+</button>
+<div id="quotePopup" class="fixed inset-0 w-full bg-transparent flex flex-col items-end justify-center z-50 
+     translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
+    <?php get_template_part('template-parts/main-popup'); ?>
+</div>
 <?php wp_footer(); ?>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-        const scrollBtn = document.getElementById('scrollToTopBtn');
-        const popup = document.getElementById('quotePopup');
-        const closeBtn = document.getElementById('closeQuote_Popup');
-        const footer = document.querySelector('footer');
+    const popup = document.getElementById('quotePopup');
+    const closeBtn = document.getElementById('closeQuote_Popup');
+    const openBtn = document.getElementById('openQuotePopup');
 
-        let popupShown = false;
+    // Adjust this based on your popup width
+    const popupWidth = 850; // px
 
-        window.addEventListener('scroll', () => {
+    // OPEN POPUP
+    openBtn?.addEventListener('click', () => {
+        popup?.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+        popup?.classList.add('translate-x-0', 'opacity-100');
 
-            // Scroll-to-top button
-            if (window.scrollY > 300) {
-                scrollBtn?.classList.remove('hidden');
-            } else {
-                scrollBtn?.classList.add('hidden');
-            }
-
-            if (footer) {
-                const footerTop = footer.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                // Show popup when footer enters viewport
-                if (footerTop <= windowHeight && !popupShown) {
-                    popup?.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-                    popup?.classList.add('translate-x-0', 'opacity-100');
-                    popupShown = true;
-                }
-
-                // Reset when footer leaves viewport (so it can trigger again)
-                if (footerTop > windowHeight) {
-                    popupShown = false;
-                }
-            }
-        });
-
-        // Close popup (icon click)
-        closeBtn?.addEventListener('click', () => {
-            closePopup();
-        });
-
-        // Close when clicking outside
-        popup?.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                closePopup();
-            }
-        });
-
-        // ESC key close
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape") {
-                closePopup();
-            }
-        });
-
-        function closePopup() {
-            popup?.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-            popup?.classList.remove('translate-x-0', 'opacity-100');
-        }
-
-        // Scroll to top
-        scrollBtn?.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
+        // Move button left
+        openBtn.style.right = popupWidth + "px";
     });
-</script>
 
+    // CLOSE POPUP (icon click)
+    closeBtn?.addEventListener('click', closePopup);
+
+    // CLOSE when clicking outside
+    popup?.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+
+    // CLOSE with ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") {
+            closePopup();
+        }
+    });
+
+    function closePopup() {
+        popup?.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+        popup?.classList.remove('translate-x-0', 'opacity-100');
+
+        // Move button back to original position
+        openBtn.style.right = "0px";
+    }
+
+});
+</script>
 </body>
 
 </html>
