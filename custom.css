@@ -158,3 +158,8 @@ ul.career_list li {
 .instagram-post:hover img {
     transform: scale(1.05);
 }
+
+#openQuotePopup span {
+writing-mode: vertical-rl;
+  text-orientation: upright;
+}

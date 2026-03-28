@@ -172,7 +172,7 @@
 </footer>
 <button id="openQuotePopup"
     class="fixed top-1/2 -translate-y-1/2 right-0 h-[350px] bg-secondary/30 backdrop-blur-[10px] text-2xl text-white px-3 sm:px-5 ">
-    <span>Get Quote</span>
+    <span>Contact</span>
 </button>
 <div id="quotePopup" class="fixed inset-0 w-full bg-transparent flex flex-col items-end justify-center z-50 
      translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
