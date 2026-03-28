@@ -93,6 +93,7 @@ if (is_product_category()) {
 }
 ?>
 
+
 <section class="pt-14">
     <div class="hale_container flex md:flex-row flex-col gap-7">
 
