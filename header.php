@@ -53,7 +53,7 @@ $megaMenus = [
                 "link" => "https://halepathpackaging.co.uk/beauty-care/",
                 "image" => true,
                 "items" => [
-                    ["title" => "Cosmetics", "link" => "https://halepathpackaging.co.uk/cosmetics/"],
+                    ["title" => "Cosmetics", "link" => "https://halepathpackaging.co.uk/cosmetic-boxes/"],
                     ["title" => "Fragrances & Perfumes", "link" => "https://halepathpackaging.co.uk/fragrances-perfumes/"],
                     ["title" => "Skincare", "link" => "https://halepathpackaging.co.uk/skincare/"],
                     ["title" => "Hair Care", "link" => "https://halepathpackaging.co.uk/hair-care/"],
