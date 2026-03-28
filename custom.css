@@ -160,6 +160,6 @@ ul.career_list li {
 }
 
 #openQuotePopup span {
-writing-mode: vertical-rl;
-  text-orientation: upright;
+ writing-mode: vertical-rl;
+   transform:rotate(180deg);
 }
