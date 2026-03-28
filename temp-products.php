@@ -15,53 +15,34 @@ get_header();
         </div>
     </section>
 
-
     <div class="hale_container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <?php
+    $query_args = [
+        'post_type'      => 'product',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    ];
 
-                $query_args = [
-                    'post_type'      => 'product',
-                    'posts_per_page' => 100,
-                    'post_status'    => 'publish',
-                ];
-
-
-
-                $products = new WP_Query($query_args);
-                ?>
+    $products = new WP_Query($query_args);
+    ?>
 
         <?php if ( $products->have_posts() ) : ?>
 
-
         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
+
         <?php
-        global $product;
-        if ( ! $product ) continue;
+            set_query_var('product_id', get_the_ID());
+            get_template_part('template-parts/product/card');
+            ?>
 
-        $image_id  = $product->get_image_id();
-        $image_url = $image_id
-            ? wp_get_attachment_image_url($image_id, 'large')
-            : wc_placeholder_img_src();
-        ?>
-        <div class="p-3">
-            <a href="<?php the_permalink(); ?>">
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title_attribute(); ?>"
-                    class="maskimage img-full">
-            </a>
-
-            <a href="<?php the_permalink(); ?>" class="box_link">
-                <?php the_title(); ?>
-            </a>
-        </div>
         <?php endwhile; ?>
-
 
         <?php endif; ?>
 
         <?php wp_reset_postdata(); ?>
 
-    </div><!-- #main -->
+    </div>
 </section><!-- #primary -->
 
 

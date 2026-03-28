@@ -120,4 +120,5 @@ if (is_product_category()) {
     </div>
 </section>
 
-<?php do_action('woocommerce_after_single_product'); ?>
+
+

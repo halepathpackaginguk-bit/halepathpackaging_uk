@@ -259,6 +259,9 @@ elseif (is_product_category()) {
     </div>
 </section>
 
+
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
 
