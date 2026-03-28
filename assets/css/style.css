@@ -517,6 +517,15 @@
   .h-\[350px\] {
     height: 350px;
   }
+  .h-\[360px\] {
+    height: 360px;
+  }
+  .h-\[362px\] {
+    height: 362px;
+  }
+  .h-\[365px\] {
+    height: 365px;
+  }
   .h-\[400px\] {
     height: 400px;
   }
@@ -889,6 +898,18 @@
   }
   .rounded-xl {
     border-radius: var(--radius-xl);
+  }
+  .rounded-t-\[19px\] {
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
+  }
+  .rounded-l-\[19px\] {
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+  }
+  .rounded-r-\[19px\] {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
   }
   .rounded-tr-\[140px\] {
     border-top-right-radius: 140px;

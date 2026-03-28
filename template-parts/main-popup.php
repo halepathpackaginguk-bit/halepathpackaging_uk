@@ -1,4 +1,4 @@
-<div class="max-w-[850px] md:pr-8 rounded-[19px] bg-secondary/30 backdrop-blur-[10px] px-3 sm:px-5 py-6 md:py-10">
+<div class="max-w-[850px] md:pr-8 rounded-r-[19px] bg-secondary/30 backdrop-blur-[10px] px-3 sm:px-5 py-6 md:py-10">
     <div class="pb-5 w-full flex flex-row justify-between items-center">
         <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-white">
             Get Custom Quote</h2>
