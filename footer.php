@@ -221,7 +221,7 @@ $instagram_feed = get_instagram_feed(); ?>
             popup?.classList.remove('translate-x-0', 'opacity-100');
 
             // Move button back to original position
-            openBtn.style.right = "0px";
+            openBtn.style.right = "20px";
         }
 
     });
