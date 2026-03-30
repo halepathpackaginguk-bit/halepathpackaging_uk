@@ -107,7 +107,7 @@
                     Unit 229, 32A Birmingham Road Bromsgrove B61 0DD
                 </li>
                 <li><a href="tel:+4401213186768" class="footer_link">
-                        01213186768</a></li>
+                        +4401213186768</a></li>
                 <li><a href="mailto:sales@halepathpackaging.co.uk" target="_blank" class="footer_link">
                         sales@halepathpackaging.co.uk</a></li>
             </ul>
@@ -118,7 +118,7 @@
     <div class="hale_container flex md:flex-row flex-col md:items-center justify-between 2xl:gap-7 md:gap-4 gap-7 mt-7">
         <div>
             <h6 class="text-base font-semibold text-title_Clr mb-6">Where We’re Trusted</h6>
-            <div class="flex flex-wrap sm:flex-nowrap gap-5 items-center">
+            <div class="flex flex-wrap sm:flex-nowrap sm:gap-5 gap-2 items-center">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/google-reviws.png"
                     alt="google-reviws" class="md:w-full w-1/3">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trustpilot.png" alt="trustpilot"

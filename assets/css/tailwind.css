@@ -293,7 +293,7 @@
 }
 
 .footer_title {
-  @apply text-2xl font-semibold text-title_Clr mb-6;
+  @apply sm:text-2xl text-xl font-semibold text-title_Clr mb-6;
 }
 
 .footer_title span {
@@ -301,7 +301,7 @@
 }
 
 footer ul li a {
-  @apply text-base font-normal text-title_Clr flex items-center gap-2 w-fit cursor-pointer break-all leading-none;
+  @apply ms:text-base text-sm font-normal text-title_Clr flex items-center gap-2 w-fit cursor-pointer break-all leading-none;
 }
 
 .cat_image {
