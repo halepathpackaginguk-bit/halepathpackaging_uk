@@ -92,7 +92,7 @@ $megaMenus = [
                 "image" => true,
                 "items" => [
                     ["title" => "E-commerce Packaging", "link" => "https://halepathpackaging.co.uk/e-commerce"],
-                    ["title" => "Retail Boxes", "link" => "https://halepathpackaging.co.uk/retail-boxes-retail-e-commerce/"],
+                    ["title" => "Retail Boxes", "link" => "https://halepathpackaging.co.uk/retail-boxes/"],
                     ["title" => "Shopping Bags", "link" => "https://halepathpackaging.co.uk/shopping-bags-retail-e-commerce/"],
                     ["title" => "Point of Sale Display", "link" => "https://halepathpackaging.co.uk/point-of-sale-display/"],
                     ["title" => "Subscription Boxes", "link" => "https://halepathpackaging.co.uk/subscription-boxes/"],
