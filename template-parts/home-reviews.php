@@ -6,7 +6,7 @@ $testimonials = new WP_Query([
 ]);
 ?>
 
-<section class="pb-[60px]">
+<section class="py-[60px]">
     <div class="hale_container flex md:flex-row flex-col gap-6">
         <!-- Rating Summary -->
         <div

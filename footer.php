@@ -149,9 +149,9 @@ $instagram_feed = get_instagram_feed(); ?>
                 <li><a href="https://www.instagram.com/halepathpackaging.uk?igsh=MW1tY3pyczV2emdzNw%3D%3D"
                         target="_blank" class="text-2xl inline-flex">
                         <i class="fab fa-instagram text-title_Clr hover:text-primary"></i></a></li>
-                <!-- <li><a href="#" target="_blank" class="text-2xl inline-flex">
-                        <i class="fa-brands fa-linkedin-in text-title_Clr hover:text-primary"></i></a></li>
-                <li><a href="#" target="_blank" class="text-2xl inline-flex">
+                <li><a href="https://www.tiktok.com/@halepathpackaging?_r=1&_t=ZS-957Rlv6JhMV" target="_blank" class="text-2xl inline-flex">
+                        <i class="fa-brands fa-tiktok text-title_Clr hover:text-primary"></i></a></li>
+               <!--  <li><a href="#" target="_blank" class="text-2xl inline-flex">
                         <i class="fa-brands fa-whatsapp text-title_Clr hover:text-primary"></i></a></li> -->
             </ul>
         </div>
