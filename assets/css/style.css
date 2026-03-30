@@ -3037,8 +3037,10 @@ footer ul li a span.marker {
   }
 }
 .slick-slide {
-  height: fit-content !important;
-  max-height: 240px;
+  height: 240px;
+  @media (width >= 40rem) {
+    height: fit-content;
+  }
 }
 .active {
   background-color: var(--secondary);
