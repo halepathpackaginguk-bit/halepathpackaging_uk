@@ -983,9 +983,6 @@
   .bg-no-repeat {
     background-repeat: no-repeat;
   }
-  .mask-repeat {
-    mask-repeat: repeat;
-  }
   .object-contain {
     object-fit: contain;
   }
@@ -3230,6 +3227,11 @@ footer ul li a span.marker {
   color: var(--color-white);
   @media (width >= 48rem) {
     font-size: 27px;
+  }
+}
+@media (max-width: 600px) {
+  .slick-slide {
+    max-height: 240px;
   }
 }
 @property --tw-translate-x {

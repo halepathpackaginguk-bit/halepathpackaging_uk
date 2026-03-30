@@ -424,3 +424,9 @@ footer ul li a span.marker {
 .corru_content p{
   @apply font-medium text-white text-xl md:text-[27px] mb-6 mt-2 leading-normal;
 }
+
+@media (max-width: 600px) {
+  .slick-slide {
+    max-height: 240px;
+  }
+}
