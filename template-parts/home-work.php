@@ -33,7 +33,7 @@ $services = $WeDo_sec['service'] ?? [];
                 <div class="feature_box">
                     <div>
                         <a href="<?php echo esc_url($link); ?>">
-                            <img src="<?php echo esc_url($image); ?>" alt="" class="img-full h-auto!" width="292"
+                            <img src="<?php echo esc_url($image); ?>" alt="" class="img-full sm:h-auto! h-[240px]!" width="292"
                                 height="226">
                         </a>
                     </div>
@@ -64,7 +64,7 @@ $services = $WeDo_sec['service'] ?? [];
                 <div class="feature_box">
                     <div>
                         <a href="<?php echo esc_url($link); ?>">
-                            <img src="<?php echo esc_url($image); ?>" alt="" class="img-full h-auto!" width="292"
+                            <img src="<?php echo esc_url($image); ?>" alt="" class="img-full sm:h-auto! h-[240px]!" width="292"
                                 height="226">
                         </a>
                     </div>
