@@ -46,7 +46,7 @@ $slides = [
         </figure>
         <div
           class="flex justify-center md:items-center flex-col h-full <?php //echo $slide['bg']; ?>">
-          <div class="<?php echo $slide['text']; ?> slider-content h-full bg-white/5 backdrop-blur-[10px] py-10 p-10 rounded-lg">
+          <div class="<?php echo $slide['text']; ?> slider-content h-full bg-white/5 backdrop-blur-[10px] py-10 sm:p-10 p-5 rounded-lg">
             <h6 class="animate-slide">Hale Path Packaging</h6>
             <h2 class="animate-slide delay-200"><?php echo esc_html($slide['title']); ?></h2>
             <p class="animate-slide delay-200 md:max-w-4/5"><?php echo esc_html($slide['desc']); ?></p>

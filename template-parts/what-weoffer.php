@@ -15,10 +15,10 @@ $services = $services_sec['service'] ?? [];
             <?php echo $title; ?>
         </h2>
     </div>
-    <div class="offerbg bg-cover bg-no-repeat mt-44 border"
+    <div class="offerbg bg-cover bg-no-repeat sm:mt-44 mt-32 border"
         style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/offer-bg.png'">
         <div class="hale_container ">
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 mb-32 -mt-48 ">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 sm:mb-32 mb-10 sm:-mt-48 -mt-36">
 
                 <?php if ($services): ?>
                     <?php foreach ($services as $service):
@@ -27,7 +27,7 @@ $services = $services_sec['service'] ?? [];
                         $service_image = $service['image'] ?? '';
                         ?>
 
-                        <div class="service_box h-[520px] p-5 bg-white/5 backdrop-blur-[10px]">
+                        <div class="service_box ms:h-[520px] h-[380px] sm:p-5 p-2 bg-white/5 backdrop-blur-[10px]">
                             <div class="h-full w-full bg-no-repeat bg-center bg-cover flex items-end justify-end pt-6 pb-1"
                                 style="background-image:url('<?php echo esc_url($service_image); ?>')">
 
@@ -41,7 +41,7 @@ $services = $services_sec['service'] ?? [];
                                                 height="24">
                                         </h5>
 
-                                        <p class="mt-3 text-white text-sm">
+                                        <p class="mt-3 text-white sm:text-sm text-xs">
                                             <?php echo esc_html($service_content); ?>
                                         </p>
 

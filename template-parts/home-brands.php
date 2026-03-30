@@ -3,7 +3,7 @@
         <h2 class="h2">
           Trusted by Global Brands. Delivered with Local Precision.
         </h2>
-        <div class="grid md:grid-cols-5 grid-cols-2 gap-7 justify-between">
+        <div class="grid md:grid-cols-5 grid-cols-3 sm:gap-7 gap-5 justify-between">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/1.png" alt="brand1" width="179"
                 height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/2.png" alt="brand2" width="179"

@@ -8,13 +8,13 @@ $btn_link = $corrug['aboutlink'] ?? '';
 
 <section class="bg-cover mt-10 bg-no-repeat about_bg"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/bg.png'">
-    <div class="hale_container pt-[110px]!">
-        <h2 class="text-white font-bold text-3xl md:text-5xl lg:text-[51px]">
+    <div class="hale_container sm:pt-[110px]! pt-10">
+        <h2 class="text-white font-bold text-2xl md:text-5xl lg:text-[51px]">
            <?php echo esc_html($title); ?>
         </h2>
     </div>
     <div
-        class="bg-secondary/20 backdrop-blur-[10px] py-10 pr-8 md:p-[46px] max-w-[90%] md:max-w-[80%] lg:max-w-[70%] rounded-tr-[140px] mt-[110px]">
+        class="bg-secondary/20 backdrop-blur-[10px] py-10 sm:pr-8 md:p-[46px] max-w-full md:max-w-[80%] lg:max-w-[70%] rounded-tr-[140px] sm:mt-[110px] mt-8">
         <div class="hale_container corru_content">
            <?php echo $content; ?>
         </div>

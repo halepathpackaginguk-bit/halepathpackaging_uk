@@ -7,7 +7,7 @@ $flexible_products = get_field('flexible_packaging');
         <h2 class="h2">
             Flexible Packaging / Maylar bags
         </h2>
-         <p class="text-lg font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
+         <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
           Flexible Solutions, Unmatched Quality – Packaging That Sells Your Brand.
         </p>
     </div>

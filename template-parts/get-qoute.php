@@ -32,33 +32,34 @@ $steps = [
             <div
                 class="bg-white/5 backdrop-blur-[10px] h-full max-w-[546px] mx-auto rounded-2xl md:px-14 md:py-8 p-8 md:gap-12 gap-12 flex flex-col">
                 <?php foreach ($steps as $index => $step): ?>
-                <div class="step">
-                    <span
-                        class="before_line <?php echo ($index === count($steps) - 1) ? 'before:content-none' : 'before:content-[""] '; ?>">
-                        <?php echo '0' . esc_html($step['id']); ?>
-                    </span>
+                    <div class="step">
+                        <span
+                            class="before_line <?php echo ($index === count($steps) - 1) ? 'before:content-none' : 'before:content-[""] '; ?>">
+                            <?php echo '0' . esc_html($step['id']); ?>
+                        </span>
 
-                    <div>
-                        <h4 class="">
-                            <?php echo esc_html($step['title']); ?>
-                        </h4>
-                        <p class="text-sm font-light text-white">
-                            <?php echo esc_html($step['description']); ?>
-                        </p>
+                        <div>
+                            <h4 class="">
+                                <?php echo esc_html($step['title']); ?>
+                            </h4>
+                            <p class="text-sm font-light text-white">
+                                <?php echo esc_html($step['description']); ?>
+                            </p>
+                        </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
         <div class="md:w-1/2 w-full">
-            <h4 class="text-xl font-semibold text-white mb-4 flex items-center gap-3">
+            <h4 class="text-xl font-semibold text-white mb-4 flex items-center gap-3 sm:justify-start justify-center">
                 <span> Stronger Protection. </span>
                 <span class="block border-b-2 border-white max-w-[61px] w-full"></span>
             </h4>
-            <h2 class="md:text-4xl text-3xl font-bold text-white mb-8">
+            <h2 class="md:text-4xl text-2xl font-bold text-white mb-8 sm:text-left text-center">
                 Smarter Branding. Guaranteed Impact.
             </h2>
-            <form onSubmit={onSubmit} class="grid w-full gap-4 items-center mt-5 bg-white/5 backdrop-blur-[10px] md:p-8 p-6 rounded-[19px]">
+            <form onSubmit={onSubmit}
+                class="grid w-full gap-4 items-center mt-5 bg-white/5 backdrop-blur-[10px] md:p-8 p-6 rounded-[19px]">
                 <div class="w-full flex md:flex-row flex-col gap-4">
                     <div class="form_row">
                         <label htmlfor="fullname" class="hidden">
@@ -94,8 +95,8 @@ $steps = [
                     <label htmlfor="message" class="hidden">
                         Your Message
                     </label>
-                    <textarea class="hale_input rounded-[19px]! !min-h-[170px] md:pt-2" id="message" name="message" rows="3"
-                        placeholder="Write Your Message..."></textarea>
+                    <textarea class="hale_input rounded-[19px]! !min-h-[170px] md:pt-2" id="message" name="message"
+                        rows="3" placeholder="Write Your Message..."></textarea>
                 </div>
                 <div class="w-full">
                     <input type="checkbox"

@@ -8,7 +8,7 @@ $advertising_products = get_field('print_advertising');
         <h2 class="h2 md:mb-5!">
             Print & Advertising & Office Supplies
         </h2>
-        <p class="text-lg font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
+        <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
             Start designing unique boxes with different styles, sizes, and
             choices. Custom rigid boxes or Kraft boxes for retail products and
             many more?We can help, Custom printing and packaging services ideas

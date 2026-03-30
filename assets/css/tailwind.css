@@ -97,7 +97,7 @@
 }
 
 .btn_primary {
-  @apply bg-primary hover:bg-white px-5 sm:py-4 py-2 text-base font-medium text-white hover:text-primary rounded-full border-2 border-primary flex items-center gap-2 w-fit;
+  @apply bg-primary hover:bg-white px-5 sm:py-4 py-2 sm:text-base text-sm font-medium text-white hover:text-primary rounded-full border-2 border-primary flex items-center gap-2 w-fit;
 }
 
 .hale_flex {
@@ -105,11 +105,11 @@
 }
 
 .btn_secondry {
-  @apply bg-secondary hover:bg-white sm:px-9 px-8 sm:py-3 py-1 text-base font-medium text-white hover:text-secondary rounded-full border-2 border-secondary;
+  @apply bg-secondary hover:bg-white sm:px-9 px-8 sm:py-3 py-1 sm:text-base text-sm font-medium text-white hover:text-secondary rounded-full border-2 border-secondary text-center;
 }
 
 .h2 {
-  @apply md:text-[43px] md:leading-none text-3xl font-bold text-title_Clr text-center mb-8;
+  @apply md:text-[43px] md:leading-none text-2xl font-bold text-title_Clr text-center sm:mb-8 mb-5;
 }
 
 .grad_Bg {
@@ -181,31 +181,31 @@
 }
 
 .count_box span {
-  @apply block border-b-2 border-primary max-w-[61px] w-full;
+  @apply block border-b-2 border-primary max-w-[61px] w-full sm:ml-0 ml-auto mr-auto;
 }
 
 .count_box h3 {
-  @apply lg:text-5xl md:text-3xl text-3xl font-bold text-white my-6;
+  @apply lg:text-5xl md:text-3xl text-xl font-bold text-white sm:my-6 mt-3 mb-0 sm:text-left text-center;
 }
 
 .count_box p {
-  @apply text-lg font-normal text-white;
+  @apply sm:text-lg text-sm font-normal text-white sm:text-left text-center;
 }
 
 .step {
-  @apply relative flex md:flex-row flex-col md:gap-[30px] gap-7;
+  @apply relative flex md:flex-row flex-col md:gap-[30px] gap-3;
 }
 
 .step span {
-  @apply text-xl font-medium text-white bg-secondary p-[18px] border-[18px] border-[#CCCCCCB5]/70 rounded-full flex items-center justify-center w-[89px] h-[89px];
+  @apply text-xl font-medium text-white bg-secondary p-[18px] border-[18px] border-[#CCCCCCB5]/70 rounded-full flex items-center justify-center w-[89px] h-[89px] sm:ml-0 ml-auto mr-auto;
 }
 
 .step h4 {
-  @apply text-xl font-medium text-white mb-2;
+  @apply text-xl font-medium text-white mb-2 sm:text-left text-center;
 }
 
 .step p {
-  @apply text-sm font-light text-white;
+  @apply text-sm font-light text-white sm:text-left text-center;
 }
 
 .hale_input {
@@ -225,7 +225,7 @@
 }
 
 .service_inner .content {
-  @apply border border-white/10 bg-white/5 backdrop-blur-[10px] p-3 px-3;
+  @apply border border-white/10 bg-white/5 backdrop-blur-[10px] sm:p-3 p-4;
 }
 
 .service_inner .content h5 {
@@ -422,7 +422,7 @@ footer ul li a span.marker {
   @apply text-white font-bold text-xl md:text-[25px];
 }
 .corru_content p{
-  @apply font-medium text-white text-xl md:text-[27px] mb-6 mt-2 leading-normal;
+  @apply font-medium text-white text-base md:text-[27px] mb-6 mt-2 leading-normal;
 }
 
 @media (max-width: 600px) {
