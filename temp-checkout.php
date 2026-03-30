@@ -82,11 +82,11 @@ get_header(); ?>
                 .then(res => res.json())
                 .then(res => {
                     if (res.success) {
-                        alert("Order placed successfully!");
+                       // alert("Order placed successfully!");
                         sessionStorage.removeItem("sizes_form_data");
                         window.location.href = "/";
                     } else {
-                        alert(res.data);
+                        //alert(res.data);
                     }
                 });
 
