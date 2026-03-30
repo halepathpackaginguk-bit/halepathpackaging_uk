@@ -10,13 +10,12 @@
  */
 
 
- $instagram_feed = get_instagram_feed(); ?>
-<?php if (!empty($instagram_feed)) : ?>
+$instagram_feed = get_instagram_feed(); ?>
+<?php if (!empty($instagram_feed)): ?>
     <div class="instagram-feed">
-        <?php foreach ($instagram_feed as $post) : ?>
+        <?php foreach ($instagram_feed as $post): ?>
             <div class="instagram-post">
-                <img src="<?php echo esc_url($post['media_url']); ?>" 
-                     alt="<?php echo esc_attr($post['caption'] ?? ''); ?>">
+                <img src="<?php echo esc_url($post['media_url']); ?>" alt="<?php echo esc_attr($post['caption'] ?? ''); ?>">
             </div>
         <?php endforeach; ?>
     </div>
@@ -144,9 +143,11 @@
             <a href="<?php echo home_url(); ?>"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo"></a>
             <ul class="flex items-center gap-3">
-                <li><a href="https://www.facebook.com/profile.php?id=61586916928562" target="_blank" class="text-2xl inline-flex">
+                <li><a href="https://www.facebook.com/profile.php?id=61586916928562" target="_blank"
+                        class="text-2xl inline-flex">
                         <i class="fab fa-facebook-f text-title_Clr hover:text-primary"></i></a></li>
-                <li><a href="https://www.instagram.com/halepathpackaging.uk?igsh=MW1tY3pyczV2emdzNw%3D%3D" target="_blank" class="text-2xl inline-flex">
+                <li><a href="https://www.instagram.com/halepathpackaging.uk?igsh=MW1tY3pyczV2emdzNw%3D%3D"
+                        target="_blank" class="text-2xl inline-flex">
                         <i class="fab fa-instagram text-title_Clr hover:text-primary"></i></a></li>
                 <!-- <li><a href="#" target="_blank" class="text-2xl inline-flex">
                         <i class="fa-brands fa-linkedin-in text-title_Clr hover:text-primary"></i></a></li>
@@ -170,60 +171,60 @@
         ↑
     </button>
 </footer>
-<!-- <button id="openQuotePopup"
-    class="fixed top-1/2 -translate-y-1/2 right-0 h-[365px] bg-secondary/30 backdrop-blur-[10px] text-2xl text-white px-3 sm:px-5 rounded-l-[19px] ">
+<button id="openQuotePopup"
+    class="sm:block hidden fixed top-1/2 -translate-y-1/2 right-5 h-[365px] bg-white/30 backdrop-blur-[10px] text-2xl text-title_Clr px-3 sm:px-5 rounded-[19px] z-[999]">
     <span>Get a Quote</span>
-</button> -->
+</button>
 <div id="quotePopup" class="fixed inset-0 w-full bg-transparent flex flex-col items-end justify-center z-50 
      translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
-    <?php //get_template_part('template-parts/main-popup'); ?>
+    <?php get_template_part('template-parts/main-popup'); ?>
 </div>
 <?php wp_footer(); ?>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
 
-    const popup = document.getElementById('quotePopup');
-    const closeBtn = document.getElementById('closeQuote_Popup');
-    const openBtn = document.getElementById('openQuotePopup');
+        const popup = document.getElementById('quotePopup');
+        const closeBtn = document.getElementById('closeQuote_Popup');
+        const openBtn = document.getElementById('openQuotePopup');
 
-    // Adjust this based on your popup width
-    const popupWidth = 850; // px
+        // Adjust this based on your popup width
+        const popupWidth = 850; // px
 
-    // OPEN POPUP
-    openBtn?.addEventListener('click', () => {
-        popup?.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-        popup?.classList.add('translate-x-0', 'opacity-100');
+        // OPEN POPUP
+        openBtn?.addEventListener('click', () => {
+            popup?.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+            popup?.classList.add('translate-x-0', 'opacity-100');
 
-        // Move button left
-        openBtn.style.right = popupWidth + "px";
-    });
+            // Move button left
+            openBtn.style.right = popupWidth + "px";
+        });
 
-    // CLOSE POPUP (icon click)
-    closeBtn?.addEventListener('click', closePopup);
+        // CLOSE POPUP (icon click)
+        closeBtn?.addEventListener('click', closePopup);
 
-    // CLOSE when clicking outside
-    popup?.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopup();
+        // CLOSE when clicking outside
+        popup?.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+
+        // CLOSE with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                closePopup();
+            }
+        });
+
+        function closePopup() {
+            popup?.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+            popup?.classList.remove('translate-x-0', 'opacity-100');
+
+            // Move button back to original position
+            openBtn.style.right = "0px";
         }
+
     });
-
-    // CLOSE with ESC key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") {
-            closePopup();
-        }
-    });
-
-    function closePopup() {
-        popup?.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-        popup?.classList.remove('translate-x-0', 'opacity-100');
-
-        // Move button back to original position
-        openBtn.style.right = "0px";
-    }
-
-});
 </script>
 </body>
 

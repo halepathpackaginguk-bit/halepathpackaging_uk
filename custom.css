@@ -161,6 +161,4 @@ ul.career_list li {
 
 #openQuotePopup span {
   writing-mode: vertical-rl;
-  transform: rotate(180deg);
 }
-
