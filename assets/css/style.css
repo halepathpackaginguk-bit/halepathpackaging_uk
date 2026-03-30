@@ -983,6 +983,9 @@
   .bg-no-repeat {
     background-repeat: no-repeat;
   }
+  .mask-repeat {
+    mask-repeat: repeat;
+  }
   .object-contain {
     object-fit: contain;
   }
@@ -3037,10 +3040,7 @@ footer ul li a span.marker {
   }
 }
 .slick-slide {
-  height: 240px;
-  @media (width >= 40rem) {
-    height: fit-content;
-  }
+  height: fit-content !important;
 }
 .active {
   background-color: var(--secondary);

@@ -163,3 +163,9 @@ ul.career_list li {
  writing-mode: vertical-rl;
    transform:rotate(180deg);
 }
+@media (max-width: 600px) {
+.slick-slide {
+  height: fit-content !important;
+  max-height: 240px
+}
+}

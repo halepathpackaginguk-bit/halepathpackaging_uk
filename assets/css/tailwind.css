@@ -360,7 +360,7 @@ footer ul li a span.marker {
 }
 
 .slick-slide {
- @apply sm:h-fit h-[240px];
+  height: fit-content !important;
 }
 
 .active {
