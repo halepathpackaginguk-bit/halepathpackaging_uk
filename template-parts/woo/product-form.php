@@ -46,6 +46,8 @@ elseif (is_product_category()) {
                         Quote for a perfect, tailored fit. Whether you need something immediately or designed
                         specifically for your brand, we provide flexible options to meet every need and budget.
                     </p>
+                    <input type="hidden" name="product" id="product" placeholder="product"
+                        value="<?php echo esc_html($product_name); ?>" class="hale_input">
                     <div class="w-full gap-2.5">
                         <section class="grid md:grid-cols-4 grid-cols-2 gap-2 mt-2.5">
                             <div class="relative">
@@ -236,11 +238,10 @@ elseif (is_product_category()) {
                             </label>
                         </div>
                     </div>
-                    <p id="quote-price-display"
-   data-base-price="<?php echo esc_attr($product_price); ?>"
-   style="margin-top:20px; font-size:16px;">
-    <strong>Estimated Price:</strong> £<?php echo esc_html($product_price); ?>
-</p>
+                    <p id="quote-price-display" data-base-price="<?php echo esc_attr($product_price); ?>"
+                        style="margin-top:20px; font-size:16px;">
+                        <strong>Estimated Price:</strong> £<?php echo esc_html($product_price); ?>
+                    </p>
                     <!-- Submit Button -->
                     <section class="flex items-center gap-2 justify-between mt-2.5">
                         <div class="w-full">
@@ -329,38 +330,38 @@ elseif (is_product_category()) {
             const colors = quoteForm.querySelector('#colors');
             const stock = quoteForm.querySelector('#stock');
 
-          function calculateQuotePrice() {
+            function calculateQuotePrice() {
 
-    const basePrice = parseFloat(quotePriceDisplay.dataset.basePrice) || 0;
+                const basePrice = parseFloat(quotePriceDisplay.dataset.basePrice) || 0;
 
-    const l = parseFloat(length.value) || 0;
-    const w = parseFloat(width.value) || 0;
-    const d = parseFloat(depth.value) || 0;
-    const c = parseInt(colors.value) || 1;
-    const s = parseInt(stock.value) || 1;
+                const l = parseFloat(length.value) || 0;
+                const w = parseFloat(width.value) || 0;
+                const d = parseFloat(depth.value) || 0;
+                const c = parseInt(colors.value) || 1;
+                const s = parseInt(stock.value) || 1;
 
-    // ===== CUSTOM LOGIC =====
-    let base = (l + w + d);   // size factor
-    let colorCost = c * 5;
-    let stockCost = s * 0;
+                // ===== CUSTOM LOGIC =====
+                let base = (l + w + d);   // size factor
+                let colorCost = c * 5;
+                let stockCost = s * 0;
 
-    // ✅ ADD BASE PRICE HERE
-    let total = basePrice + (base * colorCost) + stockCost;
+                // ✅ ADD BASE PRICE HERE
+                let total = basePrice + (base * colorCost) + stockCost;
 
-    // ✅ If no input yet → show base price only
-    if (l === 0 && w === 0 && d === 0) {
-        quotePriceDisplay.innerHTML =
-            `<strong>Estimated Price:</strong> £${basePrice}`;
-        return basePrice;
-    }
+                // ✅ If no input yet → show base price only
+                if (l === 0 && w === 0 && d === 0) {
+                    quotePriceDisplay.innerHTML =
+                        `<strong>Estimated Price:</strong> £${basePrice}`;
+                    return basePrice;
+                }
 
-    if (quotePriceDisplay) {
-        quotePriceDisplay.innerHTML =
-            `<strong>Estimated Price:</strong> £${total.toFixed(2)}`;
-    }
+                if (quotePriceDisplay) {
+                    quotePriceDisplay.innerHTML =
+                        `<strong>Estimated Price:</strong> £${total.toFixed(2)}`;
+                }
 
-    return total;
-}
+                return total;
+            }
             // trigger on change
             [length, width, depth, colors, stock].forEach(el => {
                 if (el) el.addEventListener('input', calculateQuotePrice);

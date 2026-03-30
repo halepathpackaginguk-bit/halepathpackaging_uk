@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     const formData = new FormData(this);
-
+    console.log(formData);
     const priceDisplay = document.getElementById("price-display");
     const basePrice = parseFloat(priceDisplay.dataset.price) || 0;
 
