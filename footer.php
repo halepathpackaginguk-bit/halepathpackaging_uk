@@ -106,7 +106,7 @@ $instagram_feed = get_instagram_feed(); ?>
                     Unit 229, 32A Birmingham Road Bromsgrove B61 0DD
                 </li>
                 <li><a href="tel:+4401213186768" class="footer_link">
-                        +4401213186768</a></li>
+                        +44 01213186768</a></li>
                 <li><a href="mailto:sales@halepathpackaging.co.uk" target="_blank" class="footer_link">
                         sales@halepathpackaging.co.uk</a></li>
             </ul>
