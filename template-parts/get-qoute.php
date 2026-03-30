@@ -32,21 +32,21 @@ $steps = [
             <div
                 class="bg-white/5 backdrop-blur-[10px] h-full max-w-[546px] mx-auto rounded-2xl md:px-14 md:py-8 p-8 md:gap-12 gap-12 flex flex-col">
                 <?php foreach ($steps as $index => $step): ?>
-                    <div class="step">
-                        <span
-                            class="before_line <?php echo ($index === count($steps) - 1) ? 'before:content-none' : 'before:content-[""] '; ?>">
-                            <?php echo '0' . esc_html($step['id']); ?>
-                        </span>
+                <div class="step">
+                    <span
+                        class="before_line <?php echo ($index === count($steps) - 1) ? 'before:content-none' : 'before:content-[""] '; ?>">
+                        <?php echo '0' . esc_html($step['id']); ?>
+                    </span>
 
-                        <div>
-                            <h4 class="">
-                                <?php echo esc_html($step['title']); ?>
-                            </h4>
-                            <p class="text-sm font-light text-white">
-                                <?php echo esc_html($step['description']); ?>
-                            </p>
-                        </div>
+                    <div>
+                        <h4 class="">
+                            <?php echo esc_html($step['title']); ?>
+                        </h4>
+                        <p class="text-sm font-light text-white">
+                            <?php echo esc_html($step['description']); ?>
+                        </p>
                     </div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -82,12 +82,34 @@ $steps = [
                         <input class="hale_input" type="email" name="email" id="email" placeholder="Email  Address" />
                     </div>
                     <div class="form_row">
-                        <label htmlfor="product" class="hidden">
+                        <label for="product" class="hidden">
                             Cosmetics Packaging
                         </label>
+
                         <select class="hale_input" name="product" id="product">
-                            <option value="select the Product">select the Product</option>
-                            <option value="Product1">Product1</option>
+                            <option value="">Select the Product</option>
+
+                            <?php
+                                $args = array(
+                                    'post_type'      => 'product',
+                                    'posts_per_page' => -1,
+                                    'post_status'    => 'publish'
+                                );
+
+                                $products = get_posts($args);
+
+                                foreach ($products as $post) {
+                                    setup_postdata($post);
+
+                                    $product = wc_get_product($post->ID);
+
+                                    echo '<option value="' . esc_attr($product->get_name()) . '">'
+                                        . esc_html($product->get_name()) .
+                                    '</option>';
+                                }
+
+                                wp_reset_postdata();
+                                ?>
                         </select>
                     </div>
                 </div>
