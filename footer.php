@@ -144,14 +144,14 @@
             <a href="<?php echo home_url(); ?>"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo"></a>
             <ul class="flex items-center gap-3">
-                <li><a href="#" target="_blank" class="text-2xl inline-flex">
+                <li><a href="https://www.facebook.com/profile.php?id=61586916928562" target="_blank" class="text-2xl inline-flex">
                         <i class="fab fa-facebook-f text-title_Clr hover:text-primary"></i></a></li>
-                <li><a href="#" target="_blank" class="text-2xl inline-flex">
+                <li><a href="https://www.instagram.com/halepathpackaging.uk?igsh=MW1tY3pyczV2emdzNw%3D%3D" target="_blank" class="text-2xl inline-flex">
                         <i class="fab fa-instagram text-title_Clr hover:text-primary"></i></a></li>
-                <li><a href="#" target="_blank" class="text-2xl inline-flex">
+                <!-- <li><a href="#" target="_blank" class="text-2xl inline-flex">
                         <i class="fa-brands fa-linkedin-in text-title_Clr hover:text-primary"></i></a></li>
                 <li><a href="#" target="_blank" class="text-2xl inline-flex">
-                        <i class="fa-brands fa-whatsapp text-title_Clr hover:text-primary"></i></a></li>
+                        <i class="fa-brands fa-whatsapp text-title_Clr hover:text-primary"></i></a></li> -->
             </ul>
         </div>
         <div class="">

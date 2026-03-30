@@ -6,7 +6,7 @@ $testimonials = new WP_Query([
 ]);
 ?>
 
-<section class="py-[60px]">
+<section class="pb-[60px]">
     <div class="hale_container flex md:flex-row flex-col gap-6">
         <!-- Rating Summary -->
         <div
@@ -17,8 +17,10 @@ $testimonials = new WP_Query([
                     <li class="text-[#FFAE00]"><i class="fa-solid fa-star"></i></li>
                 <?php endfor; ?>
             </ul>
-            <p class="text-sm font-normal text-white">4.82 average</p>
-            <p class="text-sm font-normal text-white">2,634 reviews</p>
+            <div class="flex md:flex-col flex-row justify-center sm:gap-0 gap-0.5">
+                <p class="text-sm font-normal text-white">4.82 average </p>
+                <p class="text-sm font-normal text-white">2,634 reviews</p>
+            </div>
         </div>
 
         <!-- Testimonials Slider -->
