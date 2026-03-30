@@ -119,38 +119,3 @@
         </section>
     </form>
 </div>
-<script>
-
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    // Append file
-    if (fileInput.files[0]) {
-        formData.append("file", fileInput.files[0]);
-    }
-
-    // Required for WP AJAX
-    formData.append("action", "send_quote_form");
-
-    fetch(ajax_object.ajax_url, {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            alert("Form submitted successfully!");
-            form.reset();
-        } else {
-            alert("Error: " + data.data);
-        }
-    })
-    .catch(err => {
-        console.error(err);
-        alert("Something went wrong!");
-    });
-});
-
-</script>
