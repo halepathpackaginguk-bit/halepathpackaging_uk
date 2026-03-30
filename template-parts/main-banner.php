@@ -19,7 +19,7 @@ $btn_link = $home['btnlink'] ?? '';
                             <?php echo esc_html($title); ?>
                         </h1>
 
-                        <p class="text-white text-2xl font-medium mb-8">
+                        <p class="text-white sm:text-2xl text-lg font-medium mb-8">
                             <?php echo esc_html($desc); ?>
                         </p>
 

@@ -26,7 +26,7 @@ $advertising_products = get_field('print_advertising');
                 'direction'    => 'ltr'
             ]
         );?>
-    <a href="<?php echo home_url('/all-print-advertising'); ?>" class="btn_secondry flex items-center gap-2 mt-12 w-fit mx-auto">
+    <a href="<?php echo home_url('/all-print-advertising'); ?>" class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
         See All Print & Advertising & Office Supplies
     </a>
 </section>

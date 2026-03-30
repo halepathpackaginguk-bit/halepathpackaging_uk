@@ -16,10 +16,10 @@ $images = [
 ?>
 
 <section class="max_content mt-14 py-8">
-    <div class="hale_container hale_flex items-start!">
+    <div class="hale_container hale_flex !flex-row items-start!">
         <!-- LEFT: IMAGES -->
-        <div class="md:w-2/5 relative w-full">
-            <div class="overflow-hidden h-[400px]" id="imageContainer">
+        <div class="md:w-2/5 relative w-1/2">
+            <div class="overflow-hidden sm:h-[400px] h-[220px]" id="imageContainer">
                 <?php foreach ($images as $index => $img): ?>
                     <figure class="image-slide  <?php echo $index === 0 ? 'block' : 'hidden'; ?>"
                         data-index="<?php echo $index; ?>">
@@ -37,15 +37,15 @@ $images = [
                 </figure>
             </div>
 
-            <div class="mt-10 flex justify-center">
+            <div class="sm:mt-10 mt-5 flex justify-center">
                 <a href="<?php echo esc_url($btn_link); ?>" class="btn_secondry">
                     About Us
                 </a>
             </div>
         </div>
         <!-- RIGHT: SCROLL TEXT -->
-        <div class="relative md:w-3/5">
-            <div id="scrollText" class="w-full max-h-[400px] overflow-y-scroll scroll_Left">
+        <div class="relative md:w-3/5 w-1/2">
+            <div id="scrollText" class="w-full sm:max-h-[400px] max-h-[220px] overflow-y-scroll scroll_Left">
                 <p> <?php echo $about_content; ?></p>
             </div>
 

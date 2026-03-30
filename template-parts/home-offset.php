@@ -25,7 +25,7 @@ $offset_products = get_field('offset_printing_products');
         ]
     ); ?>
     <a href="<?php echo home_url('/all-offset-printing'); ?>"
-        class="btn_secondry flex items-center gap-2 mt-12 w-fit mx-auto">
+        class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
         See All Offset Printing
     </a>
 </section>

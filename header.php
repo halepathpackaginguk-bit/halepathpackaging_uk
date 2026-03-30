@@ -786,7 +786,7 @@ $megaMenus = [
     <div id="page" class="site">
         <?php get_template_part('template-parts/theme/top-bar'); ?>
         <!-- Header -->
-        <header class="bg-[#f5f5f5] sticky top-0 z-50 py-[15px]">
+        <header class="bg-[#f5f5f5] sticky top-0 z-50 sm:py-[15px]">
             <div class="hale_container py-1 flex lg:flex-col flex-row items-center justify-between gap-5">
                 <!-- Logo -->
                 <div class="lg:hidden w-1/2">

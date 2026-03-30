@@ -45,7 +45,7 @@ $btn_link = $corrug['aboutlink'] ?? '';
     ); ?>
 
     <a href="<?php echo home_url('/all-corrugated-packaging'); ?>"
-        class="btn_secondry flex items-center gap-2 mt-12 w-fit mx-auto">
+        class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
         See All Corrugated Packaging
     </a>
 </section>
