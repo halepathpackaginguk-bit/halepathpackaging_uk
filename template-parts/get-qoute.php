@@ -58,7 +58,7 @@ $steps = [
             <h2 class="md:text-4xl text-2xl font-bold text-white mb-8 sm:text-left text-center">
                 Smarter Branding. Guaranteed Impact.
             </h2>
-            <form onSubmit={onSubmit}
+            <form id="contact-form"
                 class="grid w-full gap-4 items-center mt-5 bg-white/5 backdrop-blur-[10px] md:p-8 p-6 rounded-[19px]">
                 <div class="w-full flex md:flex-row flex-col gap-4">
                     <div class="form_row">

@@ -10,7 +10,7 @@
             </svg>
         </button>
     </div>
-    <form id="quote-form" class="grid w-full gap-2 items-center ">
+    <form id="quote-form" class="grid w-full gap-2 items-center">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full gap-2.5">
             <!-- Name -->
             <div>
@@ -120,41 +120,37 @@
     </form>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
 
-        const form = document.getElementById("quote-form");
-        const uploadBtn = document.getElementById("uploadBtn");
-        const fileInput = document.getElementById("fileInput");
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        uploadBtn.addEventListener("click", () => {
-            fileInput.click();
-        });
+    const formData = new FormData(form);
 
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
+    // Append file
+    if (fileInput.files[0]) {
+        formData.append("file", fileInput.files[0]);
+    }
 
-            const formData = new FormData(form);
+    // Required for WP AJAX
+    formData.append("action", "send_quote_form");
 
-            // Append file
-            if (fileInput.files[0]) {
-                formData.append("file", fileInput.files[0]);
-            }
-
-            fetch("send-mail.php", {
-                method: "POST",
-                body: formData
-            })
-                .then(res => res.text())
-                .then(data => {
-                    // alert("Form submitted successfully!");
-                    form.reset();
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("Something went wrong!");
-                });
-
-        });
-
+    fetch(ajax_object.ajax_url, {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("Form submitted successfully!");
+            form.reset();
+        } else {
+            alert("Error: " + data.data);
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Something went wrong!");
     });
+});
+
 </script>

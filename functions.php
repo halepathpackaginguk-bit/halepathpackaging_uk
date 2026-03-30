@@ -11,6 +11,7 @@
 include_once get_template_directory() . '/inc/extra.php';
 include_once get_template_directory() . '/inc/ajax.php';
 include_once get_template_directory() . '/inc/woo-extra.php';
+include_once get_template_directory() . '/inc/email.php';
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
@@ -157,6 +158,12 @@ function theme_assets()
         '10.0.0',
         true // load in footer
     );
+
+	 wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array(), null, true);
+
+    wp_localize_script('custom-js', 'ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
 
 	// Slick Init JS
 //    wp_enqueue_script('slick-init', get_template_directory_uri() . '/assets/js/slick-init.js', ['jquery', 'slick-js'], filemtime(get_template_directory() . '/assets/js/slick-init.js'), true);
