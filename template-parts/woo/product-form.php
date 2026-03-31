@@ -74,8 +74,8 @@ elseif (is_product_category()) {
                                 <label for="quantity" class="text-sm font-medium hidden">Quantity</label>
                                 <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
                                     required>
-                                    <option value="100">100</option>
-                                    <option value="200">200</option>
+                                    <option value="1">100</option>
+                                    <option value="2">200</option>
                                 </select>
                                 <i
                                     class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
@@ -295,7 +295,7 @@ elseif (is_product_category()) {
 
             const total = basePrice * qty;
 
-            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty} items`;
+            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}00 items`;
 
             // ✅ UPDATE INPUT FIELD
             const totalPriceInput = document.getElementById('total_price');

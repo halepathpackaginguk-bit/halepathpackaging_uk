@@ -32,7 +32,7 @@ get_header(); ?>
                 <p><strong>Product:</strong> <span id="summary-product">Loading...</span></p>
                 <p><strong>Dimension:</strong> <span id="summary-dimension">-</span></p>
                 <p><strong>Stock:</strong> <span id="summary-stock">-</span></p>
-                <p><strong>Quantity:</strong> <span id="summary-qty">-</span></p>
+                <p><strong>Quantity:</strong> <span id="summary-qty">-</span>00</p>
                 <p><strong>Printing:</strong> <span id="summary-printing">-</span></p>
                 <hr class="my-4">
                 <p class="text-lg font-bold">

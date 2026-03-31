@@ -42,6 +42,7 @@
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <?php wp_head(); ?>
     <meta name="google-site-verification" content="vxJVqkHpw-YU0K97Hbs-wFEVtQhadmF2d19hVFWCuSU" />
+    <meta name="trustpilot-one-time-domain-verification-id" content="ae39cbe4-c17f-458d-ad5d-f78d10d14bdd"/>
 </head>
 <?php
 $megaMenus = [
