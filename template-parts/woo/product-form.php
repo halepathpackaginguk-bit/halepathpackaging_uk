@@ -4,7 +4,7 @@ $quote_form_class = "container mx-auto mt-5 rounded-[19px] bg-[#CCCCCCB5]/70";
 
 global $product;
 $product_name = 'Product';
-$product_price = 0;
+$product_price = 650;
 $products_in_cat = wc_get_products($args);
 
 // If viewing a single product
@@ -35,7 +35,6 @@ elseif (is_product_category()) {
     <!-- Tabs Content -->
     <div class="tab-content mt-6">
         <div class="form_tab-panel hidden" id="tab1">
-
             <div class="<?php echo esc_attr($quote_form_class); ?>">
                 <form id="sizes-form" class="grid w-full gap-2 items-center px-3 sm:px-5 py-6 md:py-10" method="POST">
                     <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-title_Clr">
@@ -75,9 +74,8 @@ elseif (is_product_category()) {
                                 <label for="quantity" class="text-sm font-medium hidden">Quantity</label>
                                 <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
                                     required>
-                                    <option value="1" selected>1</option>
-                                    <option value="100">100</option>
-                                    <option value="200">200</option>
+                                    <option value="1">100</option>
+                                    <option value="2">200</option>
                                 </select>
                                 <i
                                     class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
@@ -152,16 +150,8 @@ elseif (is_product_category()) {
                             </div>
                             <div class="relative">
                                 <label for="product" class="text-sm font-medium hidden">Select Product</label>
-                                <select name="product" id="product" required class="hale_input h-full appearance-none">
-                                    <option value="" disabled selected>Select Product</option>
-                                    <?php foreach ($products as $product): ?>
-                                        <option value="<?php echo esc_attr($product->get_name()); ?>">
-                                            <?php echo esc_html($product->get_name()); ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                                <input type="text" name="product" id="product" placeholder="product"
+                                    value="<?php echo esc_html($product_name); ?>" class="hale_input">
                             </div>
                         </section>
 
@@ -253,10 +243,6 @@ elseif (is_product_category()) {
                 </form>
             </div>
         </div>
-
-
-
-
     </div>
 </section>
 
@@ -302,14 +288,14 @@ elseif (is_product_category()) {
 
             if (!quantitySelect || !priceDisplay) return;
 
-            const basePrice = parseFloat(priceDisplay.dataset.price) || 0;
+            const basePrice = parseFloat(priceDisplay.dataset.price) || 650;
 
             // IMPORTANT: get actual text (100,200) not value (1,2)
-            const qty = parseInt(quantitySelect.options[quantitySelect.selectedIndex].text);
+            const qty = parseInt(quantitySelect.value);
 
             const total = basePrice * qty;
 
-            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty} items`;
+            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}00 items`;
         }
 
         if (quantitySelect) {
