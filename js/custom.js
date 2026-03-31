@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       formData.append("action", "submit_box_form");
       formData.append("form_type", "sizes");
-      formData.append("total_price", totalPrice);
+      formData.set("total_price", totalPrice);
 
       fetch(ajax_object.ajax_url, {
         method: "POST",

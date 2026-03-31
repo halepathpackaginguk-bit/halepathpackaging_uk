@@ -47,8 +47,6 @@ elseif (is_product_category()) {
                     </p>
                     <input type="hidden" name="product" id="product" placeholder="product"
                         value="<?php echo esc_html($product_name); ?>" class="hale_input">
-                    <input type="text" name="total_price" id="total_price" placeholder="total_price"
-                        value="<?php echo esc_html($product_price); ?>" class="hale_input">
                     <div class="w-full gap-2.5">
                         <section class="grid md:grid-cols-4 grid-cols-2 gap-2 mt-2.5">
                             <div class="relative">
@@ -76,8 +74,8 @@ elseif (is_product_category()) {
                                 <label for="quantity" class="text-sm font-medium hidden">Quantity</label>
                                 <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
                                     required>
-                                    <option value="1">100</option>
-                                    <option value="2">200</option>
+                                    <option value="100">100</option>
+                                    <option value="200">200</option>
                                 </select>
                                 <i
                                     class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
