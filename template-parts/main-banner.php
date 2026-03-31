@@ -9,7 +9,7 @@ $btn_link = $home['btnlink'] ?? '';
     <div class="main-slider">
         <div class="video-container">
             <video autoplay muted loop playsinline>
-                <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/video.mp4" type="video/mp4">
+                <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/banner.mp4" type="video/mp4">
             </video>
 
             <div class="video_overlay">

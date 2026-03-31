@@ -47,6 +47,8 @@ elseif (is_product_category()) {
                     </p>
                     <input type="hidden" name="product" id="product" placeholder="product"
                         value="<?php echo esc_html($product_name); ?>" class="hale_input">
+                    <input type="text" name="total_price" id="total_price" placeholder="total_price"
+                        value="<?php echo esc_html($product_price); ?>" class="hale_input">
                     <div class="w-full gap-2.5">
                         <section class="grid md:grid-cols-4 grid-cols-2 gap-2 mt-2.5">
                             <div class="relative">
@@ -290,14 +292,19 @@ elseif (is_product_category()) {
 
             const basePrice = parseFloat(priceDisplay.dataset.price) || 650;
 
-            // IMPORTANT: get actual text (100,200) not value (1,2)
-            const qty = parseInt(quantitySelect.value);
+            // ✅ get actual quantity (100, 200)
+            const qty = parseInt(quantitySelect.value) || 1;
 
             const total = basePrice * qty;
 
-            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}00 items`;
-        }
+            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty} items`;
 
+            // ✅ UPDATE INPUT FIELD
+            const totalPriceInput = document.getElementById('total_price');
+            if (totalPriceInput) {
+                totalPriceInput.value = total;
+            }
+        }
         if (quantitySelect) {
             quantitySelect.addEventListener('change', updatePrice);
             updatePrice();
@@ -397,7 +404,7 @@ elseif (is_product_category()) {
                     totalPrice = basePrice * qty;
 
                     // ADD TO FORMDATA
-                    formData.append('total_price', totalPrice);
+                    formData.set('total_price', totalPrice);
                 }
 
                 // convert to object (for debug)
