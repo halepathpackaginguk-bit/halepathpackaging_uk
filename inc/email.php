@@ -20,7 +20,7 @@ function handle_quote_form() {
     $unit   = sanitize_text_field($_POST['unit']);
     $message = sanitize_textarea_field($_POST['message']);
 
-    $to = 'mufaqar@gmail.com';
+    $to = 'enquiry@halepathpackaging.co.uk';
     $subject = "New Quote Request";
 
     $body = "
@@ -82,7 +82,7 @@ function handle_contact_form() {
         wp_send_json_error('Required fields missing');
     }
 
-    $to = 'mufaqar@gmail.com';
+    $to = 'enquiry@halepathpackaging.co.uk';
     $subject = "New Contact Message";
 
     $body = "

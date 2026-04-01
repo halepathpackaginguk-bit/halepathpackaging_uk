@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $to = "mufaqar@gmail.com";
+    $to = "enquiry@halepathpackaging.co.uk";
     $subject = "New Quote Request";
 
     $name = $_POST['name'] ?? '';
