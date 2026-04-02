@@ -356,7 +356,7 @@ footer ul li a span.marker {
 }
 
 .video_overlay {
-  @apply md:py-44 py-24 bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:w-full before:bg-gradient-to-r before:from-black/50 before:from-30% before:via-black/30 before:h-full before:inset-0
+  @apply md:py-44 py-24 bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:w-full before:bg-gradient-to-r before:from-black/30 before:from-10% before:via-black/10 before:h-full before:inset-0
 }
 
 .slick-slide {
