@@ -68,7 +68,7 @@ $megaMenus = [
             ],
 
             "Food & Beverage" => [
-                "link" => "https://halepathpackaging.co.uk/food-beverage/",
+                "link" => "https://halepathpackaging.co.uk/food-beverage-packaging/",
                 "image" => true,
                 "items" => [
                     ["title" => "Food & Restaurant", "link" => "https://halepathpackaging.co.uk/food-restaurant/"],
@@ -114,7 +114,7 @@ $megaMenus = [
             ],
 
             "Tobacco & Vaping" => [
-                "link" => "https://halepathpackaging.co.uk/tobacco/",
+                "link" => "https://halepathpackaging.co.uk/tobacco-products/",
                 "image" => false,
                 "items" => [
                     ["title" => "Tobacco Products", "link" => "https://halepathpackaging.co.uk/tobacco-products-tobacco-vaping/"],
@@ -129,7 +129,7 @@ $megaMenus = [
                 "link" => "https://halepathpackaging.co.uk/gifts-celebrations/",
                 "image" => false,
                 "items" => [
-                    ["title" => "Candles", "link" => "https://halepathpackaging.co.uk/candles/"],
+                    ["title" => "Candles", "link" => "https://halepathpackaging.co.uk/custom-candle-boxes/"],
                     ["title" => "Gift Boxes", "link" => "https://halepathpackaging.co.uk/gift-boxes-gifts-celebrations/"],
                     ["title" => "Holiday Packaging", "link" => "https://halepathpackaging.co.uk/holiday-packaging/"],
                     ["title" => "Wedding & Events", "link" => "https://halepathpackaging.co.uk/wedding-events/"],
@@ -141,7 +141,7 @@ $megaMenus = [
             ],
 
             "Apparel & Fashion" => [
-                "link" => "https://halepathpackaging.co.uk/apparel-fashion-industries-we-serve/",
+                "link" => "http://halepathpackaging.co.uk/apparel-fashion-packaging/",
                 "image" => false,
                 "items" => [
                     ["title" => "Garment Packaging", "link" => "https://halepathpackaging.co.uk/garment-packaging/"],
@@ -156,7 +156,7 @@ $megaMenus = [
             ],
 
             "Pet Products" => [
-                "link" => "https://halepathpackaging.co.uk/pet-products-industries-we-serve/",
+                "link" => "https://halepathpackaging.co.uk/pet-products-packaging/",
                 "image" => false,
                 "items" => [
                     ["title" => "Pet Food", "link" => "https://halepathpackaging.co.uk/pet-food/"],
@@ -335,18 +335,18 @@ $megaMenus = [
                 "items" => [
                     ["title" => "CBD & Cannabis", "link" => "https://halepathpackaging.co.uk/cbd-cannabis/"],
                     ["title" => "Cosmetic Boxes", "link" => "https://halepathpackaging.co.uk/cosmetic-boxes/"],
-                    ["title" => "Candle Boxes", "link" => "https://halepathpackaging.co.uk/candle-boxes/"],
-                    ["title" => "Food & Beverage", "link" => "https://halepathpackaging.co.uk/food-beverage/"],
+                    ["title" => "Candle Boxes", "link" => "https://halepathpackaging.co.uk/custom-candle-boxes/"],
+                    ["title" => "Food & Beverage", "link" => "https://halepathpackaging.co.uk/food-packaging/"],
                     ["title" => "Tobacco Products", "link" => "https://halepathpackaging.co.uk/tobacco-products/"],
                     ["title" => "Cigarette Boxes", "link" => "https://halepathpackaging.co.uk/cigarette-boxes/"],
                     ["title" => "Child Resistant Packaging", "link" => "https://halepathpackaging.co.uk/child-resistant-packaging/"],
                     ["title" => "Apparel & Fashion", "link" => "https://halepathpackaging.co.uk/apparel-fashion-packaging/"],
-                    ["title" => "Pharmaceutical & Healthcare", "link" => "https://halepathpackaging.co.uk/pharmaceutical-healthcare/"],
+                    ["title" => "Pharmaceutical & Healthcare", "link" => "https://halepathpackaging.co.uk/pharmaceuticals/"],
                     ["title" => "Pet Products", "link" => "https://halepathpackaging.co.uk/pet-products-packaging/"],
                     ["title" => "Electronics & Gadgets", "link" => "https://halepathpackaging.co.uk/electronics-gadgets/"],
                     ["title" => "Toys & Games", "link" => "https://halepathpackaging.co.uk/toys-games-packaging/"],
-                    ["title" => "Automotive & Office", "link" => "https://halepathpackaging.co.uk/automotive-office/"],
-                    ["title" => "Stationery & Pen Boxes", "link" => "https://halepathpackaging.co.uk/stationery-pen-boxes/"],
+                    ["title" => "Automotive & Office", "link" => "https://halepathpackaging.co.uk/automotive/"],
+                    ["title" => "Stationery & Pen Boxes", "link" => "https://halepathpackaging.co.uk/stationary-and-office-supply/"],
                 ]
             ],
 
@@ -562,7 +562,7 @@ $megaMenus = [
                     ["title" => "Ice Cream & Desserts", "link" => "https://halepathpackaging.co.uk/ice-cream-desserts/"],
                     ["title" => "Food Delivery Packaging", "link" => "https://halepathpackaging.co.uk/food-delivery-packaging/"],
                     ["title" => "Meal Kits", "link" => "https://halepathpackaging.co.uk/meal-kits/"],
-                    ["title" => "Cannabis Packaging", "link" => "https://halepathpackaging.co.uk/cannabis-packaging/"],
+                    ["title" => "Cannabis Packaging", "link" => "https://halepathpackaging.co.uk/cannabis/"],
                     ["title" => "Pet Food Packaging", "link" => "https://halepathpackaging.co.uk/pet-food-packaging/"],
                     ["title" => "Protein Powder Packaging", "link" => "https://halepathpackaging.co.uk/protein-powder-packaging/"],
                     ["title" => "Nuts Packaging", "link" => "https://halepathpackaging.co.uk/nuts-packaging/"],
