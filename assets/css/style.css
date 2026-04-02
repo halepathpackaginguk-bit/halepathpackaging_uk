@@ -521,6 +521,9 @@
   .h-\[220px\] {
     height: 220px;
   }
+  .h-\[220vh\] {
+    height: 220vh;
+  }
   .h-\[240px\]\! {
     height: 240px !important;
   }
@@ -598,6 +601,12 @@
   }
   .w-\[210vw\] {
     width: 210vw;
+  }
+  .w-\[220vw\] {
+    width: 220vw;
+  }
+  .w-\[21220vw\] {
+    width: 21220vw;
   }
   .w-fit {
     width: fit-content;
