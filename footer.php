@@ -10,16 +10,8 @@
  */
 
 
-$instagram_feed = get_instagram_feed(); ?>
-<?php if (!empty($instagram_feed)): ?>
-    <div class="instagram-feed">
-        <?php foreach ($instagram_feed as $post): ?>
-            <div class="instagram-post">
-                <img src="<?php echo esc_url($post['media_url']); ?>" alt="<?php echo esc_attr($post['caption'] ?? ''); ?>">
-            </div>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
+
+echo do_shortcode('[instagram-feed feed=1]');   
 
 
 

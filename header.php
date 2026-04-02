@@ -130,7 +130,7 @@ $megaMenus = [
                 "image" => false,
                 "items" => [
                     ["title" => "Candles", "link" => "https://halepathpackaging.co.uk/custom-candle-boxes/"],
-                    ["title" => "Gift Boxes", "link" => "https://halepathpackaging.co.uk/gift-boxes-gifts-celebrations/"],
+                    ["title" => "Gift Boxes", "link" => "https://halepathpackaging.co.uk/gifts-celebrations/"],
                     ["title" => "Holiday Packaging", "link" => "https://halepathpackaging.co.uk/holiday-packaging/"],
                     ["title" => "Wedding & Events", "link" => "https://halepathpackaging.co.uk/wedding-events/"],
                     ["title" => "Party Supplies", "link" => "https://halepathpackaging.co.uk/party-supplies/"],
@@ -223,7 +223,7 @@ $megaMenus = [
             ],
 
             "Toys & Games" => [
-                "link" => "https://halepathpackaging.co.uk/toys-games-industries-we-serve/",
+                "link" => "https://halepathpackaging.co.uk/toys-games-packaging/",
                 "image" => false,
                 "items" => [
                     ["title" => "Board Games & Puzzles", "link" => "https://halepathpackaging.co.uk/board-games-puzzles/"],
