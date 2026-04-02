@@ -11,7 +11,7 @@
 
 
 
-echo do_shortcode('[instagram-feed feed=1]');   
+echo do_shortcode('[instagram-feed feed=1]'); ?>
 
 
 
