@@ -336,7 +336,7 @@ $megaMenus = [
                     ["title" => "CBD & Cannabis", "link" => "https://halepathpackaging.co.uk/cbd-cannabis/"],
                     ["title" => "Cosmetic Boxes", "link" => "https://halepathpackaging.co.uk/cosmetic-boxes/"],
                     ["title" => "Candle Boxes", "link" => "https://halepathpackaging.co.uk/candle-boxes/"],
-                    ["title" => "Food & Beverage", "link" => "https://halepathpackaging.co.uk/food-beverage/"],
+                    ["title" => "Food & Beverage", "link" => "https://halepathpackaging.co.uk/food-packaging/"],
                     ["title" => "Tobacco Products", "link" => "https://halepathpackaging.co.uk/tobacco-products/"],
                     ["title" => "Cigarette Boxes", "link" => "https://halepathpackaging.co.uk/cigarette-boxes/"],
                     ["title" => "Child Resistant Packaging", "link" => "https://halepathpackaging.co.uk/child-resistant-packaging/"],
@@ -345,8 +345,8 @@ $megaMenus = [
                     ["title" => "Pet Products", "link" => "https://halepathpackaging.co.uk/pet-products-packaging/"],
                     ["title" => "Electronics & Gadgets", "link" => "https://halepathpackaging.co.uk/electronics-gadgets/"],
                     ["title" => "Toys & Games", "link" => "https://halepathpackaging.co.uk/toys-games-packaging/"],
-                    ["title" => "Automotive & Office", "link" => "https://halepathpackaging.co.uk/automotive-office/"],
-                    ["title" => "Stationery & Pen Boxes", "link" => "https://halepathpackaging.co.uk/stationery-pen-boxes/"],
+                    ["title" => "Automotive & Office", "link" => "https://halepathpackaging.co.uk/automotive/"],
+                    ["title" => "Stationery & Pen Boxes", "link" => "https://halepathpackaging.co.uk/stationary-and-office-supply/"],
                 ]
             ],
 
@@ -562,7 +562,7 @@ $megaMenus = [
                     ["title" => "Ice Cream & Desserts", "link" => "https://halepathpackaging.co.uk/ice-cream-desserts/"],
                     ["title" => "Food Delivery Packaging", "link" => "https://halepathpackaging.co.uk/food-delivery-packaging/"],
                     ["title" => "Meal Kits", "link" => "https://halepathpackaging.co.uk/meal-kits/"],
-                    ["title" => "Cannabis Packaging", "link" => "https://halepathpackaging.co.uk/cannabis-packaging/"],
+                    ["title" => "Cannabis Packaging", "link" => "https://halepathpackaging.co.uk/cannabis/"],
                     ["title" => "Pet Food Packaging", "link" => "https://halepathpackaging.co.uk/pet-food-packaging/"],
                     ["title" => "Protein Powder Packaging", "link" => "https://halepathpackaging.co.uk/protein-powder-packaging/"],
                     ["title" => "Nuts Packaging", "link" => "https://halepathpackaging.co.uk/nuts-packaging/"],
