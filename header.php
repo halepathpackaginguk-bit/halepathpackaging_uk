@@ -341,7 +341,7 @@ $megaMenus = [
                     ["title" => "Cigarette Boxes", "link" => "https://halepathpackaging.co.uk/cigarette-boxes/"],
                     ["title" => "Child Resistant Packaging", "link" => "https://halepathpackaging.co.uk/child-resistant-packaging/"],
                     ["title" => "Apparel & Fashion", "link" => "https://halepathpackaging.co.uk/apparel-fashion-packaging/"],
-                    ["title" => "Pharmaceutical & Healthcare", "link" => "https://halepathpackaging.co.uk/pharmaceuticals/],
+                    ["title" => "Pharmaceutical & Healthcare", "link" => "https://halepathpackaging.co.uk/pharmaceuticals/"],
                     ["title" => "Pet Products", "link" => "https://halepathpackaging.co.uk/pet-products-packaging/"],
                     ["title" => "Electronics & Gadgets", "link" => "https://halepathpackaging.co.uk/electronics-gadgets/"],
                     ["title" => "Toys & Games", "link" => "https://halepathpackaging.co.uk/toys-games-packaging/"],
