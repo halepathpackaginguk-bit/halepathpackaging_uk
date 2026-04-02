@@ -140,8 +140,8 @@
   @apply w-full relative md:h-[605px];
 }
 
-.video-container video {
-  @apply absolute inset-0 w-full h-full object-cover;
+.video-container iframe {
+  @apply absolute w-full h-full aspect-video;
 }
 
 .image-slide {
@@ -301,7 +301,7 @@
 }
 
 footer ul li a {
-  @apply ms:text-base text-sm font-normal text-title_Clr flex items-center gap-2 w-fit cursor-pointer break-all leading-none;
+  @apply sm:text-base text-sm font-normal text-title_Clr flex items-center gap-2 w-fit cursor-pointer break-all leading-none;
 }
 
 .cat_image {
@@ -356,7 +356,7 @@ footer ul li a span.marker {
 }
 
 .video_overlay {
-  @apply md:py-44 py-24 bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:w-full before:bg-gradient-to-r before:from-black/90 before:from-30% before:via-black/70 before:h-full before:inset-0
+  @apply md:py-44 py-24 bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:w-full before:bg-gradient-to-r before:from-black/50 before:from-30% before:via-black/30 before:h-full before:inset-0
 }
 
 .slick-slide {
