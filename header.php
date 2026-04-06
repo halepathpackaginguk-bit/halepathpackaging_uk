@@ -248,7 +248,7 @@ $megaMenus = [
                 "link" => "https://halepathpackaging.co.uk/",
                 "image" => false,
                 "items" => [
-                    ["title" => "Business Cards & Stationery", "link" => "https://halepathpackaging.co.uk/business-cards-stationery/"],
+                    ["title" => "Business Cards & Stationery", "link" => "https://halepathpackaging.co.uk/business-cards-printing/"],
                     ["title" => "Brochures & Catalogs", "link" => "https://halepathpackaging.co.uk/brochures-catalogs/"],
                     ["title" => "Promotional Materials", "link" => "https://halepathpackaging.co.uk/promotional-materials/"],
                     ["title" => "Clothing & Sports Teamwears", "link" => "https://halepathpackaging.co.uk/clothing-sports-teamwears/"],
@@ -309,7 +309,7 @@ $megaMenus = [
                     ["title" => "Seal End", "link" => "https://halepathpackaging.co.uk/seal-end/"],
                     ["title" => "Double Wall Tuck", "link" => "https://halepathpackaging.co.uk/double-wall-tuck/"],
                     ["title" => "Lock Cap Bottom", "link" => "https://halepathpackaging.co.uk/lock-cap-bottom/"],
-                    ["title" => "Rigid & Premium Boxes", "link" => "https://halepathpackaging.co.uk/rigid-premium-boxes/"],
+                    ["title" => "Rigid & Premium Boxes", "link" => "https://halepathpackaging.co.uk/custom-rigid-boxes/"],
                     ["title" => "Window Boxes", "link" => "https://halepathpackaging.co.uk/window-boxes/"],
                     ["title" => "Pillow Boxes", "link" => "https://halepathpackaging.co.uk/pillow-boxes"],
                     ["title" => "Gable Boxes", "link" => "https://halepathpackaging.co.uk/gable-boxes/"],
@@ -626,7 +626,7 @@ $megaMenus = [
             ],
 
             "Business Cards" => [
-                "link" => "https://halepathpackaging.co.uk/business-cards/",
+                "link" => "https://halepathpackaging.co.uk/business-cards-printing/",
                 "image" => false,
                 "items" => [
                     ["title" => "Standard Card", "link" => "https://halepathpackaging.co.uk/standard-card/"],
