@@ -320,7 +320,7 @@ $megaMenus = [
                     ["title" => "Foot Lock Tray", "link" => "https://halepathpackaging.co.uk/foot-lock-tray/"],
                     ["title" => "Mailer Boxes", "link" => "https://halepathpackaging.co.uk/mailer-boxes/"],
                     ["title" => "Display Boxes", "link" => "https://halepathpackaging.co.uk/display-boxes/"],
-                    ["title" => "White Cardboard Boxes", "link" => "https://halepathpackaging.co.uk/white-cardboard-boxes/"],
+                    ["title" => "White Cardboard Boxes", "link" => "https://halepathpackaging.co.uk/cardboard-boxes/"],
                     ["title" => "Corrugated Boxes", "link" => "https://halepathpackaging.co.uk/corrugated-boxes-box-styles/"],
                     ["title" => "Holographic Boxes", "link" => "https://halepathpackaging.co.uk/holographic-boxes/"],
                     ["title" => "Paper / Kraft Bags", "link" => "https://halepathpackaging.co.uk/paper-kraft-bags/"],
@@ -359,7 +359,7 @@ $megaMenus = [
                     ["title" => "Gift & Presentation", "link" => "https://halepathpackaging.co.uk/gift-presentation/"],
                     ["title" => "Product Protection", "link" => "https://halepathpackaging.co.uk/product-protection/"],
                     ["title" => "Food & Beverage", "link" => "https://halepathpackaging.co.uk/food-beverage-by-purpose/"],
-                    ["title" => "Industrial & Bulk", "link" => "https://halepathpackaging.co.uk/industrial-bulk/"],
+                    ["title" => "Industrial & Bulk", "link" => "https://halepathpackaging.co.uk/bulk-industrial-solutions/"],
                     ["title" => "Promotional Packaging", "link" => "https://halepathpackaging.co.uk/promotional-packaging/"],
                     ["title" => "Seasonal & Event", "link" => "https://halepathpackaging.co.uk/seasonal-event/"],
                 ]
