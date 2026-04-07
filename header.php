@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <?php if (is_search()) { ?>
-        <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="noindex, nofollow" />
     <?php } ?>
     <title>
         <?php
@@ -42,13 +42,16 @@
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <?php wp_head(); ?>
     <meta name="google-site-verification" content="vxJVqkHpw-YU0K97Hbs-wFEVtQhadmF2d19hVFWCuSU" />
-    <meta name="trustpilot-one-time-domain-verification-id" content="ae39cbe4-c17f-458d-ad5d-f78d10d14bdd"/>
+    <meta name="trustpilot-one-time-domain-verification-id" content="ae39cbe4-c17f-458d-ad5d-f78d10d14bdd" />
 
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18062243619"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
     gtag('js', new Date());
 
     gtag('config', 'AW-18062243619');
@@ -601,24 +604,48 @@ $megaMenus = [
         ]
     ],
     "commercial_printing" => [
-        "title" => "Commercial Printing",
-        "link" => "https://halepathpackaging.co.uk/commercial-printing/",
-        "groups" => [
-            "Offset Printing (Lithography)" => [
-                "link" => "https://halepathpackaging.co.uk/offset-printing-lithography/",
-                "image" => true,
-                "items" => [
-                    ["title" => "Digital Printing", "link" => "https://halepathpackaging.co.uk/digital-printing/", "image" => true],
-                    ["title" => "Flexographic Printing (Flexo)", "link" => "https://halepathpackaging.co.uk/flexographic-printing-flexo/"],
-                    ["title" => "Gravure Printing (Flexible Packaging)", "link" => "https://halepathpackaging.co.uk/gravure-printing-flexible-packaging/"],
-                    ["title" => "Spot UV", "link" => "https://halepathpackaging.co.uk/spot-uv-offset-printing-lithography/"],
-                    ["title" => "Screen Printing", "link" => "https://halepathpackaging.co.uk/screen-printing/"],
-                    ["title" => "Letterpress (Specialty)", "link" => "https://halepathpackaging.co.uk/letterpress-specialty/"],
-                    ["title" => "UV Offset Printing", "link" => "https://halepathpackaging.co.uk/uv-offset-printing/"],
-                    ["title" => "Foil Printing", "link" => "https://halepathpackaging.co.uk/foil-printing/"],
-                ],
-            ],
-        ]
+    "title" => "Commercial Printing",
+    "link" => "https://halepathpackaging.co.uk/commercial-printing/",
+    "groups" => [
+        "Offset Printing (Lithography)" => [
+            "link" => "https://halepathpackaging.co.uk/offset-printing-lithography/",
+            "image" => true,
+            "items" => []
+        ],
+        "Digital Printing" => [
+            "link" => "https://halepathpackaging.co.uk/digital-printing/",
+            "image" => true,
+            "items" => []
+        ],
+        "Flexographic Printing (Flexo)" => [
+            "link" => "https://halepathpackaging.co.uk/flexographic-printing-flexo/",
+            "items" => []
+        ],
+        "Gravure Printing (Flexible Packaging)" => [
+            "link" => "https://halepathpackaging.co.uk/gravure-printing-flexible-packaging/",
+            "items" => []
+        ],
+        "Spot UV" => [
+            "link" => "https://halepathpackaging.co.uk/spot-uv-offset-printing-lithography/",
+            "items" => []
+        ],
+        "Screen Printing" => [
+            "link" => "https://halepathpackaging.co.uk/screen-printing/",
+            "items" => []
+        ],
+        "Letterpress (Specialty)" => [
+            "link" => "https://halepathpackaging.co.uk/letterpress-specialty/",
+            "items" => []
+        ],
+        "UV Offset Printing" => [
+            "link" => "https://halepathpackaging.co.uk/uv-offset-printing/",
+            "items" => []
+        ],
+        "Foil Printing" => [
+            "link" => "https://halepathpackaging.co.uk/foil-printing/",
+            "items" => []
+        ],
+    ]
     ],
     "print_advertising" => [
         "title" => "Print & Advertising",
@@ -750,45 +777,63 @@ $megaMenus = [
 
         ]
     ],
-    "innovation" => [
-        "title" => "Innovation",
-        "link" => "https://halepathpackaging.co.uk/innovation/",
-        "groups" => [
-            "Branded Finishes" => [
-                "link" => "https://halepathpackaging.co.uk/branded-finishes/",
-                "image" => true,
-                "items" => [
-                    ["title" => "UV Printing Technology", "link" => "https://halepathpackaging.co.uk/uv-printing-technology/", "image" => true],
-                    ["title" => "Foil Printing Solutions", "link" => "https://halepathpackaging.co.uk/foil-printing-solutions/"],
-                    ["title" => "Privacy Printing", "link" => "https://halepathpackaging.co.uk/privacy-printing/"],
-                    ["title" => "Research & Development (R&D)", "link" => "https://halepathpackaging.co.uk/research-development-rd/"],
-                    ["title" => "Sustainable Innovation", "link" => "https://halepathpackaging.co.uk/sustainable-innovation/"],
-                    ["title" => "Material Innovation", "link" => "https://halepathpackaging.co.uk/material-innovation/"],
-                    ["title" => "Structural Innovation", "link" => "https://halepathpackaging.co.uk/structural-innovation/"],
-                    ["title" => "Smart Packaging Technology", "link" => "https://halepathpackaging.co.uk/smart-packaging-technology/"],
-                    ["title" => "Digital Printing Advancement", "link" => "https://halepathpackaging.co.uk/digital-printing-advancement/"],
-                    ["title" => "Surface Coating Technology", "link" => "https://halepathpackaging.co.uk/surface-coating-technology/"],
-                    ["title" => "Security Printing Solutions", "link" => "https://halepathpackaging.co.uk/security-printing-solutions/"],
-                ],
-            ],
+  "innovation" => [
+    "title" => "Innovation",
+    "link" => "https://halepathpackaging.co.uk/innovation/",
+    "groups" => [
+        "Branded Finishes" => [
+            "link" => "https://halepathpackaging.co.uk/branded-finishes/",
+            "image" => true,
+            "items" => []
+        ],
+        "UV Printing Technology" => [
+            "link" => "https://halepathpackaging.co.uk/uv-printing-technology/",
+            "image" => true,
+            "items" => []
+        ],
+        "Foil Printing Solutions" => [
+            "link" => "https://halepathpackaging.co.uk/foil-printing-solutions/",
+            "items" => []
+        ],
+        "Privacy Printing" => [
+            "link" => "https://halepathpackaging.co.uk/privacy-printing/",
+            "items" => []
+        ],
+        "Research & Development (R&D)" => [
+            "link" => "https://halepathpackaging.co.uk/research-development-rd/",
+            "items" => []
+        ],
+        "Sustainable Innovation" => [
+            "link" => "https://halepathpackaging.co.uk/sustainable-innovation/",
+            "items" => []
+        ],
+        "Material Innovation" => [
+            "link" => "https://halepathpackaging.co.uk/material-innovation/",
+            "items" => []
+        ],
+        "Structural Innovation" => [
+            "link" => "https://halepathpackaging.co.uk/structural-innovation/",
+            "items" => []
+        ],
+        "Smart Packaging Technology" => [
+            "link" => "https://halepathpackaging.co.uk/smart-packaging-technology/",
+            "items" => []
+        ],
+        "Digital Printing Advancement" => [
+            "link" => "https://halepathpackaging.co.uk/digital-printing-advancement/",
+            "items" => []
+        ],
+        "Surface Coating Technology" => [
+            "link" => "https://halepathpackaging.co.uk/surface-coating-technology/",
+            "items" => []
+        ],
+        "Security Printing Solutions" => [
+            "link" => "https://halepathpackaging.co.uk/security-printing-solutions/",
+            "items" => []
         ]
-    ],
-    // "about_us" => [
-    //     "title" => "About Us",
-    //     "link" => "https://halepathpackaging.co.uk/about-us",
-    //     "groups" => [
-    //         "Company Overview" => [
-    //             "link" => "https://halepathpackaging.co.uk/about-us/company-overview",
-    //             "image" => true,
-    //             "items" => [
-    //                 ["title" => "Quality Commitment", "link" => "https://halepathpackaging.co.uk/about-us/quality-commitment", "image" => true],
-    //                 ["title" => "Innovation Approach", "link" => "https://halepathpackaging.co.uk/about-us/innovation-approach"],
-    //                 ["title" => "Sustainability Focus", "link" => "https://halepathpackaging.co.uk/about-us/sustainability"],
-    //                 ["title" => "Why Choose Us", "link" => "https://halepathpackaging.co.uk/about-us/why-choose-us"],
-    //             ],
-    //         ]
-    //     ]
-    // ]
+    ]
+],
+   
 ];
 ?>
 
@@ -822,38 +867,38 @@ $megaMenus = [
                     </button>
                     <ul id="desktopNav" class="hidden lg:flex gap-1.5 justify-between w-full">
                         <?php foreach ($megaMenus as $key => $menu): ?>
-                            <?php
+                        <?php
                             $isMega = !empty($menu['groups']);
                             $isDropdown = empty($menu['groups']) && !empty($menu['items']);
                             ?>
-                            <li class="relative cursor-pointer flex items-center" <?php if ($isMega): ?>
-                                    data-mega-target="megaMenu-<?php echo $key; ?>" <?php endif; ?>     <?php if ($isDropdown): ?>
-                                    data-sub-target="subMenu-<?php echo $key; ?>" <?php endif; ?>>
+                        <li class="relative cursor-pointer flex items-center" <?php if ($isMega): ?>
+                            data-mega-target="megaMenu-<?php echo $key; ?>" <?php endif; ?> <?php if ($isDropdown): ?>
+                            data-sub-target="subMenu-<?php echo $key; ?>" <?php endif; ?>>
 
-                                <a href="<?php echo esc_url($menu['link']); ?>"
-                                    class="text-sm font-normal capitalize text-title_Clr hover:text-white hover:bg-secondary px-2 py-2 rounded-[30px] flex items-center">
-                                    <?php echo $menu['title']; ?>
-                                    <?php if ($isMega || $isDropdown): ?>
-                                        <i class="fa fa-chevron-down ml-1.5"></i>
-                                    <?php endif; ?>
-                                </a>
-                                <!-- subMenu Menus -->
-                                <?php if ($isDropdown): ?>
-                                    <div id="subMenu-<?php echo $key; ?>"
-                                        class="subMenu hidden absolute right-0 top-full translate-y-5 pt-2 bg-black/20 backdrop-blur-[10px] shadow-xl rounded-lg p-4 min-w-[300px] space-y-2 z-50">
-                                        <ul>
-                                            <?php foreach ($menu['items'] as $item): ?>
-                                                <li>
-                                                    <a href="<?php echo esc_url($item['link']); ?>"
-                                                        class="block text-sm capitalize text-white hover:text-primary">
-                                                        <?php echo $item['title']; ?>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </div>
+                            <a href="<?php echo esc_url($menu['link']); ?>"
+                                class="text-sm font-normal capitalize text-title_Clr hover:text-white hover:bg-secondary px-2 py-2 rounded-[30px] flex items-center">
+                                <?php echo $menu['title']; ?>
+                                <?php if ($isMega || $isDropdown): ?>
+                                <i class="fa fa-chevron-down ml-1.5"></i>
                                 <?php endif; ?>
-                            </li>
+                            </a>
+                            <!-- subMenu Menus -->
+                            <?php if ($isDropdown): ?>
+                            <div id="subMenu-<?php echo $key; ?>"
+                                class="subMenu hidden absolute right-0 top-full translate-y-5 pt-2 bg-black/20 backdrop-blur-[10px] shadow-xl rounded-lg p-4 min-w-[300px] space-y-2 z-50">
+                                <ul>
+                                    <?php foreach ($menu['items'] as $item): ?>
+                                    <li>
+                                        <a href="<?php echo esc_url($item['link']); ?>"
+                                            class="block text-sm capitalize text-white hover:text-primary">
+                                            <?php echo $item['title']; ?>
+                                        </a>
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <?php endif; ?>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </nav>
@@ -861,10 +906,10 @@ $megaMenus = [
 
             <!-- Desktop Mega Menus -->
             <?php foreach ($megaMenus as $key => $menu): ?>
-                <?php if (!empty($menu['groups'])): ?>
-                    <div id="megaMenu-<?php echo $key; ?>"
-                        class="megaMenu hidden lg:absolute left-1/2 -translate-x-1/2 2xl:top-[74px]  top-[94px] hale_container mx-auto  z-50 overflow-y-auto min-h-fit h-full">
-                        <?php
+            <?php if (!empty($menu['groups'])): ?>
+            <div id="megaMenu-<?php echo $key; ?>"
+                class="megaMenu hidden lg:absolute left-1/2 -translate-x-1/2 2xl:top-[74px]  top-[94px] hale_container mx-auto  z-50 overflow-y-auto min-h-fit h-full">
+                <?php
                         $hasImage = false;
 
                         foreach ($menu['groups'] as $groupName => $items) {
@@ -874,302 +919,302 @@ $megaMenus = [
                             }
                         }
                         ?>
-                        <div
-                            class="mx-auto !px-0 grid <?php echo $hasImage ? 'grid-cols-4 hale_container' : 'grid-cols-4 hale_container'; ?> gap-0 rounded-b-2xl shadow-xl bg-black/20 backdrop-blur-[10px]">
-                            <!-- Column 1: Parent Groups -->
-                            <div class="rounded-bl-2xl ">
-                                <ul class="space-y-0">
-                                    <?php $i = 0; ?>
-                                    <?php foreach ($menu['groups'] as $groupName => $items): ?>
-                                        <li class="mainCat flex items-center gap-2 py-2 px-5 " data-index="<?php echo $i; ?>">
-                                            <a href="<?php echo esc_url($items['link']); ?>"
-                                                class="text-xs capitalize text-white cursor-pointer flex items-center gap-2">
-                                                <?php echo $groupName; ?>
-                                            </a>
-                                        </li>
-                                        <?php $i++; endforeach; ?>
-                                </ul>
-                            </div>
-                            <!-- Column 2: Child Items -->
-                            <div class="col-span-1 bg-secondary/30 backdrop-blur-[10px]">
-                                <?php $i = 0;
-                                foreach ($menu['groups'] as $groupName => $groupData): ?>
-                                    <div class="hidden childGroups" data-group="<?php echo $i; ?>">
-                                        <ul class="space-y-0">
-                                            <?php foreach ($groupData['items'] as $item): ?>
-                                                <li class="py-1 px-5">
-                                                    <a href="<?php echo esc_url($item['link']); ?>"
-                                                        class="text-xs capitalize text-white hover:text-primary">
-                                                        <?php echo $item['title']; ?>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </div>
-                                    <?php $i++; endforeach; ?>
-                            </div>
-                            <!-- Column 3: Images -->
-                            <?php if ($hasImage): ?>
-                                <div class="col-span-2 py-4 px-6">
-                                    <?php $i = 0; ?>
-                                    <?php foreach ($menu['groups'] as $groupName => $items): ?>
-                                        <?php if (!empty($items['image']) && $items['image'] === true): ?>
-                                            <div class="hidden menuImage rounded-lg grid grid-cols-5 gap-4" data-image="<?php echo $i; ?>">
-                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product/boxgal4.png"
-                                                    class="rounded-2xl !h-full w-full object-cover col-span-2">
-                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product/boxgal5.png"
-                                                    class="rounded-2xl h-full w-full object-cover col-span-3">
-                                            </div>
-                                        <?php endif; ?>
-                                        <?php $i++; ?>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                <div
+                    class="mx-auto !px-0 grid <?php echo $hasImage ? 'grid-cols-4 hale_container' : 'grid-cols-4 hale_container'; ?> gap-0 rounded-b-2xl shadow-xl bg-black/20 backdrop-blur-[10px]">
+                    <!-- Column 1: Parent Groups -->
+                    <div class="rounded-bl-2xl ">
+                        <ul class="space-y-0">
+                            <?php $i = 0; ?>
+                            <?php foreach ($menu['groups'] as $groupName => $items): ?>
+                            <li class="mainCat flex items-center gap-2 py-2 px-5 " data-index="<?php echo $i; ?>">
+                                <a href="<?php echo esc_url($items['link']); ?>"
+                                    class="text-xs capitalize text-white cursor-pointer flex items-center gap-2">
+                                    <?php echo $groupName; ?>
+                                </a>
+                            </li>
+                            <?php $i++; endforeach; ?>
+                        </ul>
                     </div>
-                <?php endif; ?>
+                    <!-- Column 2: Child Items -->
+                    <div class="col-span-1 bg-secondary/30 backdrop-blur-[10px]">
+                        <?php $i = 0;
+                                foreach ($menu['groups'] as $groupName => $groupData): ?>
+                        <div class="hidden childGroups" data-group="<?php echo $i; ?>">
+                            <ul class="space-y-0">
+                                <?php foreach ($groupData['items'] as $item): ?>
+                                <li class="py-1 px-5">
+                                    <a href="<?php echo esc_url($item['link']); ?>"
+                                        class="text-xs capitalize text-white hover:text-primary">
+                                        <?php echo $item['title']; ?>
+                                    </a>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <?php $i++; endforeach; ?>
+                    </div>
+                    <!-- Column 3: Images -->
+                    <?php if ($hasImage): ?>
+                    <div class="col-span-2 py-4 px-6">
+                        <?php $i = 0; ?>
+                        <?php foreach ($menu['groups'] as $groupName => $items): ?>
+                        <?php if (!empty($items['image']) && $items['image'] === true): ?>
+                        <div class="hidden menuImage rounded-lg grid grid-cols-5 gap-4" data-image="<?php echo $i; ?>">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product/boxgal4.png"
+                                class="rounded-2xl !h-full w-full object-cover col-span-2">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product/boxgal5.png"
+                                class="rounded-2xl h-full w-full object-cover col-span-3">
+                        </div>
+                        <?php endif; ?>
+                        <?php $i++; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endif; ?>
             <?php endforeach; ?>
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden lg:hidden bg-white px-4 pt-5">
                 <ul class="space-y-3 h-full overflow-y-scroll">
                     <?php foreach ($megaMenus as $key => $menu): ?>
-                        <li class="flex flex-col">
-                            <span class="flex">
-                                <a href="<?php echo esc_url($menu['link']); ?>"
-                                    class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary flex items-center justify-between">
-                                    <?php echo $menu['title']; ?>
+                    <li class="flex flex-col">
+                        <span class="flex">
+                            <a href="<?php echo esc_url($menu['link']); ?>"
+                                class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary flex items-center justify-between">
+                                <?php echo $menu['title']; ?>
 
-                                </a>
-                                <?php if (!empty($menu['groups'])): ?>
-                                    <i class="fa fa-chevron-down ml-2"></i>
-                                <?php endif; ?>
-                            </span>
+                            </a>
                             <?php if (!empty($menu['groups'])): ?>
-                                <div class="mobileMegaContent hidden px-2 pt-2 space-y-2">
-                                    <?php foreach ($menu['groups'] as $groupName => $groupData): ?>
-                                        <div>
-                                            <ul class="space-y-2 list-none">
-                                                <li>
-                                                    <a href="<?php echo esc_url($groupData['link']); ?>"
-                                                        class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
-                                                        <?php echo $groupName; ?>
-                                                    </a>
-                                                    <?php if (!empty($groupData['items'])): ?>
-                                                        <ul class="pt-2 px-2 space-y-2 list-none">
-                                                            <?php foreach ($groupData['items'] as $item): ?>
-                                                                <li>
-                                                                    <a href="<?php echo esc_url($item['link']); ?>"
-                                                                        class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
-                                                                        <?php echo $item['title']; ?>
-                                                                    </a>
-                                                                </li>
-
-                                                            <?php endforeach; ?>
-                                                        </ul>
-                                                    <?php endif; ?>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
+                            <i class="fa fa-chevron-down ml-2"></i>
                             <?php endif; ?>
-                        </li>
+                        </span>
+                        <?php if (!empty($menu['groups'])): ?>
+                        <div class="mobileMegaContent hidden px-2 pt-2 space-y-2">
+                            <?php foreach ($menu['groups'] as $groupName => $groupData): ?>
+                            <div>
+                                <ul class="space-y-2 list-none">
+                                    <li>
+                                        <a href="<?php echo esc_url($groupData['link']); ?>"
+                                            class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
+                                            <?php echo $groupName; ?>
+                                        </a>
+                                        <?php if (!empty($groupData['items'])): ?>
+                                        <ul class="pt-2 px-2 space-y-2 list-none">
+                                            <?php foreach ($groupData['items'] as $item): ?>
+                                            <li>
+                                                <a href="<?php echo esc_url($item['link']); ?>"
+                                                    class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
+                                                    <?php echo $item['title']; ?>
+                                                </a>
+                                            </li>
+
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <?php endif; ?>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+                    </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
         </header>
         <!-- Scripts -->
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
 
-                const desktopNav = document.getElementById('desktopNav');
-                const allNavItems = desktopNav.querySelectorAll('li');
-                const allMegaMenus = document.querySelectorAll('.megaMenu');
-                const allSubMenus = document.querySelectorAll('.subMenu');
+            const desktopNav = document.getElementById('desktopNav');
+            const allNavItems = desktopNav.querySelectorAll('li');
+            const allMegaMenus = document.querySelectorAll('.megaMenu');
+            const allSubMenus = document.querySelectorAll('.subMenu');
 
-                // =====================================
-                // CLOSE ALL MENUS
-                // =====================================
-                function closeAllMenus() {
-                    allMegaMenus.forEach(menu => menu.classList.add('hidden'));
-                    allSubMenus.forEach(menu => menu.classList.add('hidden'));
+            // =====================================
+            // CLOSE ALL MENUS
+            // =====================================
+            function closeAllMenus() {
+                allMegaMenus.forEach(menu => menu.classList.add('hidden'));
+                allSubMenus.forEach(menu => menu.classList.add('hidden'));
+
+                allNavItems.forEach(nav => {
+                    nav.querySelector('a')?.classList.remove('main_active');
+                });
+            }
+
+            // =====================================
+            // OPEN MENU ON LI HOVER
+            // =====================================
+            allNavItems.forEach(item => {
+
+                const megaTarget = item.dataset.megaTarget;
+                const subTarget = item.dataset.subTarget;
+
+                const megaMenu = megaTarget ? document.getElementById(megaTarget) : null;
+                const subMenu = subTarget ? document.getElementById(subTarget) : null;
+
+                const link = item.querySelector('a');
+
+                item.addEventListener('mouseenter', () => {
+
+                    closeAllMenus();
+
+                    if (megaMenu) megaMenu.classList.remove('hidden');
+                    if (subMenu) subMenu.classList.remove('hidden');
+
+                    link?.classList.add('main_active');
+                });
+            });
+
+            // =====================================
+            // CLOSE SUBMENU ONLY WHEN LEAVING IT
+            // =====================================
+            allSubMenus.forEach(menu => {
+                menu.addEventListener('mouseleave', () => {
+
+                    menu.classList.add('hidden');
 
                     allNavItems.forEach(nav => {
                         nav.querySelector('a')?.classList.remove('main_active');
                     });
+                });
+            });
+
+            // =====================================
+            // CLOSE MEGA ONLY WHEN LEAVING IT
+            // =====================================
+            allMegaMenus.forEach(menu => {
+                menu.addEventListener('mouseleave', () => {
+
+                    menu.classList.add('hidden');
+
+                    allNavItems.forEach(nav => {
+                        nav.querySelector('a')?.classList.remove('main_active');
+                    });
+                });
+            });
+
+            // =====================================
+            // ===== MEGA MENU CHILD SWITCHING =====
+            // =====================================
+            allMegaMenus.forEach(menu => {
+
+                const parents = menu.querySelectorAll('.mainCat');
+                const groups = menu.querySelectorAll('.childGroups');
+                const images = menu.querySelectorAll('.menuImage');
+
+                const arrow = document.createElement('i');
+                arrow.className = 'fa-solid fa-arrow-up-right-from-square ml-2';
+
+                // Default first active
+                if (parents.length > 0) {
+
+                    parents[0].classList.add('active');
+                    parents[0].querySelector('a')?.appendChild(arrow);
+
+                    groups[0]?.classList.remove('hidden');
+                    images[0]?.classList.remove('hidden');
                 }
 
-                // =====================================
-                // OPEN MENU ON LI HOVER
-                // =====================================
-                allNavItems.forEach(item => {
+                parents.forEach(p => {
 
-                    const megaTarget = item.dataset.megaTarget;
-                    const subTarget = item.dataset.subTarget;
+                    p.addEventListener('mouseenter', () => {
 
-                    const megaMenu = megaTarget ? document.getElementById(megaTarget) : null;
-                    const subMenu = subTarget ? document.getElementById(subTarget) : null;
+                        const index = p.dataset.index;
 
-                    const link = item.querySelector('a');
+                        // Hide all
+                        groups.forEach(g => g.classList.add('hidden'));
+                        images.forEach(img => img.classList.add('hidden'));
+                        parents.forEach(pr => pr.classList.remove('active'));
 
-                    item.addEventListener('mouseenter', () => {
+                        // Show selected
+                        menu.querySelector(`[data-group="${index}"]`)?.classList.remove(
+                            'hidden');
+                        menu.querySelector(`[data-image="${index}"]`)?.classList.remove(
+                            'hidden');
 
-                        closeAllMenus();
-
-                        if (megaMenu) megaMenu.classList.remove('hidden');
-                        if (subMenu) subMenu.classList.remove('hidden');
-
-                        link?.classList.add('main_active');
-                    });
-                });
-
-                // =====================================
-                // CLOSE SUBMENU ONLY WHEN LEAVING IT
-                // =====================================
-                allSubMenus.forEach(menu => {
-                    menu.addEventListener('mouseleave', () => {
-
-                        menu.classList.add('hidden');
-
-                        allNavItems.forEach(nav => {
-                            nav.querySelector('a')?.classList.remove('main_active');
-                        });
-                    });
-                });
-
-                // =====================================
-                // CLOSE MEGA ONLY WHEN LEAVING IT
-                // =====================================
-                allMegaMenus.forEach(menu => {
-                    menu.addEventListener('mouseleave', () => {
-
-                        menu.classList.add('hidden');
-
-                        allNavItems.forEach(nav => {
-                            nav.querySelector('a')?.classList.remove('main_active');
-                        });
-                    });
-                });
-
-                // =====================================
-                // ===== MEGA MENU CHILD SWITCHING =====
-                // =====================================
-                allMegaMenus.forEach(menu => {
-
-                    const parents = menu.querySelectorAll('.mainCat');
-                    const groups = menu.querySelectorAll('.childGroups');
-                    const images = menu.querySelectorAll('.menuImage');
-
-                    const arrow = document.createElement('i');
-                    arrow.className = 'fa-solid fa-arrow-up-right-from-square ml-2';
-
-                    // Default first active
-                    if (parents.length > 0) {
-
-                        parents[0].classList.add('active');
-                        parents[0].querySelector('a')?.appendChild(arrow);
-
-                        groups[0]?.classList.remove('hidden');
-                        images[0]?.classList.remove('hidden');
-                    }
-
-                    parents.forEach(p => {
-
-                        p.addEventListener('mouseenter', () => {
-
-                            const index = p.dataset.index;
-
-                            // Hide all
-                            groups.forEach(g => g.classList.add('hidden'));
-                            images.forEach(img => img.classList.add('hidden'));
-                            parents.forEach(pr => pr.classList.remove('active'));
-
-                            // Show selected
-                            menu.querySelector(`[data-group="${index}"]`)?.classList.remove(
-                                'hidden');
-                            menu.querySelector(`[data-image="${index}"]`)?.classList.remove(
-                                'hidden');
-
-                            p.classList.add('active');
-                            p.querySelector('a')?.appendChild(arrow);
-                        });
-
+                        p.classList.add('active');
+                        p.querySelector('a')?.appendChild(arrow);
                     });
 
                 });
 
             });
 
-            // ==========================================
-            // MOBILE MENU
-            // ==========================================
-            document.addEventListener('DOMContentLoaded', () => {
+        });
 
-                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-                const mobileMenu = document.getElementById('mobileMenu');
-                const hamburgerIcon = document.getElementById('hamburgerIcon');
-                const closeIcon = document.getElementById('closeIcon');
+        // ==========================================
+        // MOBILE MENU
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
 
-                if (mobileMenuBtn && mobileMenu) {
-                    mobileMenuBtn.addEventListener('click', () => {
-                        mobileMenu.classList.toggle('hidden');
-                        hamburgerIcon.classList.toggle('hidden');
-                        closeIcon.classList.toggle('hidden');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+
+            // Mobile Mega Toggle
+            const mobileMenuItems = document.querySelectorAll('#mobileMenu > ul > li');
+
+            mobileMenuItems.forEach(li => {
+
+                const toggleIcon = li.querySelector('i.fa-chevron-down');
+                const content = li.querySelector('.mobileMegaContent');
+
+                if (toggleIcon && content) {
+                    toggleIcon.addEventListener('click', () => {
+
+                        // Close others
+                        mobileMenuItems.forEach(otherLi => {
+                            const otherContent = otherLi.querySelector(
+                                '.mobileMegaContent');
+                            if (otherContent && otherContent !== content) {
+                                otherContent.classList.add('hidden');
+                            }
+                        });
+
+                        content.classList.toggle('hidden');
                     });
                 }
 
-                // Mobile Mega Toggle
-                const mobileMenuItems = document.querySelectorAll('#mobileMenu > ul > li');
-
-                mobileMenuItems.forEach(li => {
-
-                    const toggleIcon = li.querySelector('i.fa-chevron-down');
-                    const content = li.querySelector('.mobileMegaContent');
-
-                    if (toggleIcon && content) {
-                        toggleIcon.addEventListener('click', () => {
-
-                            // Close others
-                            mobileMenuItems.forEach(otherLi => {
-                                const otherContent = otherLi.querySelector(
-                                    '.mobileMegaContent');
-                                if (otherContent && otherContent !== content) {
-                                    otherContent.classList.add('hidden');
-                                }
-                            });
-
-                            content.classList.toggle('hidden');
-                        });
-                    }
-
-                });
-
             });
+
+        });
         </script>
 
         <script>
-            jQuery(document).ready(function ($) {
-                $('#live-search').on('keyup', function () {
-                    var keyword = $(this).val();
-                    if (keyword.length < 2) {
-                        $('#live-search-results').addClass('hidden').html('');
-                        return;
+        jQuery(document).ready(function($) {
+            $('#live-search').on('keyup', function() {
+                var keyword = $(this).val();
+                if (keyword.length < 2) {
+                    $('#live-search-results').addClass('hidden').html('');
+                    return;
+                }
+
+                $.ajax({
+                    url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                    type: 'POST',
+                    data: {
+                        action: 'live_search_products',
+                        keyword: keyword
+                    },
+                    success: function(res) {
+                        $('#live-search-results').removeClass('hidden').html(res);
                     }
-
-                    $.ajax({
-                        url: '<?php echo admin_url("admin-ajax.php"); ?>',
-                        type: 'POST',
-                        data: {
-                            action: 'live_search_products',
-                            keyword: keyword
-                        },
-                        success: function (res) {
-                            $('#live-search-results').removeClass('hidden').html(res);
-                        }
-                    });
-
                 });
 
             });
+
+        });
         </script>
