@@ -20,6 +20,25 @@ function handle_quote_form() {
     $unit   = sanitize_text_field($_POST['unit']);
     $message = sanitize_textarea_field($_POST['message']);
 
+   $attachments = array();
+
+    if (!empty($_FILES['file']['name']) && $_FILES['file']['error'] === 0) {
+
+        if (!function_exists('wp_handle_upload')) {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+        }
+
+        $uploaded = wp_handle_upload($_FILES['file'], array(
+            'test_form' => false
+        ));
+
+        if (isset($uploaded['file'])) {
+            $attachments[] = $uploaded['file'];
+        } else {
+            wp_send_json_error($uploaded['error']);
+        }
+    }
+
     $to = 'enquiry@halepathpackaging.co.uk';
     $subject = "New Quote Request";
 

@@ -122,11 +122,11 @@ elseif (is_product_category()) {
             </div>
         </div>
         <div class="form_tab-panel" id="tab2">
-            <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-title_Clr">
+            <!-- <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-title_Clr">
                 Get Custom Quote
-            </h2>
+            </h2> -->
             <div class="<?php echo esc_attr($quote_form_class); ?>">
-                <form id="quote-form" class="grid w-full gap-2 items-center px-3 sm:px-5 py-6 md:py-10" method="POST">
+                <form id="quote-form" class="grid w-full gap-2 items-center px-3 sm:px-5 py-6 md:py-10" method="POST" enctype="multipart/form-data">               
                     <div class="w-full gap-2.5">
                         <!-- Name + Phone -->
                         <section class="grid grid-cols-2 gap-2.5">
@@ -191,7 +191,7 @@ elseif (is_product_category()) {
                                 <input type="number" name="unit" id="unit" placeholder="Quantity" class="hale_input" />
 
                             </div>
-                            <div>
+                            <!-- <div>
                                 <input type="file" id="fileInput" name="file" style="display:none;">
                                 <button type="button" id="uploadBtn"
                                     class="flex items-center text-nowrap whitespace-nowrap justify-center px-12 py-3 font-medium text-white bg-[#53B6C9] hover:bg-secondary-dark rounded-full">
@@ -199,9 +199,11 @@ elseif (is_product_category()) {
                                 </button>
                             </div>
 
-                            <!-- Optional: show selected file name -->
-                            <p id="fileName"></p>
+                         
+                            <p id="fileName"></p> -->
 
+
+                            <!-- <input type="file"  id="file" name="file"> -->
 
 
                         </section>
