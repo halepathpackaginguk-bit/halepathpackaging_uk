@@ -380,7 +380,7 @@ footer ul li a span.marker {
 }
 
 .tab_active, .form_tab_active {
-  @apply bg-[#F5F5F5] text-title_Clr border-secondary;
+  @apply bg-secondary  text-white border-secondary;
 }
 
 .slider-scroll-area .slider-wrapper .slick-slide {

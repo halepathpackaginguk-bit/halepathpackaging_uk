@@ -207,3 +207,20 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
+
+const uploadBtn = document.getElementById('uploadBtn');
+const fileInput = document.getElementById('fileInput');
+const fileName = document.getElementById('fileName');
+
+// Open file dialog on button click
+uploadBtn.addEventListener('click', function () {
+    fileInput.click();
+});
+
+// Show selected file name (optional)
+fileInput.addEventListener('change', function () {
+    if (fileInput.files.length > 0) {
+        fileName.textContent = fileInput.files[0].name;
+    }
+});

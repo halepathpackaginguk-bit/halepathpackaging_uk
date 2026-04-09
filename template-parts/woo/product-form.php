@@ -74,8 +74,8 @@ elseif (is_product_category()) {
                                 <label for="quantity" class="text-sm font-medium hidden">Quantity</label>
                                 <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
                                     required>
-                                    <option value="1">100</option>
-                                    <option value="2">200</option>
+                                    <option value="1">1000</option>
+                                    <option value="2">2000</option>
                                 </select>
                                 <i
                                     class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
@@ -159,25 +159,22 @@ elseif (is_product_category()) {
                         <section class="grid grid-cols-3 gap-2 mt-2.5 items-start">
                             <div>
                                 <label for="length" class="text-sm font-medium hidden">Length</label>
-                                <input type="number" name="length" id="length" placeholder="Length" class="hale_input"
-                                    required>
+                                <input type="number" name="length" id="length" placeholder="Length" class="hale_input">
                             </div>
                             <div>
                                 <label for="width" class="text-sm font-medium hidden">Width</label>
-                                <input type="number" name="width" id="width" placeholder="Width" class="hale_input"
-                                    required>
+                                <input type="number" name="width" id="width" placeholder="Width" class="hale_input">
                             </div>
                             <div>
                                 <label for="depth" class="text-sm font-medium hidden">Depth</label>
-                                <input type="number" name="depth" id="depth" placeholder="Depth" class="hale_input"
-                                    required>
+                                <input type="number" name="depth" id="depth" placeholder="Depth" class="hale_input">
                             </div>
                         </section>
 
                         <section class="grid grid-cols-3 gap-2 mt-2.5">
                             <div class="relative">
                                 <label for="colors" class="text-sm font-medium hidden">Colors</label>
-                                <select name="colors" id="colors" class="hale_input h-full appearance-none" required>
+                                <select name="colors" id="colors" class="hale_input h-full appearance-none">
                                     <option value="">Colors</option>
                                     <option value="1">1 color</option>
                                     <option value="2">2 colors</option>
@@ -190,34 +187,29 @@ elseif (is_product_category()) {
                             </div>
 
                             <div class="relative">
-                                <label for="unit" class="text-sm font-medium hidden">Unit</label>
-                                <select name="unit" id="unit" required class="hale_input h-full appearance-none">
-                                    <option value="">Select Unit</option>
-                                    <option value="inches">Inches</option>
-                                    <option value="cm">CM</option>
-                                    <option value="mm">MM</option>
-                                </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                                <label for="unit" class="text-sm font-medium hidden">Quantity</label>
+                                <input type="number" name="unit" id="unit" placeholder="Quantity" class="hale_input" />
+
+                            </div>
+                            <div>
+                                <input type="file" id="fileInput" name="file" style="display:none;">
+                                <button type="button" id="uploadBtn"
+                                    class="flex items-center text-nowrap whitespace-nowrap justify-center px-12 py-3 font-medium text-white bg-[#53B6C9] hover:bg-secondary-dark rounded-full">
+                                    Attached File
+                                </button>
                             </div>
 
-                            <div class="relative">
-                                <label for="stock" class="text-sm font-medium hidden">Stock</label>
-                                <select name="stock" id="stock" required class="hale_input h-full appearance-none">
-                                    <option value="">Select Stock</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
-                            </div>
+                            <!-- Optional: show selected file name -->
+                            <p id="fileName"></p>
+
+
+
                         </section>
 
                         <!-- Message -->
                         <section class="col-span-2 md:col-span-1 mt-2.5">
                             <textarea name="message" id="message" rows="3" placeholder="Write Your Message..."
-                                class="hale_input rounded-[20px]! h-[141px]" required></textarea>
+                                class="hale_input rounded-[20px]! h-[141px]"></textarea>
                         </section>
 
                         <!-- Agree Checkbox -->
@@ -228,10 +220,7 @@ elseif (is_product_category()) {
                             </label>
                         </div>
                     </div>
-                    <p id="quote-price-display" data-base-price="<?php echo esc_attr($product_price); ?>"
-                        style="margin-top:20px; font-size:16px;">
-                        <strong>Estimated Price:</strong> £<?php echo esc_html($product_price); ?>
-                    </p>
+
                     <!-- Submit Button -->
                     <section class="flex items-center gap-2 justify-between mt-2.5">
                         <div class="w-full">
@@ -250,169 +239,169 @@ elseif (is_product_category()) {
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
-        /* ========= TAB SWITCHING ========= */
+    /* ========= TAB SWITCHING ========= */
 
-        const tabButtons = document.querySelectorAll('.form_tab-btn');
-        const tabPanels = document.querySelectorAll('.form_tab-panel');
+    const tabButtons = document.querySelectorAll('.form_tab-btn');
+    const tabPanels = document.querySelectorAll('.form_tab-panel');
 
-        function openTab(tabId) {
-            tabPanels.forEach(panel => panel.classList.add('hidden'));
-            tabButtons.forEach(btn => btn.classList.remove('form_tab_active'));
+    function openTab(tabId) {
+        tabPanels.forEach(panel => panel.classList.add('hidden'));
+        tabButtons.forEach(btn => btn.classList.remove('form_tab_active'));
 
-            const activePanel = document.getElementById(tabId);
-            const activeBtn = document.querySelector(`.form_tab-btn[data-tab="${tabId}"]`);
+        const activePanel = document.getElementById(tabId);
+        const activeBtn = document.querySelector(`.form_tab-btn[data-tab="${tabId}"]`);
 
-            if (activePanel) activePanel.classList.remove('hidden');
-            if (activeBtn) activeBtn.classList.add('form_tab_active');
-        }
+        if (activePanel) activePanel.classList.remove('hidden');
+        if (activeBtn) activeBtn.classList.add('form_tab_active');
+    }
 
-        if (tabButtons.length > 0) {
-            openTab(tabButtons[0].dataset.tab);
-        }
+    if (tabButtons.length > 0) {
+        openTab(tabButtons[0].dataset.tab);
+    }
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                openTab(this.dataset.tab);
-            });
-        });
-
-
-        /* ========= PRICE + TITLE UPDATE ========= */
-
-        const quantitySelect = document.getElementById('quantity');
-        const priceDisplay = document.getElementById('price-display');
-
-        function updatePrice() {
-
-            if (!quantitySelect || !priceDisplay) return;
-
-            const basePrice = parseFloat(priceDisplay.dataset.price) || 650;
-
-            // ✅ get actual quantity (100, 200)
-            const qty = parseInt(quantitySelect.value) || 1;
-
-            const total = basePrice * qty;
-
-            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}00 items`;
-
-            // ✅ UPDATE INPUT FIELD
-            const totalPriceInput = document.getElementById('total_price');
-            if (totalPriceInput) {
-                totalPriceInput.value = total;
-            }
-        }
-        if (quantitySelect) {
-            quantitySelect.addEventListener('change', updatePrice);
-            updatePrice();
-        }
-
-        /* ========= QUOTE FORM PRICE CALCULATION ========= */
-
-        const quoteForm = document.getElementById('quote-form');
-        const quotePriceDisplay = document.getElementById('quote-price-display');
-
-        if (quoteForm) {
-
-            const length = quoteForm.querySelector('#length');
-            const width = quoteForm.querySelector('#width');
-            const depth = quoteForm.querySelector('#depth');
-            const colors = quoteForm.querySelector('#colors');
-            const stock = quoteForm.querySelector('#stock');
-
-            function calculateQuotePrice() {
-
-                const basePrice = parseFloat(quotePriceDisplay.dataset.basePrice) || 0;
-
-                const l = parseFloat(length.value) || 0;
-                const w = parseFloat(width.value) || 0;
-                const d = parseFloat(depth.value) || 0;
-                const c = parseInt(colors.value) || 1;
-                const s = parseInt(stock.value) || 1;
-
-                // ===== CUSTOM LOGIC =====
-                let base = (l + w + d);   // size factor
-                let colorCost = c * 5;
-                let stockCost = s * 0;
-
-                // ✅ ADD BASE PRICE HERE
-                let total = basePrice + (base * colorCost) + stockCost;
-
-                // ✅ If no input yet → show base price only
-                if (l === 0 && w === 0 && d === 0) {
-                    quotePriceDisplay.innerHTML =
-                        `<strong>Estimated Price:</strong> £${basePrice}`;
-                    return basePrice;
-                }
-
-                if (quotePriceDisplay) {
-                    quotePriceDisplay.innerHTML =
-                        `<strong>Estimated Price:</strong> £${total.toFixed(2)}`;
-                }
-
-                return total;
-            }
-            // trigger on change
-            [length, width, depth, colors, stock].forEach(el => {
-                if (el) el.addEventListener('input', calculateQuotePrice);
-            });
-
-            // ===== ADD TO FORMDATA =====
-            quoteForm.addEventListener('submit', function (e) {
-
-                e.preventDefault();
-
-                const formData = new FormData(this);
-                const data = {};
-
-                const totalPrice = calculateQuotePrice();
-
-                formData.append('quote_price', totalPrice);
-
-                formData.forEach((value, key) => {
-                    data[key] = value;
-                });
-
-                console.log('Quote Form Submitted');
-                console.log(data);
-            });
-        }
-        /* ========= FORM DATA CONSOLE TEST ========= */
-
-        const forms = document.querySelectorAll('#sizes-form');
-
-        forms.forEach(form => {
-            form.addEventListener('submit', function (e) {
-
-                e.preventDefault();
-
-                const formData = new FormData(this);
-                const data = {};
-
-                // ===== GET TOTAL PRICE =====
-                const priceDisplay = document.getElementById('price-display');
-                const quantitySelect = document.getElementById('quantity');
-
-                let totalPrice = 0;
-
-                if (priceDisplay && quantitySelect) {
-                    const basePrice = parseFloat(priceDisplay.dataset.price) || 0;
-                    const qty = parseInt(quantitySelect.value) || 1;
-                    totalPrice = basePrice * qty;
-
-                    // ADD TO FORMDATA
-                    formData.set('total_price', totalPrice);
-                }
-
-                // convert to object (for debug)
-                formData.forEach((value, key) => {
-                    data[key] = value;
-                });
-
-                console.log('Form Submitted:', this.id);
-                console.log(data);
-            });
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            openTab(this.dataset.tab);
         });
     });
+
+
+    /* ========= PRICE + TITLE UPDATE ========= */
+
+    const quantitySelect = document.getElementById('quantity');
+    const priceDisplay = document.getElementById('price-display');
+
+    function updatePrice() {
+
+        if (!quantitySelect || !priceDisplay) return;
+
+        const basePrice = parseFloat(priceDisplay.dataset.price) || 650;
+
+        // ✅ get actual quantity (100, 200)
+        const qty = parseInt(quantitySelect.value) || 1;
+
+        const total = basePrice * qty;
+
+        priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}000 items`;
+
+        // ✅ UPDATE INPUT FIELD
+        const totalPriceInput = document.getElementById('total_price');
+        if (totalPriceInput) {
+            totalPriceInput.value = total;
+        }
+    }
+    if (quantitySelect) {
+        quantitySelect.addEventListener('change', updatePrice);
+        updatePrice();
+    }
+
+    /* ========= QUOTE FORM PRICE CALCULATION ========= */
+
+    const quoteForm = document.getElementById('quote-form');
+    const quotePriceDisplay = document.getElementById('quote-price-display');
+
+    if (quoteForm) {
+
+        const length = quoteForm.querySelector('#length');
+        const width = quoteForm.querySelector('#width');
+        const depth = quoteForm.querySelector('#depth');
+        const colors = quoteForm.querySelector('#colors');
+        const stock = quoteForm.querySelector('#stock');
+
+        function calculateQuotePrice() {
+
+            const basePrice = parseFloat(quotePriceDisplay.dataset.basePrice) || 0;
+
+            const l = parseFloat(length.value) || 0;
+            const w = parseFloat(width.value) || 0;
+            const d = parseFloat(depth.value) || 0;
+            const c = parseInt(colors.value) || 1;
+            const s = parseInt(stock.value) || 1;
+
+            // ===== CUSTOM LOGIC =====
+            let base = (l + w + d); // size factor
+            let colorCost = c * 5;
+            let stockCost = s * 0;
+
+            // ✅ ADD BASE PRICE HERE
+            let total = basePrice + (base * colorCost) + stockCost;
+
+            // ✅ If no input yet → show base price only
+            if (l === 0 && w === 0 && d === 0) {
+                quotePriceDisplay.innerHTML =
+                    `<strong>Estimated Price:</strong> £${basePrice}`;
+                return basePrice;
+            }
+
+            if (quotePriceDisplay) {
+                quotePriceDisplay.innerHTML =
+                    `<strong>Estimated Price:</strong> £${total.toFixed(2)}`;
+            }
+
+            return total;
+        }
+        // trigger on change
+        [length, width, depth, colors, stock].forEach(el => {
+            if (el) el.addEventListener('input', calculateQuotePrice);
+        });
+
+        // ===== ADD TO FORMDATA =====
+        quoteForm.addEventListener('submit', function(e) {
+
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {};
+
+            const totalPrice = calculateQuotePrice();
+
+            formData.append('quote_price', totalPrice);
+
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            console.log('Quote Form Submitted');
+            console.log(data);
+        });
+    }
+    /* ========= FORM DATA CONSOLE TEST ========= */
+
+    const forms = document.querySelectorAll('#sizes-form');
+
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {};
+
+            // ===== GET TOTAL PRICE =====
+            const priceDisplay = document.getElementById('price-display');
+            const quantitySelect = document.getElementById('quantity');
+
+            let totalPrice = 0;
+
+            if (priceDisplay && quantitySelect) {
+                const basePrice = parseFloat(priceDisplay.dataset.price) || 0;
+                const qty = parseInt(quantitySelect.value) || 1;
+                totalPrice = basePrice * qty;
+
+                // ADD TO FORMDATA
+                formData.set('total_price', totalPrice);
+            }
+
+            // convert to object (for debug)
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            console.log('Form Submitted:', this.id);
+            console.log(data);
+        });
+    });
+});
 </script>
