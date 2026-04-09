@@ -4,13 +4,13 @@ $quote_form_class = "container mx-auto mt-5 rounded-[19px] bg-[#CCCCCCB5]/70";
 
 global $product;
 $product_name = 'Product';
-$product_price = 650;
+$product_price = 65;
 $products_in_cat = wc_get_products($args);
 
 // If viewing a single product
 if (is_product() && $product) {
     $product_name = $product->get_name();
-    $product_price = $product->get_regular_price();
+    $product_price = 65;
 }
 
 // If viewing a product category archive
@@ -18,9 +18,12 @@ elseif (is_product_category()) {
     $category = get_queried_object();
     if ($category && isset($category->name)) {
         $product_name = $category->name;
-        $product_price = 650;
+        $product_price = 65;
     }
 }
+
+
+
 ?>
 
 
@@ -74,11 +77,16 @@ elseif (is_product_category()) {
                                 <label for="quantity" class="text-sm font-medium hidden">Quantity</label>
                                 <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
                                     required>
-                                    <option value="1">1000</option>
-                                    <option value="2">2000</option>
+                                    <?php if (has_term('flexible-packaging', 'product_cat', get_the_ID())) : ?>
+                                    <option value="10">10000</option>
+                                    <option value="20">20000</option>
+
+                                    <?php else : ?>
+                                    <option value="10">1000</option>
+                                    <option value="20">2000</option>
+                                    <?php endif; ?>
                                 </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+
                             </div>
                             <div class="relative">
                                 <label for="printing" class="text-sm font-medium hidden">Printing</label>
@@ -93,7 +101,7 @@ elseif (is_product_category()) {
                         </section>
                         <p id="price-display" data-price="<?php echo esc_attr($product_price); ?>"
                             style="margin-top:20px; font-size:16px;">
-                            <strong>Price:</strong> £<?php echo esc_html($product_price); ?> for 1 item
+
                         </p>
                     </div>
                     <!-- Submit Button -->
@@ -279,14 +287,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!quantitySelect || !priceDisplay) return;
 
-        const basePrice = parseFloat(priceDisplay.dataset.price) || 650;
+        const basePrice = parseFloat(priceDisplay.dataset.price) || 65;
 
         // ✅ get actual quantity (100, 200)
         const qty = parseInt(quantitySelect.value) || 1;
 
         const total = basePrice * qty;
 
-        priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}000 items`;
+        const isFlexible =
+            <?php echo has_term('flexible-packaging', 'product_cat', get_the_ID()) ? 'true' : 'false'; ?>;
+
+        if (isFlexible) {
+            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}000 items`;
+        } else {
+            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}00 items`;
+        }
 
         // ✅ UPDATE INPUT FIELD
         const totalPriceInput = document.getElementById('total_price');
