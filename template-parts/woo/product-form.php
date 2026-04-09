@@ -126,7 +126,8 @@ elseif (is_product_category()) {
                 Get Custom Quote
             </h2> -->
             <div class="<?php echo esc_attr($quote_form_class); ?>">
-                <form id="quote-form" class="grid w-full gap-2 items-center px-3 sm:px-5 py-6 md:py-10" method="POST" enctype="multipart/form-data">               
+                <form id="quote-form" class="grid w-full gap-2 items-center px-3 sm:px-5 py-6 md:py-10" method="POST"
+                    enctype="multipart/form-data">
                     <div class="w-full gap-2.5">
                         <!-- Name + Phone -->
                         <section class="grid grid-cols-2 gap-2.5">
@@ -173,17 +174,16 @@ elseif (is_product_category()) {
 
                         <section class="grid grid-cols-3 gap-2 mt-2.5">
                             <div class="relative">
-                                <label for="colors" class="text-sm font-medium hidden">Colors</label>
+                                <label for="colors" class="text-sm font-medium hidden">Select Colors</label>
                                 <select name="colors" id="colors" class="hale_input h-full appearance-none">
-                                    <option value="">Colors</option>
-                                    <option value="1">1 color</option>
-                                    <option value="2">2 colors</option>
-                                    <option value="3">3 colors</option>
-                                    <option value="4">4 colors</option>
-                                    <option value="5">5 colors</option>
+
+                                    <option value="1">1 Color</option>
+                                    <option value="2">2 Colors</option>
+                                    <option value="3">3 Colors</option>
+                                    <option value="4">4 Colors</option>
+                                    <option value="5">5 Colors</option>
                                 </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+
                             </div>
 
                             <div class="relative">
