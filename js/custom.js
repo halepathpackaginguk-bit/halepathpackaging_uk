@@ -1,5 +1,42 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+   initTabs();
+
+  // =========================
+  // CONTACT FORM
+  // =========================
+  initContactForm();
+
+  // =========================
+  // QUOTE FORM
+  // =========================
+  initQuoteForm();
+
+  // =========================
+  // SIZES FORM (redirect flow)
+  // =========================
+  initSizesForm();
+
+  // =========================
+  // CHECKOUT FORM
+  // =========================
+  initCheckoutForm();
+
+  // =========================
+  // FILE UPLOAD UI
+  // =========================
+  initFileUpload();
+
+});
+
+
+// =========================
+// CONTACT FORM
+// =========================
+function initContactForm() {
   const form = document.getElementById("contact-form");
+  if (!form) return;
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -10,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
       method: "POST",
       body: formData,
     })
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         if (data.success) {
           alert("Message sent successfully!");
           form.reset();
@@ -19,21 +56,25 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("Error: " + data.data);
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        console.error(err);
         alert("Something went wrong!");
       });
   });
-});
+}
 
-document.addEventListener("DOMContentLoaded", function () {
+
+// =========================
+// QUOTE FORM
+// =========================
+function initQuoteForm() {
   const form = document.getElementById("quote-form");
-  const fileInput = document.getElementById("fileInput");
   const uploadBtn = document.getElementById("uploadBtn");
+  const fileInput = document.getElementById("fileInput");
 
   if (!form) return;
 
-  // Open file dialog
+  // file upload trigger
   if (uploadBtn && fileInput) {
     uploadBtn.addEventListener("click", function () {
       fileInput.click();
@@ -44,146 +85,71 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     const formData = new FormData(form);
-
-    // Required for WP AJAX
     formData.append("action", "send_quote_form");
 
     fetch(ajax_object.ajax_url, {
       method: "POST",
       body: formData,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-
+      .then(res => res.json())
+      .then(data => {
         if (data.success) {
-          alert("✅ Form submitted successfully!");
+          alert("Form submitted successfully!");
           form.reset();
         } else {
-          alert("❌ Error: " + data.data);
+          alert("Error: " + data.data);
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
         alert("Something went wrong!");
       });
   });
-});
+}
 
-document.addEventListener("DOMContentLoaded", function () {
+
+// =========================
+// SIZES FORM (SAVE + REDIRECT)
+// =========================
+function initSizesForm() {
   const sizesForm = document.getElementById("sizes-form");
-  const quoteForm = document.getElementById("quote-form");
-
-  // =========================
-  // SIZES FORM AJAX
-  // =========================
-  if (sizesForm) {
-    sizesForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(this);
-
-      const priceDisplay = document.getElementById("price-display");
-      const quantitySelect = document.getElementById("quantity");
-
-      const basePrice = parseFloat(priceDisplay.dataset.price) || 0;
-      const qty = parseInt(quantitySelect.value) || 1;
-
-      const totalPrice = basePrice * qty;
-
-      formData.append("action", "submit_box_form");
-      formData.append("form_type", "sizes");
-      formData.set("total_price", totalPrice);
-
-      fetch(ajax_object.ajax_url, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            alert("Sizes form submitted!");
-            sizesForm.reset();
-          } else {
-            alert(data.data);
-          }
-        });
-    });
-  }
-
-  // =========================
-  // QUOTE FORM AJAX
-  // =========================
-  if (quoteForm) {
-    quoteForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(this);
-
-      const quotePrice = document.getElementById("quote-price-display");
-
-      formData.append("action", "submit_box_form");
-      formData.append("form_type", "quote");
-      formData.append("quote_price", quotePrice.dataset.basePrice);
-
-      fetch(ajax_object.ajax_url, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            alert("Quote submitted!");
-            quoteForm.reset();
-          } else {
-            alert(data.data);
-          }
-        });
-    });
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const sizesForm = document.getElementById("sizes-form");
-
   if (!sizesForm) return;
 
   sizesForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const formData = new FormData(this);
-    console.log(formData);
-    const priceDisplay = document.getElementById("price-display");
-    const basePrice = parseFloat(priceDisplay.dataset.price) || 0;
 
-    const qty = parseInt(document.getElementById("quantity").value) || 1;
+    const priceDisplay = document.getElementById("price-display");
+    const quantity = document.getElementById("quantity");
+
+    const basePrice = parseFloat(priceDisplay?.dataset.price) || 0;
+    const qty = parseInt(quantity?.value) || 1;
 
     const totalPrice = basePrice * qty;
 
-    // convert to object
     const data = Object.fromEntries(formData.entries());
-
     data.total_price = totalPrice;
 
-    // save in sessionStorage
     sessionStorage.setItem("sizes_form_data", JSON.stringify(data));
 
-    // redirect to next page
     window.location.href = "/checkout/";
   });
-});
+}
 
-document.addEventListener("DOMContentLoaded", function () {
+
+// =========================
+// CHECKOUT FORM
+// =========================
+function initCheckoutForm() {
   const form = document.getElementById("checkout-form");
-
   if (!form) return;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const formData = new FormData(this);
+    const formData = new FormData(form);
 
-    // get saved product data
     const saved = sessionStorage.getItem("sizes_form_data");
 
     if (saved) {
@@ -200,32 +166,109 @@ document.addEventListener("DOMContentLoaded", function () {
       method: "POST",
       body: formData,
     })
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         if (data.success) {
           alert("Order submitted!");
           sessionStorage.removeItem("sizes_form_data");
           form.reset();
         } else {
-          alert(data.data);
+          alert("Error: " + data.data);
         }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Something went wrong!");
       });
   });
-});
+}
 
 
-const uploadBtn = document.getElementById('uploadBtn');
-const fileInput = document.getElementById('fileInput');
-const fileName = document.getElementById('fileName');
+// =========================
+// FILE UPLOAD UI
+// =========================
+function initFileUpload() {
+  const uploadBtn = document.getElementById('uploadBtn');
+  const fileInput = document.getElementById('fileInput');
+  const fileName = document.getElementById('fileName');
 
-// Open file dialog on button click
-uploadBtn.addEventListener('click', function () {
-    fileInput.click();
-});
+  if (uploadBtn && fileInput) {
+    uploadBtn.addEventListener('click', function () {
+      fileInput.click();
+    });
+  }
 
-// Show selected file name (optional)
-fileInput.addEventListener('change', function () {
-    if (fileInput.files.length > 0) {
+  if (fileInput && fileName) {
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files.length > 0) {
         fileName.textContent = fileInput.files[0].name;
+      }
+    });
+  }
+}
+
+function initTabs() {
+    const buttons = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".tab-panels");
+    
+  
+    
+    if (!buttons.length || !panels.length) return;
+    
+    function showTab(tabId, clickedBtn = null) {
+        // Hide all panels
+        panels.forEach(panel => {
+            panel.classList.add("hidden");
+        });
+        
+        // Remove active class from all buttons
+        buttons.forEach(btn => {
+            btn.classList.remove("tab_active");
+        });
+        
+        // Show selected panel - IMPORTANT: Remove hidden class
+        const activePanel = document.getElementById(tabId);
+        if (activePanel) {
+            activePanel.classList.remove("hidden");           
+        } else {
+            console.error("Panel not found with ID:", tabId);
+          
+        }
+        
+        // Activate button
+        if (clickedBtn) {
+            clickedBtn.classList.add("tab_active");
+        }
     }
-});
+    
+    // Attach click events
+    buttons.forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            const tabId = this.getAttribute("data-tab");
+            console.log("Tab clicked:", tabId);
+            showTab(tabId, this);
+        });
+    });
+    
+    // Auto-open first tab (REMOVE the hidden class from first panel)
+    const firstBtn = buttons[0];
+    if (firstBtn) {
+        firstBtn.classList.add("tab_active");
+        const firstTabId = firstBtn.getAttribute("data-tab");
+        const firstPanel = document.getElementById(firstTabId);
+        
+        // Remove hidden class from first panel
+        if (firstPanel) {
+            firstPanel.classList.remove("hidden");
+            console.log("First tab activated:", firstTabId);
+        }
+        
+        // Make sure other panels are hidden
+        panels.forEach(panel => {
+            if (panel.id !== firstTabId) {
+                panel.classList.add("hidden");
+            }
+        });
+    }
+}

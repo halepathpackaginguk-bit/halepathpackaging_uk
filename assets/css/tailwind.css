@@ -380,9 +380,8 @@ footer ul li a span.marker {
 }
 
 .tab_active, .form_tab_active {
-  @apply bg-secondary  text-white border-secondary;
+  @apply bg-secondary text-white border-secondary;
 }
-
 .slider-scroll-area .slider-wrapper .slick-slide {
   height: 100vh !important;
 }

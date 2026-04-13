@@ -11,6 +11,10 @@
         $product_info_box2_description = $product_extra_info['info_box2']['description'];
         $product_info_box2_image = $product_extra_info['info_box2']['image'];
 
+      
+
+       
+
 
         ?>
 

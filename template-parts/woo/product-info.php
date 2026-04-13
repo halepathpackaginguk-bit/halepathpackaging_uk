@@ -14,13 +14,13 @@
     <div class="relative w-full py-8">
         <div class="full_gallery">
             <?php foreach ($product_gallery as $index => $image): ?>
-                <div class="px-2">
-                    <figure class="rounded-2xl h-[450px]">
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"
-                            data-index="<?php echo $index; ?>"
-                            class="gallery-img cursor-pointer !h-full w-full object-cover rounded-2xl">
-                    </figure>
-                </div>
+            <div class="px-2">
+                <figure class="rounded-2xl h-[450px]">
+                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"
+                        data-index="<?php echo $index; ?>"
+                        class="gallery-img cursor-pointer !h-full w-full object-cover rounded-2xl">
+                </figure>
+            </div>
             <?php endforeach; ?>
 
 
@@ -41,32 +41,37 @@
         <button id="lightbox-next" class="absolute right-5 text-white text-3xl">&#10095;</button>
     </div>
     <script>
-        jQuery(document).ready(function ($) {
-            $('.full_gallery').slick({
-                slidesToShow: 5,
-                slidesToScroll: 1,
-                arrows: true,
-                prevArrow: $('.gallery-prev'),
-                nextArrow: $('.gallery-next'),
-                dots: false,
-                infinite: true,
-                adaptiveHeight: false,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: { slidesToShow: 3 }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: { slidesToShow: 2 }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: { slidesToShow: 1 }
+    jQuery(document).ready(function($) {
+        $('.full_gallery').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: true,
+            prevArrow: $('.gallery-prev'),
+            nextArrow: $('.gallery-next'),
+            dots: false,
+            infinite: true,
+            adaptiveHeight: false,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3
                     }
-                ]
-            });
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
         });
+    });
     </script>
 </section>
 
@@ -75,70 +80,36 @@
 
     <!-- Tabs Buttons -->
     <div id="tabs-header" class="hale_container !px-0 flex border-b border-gray-300 bg-white z-40">
-        <button class="tab-btn tab_active" data-tab="tab1">Details</button>
-        <button class="tab-btn" data-tab="tab2">Available Options</button>
-        <button class="tab-btn" data-tab="tab3">Order Process</button>
+        <button class="tab-btn" data-tab="tab_details">Details</button>
+        <button class="tab-btn" data-tab="tab_available_options">Available Options</button>
+        <button class="tab-btn" data-tab="tab_order_process">Order Process</button>
     </div>
 
     <!-- Tabs Content -->
     <div class="tab-content mt-6">
-        <div class="tab-panel" id="tab1">
+        <div class="tab-panels" id="tab_details">
             <?php get_template_part('template-parts/woo/pro-tab1'); ?>
         </div>
 
-        <div class="tab-panel hidden" id="tab2">
+        <div class="tab-panels hidden" id="tab_available_options">
             <?php get_template_part('template-parts/woo/pro-tab2'); ?>
         </div>
 
-        <div class="tab-panel hidden" id="tab3">
+        <div class="tab-panels hidden" id="tab_order_process">
             <?php get_template_part('template-parts/woo/pro-tab3'); ?>
         </div>
     </div>
 </section>
 <style>
-    #tabs-header.sticky-tabs {
-        position: sticky;
-        top: 0;
-        /* will be updated dynamically via JS */
-        background: white;
-        z-index: 999;
-    }
+#tabs-header.sticky-tabs {
+    position: sticky;
+    top: 0;
+    /* will be updated dynamically via JS */
+    background: white;
+    z-index: 999;
+}
 </style>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-        // ======= TABS SWITCHING =======
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabPanels = document.querySelectorAll('.tab-panel');
-
-        function openTab(tabId) {
-            tabPanels.forEach(panel => panel.classList.add('hidden'));
-            tabButtons.forEach(btn => btn.classList.remove('tab_active'));
-            document.getElementById(tabId).classList.remove('hidden');
-            document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('tab_active');
-        }
-
-        if (tabButtons.length > 0) openTab(tabButtons[0].dataset.tab);
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => openTab(button.dataset.tab));
-        });
-
-        // ======= STICKY TABS =======
-        const header = document.getElementById('tabs-header');
-        const siteHeader = document.querySelector('header'); // main site header
-
-        function handleSticky() {
-            const siteHeaderHeight = siteHeader.offsetHeight; // dynamic header height
-            header.style.top = siteHeaderHeight + "px"; // offset sticky tabs below header
-            header.classList.add('sticky-tabs'); // sticky is always active
-        }
-
-        handleSticky(); // initial call
-        window.addEventListener('resize', handleSticky); // recalc on resize
-    });
-</script>
 
 
 
@@ -148,70 +119,3 @@
         <?php get_template_part('template-parts/woo/related-products'); ?>
     </div>
 </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    const btnClose = document.getElementById('lightbox-close');
-    const btnNext = document.getElementById('lightbox-next');
-    const btnPrev = document.getElementById('lightbox-prev');
-
-    const images = document.querySelectorAll('.gallery-img');
-    const imageArray = Array.from(images);
-
-    let currentIndex = 0;
-
-    function showImage(index) {
-        if (!imageArray[index]) return;
-        lightboxImg.src = imageArray[index].src;
-        currentIndex = index;
-    }
-
-    // 🔥 IMPORTANT: use event delegation for slick
-    document.querySelector('.full_gallery').addEventListener('click', function (e) {
-        const img = e.target.closest('.gallery-img');
-        if (!img) return;
-
-        const index = parseInt(img.getAttribute('data-index'));
-        if (isNaN(index)) return;
-
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
-
-        showImage(index);
-    });
-
-    btnClose.addEventListener('click', () => {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-    });
-
-    btnNext.addEventListener('click', () => {
-        let next = (currentIndex + 1) % imageArray.length;
-        showImage(next);
-    });
-
-    btnPrev.addEventListener('click', () => {
-        let prev = (currentIndex - 1 + imageArray.length) % imageArray.length;
-        showImage(prev);
-    });
-
-    // outside click
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) btnClose.click();
-    });
-
-    // keyboard
-    document.addEventListener('keydown', (e) => {
-        if (lightbox.classList.contains('hidden')) return;
-
-        if (e.key === 'Escape') btnClose.click();
-        if (e.key === 'ArrowRight') btnNext.click();
-        if (e.key === 'ArrowLeft') btnPrev.click();
-    });
-
-});
-</script>
