@@ -83,7 +83,7 @@ get_header(); ?>
                 endwhile;
                 wp_reset_postdata();
             else:
-                echo '<p>No posts found</p>';
+                echo '<p class="text-xl font-normal text-title_Clr text-center max-w-[820px] mx-auto md:col-span-3">No posts found</p>';
             endif;
             ?>
         </div>
