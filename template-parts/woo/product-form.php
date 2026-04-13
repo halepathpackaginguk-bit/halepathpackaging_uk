@@ -31,105 +31,13 @@ elseif (is_product_category()) {
 
     <!-- Tabs Buttons -->
     <div class="hale_container !px-0 flex border-b border-gray-300 bg-white z-40">
-        <button class="form_tab-btn form_tab_active" data-tab="tab1">Standard Sizes</button>
-        <button class="form_tab-btn" data-tab="tab2">Request a Quote</button>
+        <button class="form_tab-btn form_tab_active" data-tab="tab1"> Request a Quote</button>
+        <button class="form_tab-btn" data-tab="tab2">Standard Sizes</button>
     </div>
 
     <!-- Tabs Content -->
     <div class="tab-content mt-6">
-        <div class="form_tab-panel hidden" id="tab1">
-            <div class="<?php echo esc_attr($quote_form_class); ?>">
-                <form id="sizes-form" class="grid w-full gap-2 items-center px-3 sm:px-5 py-6 md:py-10" method="POST">
-                    <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-title_Clr">
-                        Available Sizes for <?php echo esc_html($product_name); ?>
-                    </h2>
-                    <p>
-                        Choose from our popular Standard Sizes for a quick, off-the-shelf solution, or request a Custom
-                        Quote for a perfect, tailored fit. Whether you need something immediately or designed
-                        specifically for your brand, we provide flexible options to meet every need and budget.
-                    </p>
-                    <input type="hidden" name="product" id="product" placeholder="product"
-                        value="<?php echo esc_html($product_name); ?>" class="hale_input">
-                    <div class="w-full gap-2.5">
-                        <section class="grid md:grid-cols-4 grid-cols-2 gap-2 mt-2.5">
-                            <div class="relative">
-                                <label for="dimension" class="text-sm font-medium hidden">dimension</label>
-                                <select name="dimension" id="dimension" class="hale_input h-full appearance-none"
-                                    required>
-                                    <option value="5 x 4 x 1">5 x 4 x 1</option>
-                                    <option value="6 x 5 x 2">6 x 5 x 2</option>
-                                </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
-                            </div>
-                            <div class="relative">
-                                <label for="box_stock" class="text-sm font-medium hidden">Box Stock</label>
-
-                                <select name="box_stock" id="box_stock" class="hale_input h-full appearance-none"
-                                    required>
-                                    <option value="Rigid">Rigid</option>
-                                    <option value="Foldable">Foldable</option>
-                                </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
-                            </div>
-                            <div class="relative">
-                                <label for="quantity" class="text-sm font-medium hidden">Quantity</label>
-                                <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
-                                    required>
-                                    <?php if (has_term('flexible-packaging', 'product_cat', get_the_ID())) : ?>
-                                    <option value="10">10000</option>
-                                    <option value="20">20000</option>
-
-                                    <?php else : ?>
-                                    <option value="10">1000</option>
-                                    <option value="20">2000</option>
-                                    <?php endif; ?>
-                                </select>
-
-                            </div>
-                            <div class="relative">
-                                <label for="printing" class="text-sm font-medium hidden">Printing</label>
-                                <select name="printing" id="printing" class="hale_input h-full appearance-none"
-                                    required>
-                                    <option value="outside_only">Outside only</option>
-                                    <option value="inside_outside">Inside &amp; outside</option>
-                                </select>
-                                <i
-                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
-                            </div>
-                        </section>
-                        <p id="price-display" data-price="<?php echo esc_attr($product_price); ?>"
-                            style="margin-top:20px; font-size:16px;">
-
-                        </p>
-                    </div>
-                    <!-- Submit Button -->
-                    <section class="flex items-center gap-2 justify-between mt-2.5">
-                        <div class="w-full">
-                            <button type="submit" class="btn_secondry w-1/2">
-                                Proceed to Checkout
-                            </button>
-                        </div>
-                    </section>
-                    <div class="grid md:grid-cols-3 grid-cols-2 gap-5 mt-8">
-                        <div class="text-center text-title_Clr space-y-2.5">
-                            <i class="fa fa-clock" style="font-size:32px;"></i>
-                            <p><strong>Quick</strong><br>Turnaround</p>
-                        </div>
-                        <div class="text-center text-title_Clr space-y-2.5">
-                            <i class="fa fa-pencil-square" style="font-size:32px;"></i>
-                            <p><strong>Free</strong><br>Designing</p>
-                        </div>
-                        <div class="text-center text-title_Clr space-y-2.5">
-                            <i class="fa fa-truck" style="font-size:32px;"></i>
-                            <p><strong>Free</strong><br>Shipping</p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="form_tab-panel" id="tab2">
+        <div class="form_tab-panel" id="tab1">
             <!-- <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-title_Clr">
                 Get Custom Quote
             </h2> -->
@@ -242,6 +150,99 @@ elseif (is_product_category()) {
                 </form>
             </div>
         </div>
+        <div class="form_tab-panel hidden" id="tab2">
+            <div class="<?php echo esc_attr($quote_form_class); ?>">
+                <form id="sizes-form" class="grid w-full gap-2 items-center px-3 sm:px-5 py-6 md:py-10" method="POST">
+                    <h2 class="md:text-[28px] md:leading-normal text-2xl font-bold text-title_Clr">
+                        Available Sizes for <?php echo esc_html($product_name); ?>
+                    </h2>
+                    <p>
+                        Choose from our popular Standard Sizes for a quick, off-the-shelf solution, or request a Custom
+                        Quote for a perfect, tailored fit. Whether you need something immediately or designed
+                        specifically for your brand, we provide flexible options to meet every need and budget.
+                    </p>
+                    <input type="hidden" name="product" id="product" placeholder="product"
+                        value="<?php echo esc_html($product_name); ?>" class="hale_input">
+                    <div class="w-full gap-2.5">
+                        <section class="grid md:grid-cols-4 grid-cols-2 gap-2 mt-2.5">
+                            <div class="relative">
+                                <label for="dimension" class="text-sm font-medium hidden">dimension</label>
+                                <select name="dimension" id="dimension" class="hale_input h-full appearance-none"
+                                    required>
+                                    <option value="5 x 4 x 1">5 x 4 x 1</option>
+                                    <option value="6 x 5 x 2">6 x 5 x 2</option>
+                                </select>
+                                <i
+                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                            </div>
+                            <div class="relative">
+                                <label for="box_stock" class="text-sm font-medium hidden">Box Stock</label>
+
+                                <select name="box_stock" id="box_stock" class="hale_input h-full appearance-none"
+                                    required>
+                                    <option value="Rigid">Rigid</option>
+                                    <option value="Foldable">Foldable</option>
+                                </select>
+                                <i
+                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                            </div>
+                            <div class="relative">
+                                <label for="quantity" class="text-sm font-medium hidden">Quantity</label>
+                                <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
+                                    required>
+                                    <?php if (has_term('flexible-packaging', 'product_cat', get_the_ID())) : ?>
+                                    <option value="10">10000</option>
+                                    <option value="20">20000</option>
+
+                                    <?php else : ?>
+                                    <option value="10">10000</option>
+                                    <option value="20">20000</option>
+                                    <?php endif; ?>
+                                </select>
+
+                            </div>
+                            <div class="relative">
+                                <label for="printing" class="text-sm font-medium hidden">Printing</label>
+                                <select name="printing" id="printing" class="hale_input h-full appearance-none"
+                                    required>
+                                    <option value="outside_only">Outside only</option>
+                                    <option value="inside_outside">Inside &amp; outside</option>
+                                </select>
+                                <i
+                                    class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                            </div>
+                        </section>
+                        <p id="price-display" data-price="<?php echo esc_attr($product_price); ?>"
+                            style="margin-top:20px; font-size:16px;">
+
+                        </p>
+                    </div>
+                    <!-- Submit Button -->
+                    <section class="flex items-center gap-2 justify-between mt-2.5">
+                        <div class="w-full">
+                            <button type="submit" class="btn_secondry w-1/2">
+                                Proceed to Checkout
+                            </button>
+                        </div>
+                    </section>
+                    <div class="grid md:grid-cols-3 grid-cols-2 gap-5 mt-8">
+                        <div class="text-center text-title_Clr space-y-2.5">
+                            <i class="fa fa-clock" style="font-size:32px;"></i>
+                            <p><strong>Quick</strong><br>Turnaround</p>
+                        </div>
+                        <div class="text-center text-title_Clr space-y-2.5">
+                            <i class="fa fa-pencil-square" style="font-size:32px;"></i>
+                            <p><strong>Free</strong><br>Designing</p>
+                        </div>
+                        <div class="text-center text-title_Clr space-y-2.5">
+                            <i class="fa fa-truck" style="font-size:32px;"></i>
+                            <p><strong>Free</strong><br>Shipping</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
     </div>
 </section>
 
@@ -300,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isFlexible) {
             priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}000 items`;
         } else {
-            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}00 items`;
+            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}000 items`;
         }
 
         // ✅ UPDATE INPUT FIELD
