@@ -386,35 +386,35 @@ footer ul li a span.marker {
   height: 100vh !important;
 }
 
-.page_content h2 {
+.page_content h2, .desc_content h2 {
   @apply md:text-[42px] md:leading-none text-3xl font-bold text-title_Clr mb-5;
 }
 
-.page_content h3 {
+.page_content h3, .desc_content h3 {
   @apply md:text-[36px] md:leading-none text-2xl font-bold text-title_Clr mb-5;
 }
 
-.page_content h4 {
+.page_content h4, .desc_content h4 {
   @apply md:text-[28px] md:leading-none text-xl font-bold text-title_Clr mb-5;
 }
 
-.page_content h5 {
+.page_content h5, .desc_content h5 {
   @apply md:text-2xl md:leading-none text-xl font-bold text-title_Clr mb-5;
 }
 
-.page_content h6 {
+.page_content h6, .desc_content h6 {
   @apply md:text-xl md:leading-none text-lg font-bold text-title_Clr mb-5;
 }
-.page_content ul {
+.page_content ul, .desc_content ul{
   @apply list-inside list-disc mb-5 space-y-4;
 }
-.page_content ul li{
+.page_content ul li, .desc_content ul li{
    @apply md:text-lg text-base font-normal text-title_Clr;
 }
-.page_content p, .page_content span{
+.page_content p, .page_content span, .desc_content p, .desc_content span{
   @apply md:text-lg text-base font-normal text-title_Clr mb-5;
 }
-.page_content a{
+.page_content a, .desc_content a{
   @apply text-title_Clr hover:text-primary underline inline-flex;
 }
 .corru_content h5{
