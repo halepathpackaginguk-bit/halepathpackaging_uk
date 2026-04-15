@@ -245,3 +245,90 @@ add_action('admin_footer', function () {
     </script>
     <?php
 });
+
+
+
+
+//
+
+
+add_filter('preprocess_comment', function($commentdata) {
+
+    if (is_admin() && isset($_POST['comment_post_ID'])) {
+        $post_type = get_post_type($_POST['comment_post_ID']);
+
+        if ($post_type === 'product') {
+            $commentdata['comment_type'] = 'review';
+        }
+    }
+
+    return $commentdata;
+});
+
+add_action('admin_footer', function () {
+    global $pagenow;
+
+    if ($pagenow !== 'post.php') return;
+
+    $screen = get_current_screen();
+    if ($screen->post_type !== 'product') return;
+    ?>
+
+    <script>
+    jQuery(document).ready(function($){
+
+        function addFields() {
+            let container = $('#post').find('.commentsdiv');
+
+            if (!container.length) return;
+
+            if ($('#custom-rating-field').length) return;
+
+            let field = `
+                <div id="custom-rating-field" style="margin:10px 0;">
+                    <label><strong>Rating:</strong></label>
+                    <select name="rating">
+                        <option value="">Select Rating</option>
+                        <option value="5">5 ⭐</option>
+                        <option value="4">4 ⭐</option>
+                        <option value="3">3 ⭐</option>
+                        <option value="2">2 ⭐</option>
+                        <option value="1">1 ⭐</option>
+                    </select>
+                </div>
+            `;
+
+            container.append(field);
+        }
+
+        // Run on load
+        addFields();
+
+        // Run again after clicking "Add Comment"
+        $(document).on('click', '#add-new-comment', function(){
+            setTimeout(addFields, 300);
+        });
+
+    });
+    </script>
+
+    <?php
+});
+
+add_action('comment_post', function($comment_id) {
+
+    if (isset($_POST['rating']) && $_POST['rating'] != '') {
+        add_comment_meta($comment_id, 'rating', intval($_POST['rating']));
+    }
+
+});
+
+add_filter('get_comment_author', function($author, $comment_id) {
+    $comment = get_comment($comment_id);
+
+    if ($comment->comment_type === 'review') {
+        return $comment->comment_author;
+    }
+
+    return $author;
+}, 10, 2);
