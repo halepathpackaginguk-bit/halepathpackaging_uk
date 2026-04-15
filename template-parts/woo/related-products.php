@@ -28,7 +28,7 @@ if (!empty($terms)) {
     if ($related_products->have_posts()) :
 
         echo '<div class="mt-10">';
-        echo '<h2 class="text-2xl text-center mb-8 sm:text-3xl md:text-5xl font-bold">Related Products 1</h2>';
+        echo '<h2 class="text-2xl text-center mb-8 sm:text-3xl md:text-5xl font-bold">Related Products </h2>';
         echo '<div class="grid grid-cols-2 md:grid-cols-4 gap-4">';
 
         while ($related_products->have_posts()) : $related_products->the_post();
