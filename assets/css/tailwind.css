@@ -375,52 +375,84 @@ footer ul li a span.marker {
   height: 100% !important;
 }
 
-.tab-btn, .form_tab-btn {
+.tab-btn,
+.form_tab-btn {
   @apply md:text-lg text-sm md:px-6 px-3 py-2 font-medium text-title_Clr/80 border-b-2 border-transparent;
 }
 
-.tab_active, .form_tab_active {
+.tab_active,
+.form_tab_active {
   @apply bg-secondary text-white border-secondary;
 }
+
 .slider-scroll-area .slider-wrapper .slick-slide {
   height: 100vh !important;
 }
 
-.page_content h2, .desc_content h2 {
-  @apply md:text-[42px] md:leading-none text-3xl font-bold text-title_Clr mb-5;
+.page_content h2,
+.desc_content h2 {
+  @apply md:text-3xl text-2xl md:leading-none font-bold text-title_Clr mb-3;
 }
 
-.page_content h3, .desc_content h3 {
-  @apply md:text-[36px] md:leading-none text-2xl font-bold text-title_Clr mb-5;
+.page_content h3,
+.desc_content h3 {
+  @apply md:text-2xl text-xl md:leading-none text-2xl font-bold text-title_Clr mb-3;
 }
 
-.page_content h4, .desc_content h4 {
-  @apply md:text-[28px] md:leading-none text-xl font-bold text-title_Clr mb-5;
+.page_content h4,
+.desc_content h4 {
+  @apply md:text-[28px] md:leading-none text-xl font-bold text-title_Clr mb-3;
 }
 
-.page_content h5, .desc_content h5 {
-  @apply md:text-2xl md:leading-none text-xl font-bold text-title_Clr mb-5;
+.page_content h5,
+.desc_content h5 {
+  @apply md:text-2xl md:leading-none text-xl font-bold text-title_Clr mb-3;
 }
 
-.page_content h6, .desc_content h6 {
-  @apply md:text-xl md:leading-none text-lg font-bold text-title_Clr mb-5;
+.page_content h6,
+.desc_content h6 {
+  @apply md:text-xl md:leading-none text-lg font-bold text-title_Clr mb-3;
 }
-.page_content ul, .desc_content ul{
-  @apply list-inside list-disc mb-5 space-y-4;
+
+.page_content ul,
+.desc_content ul {
+  @apply list-inside list-disc mb-4 space-y-4;
 }
-.page_content ul li, .desc_content ul li{
-   @apply md:text-lg text-base font-normal text-title_Clr;
+
+.page_content ul li,
+.desc_content ul li {
+  @apply text-base font-normal text-title_Clr;
 }
-.page_content p, .page_content span, .desc_content p, .desc_content span{
-  @apply md:text-lg text-base font-normal text-title_Clr mb-5;
+
+.page_content p,
+.page_content span,
+.desc_content p,
+.desc_content span {
+  @apply text-base font-normal text-title_Clr mb-3;
 }
-.page_content a, .desc_content a{
+
+.page_content a,
+.desc_content a {
   @apply text-title_Clr hover:text-primary underline inline-flex;
 }
-.corru_content h5{
-  @apply text-white font-bold text-xl md:text-[25px];
+
+.desc_content img {
+  @apply md:w-1/2 w-full mx-auto;
 }
-.corru_content p{
+
+.desc_content table {
+  @apply w-full mx-auto overflow-x-scroll border border-title_Clr/20 border-collapse my-8;
+}
+
+.desc_content table tr td {
+  @apply p-4 border border-title_Clr/20;
+}
+
+.corru_content h5 {
+  @apply text-white font-bold md:text-xl text-lg;
+}
+
+.corru_content p {
   @apply font-medium text-white text-base md:text-[27px] mb-6 mt-2 leading-normal;
 }
 

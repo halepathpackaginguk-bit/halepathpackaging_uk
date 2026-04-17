@@ -8,14 +8,13 @@ get_header();
 		<!-- Hero Section -->
 		<section class="pt-14">
 			<div class="container mx-auto px-4">
-
 				<!-- Title -->
-				<h1 class="md:text-[51px] md:leading-normal text-3xl font-bold text-title_Clr text-center mb-4">
+				<h1 class="text-4xl text-2xl font-bold text-title_Clr text-center mb-4">
 					<?php the_title(); ?>
 				</h1>
 
 				<!-- Featured Image -->
-				<div class="max-w-[1054px] max-h-[454px] h-full mx-auto">
+				<div class="container mx-auto max-h-[454px] h-full">
 					<?php if (has_post_thumbnail()): ?>
 						<?php the_post_thumbnail('full', [
 							'class' => 'object-cover object-center rounded-[19px] mx-auto w-full h-full'
