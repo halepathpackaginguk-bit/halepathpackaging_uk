@@ -912,7 +912,62 @@ $megaMenus = [
                 </nav>
             </div>
 
-            <!-- Desktop Mega Menus -->
+          
+           
+
+            <?php if (wp_is_mobile()) : ?>
+                <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden lg:hidden bg-white px-4 pt-5">
+                <ul class="space-y-3 h-full overflow-y-scroll">
+                    <?php foreach ($megaMenus as $key => $menu): ?>
+                    <li class="flex flex-col">
+                        <span class="flex">
+                            <a href="<?php echo esc_url($menu['link']); ?>"
+                                class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary flex items-center justify-between">
+                                <?php echo $menu['title']; ?>
+
+                            </a>
+                            <?php if (!empty($menu['groups'])): ?>
+                            <i class="fa fa-chevron-down ml-2"></i>
+                            <?php endif; ?>
+                        </span>
+                        <?php if (!empty($menu['groups'])): ?>
+                        <div class="mobileMegaContent hidden px-2 pt-2 space-y-2">
+                            <?php foreach ($menu['groups'] as $groupName => $groupData): ?>
+                            <div>
+                                <ul class="space-y-2 list-none">
+                                    <li>
+                                        <a href="<?php echo esc_url($groupData['link']); ?>"
+                                            class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
+                                            <?php echo $groupName; ?>
+                                        </a>
+                                        <?php if (!empty($groupData['items'])): ?>
+                                        <ul class="pt-2 px-2 space-y-2 list-none">
+                                            <?php foreach ($groupData['items'] as $item): ?>
+                                            <li>
+                                                <a href="<?php echo esc_url($item['link']); ?>"
+                                                    class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
+                                                    <?php echo $item['title']; ?>
+                                                </a>
+                                            </li>
+
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <?php endif; ?>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
+            <?php else : ?>
+                 <!-- Desktop Mega Menus -->
             <?php foreach ($megaMenus as $key => $menu): ?>
             <?php if (!empty($menu['groups'])): ?>
             <div id="megaMenu-<?php echo $key; ?>"
@@ -982,55 +1037,11 @@ $megaMenus = [
             </div>
             <?php endif; ?>
             <?php endforeach; ?>
-            <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden lg:hidden bg-white px-4 pt-5">
-                <ul class="space-y-3 h-full overflow-y-scroll">
-                    <?php foreach ($megaMenus as $key => $menu): ?>
-                    <li class="flex flex-col">
-                        <span class="flex">
-                            <a href="<?php echo esc_url($menu['link']); ?>"
-                                class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary flex items-center justify-between">
-                                <?php echo $menu['title']; ?>
+            <?php endif; ?>
 
-                            </a>
-                            <?php if (!empty($menu['groups'])): ?>
-                            <i class="fa fa-chevron-down ml-2"></i>
-                            <?php endif; ?>
-                        </span>
-                        <?php if (!empty($menu['groups'])): ?>
-                        <div class="mobileMegaContent hidden px-2 pt-2 space-y-2">
-                            <?php foreach ($menu['groups'] as $groupName => $groupData): ?>
-                            <div>
-                                <ul class="space-y-2 list-none">
-                                    <li>
-                                        <a href="<?php echo esc_url($groupData['link']); ?>"
-                                            class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
-                                            <?php echo $groupName; ?>
-                                        </a>
-                                        <?php if (!empty($groupData['items'])): ?>
-                                        <ul class="pt-2 px-2 space-y-2 list-none">
-                                            <?php foreach ($groupData['items'] as $item): ?>
-                                            <li>
-                                                <a href="<?php echo esc_url($item['link']); ?>"
-                                                    class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
-                                                    <?php echo $item['title']; ?>
-                                                </a>
-                                            </li>
 
-                                            <?php endforeach; ?>
-                                        </ul>
-                                        <?php endif; ?>
-                                    </li>
 
-                                </ul>
-                            </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <?php endif; ?>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+
         </header>
       
 
