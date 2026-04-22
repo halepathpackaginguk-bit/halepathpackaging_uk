@@ -840,10 +840,10 @@ $megaMenus = [
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <div id="page" class="site">
-        
+
 
         <?php if (!wp_is_mobile()) : ?>
-             <?php get_template_part('template-parts/theme/top-bar'); ?>
+        <?php get_template_part('template-parts/theme/top-bar'); ?>
         <?php endif; ?>
 
 
@@ -912,11 +912,11 @@ $megaMenus = [
                 </nav>
             </div>
 
-          
-           
+
+
 
             <?php if (wp_is_mobile()) : ?>
-                <!-- Mobile Menu -->
+            <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden lg:hidden bg-white px-4 pt-5">
                 <ul class="space-y-3 h-full overflow-y-scroll">
                     <?php foreach ($megaMenus as $key => $menu): ?>
@@ -967,7 +967,7 @@ $megaMenus = [
             </div>
 
             <?php else : ?>
-                 <!-- Desktop Mega Menus -->
+            <!-- Desktop Mega Menus -->
             <?php foreach ($megaMenus as $key => $menu): ?>
             <?php if (!empty($menu['groups'])): ?>
             <div id="megaMenu-<?php echo $key; ?>"
@@ -1043,23 +1043,24 @@ $megaMenus = [
 
 
         </header>
-      
 
 
 
-    <script>
+
+        <script>
         document.addEventListener('DOMContentLoaded', () => {
             const desktopNav = document.getElementById('desktopNav');
             const allNavItems = desktopNav.querySelectorAll('li');
             const allMegaMenus = document.querySelectorAll('.megaMenu');
-            const allSubMenus = document.querySelectorAll('.subMenu');            
+            const allSubMenus = document.querySelectorAll('.subMenu');
+
             function closeAllMenus() {
                 allMegaMenus.forEach(menu => menu.classList.add('hidden'));
                 allSubMenus.forEach(menu => menu.classList.add('hidden'));
                 allNavItems.forEach(nav => {
                     nav.querySelector('a')?.classList.remove('main_active');
                 });
-            }           
+            }
             allNavItems.forEach(item => {
 
                 const megaTarget = item.dataset.megaTarget;
@@ -1184,7 +1185,7 @@ $megaMenus = [
 
             });
 
-        });        
+        });
         jQuery(document).ready(function($) {
             $('#live-search').on('keyup', function() {
                 var keyword = $(this).val();
@@ -1205,4 +1206,4 @@ $megaMenus = [
                 });
             });
         });
-    </script>
+        </script>
