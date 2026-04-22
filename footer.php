@@ -143,8 +143,8 @@
                         <i class="fab fa-instagram text-title_Clr hover:text-primary"></i></a></li>
                 <li><a href="https://www.tiktok.com/@halepathpackaging?_r=1&_t=ZS-957Rlv6JhMV" target="_blank" class="text-2xl inline-flex">
                         <i class="fa-brands fa-tiktok text-title_Clr hover:text-primary"></i></a></li>
-               <!--  <li><a href="#" target="_blank" class="text-2xl inline-flex">
-                        <i class="fa-brands fa-whatsapp text-title_Clr hover:text-primary"></i></a></li> -->
+                <li><a href="#" target="_blank" class="text-2xl inline-flex">
+                        <i class="fa-brands fa-whatsapp text-title_Clr hover:text-primary"></i></a></li>
             </ul>
         </div>
         <div class="">
@@ -174,14 +174,10 @@
 <?php wp_footer(); ?>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-
         const popup = document.getElementById('quotePopup');
         const closeBtn = document.getElementById('closeQuote_Popup');
-        const openBtn = document.getElementById('openQuotePopup');
-
-        // Adjust this based on your popup width
-        const popupWidth = 850; // px
-
+        const openBtn = document.getElementById('openQuotePopup');      
+        const popupWidth = 850; 
         // OPEN POPUP
         openBtn?.addEventListener('click', () => {
             popup?.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
@@ -219,19 +215,8 @@
     });
 </script>
 
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6156ead1d326717cb6843ced/1jl44h4on';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+
+
 </body>
 
 </html>

@@ -56,6 +56,17 @@
 
     gtag('config', 'AW-18062243619');
     </script>
+    <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6156ead1d326717cb6843ced/1jl44h4on';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 </head>
 <?php
 $megaMenus = [
@@ -1038,14 +1049,7 @@ $megaMenus = [
             <?php endif; ?>
             <?php endforeach; ?>
             <?php endif; ?>
-
-
-
-
         </header>
-
-
-
 
         <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1145,9 +1149,7 @@ $megaMenus = [
 
         });
 
-        // ==========================================
-        // MOBILE MENU
-        // ==========================================
+        
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1163,7 +1165,6 @@ $megaMenus = [
             // Mobile Mega Toggle
             const mobileMenuItems = document.querySelectorAll('#mobileMenu > ul > li');
             mobileMenuItems.forEach(li => {
-
                 const toggleIcon = li.querySelector('i.fa-chevron-down');
                 const content = li.querySelector('.mobileMegaContent');
 
