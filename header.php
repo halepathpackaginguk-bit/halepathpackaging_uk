@@ -840,7 +840,15 @@ $megaMenus = [
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <div id="page" class="site">
-        <?php get_template_part('template-parts/theme/top-bar'); ?>
+        
+
+        <?php if (!wp_is_mobile()) : ?>
+             <?php get_template_part('template-parts/theme/top-bar'); ?>
+        <?php endif; ?>
+
+
+
+
         <!-- Header -->
         <header class="bg-[#f5f5f5] sticky top-0 z-50 sm:py-[15px]">
             <div class="hale_container py-1 flex lg:flex-col flex-row items-center justify-between gap-5">
@@ -1024,30 +1032,23 @@ $megaMenus = [
                 </ul>
             </div>
         </header>
-        <!-- Scripts -->
-        <script>
-        document.addEventListener('DOMContentLoaded', () => {
+      
 
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const desktopNav = document.getElementById('desktopNav');
             const allNavItems = desktopNav.querySelectorAll('li');
             const allMegaMenus = document.querySelectorAll('.megaMenu');
-            const allSubMenus = document.querySelectorAll('.subMenu');
-
-            // =====================================
-            // CLOSE ALL MENUS
-            // =====================================
+            const allSubMenus = document.querySelectorAll('.subMenu');            
             function closeAllMenus() {
                 allMegaMenus.forEach(menu => menu.classList.add('hidden'));
                 allSubMenus.forEach(menu => menu.classList.add('hidden'));
-
                 allNavItems.forEach(nav => {
                     nav.querySelector('a')?.classList.remove('main_active');
                 });
-            }
-
-            // =====================================
-            // OPEN MENU ON LI HOVER
-            // =====================================
+            }           
             allNavItems.forEach(item => {
 
                 const megaTarget = item.dataset.megaTarget;
@@ -1068,10 +1069,6 @@ $megaMenus = [
                     link?.classList.add('main_active');
                 });
             });
-
-            // =====================================
-            // CLOSE SUBMENU ONLY WHEN LEAVING IT
-            // =====================================
             allSubMenus.forEach(menu => {
                 menu.addEventListener('mouseleave', () => {
 
@@ -1082,10 +1079,6 @@ $megaMenus = [
                     });
                 });
             });
-
-            // =====================================
-            // CLOSE MEGA ONLY WHEN LEAVING IT
-            // =====================================
             allMegaMenus.forEach(menu => {
                 menu.addEventListener('mouseleave', () => {
 
@@ -1096,16 +1089,10 @@ $megaMenus = [
                     });
                 });
             });
-
-            // =====================================
-            // ===== MEGA MENU CHILD SWITCHING =====
-            // =====================================
             allMegaMenus.forEach(menu => {
-
                 const parents = menu.querySelectorAll('.mainCat');
                 const groups = menu.querySelectorAll('.childGroups');
                 const images = menu.querySelectorAll('.menuImage');
-
                 const arrow = document.createElement('i');
                 arrow.className = 'fa-solid fa-arrow-up-right-from-square ml-2';
 
@@ -1150,12 +1137,10 @@ $megaMenus = [
         // MOBILE MENU
         // ==========================================
         document.addEventListener('DOMContentLoaded', () => {
-
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             const hamburgerIcon = document.getElementById('hamburgerIcon');
             const closeIcon = document.getElementById('closeIcon');
-
             if (mobileMenuBtn && mobileMenu) {
                 mobileMenuBtn.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
@@ -1163,10 +1148,8 @@ $megaMenus = [
                     closeIcon.classList.toggle('hidden');
                 });
             }
-
             // Mobile Mega Toggle
             const mobileMenuItems = document.querySelectorAll('#mobileMenu > ul > li');
-
             mobileMenuItems.forEach(li => {
 
                 const toggleIcon = li.querySelector('i.fa-chevron-down');
@@ -1190,10 +1173,7 @@ $megaMenus = [
 
             });
 
-        });
-        </script>
-
-        <script>
+        });        
         jQuery(document).ready(function($) {
             $('#live-search').on('keyup', function() {
                 var keyword = $(this).val();
@@ -1201,7 +1181,6 @@ $megaMenus = [
                     $('#live-search-results').addClass('hidden').html('');
                     return;
                 }
-
                 $.ajax({
                     url: '<?php echo admin_url("admin-ajax.php"); ?>',
                     type: 'POST',
@@ -1213,8 +1192,6 @@ $megaMenus = [
                         $('#live-search-results').removeClass('hidden').html(res);
                     }
                 });
-
             });
-
         });
-        </script>
+    </script>
