@@ -332,3 +332,102 @@ add_filter('get_comment_author', function($author, $comment_id) {
 
     return $author;
 }, 10, 2);
+
+
+
+// Add admin menu page for manual reviews
+add_action('admin_menu', 'add_manual_review_page');
+function add_manual_review_page() {
+    add_submenu_page(
+        'edit.php?post_type=product',
+        'Add Manual Review',
+        'Add Review',
+        'manage_options',
+        'manual-product-review',
+        'manual_review_page_callback'
+    );
+}
+
+// Display the manual review form
+function manual_review_page_callback() {
+    ?>
+    <div class="wrap">
+        <h1>Add Product Review Manually</h1>
+        <form method="post" action="">
+            <table class="form-table">
+                <tr>
+                    <th><label for="product_id">Select Product</label></th>
+                    <td>
+                        <select name="product_id" id="product_id" required>
+                            <option value="">Select a product...</option>
+                            <?php
+                            $products = wc_get_products(array('limit' => -1));
+                            foreach ($products as $product) {
+                                echo '<option value="' . $product->get_id() . '">' . $product->get_name() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="reviewer_name">Reviewer Name</label></th>
+                    <td><input type="text" name="reviewer_name" id="reviewer_name" required class="regular-text"></td>
+                </tr>
+                <tr>
+                    <th><label for="reviewer_email">Reviewer Email</label></th>
+                    <td><input type="email" name="reviewer_email" id="reviewer_email" required class="regular-text"></td>
+                </tr>
+                <tr>
+                    <th><label for="rating">Rating</label></th>
+                    <td>
+                        <select name="rating" id="rating" required>
+                            <option value="5">★★★★★ (5)</option>
+                            <option value="4">★★★★☆ (4)</option>
+                            <option value="3">★★★☆☆ (3)</option>
+                            <option value="2">★★☆☆☆ (2)</option>
+                            <option value="1">★☆☆☆☆ (1)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="review_content">Review Content</label></th>
+                    <td>
+                        <textarea name="review_content" id="review_content" rows="5" class="large-text" required></textarea>
+                    </td>
+                </tr>
+            </table>
+            <?php wp_nonce_field('manual_review_action', 'manual_review_nonce'); ?>
+            <p class="submit">
+                <input type="submit" name="submit_manual_review" class="button-primary" value="Add Review">
+            </p>
+        </form>
+    </div>
+    <?php
+
+    // Handle form submission
+    if (isset($_POST['submit_manual_review']) && wp_verify_nonce($_POST['manual_review_nonce'], 'manual_review_action')) {
+        $product_id = intval($_POST['product_id']);
+        $reviewer_name = sanitize_text_field($_POST['reviewer_name']);
+        $reviewer_email = sanitize_email($_POST['reviewer_email']);
+        $rating = intval($_POST['rating']);
+        $review_content = sanitize_textarea_field($_POST['review_content']);
+
+        $review_data = array(
+            'comment_post_ID' => $product_id,
+            'comment_author' => $reviewer_name,
+            'comment_author_email' => $reviewer_email,
+            'comment_content' => $review_content,
+            'comment_type' => 'review',
+            'comment_approved' => 1,
+        );
+
+        $review_id = wp_insert_comment($review_data);
+
+        if ($review_id) {
+            update_comment_meta($review_id, 'rating', $rating);
+            echo '<div class="notice notice-success"><p>Review added successfully!</p></div>';
+        } else {
+            echo '<div class="notice notice-error"><p>Error adding review. Please try again.</p></div>';
+        }
+    }
+}
