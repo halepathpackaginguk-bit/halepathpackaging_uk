@@ -12,7 +12,7 @@
         </p>
         <a href="<?php echo site_url('/amazon-fulfilment-fba'); ?>"
             class="text-secondary hover:text-primary text-base font-semibold text-center underline flex w-fit mx-auto mt-5">
-            See all integrations
+             Amazon Fulfillment
         </a>
         <div class="flex flex-wrap sm:gap-7 gap-5 justify-center mt-8">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/1.png" alt="brand1"
