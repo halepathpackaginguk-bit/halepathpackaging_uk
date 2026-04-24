@@ -10,6 +10,10 @@
             virtual catalog featuring high-quality mockups and optimized product presentations—all designed to help you
             sell smarter and grow faster.
         </p>
+        <a href="<?php echo site_url('/amazon-fulfilment-fba'); ?>"
+            class="text-secondary hover:text-primary text-base font-semibold text-center underline flex w-fit mx-auto mt-5">
+            See all integrations
+        </a>
         <div class="flex flex-wrap sm:gap-7 gap-5 justify-center mt-8">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/1.png" alt="brand1"
                 class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
