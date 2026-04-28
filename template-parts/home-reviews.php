@@ -18,7 +18,7 @@ $testimonials = new WP_Query([
                 <?php endfor; ?>
             </ul>
             <div class="flex md:flex-col flex-row justify-center sm:gap-0 gap-0.5">
-                <p class="text-sm font-normal text-white">4.82 average </p>
+                <p class="text-sm font-normal text-white">4.9 average </p>
                 <p class="text-sm font-normal text-white">2,634 reviews</p>
             </div>
         </div>
