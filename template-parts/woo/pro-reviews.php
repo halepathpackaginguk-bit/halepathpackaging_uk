@@ -1,7 +1,7 @@
 <?php 
 $testimonials = new WP_Query([
     'post_type' => 'testimonial',
-    'posts_per_page' => 20,
+    'posts_per_page' => 10,
     'post_status' => 'publish'
 ]); 
 ?>
@@ -41,7 +41,7 @@ $testimonials = new WP_Query([
                                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/qoute-icon.png'); ?>" 
                                      alt="Quote Icon" class="w-[66px] h-[54px]">
 
-                                <div class="mt-4">
+                                <div class="mt-4 max-h-[150px] overflow-y-auto" >
                                     <?php the_content(); ?>
                                 </div>
 
