@@ -37,7 +37,7 @@ $testimonials = new WP_Query([
                     <div>
                         <div class="testi_box">
                             <div class="testi_inner">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/avatar.png'); ?>" 
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/images/avatar.png'); ?>" 
                                      alt="Quote Icon" class="w-[36px] h-[24px]">
 
                                 <div class="mt-4 max-h-[100px] overflow-y-auto" >
