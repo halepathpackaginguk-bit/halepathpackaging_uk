@@ -98,3 +98,33 @@ $testimonials = new WP_Query([
         </div>
     </div>
 </section>
+
+<script>
+
+    jQuery(document).ready(function ($) {
+    $('.pro_testi_slider').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: $('.testi-prev'),
+        nextArrow: $('.testi-next'),
+        dots: false,
+        infinite: true,
+        adaptiveHeight: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: { slidesToShow: 2 }
+            },
+            {
+                breakpoint: 768,
+                settings: { slidesToShow: 1 }
+            },
+            {
+                breakpoint: 480,
+                settings: { slidesToShow: 1 }
+            }
+        ]
+    });
+});
+</script>
