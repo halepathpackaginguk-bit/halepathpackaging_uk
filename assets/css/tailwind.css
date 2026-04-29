@@ -269,7 +269,7 @@
 }
 
 .testi_box .testi_inner {
-  @apply h-full p-8 bg-white mt-10 border shadow rounded-[19px] border-black/15;
+  @apply h-full p-6 bg-white mt-10 border shadow rounded-[19px] border-black/15;
 }
 
 .testi_box .testi_img {
@@ -277,7 +277,7 @@
 }
 
 .testi_box .testi_title {
-  @apply font-semibold text-2xl text-[#1C1C1C];
+  @apply font-semibold text-xl text-[#1C1C1C];
 }
 
 .icon_box {

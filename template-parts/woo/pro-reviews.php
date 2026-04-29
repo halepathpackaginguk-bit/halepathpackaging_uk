@@ -37,11 +37,10 @@ $testimonials = new WP_Query([
                     <div>
                         <div class="testi_box">
                             <div class="testi_inner">
-
                                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/qoute-icon.png'); ?>" 
-                                     alt="Quote Icon" class="w-[66px] h-[54px]">
+                                     alt="Quote Icon" class="w-[36px] h-[24px]">
 
-                                <div class="mt-4 max-h-[150px] overflow-y-auto" >
+                                <div class="mt-4 max-h-[100px] overflow-y-auto" >
                                     <?php the_content(); ?>
                                 </div>
 
@@ -57,14 +56,14 @@ $testimonials = new WP_Query([
                                 <div class="mt-5 flex gap-2 items-center">
                                     <figure class="testi_img">
                                         <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/user.jpg'); ?>" 
-                                             alt="User" class="rounded-full w-[49px] h-[49px]">
+                                             alt="User" class="rounded-full w-[36px] h-[36px]">
                                     </figure>
 
                                     <div>
                                         <h6 class="testi_title">
                                             <?php the_title(); ?>
                                             <?php if ($customer_type): ?>
-                                                <span class="text-sm text-gray-500">
+                                                <span class="text-xs text-gray-500">
                                                     (<?php echo esc_html($customer_type); ?>)
                                                 </span>
                                             <?php endif; ?>
