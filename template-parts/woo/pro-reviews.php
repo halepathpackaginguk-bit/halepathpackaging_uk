@@ -55,7 +55,7 @@ $testimonials = new WP_Query([
 
                                 <div class="mt-5 flex gap-2 items-center">
                                     <figure class="testi_img">
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/mages/avatar.png'); ?>" 
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/avatar.png'); ?>" 
                                              alt="User" class="rounded-full w-[36px] h-[36px]">
                                     </figure>
 
