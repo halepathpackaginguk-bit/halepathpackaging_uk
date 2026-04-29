@@ -1,11 +1,10 @@
 <?php
 $testimonials = new WP_Query([
     'post_type' => 'testimonial',
-    'posts_per_page' => -1,
+    'posts_per_page' => 20
     'post_status' => 'publish'
 ]);
 ?>
-
 <section class="py-[60px]">
     <div class="hale_container flex md:flex-row flex-col gap-6">
         <!-- Rating Summary -->

@@ -1,100 +1,9 @@
 <?php
-global $product;
-
-// If no product is set, get the current product
-if (!$product) {
-    $product = wc_get_product(get_the_ID());
-}
-
-if (!$product) {
-    return;
-}
-
-// Fetch real product reviews
-$reviews = get_comments(array(
-    'post_id' => $product->get_id(),
-    'type' => 'review',
-    'status' => 'approve',
-    'orderby' => 'comment_date',
-    'order' => 'DESC',
-    'number' => 10 // Limit to 10 reviews
-));
-
-// Transform reviews into testimonials array
-$testimonialsRes = [];
-
-foreach ($reviews as $review) {
-    $rating = get_comment_meta($review->comment_ID, 'rating', true);
-    
-    // Get customer location from order if available
-    $customer_location = 'Customer';
-    $user_id = $review->user_id;
-    $customer_email = $review->comment_author_email;
-    
-    // Try to get location from customer's orders
-    if ($user_id > 0) {
-        $customer = new WC_Customer($user_id);
-        $city = $customer->get_billing_city();
-        $country = $customer->get_billing_country();
-        
-        if ($city && $country) {
-            $country_name = WC()->countries->countries[$country] ?? $country;
-            $customer_location = $city . ', ' . $country_name;
-        } elseif ($city) {
-            $customer_location = $city;
-        } elseif ($country) {
-            $country_name = WC()->countries->countries[$country] ?? $country;
-            $customer_location = $country_name;
-        }
-    } 
-    
-    // If no location from user account, try to get from completed orders by email
-    if ($customer_location === 'Customer' && $customer_email) {
-        $orders = wc_get_orders(array(
-            'customer' => $customer_email,
-            'status' => 'completed',
-            'limit' => 1
-        ));
-        
-        if (!empty($orders)) {
-            $order = $orders[0];
-            $city = $order->get_billing_city();
-            $country = $order->get_billing_country();
-            
-            if ($city && $country) {
-                $country_name = WC()->countries->countries[$country] ?? $country;
-                $customer_location = $city . ', ' . $country_name;
-            } elseif ($city) {
-                $customer_location = $city;
-            } elseif ($country) {
-                $country_name = WC()->countries->countries[$country] ?? $country;
-                $customer_location = $country_name;
-            }
-        }
-    }
-    
-    $testimonialsRes[] = [
-        'review' => $review->comment_content,
-        'name' => $review->comment_author,
-        'email' => $review->comment_author_email, // Added email field
-        'location' => $customer_location,
-        'rating' => $rating ? intval($rating) : 5,
-        'date' => $review->comment_date
-    ];
-}
-
-// If no reviews exist, show fallback or empty state
-if (empty($testimonialsRes)) {
-    $testimonialsRes = [
-        [
-            'review' => 'No reviews yet. Be the first to review this product!',
-            'name' => 'Be The First',
-            'email' => '',
-            'location' => 'Leave a Review',
-            'rating' => 5,
-        ]
-    ];
-}
+$testimonials = new WP_Query([
+    'post_type' => 'testimonial',
+    'posts_per_page' => 20
+    'post_status' => 'publish'
+]);
 ?>
 
 <section>
@@ -113,7 +22,15 @@ if (empty($testimonialsRes)) {
             </div>
             <div class="md:w-2/3 w-full">
                 <div class="pro_testi_slider">
-                    <?php foreach ($testimonialsRes as $testimonial): ?>
+                  <?php if ($testimonials->have_posts()): ?>
+                    <?php while ($testimonials->have_posts()):
+                        $testimonials->the_post();
+
+                        $customer_type = get_field('customer_type');
+                        $incentivized = get_field('incentivized');
+                        $address = get_field('address');
+                        $rating = get_field('rating');
+                        ?>
                         <div>
                             <div class="testi_box">
                                 <div class="testi_inner">
@@ -121,9 +38,9 @@ if (empty($testimonialsRes)) {
                                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/qoute-icon.png'); ?>"
                                         alt="Quote Icon" class="w-[66px] h-[54px]">
 
-                                    <p class="mt-4">
-                                        <?php echo esc_html($testimonial['review']); ?>
-                                    </p>
+                                    <div class="mt-4">
+                                          <?php the_content(); ?>
+                                    </div>
 
                                     <!-- Stars -->
                                     <div class="mt-2 flex gap-1">
@@ -144,15 +61,11 @@ if (empty($testimonialsRes)) {
                                         </figure>
                                         <div>
                                             <h6 class="testi_title">
-                                                <?php echo esc_html($testimonial['name']); ?>
-                                                <?php if (!empty($testimonial['email'])): ?>
-                                                    <span class="text-xs text-gray-400 block">
-                                                        <?php echo esc_html($testimonial['email']); ?>
-                                                    </span>
-                                                <?php endif; ?>
+                                                   <?php the_title(); ?>
+                                                  <?php echo esc_html($customer_type); ?>
                                             </h6>
                                             <p class="text-[#1C1C1CE8]">
-                                                <?php echo esc_html($testimonial['location']); ?>
+                                                <?php echo esc_html($address); ?>
                                             </p>
                                         </div>
                                     </div>
@@ -160,7 +73,9 @@ if (empty($testimonialsRes)) {
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+                <?php endif; ?>
 
                 </div>
 
