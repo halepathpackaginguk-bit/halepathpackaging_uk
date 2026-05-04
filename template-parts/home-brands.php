@@ -1,14 +1,10 @@
 <section class="pb-12 md:px-4 px-4">
     <div class="hale_container md:p-8! p-8!">
         <h2 class="h2">
-            Sell custom playing cards online
+          Custom Card UK — Built for Sellers 
         </h2>
         <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
-            Seamless eCommerce integration is at the core of what we offer at halepathpackeging.co.uk. Connect your
-            online store effortlessly with leading sales channels such as Etsy, eBay, WooCommerce, Amazon, Shopify, and
-            more. Sync your products in just a few clicks, manage your listings with ease, and build a fully stocked
-            virtual catalog featuring high-quality mockups and optimized product presentations—all designed to help you
-            sell smarter and grow faster.
+            Whether you're selling playing cards on Etsy, tarot decks on Shopify, or flash card sets wholesale, we manufacture the boxes too. Custom tuck boxes, rigid presentation cases, and printed card sleeves, all made to your exact size and finish. Sync your packaging with your store in a few clicks.
         </p>
         <a href="<?php echo site_url('/amazon-fulfilment-fba'); ?>"
             class="text-secondary hover:text-primary text-base font-semibold text-center underline flex w-fit mx-auto mt-5">
