@@ -15,21 +15,7 @@
             Amazon Fulfillment
         </a>
         <div class="flex flex-wrap sm:gap-7 gap-5 justify-center mt-8">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/1.png" alt="brand1"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
-                width="200" height="101" />
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/2.png" alt="brand2"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
-                width="200" height="101" />
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/3.png" alt="brand3"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
-                width="200" height="101" />
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/4.png" alt="brand4"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
-                width="200" height="101" />
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/5.png" alt="brand5"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
-                width="200" height="101" />
+           
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/6.svg" alt="brand6"
                 class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
                 width="200" height="101" />
