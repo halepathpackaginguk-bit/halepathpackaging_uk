@@ -347,7 +347,7 @@ $megaMenus = [
                 "link" => "https://halepathpackaging.co.uk/by-industry/",
                 "image" => false,
                 "items" => [
-                    ["title" => "Custom Cards", "link" => "https://halepathpackaging.co.uk/custom-cards/"],
+                    ["title" => "Custom Cards", "link" => "https://halepathpackaging.co.uk/custom-game-cards/"],
                     ["title" => "CBD & Cannabis", "link" => "https://halepathpackaging.co.uk/cbd-cannabis/"],
                     ["title" => "Cosmetic Boxes", "link" => "https://halepathpackaging.co.uk/cosmetic-boxes/"],
                     ["title" => "Candle Boxes", "link" => "https://halepathpackaging.co.uk/custom-candle-boxes/"],
