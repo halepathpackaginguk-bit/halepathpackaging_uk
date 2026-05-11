@@ -81,9 +81,9 @@ if (!empty($image_url) || !empty($category->name) || !empty($category->descripti
       </div>
       <div>
         <?php if (!empty($category->name)): ?>
-          <h4 class="font-bold text-3xl lg:text-5xl">
+          <h1 class="font-bold text-3xl lg:text-5xl">
             <?php echo esc_html($category->name); ?>
-          </h4>
+          </h1>
         <?php endif; ?>
 
         <?php if (!empty($category->description)): ?>
@@ -231,14 +231,14 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
       <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
 
         <?php if (!empty($product_info_box1_title)): ?>
-          <h4 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
+          <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
             <?php echo esc_html($product_info_box1_title); ?>
-          </h4>
+          </h2>
         <?php endif; ?>
 
         <?php if (!empty($product_info_box1_description)): ?>
           <p class="mb-7 text-center md:text-left">
-            <?php echo esc_html($product_info_box1_description); ?>
+            <?php echo ($product_info_box1_description); ?>
           </p>
         <?php endif; ?>
 
@@ -260,13 +260,13 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
       <?php endif; ?>
       <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
         <?php if (!empty($product_info_box2_title)): ?>
-          <h4 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
+          <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
             <?php echo esc_html($product_info_box2_title); ?>
-          </h4>
+          </h2>
         <?php endif; ?>
         <?php if (!empty($product_info_box2_description)): ?>
           <p class="mb-7 text-center md:text-left">
-            <?php echo esc_html($product_info_box2_description); ?>
+            <?php echo ($product_info_box2_description); ?>
           </p>
         <?php endif; ?>
         <a class="py-[9px] px-[41px] text-white bg-[#1C2E42] rounded-md" href="/get-quote-now">
