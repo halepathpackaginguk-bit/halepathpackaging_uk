@@ -91,31 +91,15 @@ $featureproductsRes = [
         cursor: pointer;
     }
 </style>
-<section class="Main_slider">
-    <div class="main-slider">
-        <!-- Video Slide -->
-        <div class="video-container max-h-[350px]">
-            <video autoplay muted loop playsinline class="">
-                <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div
-                class="md:py-24 py-12 bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:w-full before:bg-gradient-to-r before:from-black/90 before:from-30% before:via-black/70 before:h-full before:inset-0">
-                <div class="hale_container relative z-10">
-                    <div class="md:w-1/2 w-full">
-                        <h1 class="h1">
-                            About Us
-                        </h1>
-
-                        <a href="<?php echo home_url('/get-quote-now'); ?>" class="btn_primary">
-                            Enquire Now <i class="fa fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<section
+		class="py-16 sm:h-[350px] h-[260px] flex items-center justify-center bg-cover bg-no-repeat bg-center bg-black/50 bg-blend-overlay"
+		style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/s2.webp'">
+		<div class="hale_container">
+			<h1 class="text-white font-bold text-3xl md:text-5xl lg:text-[51px]">
+				<?php the_title(); ?>
+			</h1>
+		</div>
+	</section>
 <section class="my-16">
     <div class="hale_container md:flex items-center gap-5 md:gap-10 flex-row">
         <figure class="md:w-1/2">
