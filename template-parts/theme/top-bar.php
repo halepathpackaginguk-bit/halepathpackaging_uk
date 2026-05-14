@@ -4,14 +4,14 @@
         <ul class="flex items-center divide-x-2 divide-white">
             <li>
                 <a href="tel:+4401213186768"
-                    class="text-sm font-normal text-white flex items-center gap-1 px-2 cursor-pointer">
+                    class="top_links">
                     <i class="fas fa-phone-alt"></i>
                     01213186768
                 </a>
             </li>
             <li>
                 <a href="mailto:sales@halepathpackaging.co.uk"
-                    class="text-sm font-normal text-white flex items-center gap-1 px-2 cursor-pointer">
+                    class="top_links">
                     <i class="fas fa-envelope"></i>
                     sales@halepathpackaging.co.uk
                 </a>
@@ -20,7 +20,7 @@
         <ul class="flex items-center divide-x-2 divide-white">
             <li>
                 <a href="https://halepathpackaging.co.uk/products/"
-                    class="text-sm font-normal text-white flex items-center gap-1 px-2 cursor-pointer">
+                    class="top_links">
 
                     All Products
                 </a>

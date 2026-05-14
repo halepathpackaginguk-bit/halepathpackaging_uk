@@ -13,31 +13,31 @@
         <div class="flex flex-wrap sm:gap-7 gap-5 justify-center mt-8">
            
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/6.svg" alt="brand6"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/7.svg" alt="brand7"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/8.svg" alt="brand8"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/9.svg" alt="brand9"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/10.svg" alt="brand10"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/11.svg" alt="brand11"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/12.svg" alt="brand12"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/13.svg" alt="brand13"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/14.svg" alt="brand14"
-                class="object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300"
+                class="brand_img"
                 width="200" height="101" />
         </div>
     </div>

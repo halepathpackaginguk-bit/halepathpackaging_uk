@@ -37,9 +37,9 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/output.css" />
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/custom.css" />
     <!-- Slick Carousel CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/slick.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+        href="<?php echo get_template_directory_uri(); ?>/assets/slick-theme.css" />
     <?php wp_head(); ?>
     <meta name="google-site-verification" content="vxJVqkHpw-YU0K97Hbs-wFEVtQhadmF2d19hVFWCuSU" />
     <meta name="trustpilot-one-time-domain-verification-id" content="ae39cbe4-c17f-458d-ad5d-f78d10d14bdd" />

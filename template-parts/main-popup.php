@@ -42,7 +42,7 @@
                     }
                     ?>
                 </select>
-                <i class="absolute right-4 top-1/2 text-xs text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                <i class="form_icon fa fa-chevron-down"></i>
             </div>
 
             <!-- Colors -->
@@ -56,7 +56,7 @@
                     <option value="4">4 colors</option>
                     <option value="5">5 colors</option>
                 </select>
-                <i class="absolute right-4 top-1/2 text-xs text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                <i class="form_icon fa fa-chevron-down"></i>
             </div>
 
             <!-- Dimensions -->
@@ -84,7 +84,7 @@
                     <option value="cm">CM</option>
                     <option value="mm">MM</option>
                 </select>
-                <i class="absolute right-4 top-1/2 text-xs text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
+                <i class="form_icon fa fa-chevron-down"></i>
             </div>
 
             <!-- Message -->

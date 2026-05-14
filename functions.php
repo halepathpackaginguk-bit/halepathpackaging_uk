@@ -124,7 +124,6 @@ add_action('widgets_init', 'halepath_theme_widgets_init');
 
 function theme_assets()
 {
-
 	// Tailwind
 	wp_enqueue_style('tailwind', get_template_directory_uri() . '/assets/css/style.css', [], filemtime(get_template_directory() . '/assets/css/style.css'));
 
@@ -134,8 +133,19 @@ function theme_assets()
 		'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
 	);
 	// Slick CSS
-	wp_enqueue_style('slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', [], '1.8.1');
-	wp_enqueue_style('slick-theme-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', ['slick-css'], '1.8.1');
+	 wp_enqueue_style(
+        'slick-css',
+        get_template_directory_uri() . '/assets/css/slick.css',
+        [],
+        '1.8.1'
+    );
+
+    wp_enqueue_style(
+        'slick-theme-css',
+        get_template_directory_uri() . '/assets/css/slick-theme.css',
+        ['slick-css'],
+        '1.8.1'
+    );
 	// Swiper CSS
 	wp_enqueue_style(
 		'swiper-css',

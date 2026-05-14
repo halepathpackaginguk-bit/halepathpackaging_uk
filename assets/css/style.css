@@ -560,9 +560,6 @@
   .max-h-\[300px\] {
     max-height: 300px;
   }
-  .max-h-\[350px\] {
-    max-height: 350px;
-  }
   .max-h-\[454px\] {
     max-height: 454px;
   }
@@ -649,9 +646,6 @@
   }
   .flex-1 {
     flex: 1;
-  }
-  .grow {
-    flex-grow: 1;
   }
   .-translate-x-1\/2 {
     --tw-translate-x: calc(calc(1/2 * 100%) * -1);
@@ -1424,6 +1418,10 @@
     --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
   .outline-white {
     outline-color: var(--color-white);
   }
@@ -1521,12 +1519,6 @@
       position: absolute;
     }
   }
-  .before\:inset-0 {
-    &::before {
-      content: var(--tw-content);
-      inset: calc(var(--spacing) * 0);
-    }
-  }
   .before\:top-0 {
     &::before {
       content: var(--tw-content);
@@ -1551,49 +1543,9 @@
       background-color: #191919;
     }
   }
-  .before\:bg-gradient-to-r {
-    &::before {
-      content: var(--tw-content);
-      --tw-gradient-position: to right in oklab;
-      background-image: linear-gradient(var(--tw-gradient-stops));
-    }
-  }
-  .before\:from-black\/90 {
-    &::before {
-      content: var(--tw-content);
-      --tw-gradient-from: color-mix(in srgb, #000 90%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-gradient-from: color-mix(in oklab, var(--color-black) 90%, transparent);
-      }
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
-  }
-  .before\:from-30\% {
-    &::before {
-      content: var(--tw-content);
-      --tw-gradient-from-position: 30%;
-    }
-  }
-  .before\:via-black\/70 {
-    &::before {
-      content: var(--tw-content);
-      --tw-gradient-via: color-mix(in srgb, #000 70%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-gradient-via: color-mix(in oklab, var(--color-black) 70%, transparent);
-      }
-      --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
-      --tw-gradient-stops: var(--tw-gradient-via-stops);
-    }
-  }
   .before\:content-\[\"\"\] {
     &::before {
       --tw-content: "";
-      content: var(--tw-content);
-    }
-  }
-  .before\:content-\[\'\'\] {
-    &::before {
-      --tw-content: '';
       content: var(--tw-content);
     }
   }
@@ -2176,11 +2128,6 @@
       padding-block: calc(var(--spacing) * 14);
     }
   }
-  .md\:py-24 {
-    @media (width >= 48rem) {
-      padding-block: calc(var(--spacing) * 24);
-    }
-  }
   .md\:pt-2 {
     @media (width >= 48rem) {
       padding-top: calc(var(--spacing) * 2);
@@ -2540,6 +2487,18 @@
   margin-inline: auto;
   max-width: 1440px;
   padding-inline: calc(var(--spacing) * 3);
+}
+.top_links {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  padding-inline: calc(var(--spacing) * 2);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-white);
 }
 .h1 {
   margin-bottom: calc(var(--spacing) * 4);
@@ -3719,6 +3678,11 @@ footer ul li a span.marker {
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -3898,6 +3862,7 @@ footer ul li a span.marker {
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
