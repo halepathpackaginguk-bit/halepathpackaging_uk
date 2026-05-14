@@ -276,6 +276,9 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
     </div>
   </section>
 <?php endif; ?>
+
+
+<?php get_template_part('template-parts/woo/pro-reviews'); ?>
 <?php if (!empty($cat_faqs)): ?>
   <?php get_template_part(
     'template-parts/woo/cat-faqs',
