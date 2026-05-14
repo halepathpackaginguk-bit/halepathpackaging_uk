@@ -149,7 +149,7 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
    * @hooked woocommerce_breadcrumb - 20
    * @hooked WC_Structured_Data::generate_website_data() - 30
    */
-  do_action('woocommerce_before_main_content');
+  //do_action('woocommerce_before_main_content');
 
   /**
    * Hook: woocommerce_shop_loop_header.
