@@ -3500,7 +3500,7 @@ footer ul li a span.marker {
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
 }
-.cat_info_box {
+.cat_info_box h2 {
   margin-top: calc(var(--spacing) * 5);
   margin-bottom: calc(var(--spacing) * 4);
   text-align: center;
