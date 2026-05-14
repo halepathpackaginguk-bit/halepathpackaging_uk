@@ -71,62 +71,62 @@ $image_url = $thumbnail_id ? wp_get_attachment_url($thumbnail_id) : '';
 // Check if any value exists
 if (!empty($image_url) || !empty($category->name) || !empty($category->description)):
   ?>
-  <section class="py-10 lg:py-20">
+<section class="py-10 lg:py-20">
     <div class="hale_container grid items-center md:grid-cols-2 gap-4 md:gap-8 lg:gap-10 xl:gap-[70px]">
-      <div class="h-full">
-        <?php if (!empty($image_url)): ?>
-          <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($category->name); ?>"
-            class="img-full rounded-[22px]">
-        <?php endif; ?>
-      </div>
-      <div>
-        <?php if (!empty($category->name)): ?>
-          <h1 class="font-bold text-3xl lg:text-5xl">
-            <?php echo esc_html($category->name); ?>
-          </h1>
-        <?php endif; ?>
-
-        <?php if (!empty($category->description)): ?>
-          <p class="xl:text-[19px] mt-4">
-            <?php echo $category->description; ?>
-          </p>
-        <?php endif; ?>
-        <div class="mt-8">
-          <?php get_template_part('template-parts/woo/product-form'); ?>
+        <div class="h-full">
+            <?php if (!empty($image_url)): ?>
+            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($category->name); ?>"
+                class="img-full rounded-[22px]">
+            <?php endif; ?>
         </div>
-      </div>
+        <div>
+            <?php if (!empty($category->name)): ?>
+            <h1 class="font-bold text-3xl lg:text-5xl">
+                <?php echo esc_html($category->name); ?>
+            </h1>
+            <?php endif; ?>
+
+            <?php if (!empty($category->description)): ?>
+            <p class="xl:text-[19px] mt-4">
+                <?php echo $category->description; ?>
+            </p>
+            <?php endif; ?>
+            <div class="mt-8">
+                <?php get_template_part('template-parts/woo/product-form'); ?>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 <?php endif; ?>
 
 <?php
 $term_id = get_queried_object_id();
 if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
-  <section class="mt-20 max-w-[2200px] mx-auto px-3 lg:px-0">
+<section class="mt-20 max-w-[2200px] mx-auto px-3 lg:px-0">
     <h2 class="text-2xl text-center mb-8 sm:text-3xl md:text-5xl font-bold">
-      <?php echo esc_html($category->name); ?> Gallery
+        <?php echo esc_html($category->name); ?> Gallery
     </h2>
     <div class="relative w-full py-8">
-      <div class="cat_gallery">
-        <?php while (have_rows('categories_videos', 'product_cat_' . $term_id)):
+        <div class="cat_gallery">
+            <?php while (have_rows('categories_videos', 'product_cat_' . $term_id)):
           the_row();
           $video_link = get_sub_field('video_link');
           if ($video_link): ?>
             <div class="px-2">
-              <div class="rounded-2xl h-[450px] w-full overflow-hidden">
-                <iframe src="<?php echo esc_url($video_link); ?>" class="h-full w-full rounded-2xl" frameborder="0"
-                  allow="autoplay; encrypted-media" allowfullscreen loading="lazy">
-                </iframe>
-              </div>
+                <div class="rounded-2xl h-[450px] w-full overflow-hidden">
+                    <iframe src="<?php echo esc_url($video_link); ?>" class="h-full w-full rounded-2xl" frameborder="0"
+                        allow="autoplay; encrypted-media" allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
             </div>
-          <?php endif; endwhile; ?>
-      </div>
-      <div class="flex justify-center gap-4 text-3xl mt-4">
-        <button class="cat-prev hover:text-[#47AFC3] cursor-pointer">&#8592;</button>
-        <button class="cat-next hover:text-[#47AFC3] cursor-pointer">&#8594;</button>
-      </div>
+            <?php endif; endwhile; ?>
+        </div>
+        <div class="flex justify-center gap-4 text-3xl mt-4">
+            <button class="cat-prev hover:text-[#47AFC3] cursor-pointer">&#8592;</button>
+            <button class="cat-next hover:text-[#47AFC3] cursor-pointer">&#8594;</button>
+        </div>
     </div>
-  </section>
+</section>
 <?php endif; ?>
 <!-- Qoute Form Start-->
 <!-- <section>
@@ -138,10 +138,10 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
 <!-- Qoute Form End-->
 
 <section class="mt-20 hale_container">
-  <div>
-    <h2 class="font-extrabold text-4xl text-center">Explore <?php echo esc_html($category->name); ?></h2>
-  </div>
-  <?php
+    <div>
+        <h2 class="font-extrabold text-4xl text-center">Explore <?php echo esc_html($category->name); ?></h2>
+    </div>
+    <?php
   /**
    * Hook: woocommerce_before_main_content.
    *
@@ -149,7 +149,7 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
    * @hooked woocommerce_breadcrumb - 20
    * @hooked WC_Structured_Data::generate_website_data() - 30
    */
-  do_action('woocommerce_before_main_content');
+  //do_action('woocommerce_before_main_content');
 
   /**
    * Hook: woocommerce_shop_loop_header.
@@ -219,65 +219,70 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
   ?>
 </section>
 <?php if (!empty($product_info_box1_title) || !empty($product_info_box1_description) || !empty($product_info_box1_image)): ?>
-  <section class="my-20">
+<section class="my-20">
     <div class="hale_container md:flex items-center gap-5 md:gap-10 flex-row-reverse">
 
-      <?php if (!empty($product_info_box1_image)): ?>
+        <?php if (!empty($product_info_box1_image)): ?>
         <figure class="md:w-1/2">
-          <img alt="Why Us Image" src="<?php echo esc_url($product_info_box1_image); ?>" class="rounded-2xl w-full h-auto">
+            <img alt="Why Us Image" src="<?php echo esc_url($product_info_box1_image); ?>"
+                class="rounded-2xl w-full h-auto">
         </figure>
-      <?php endif; ?>
-
-      <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
-
-        <?php if (!empty($product_info_box1_title)): ?>
-          <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
-            <?php echo esc_html($product_info_box1_title); ?>
-          </h2>
         <?php endif; ?>
 
-        <?php if (!empty($product_info_box1_description)): ?>
-          <p class="mb-7 text-center md:text-left">
-            <?php echo ($product_info_box1_description); ?>
-          </p>
-        <?php endif; ?>
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
 
-        <a class="py-[9px] px-[41px] text-white bg-[#1C2E42] rounded-md" href="/get-quote-now">
-          Get Custom Quote
-        </a>
+            <?php if (!empty($product_info_box1_title)): ?>
+            <h2>
+                <?php echo esc_html($product_info_box1_title); ?>
+            </h2>
+            <?php endif; ?>
 
-      </div>
+            <?php if (!empty($product_info_box1_description)): ?>
+            <p class="mb-7 text-center md:text-left">
+                <?php echo ($product_info_box1_description); ?>
+            </p>
+            <?php endif; ?>
+
+            <a class="py-[9px] px-[41px] text-white bg-[#1C2E42] rounded-md" href="/get-quote-now">
+                Get Custom Quote
+            </a>
+
+        </div>
     </div>
-  </section>
+</section>
 <?php endif; ?>
 <?php if (!empty($product_info_box2_title) || !empty($product_info_box2_description) || !empty($product_info_box2_image)): ?>
-  <section class="my-20">
+<section class="my-20">
     <div class="hale_container md:flex items-center gap-5 md:gap-10">
-      <?php if (!empty($product_info_box2_image)): ?>
+        <?php if (!empty($product_info_box2_image)): ?>
         <figure class="md:w-1/2">
-          <img alt="Why Us Image" src="<?php echo esc_url($product_info_box2_image); ?>" class="rounded-2xl w-full h-auto">
+            <img alt="Why Us Image" src="<?php echo esc_url($product_info_box2_image); ?>"
+                class="rounded-2xl w-full h-auto">
         </figure>
-      <?php endif; ?>
-      <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
-        <?php if (!empty($product_info_box2_title)): ?>
-          <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
-            <?php echo esc_html($product_info_box2_title); ?>
-          </h2>
         <?php endif; ?>
-        <?php if (!empty($product_info_box2_description)): ?>
-          <p class="mb-7 text-center md:text-left">
-            <?php echo ($product_info_box2_description); ?>
-          </p>
-        <?php endif; ?>
-        <a class="py-[9px] px-[41px] text-white bg-[#1C2E42] rounded-md" href="/get-quote-now">
-          Get Custom Quote
-        </a>
-      </div>
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
+            <?php if (!empty($product_info_box2_title)): ?>
+            <h2 class="">
+                <?php echo esc_html($product_info_box2_title); ?>
+            </h2>
+            <?php endif; ?>
+            <?php if (!empty($product_info_box2_description)): ?>
+            <p class="mb-7 text-center md:text-left">
+                <?php echo ($product_info_box2_description); ?>
+            </p>
+            <?php endif; ?>
+            <a class="py-[9px] px-[41px] text-white bg-[#1C2E42] rounded-md" href="/get-quote-now">
+                Get Custom Quote
+            </a>
+        </div>
     </div>
-  </section>
+</section>
 <?php endif; ?>
+
+
+
 <?php if (!empty($cat_faqs)): ?>
-  <?php get_template_part(
+<?php get_template_part(
     'template-parts/woo/cat-faqs',
     null,
     array(
@@ -285,4 +290,5 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
     )
   ); ?>
 <?php endif; ?>
+<?php get_template_part('template-parts/woo/pro-reviews'); ?>
 <?php get_footer('shop'); ?>

@@ -2422,10 +2422,10 @@
 }
 @layer base {
   :root {
-    --title_Clr: #1C1C1C;
+    --title_Clr: #1c1c1c;
     --txt_Clr: #666666;
-    --primary: #53B6C9;
-    --secondary: #1C2E42;
+    --primary: #53b6c9;
+    --secondary: #1c2e42;
   }
   *, body {
     box-sizing: border-box;
@@ -2436,35 +2436,35 @@
     scroll-behavior: smooth;
   }
   h1, h2, h3, h4, h5, h6, .PoppinsBold {
-    font-family: 'PoppinsBold', sans-serif;
+    font-family: "PoppinsBold", sans-serif;
   }
   a, .PoppinsMedium {
-    font-family: 'PoppinsMedium', sans-serif;
+    font-family: "PoppinsMedium", sans-serif;
   }
   p, li, span, .PoppinsRegular {
-    font-family: 'PoppinsRegular', sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
   }
 }
 @layer base {
   @font-face {
-    font-family: 'PoppinsBold';
-    src: url('../fonts/Poppins-Bold.ttf');
+    font-family: "PoppinsBold";
+    src: url("../fonts/Poppins-Bold.ttf");
   }
   @font-face {
-    font-family: 'PoppinsMedium';
-    src: url('../fonts/Poppins-Medium.ttf');
+    font-family: "PoppinsMedium";
+    src: url("../fonts/Poppins-Medium.ttf");
   }
   @font-face {
-    font-family: 'PoppinsRegular';
-    src: url('../fonts/Poppins-Regular.ttf');
+    font-family: "PoppinsRegular";
+    src: url("../fonts/Poppins-Regular.ttf");
   }
   @font-face {
-    font-family: 'EffraMedium';
-    src: url('../fonts/Effra_Trial_Rg.ttf');
+    font-family: "EffraMedium";
+    src: url("../fonts/Effra_Trial_Rg.ttf");
   }
   @font-face {
-    font-family: 'SourceSansProRegular';
-    src: url('../fonts/SourceSansPro-Regular.ttf');
+    font-family: "SourceSansProRegular";
+    src: url("../fonts/SourceSansPro-Regular.ttf");
   }
 }
 .hale_container {
@@ -2621,16 +2621,16 @@
   }
 }
 .grad_Bg {
-  background-image: linear-gradient(to bottom, #2B4FB9 50%, white 50%);
+  background-image: linear-gradient(to bottom, #2b4fb9 50%, white 50%);
 }
 .about_bg {
-  background-image: url('/images/about-page/bg.png');
+  background-image: url("/images/about-page/bg.png");
 }
 .offerbg {
-  background-image: url('/images/about-page/offer-bg.png');
+  background-image: url("/images/about-page/offer-bg.png");
 }
 .slider_bg {
-  background-image: url('/images/about-page/slider-bg.svg');
+  background-image: url("/images/about-page/slider-bg.svg");
 }
 .slider_bg2 {
   background: linear-gradient(40deg, #f47b62 15%, #ee3a79 79%);
@@ -3189,15 +3189,15 @@ footer ul li a span.marker {
   width: 6px;
 }
 .max_content ::-webkit-scrollbar-track {
-  background-color: #9C9C9C;
+  background-color: #9c9c9c;
   border-radius: 10px;
 }
 .max_content ::-webkit-scrollbar-thumb {
-  background: #1C2E42;
+  background: #1c2e42;
   border-radius: 10px;
 }
 .max_content ::-webkit-scrollbar-thumb:hover {
-  background: #1C2E42;
+  background: #1c2e42;
 }
 .max_content .scroll_Left {
   direction: rtl;
@@ -3479,6 +3479,10 @@ footer ul li a span.marker {
     width: calc(1/2 * 100%);
   }
 }
+.single-post .desc_content img {
+  margin-inline: auto;
+  width: 100%;
+}
 .desc_content table {
   margin-inline: auto;
   margin-block: calc(var(--spacing) * 8);
@@ -3511,6 +3515,28 @@ footer ul li a span.marker {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
+}
+.cat_info_box h2 {
+  margin-top: calc(var(--spacing) * 5);
+  margin-bottom: calc(var(--spacing) * 4);
+  text-align: center;
+  font-size: var(--text-3xl);
+  line-height: var(--tw-leading, var(--text-3xl--line-height));
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  color: #111827;
+  @media (width >= 48rem) {
+    margin-top: calc(var(--spacing) * 0);
+  }
+  @media (width >= 48rem) {
+    text-align: left;
+  }
+}
+.cat_info_box p, .cat_info_box ul {
+  margin-bottom: calc(var(--spacing) * 4);
+}
+.cat_info_box a {
+  text-decoration-line: underline;
 }
 .corru_content p {
   margin-top: calc(var(--spacing) * 2);
