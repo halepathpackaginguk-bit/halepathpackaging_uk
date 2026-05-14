@@ -469,6 +469,11 @@ footer ul li a span.marker {
   @apply mb-4;
 }
 
+.cat_info_box a{
+  @apply underline;
+}
+
+
 .corru_content p {
   @apply font-medium text-white text-base md:text-[27px] mb-6 mt-2 leading-normal;
 }

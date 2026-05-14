@@ -3519,6 +3519,9 @@ footer ul li a span.marker {
 .cat_info_box p {
   margin-bottom: calc(var(--spacing) * 4);
 }
+.cat_info_box a {
+  text-decoration-line: underline;
+}
 .corru_content p {
   margin-top: calc(var(--spacing) * 2);
   margin-bottom: calc(var(--spacing) * 6);
