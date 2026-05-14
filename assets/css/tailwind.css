@@ -461,6 +461,10 @@ footer ul li a span.marker {
   @apply text-white font-bold md:text-xl text-lg;
 }
 
+.cat_info_box {
+  @apply text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4;
+}
+
 .corru_content p {
   @apply font-medium text-white text-base md:text-[27px] mb-6 mt-2 leading-normal;
 }

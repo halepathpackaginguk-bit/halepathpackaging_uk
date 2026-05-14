@@ -228,10 +228,10 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
         </figure>
       <?php endif; ?>
 
-      <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
+      <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
 
         <?php if (!empty($product_info_box1_title)): ?>
-          <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
+          <h2>
             <?php echo esc_html($product_info_box1_title); ?>
           </h2>
         <?php endif; ?>
@@ -258,9 +258,9 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
           <img alt="Why Us Image" src="<?php echo esc_url($product_info_box2_image); ?>" class="rounded-2xl w-full h-auto">
         </figure>
       <?php endif; ?>
-      <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
+      <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
         <?php if (!empty($product_info_box2_title)): ?>
-          <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
+          <h2 class="">
             <?php echo esc_html($product_info_box2_title); ?>
           </h2>
         <?php endif; ?>
