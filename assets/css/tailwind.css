@@ -16,13 +16,9 @@
     --color-txt_Clr: var(--txt_Clr);
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);
-    --backgroundImage-gradient-radial: radial-gradient(
-      var(--tw-gradient-stops)
-    );
-    --backgroundImage-gradient-conic: conic-gradient(
-      from 180deg at 50% 50%,
-      var(--tw-gradient-stops)
-    );
+    --backgroundImage-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+    --backgroundImage-gradient-conic: conic-gradient(from 180deg at 50% 50%,
+        var(--tw-gradient-stops));
   }
 
   *,
@@ -228,15 +224,15 @@
 .form_btn {
   @apply text-lg md:leading-[56px] font-normal text-white bg-secondary hover:bg-white hover:text-secondary px-7 border border-secondary hover:border-secondary focus:border-secondary outline-none rounded-full w-full;
 }
-.form_icon{
-  @apply{
-    absolute right-4 top-1/2 text-xs text-gray-500 -translate-y-1/2;
-  }
+
+.form_icon {
+  @apply absolute right-4 top-1/2 text-xs text-gray-500 -translate-y-1/2;
 }
 
-.brand_img{
+.brand_img {
   @apply object-contain object-center scale-90 hover:scale-105 transition-all ease-in-out duration-300;
 }
+
 .service_inner {
   @apply px-2;
 }
