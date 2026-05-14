@@ -5,10 +5,10 @@
 ========================= */
 @layer base {
   :root {
-    --title_Clr: #1C1C1C;
+    --title_Clr: #1c1c1c;
     --txt_Clr: #666666;
-    --primary: #53B6C9;
-    --secondary: #1C2E42;
+    --primary: #53b6c9;
+    --secondary: #1c2e42;
   }
 
   @theme inline {
@@ -16,8 +16,13 @@
     --color-txt_Clr: var(--txt_Clr);
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);
-    --backgroundImage-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-    --backgroundImage-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+    --backgroundImage-gradient-radial: radial-gradient(
+      var(--tw-gradient-stops)
+    );
+    --backgroundImage-gradient-conic: conic-gradient(
+      from 180deg at 50% 50%,
+      var(--tw-gradient-stops)
+    );
   }
 
   *,
@@ -38,19 +43,19 @@
   h5,
   h6,
   .PoppinsBold {
-    font-family: 'PoppinsBold', sans-serif;
+    font-family: "PoppinsBold", sans-serif;
   }
 
   a,
   .PoppinsMedium {
-    font-family: 'PoppinsMedium', sans-serif;
+    font-family: "PoppinsMedium", sans-serif;
   }
 
   p,
   li,
   span,
   .PoppinsRegular {
-    font-family: 'PoppinsRegular', sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
   }
 }
 
@@ -59,28 +64,28 @@
 ========================= */
 @layer base {
   @font-face {
-    font-family: 'PoppinsBold';
-    src: url('../fonts/Poppins-Bold.ttf');
+    font-family: "PoppinsBold";
+    src: url("../fonts/Poppins-Bold.ttf");
   }
 
   @font-face {
-    font-family: 'PoppinsMedium';
-    src: url('../fonts/Poppins-Medium.ttf');
+    font-family: "PoppinsMedium";
+    src: url("../fonts/Poppins-Medium.ttf");
   }
 
   @font-face {
-    font-family: 'PoppinsRegular';
-    src: url('../fonts/Poppins-Regular.ttf');
+    font-family: "PoppinsRegular";
+    src: url("../fonts/Poppins-Regular.ttf");
   }
 
   @font-face {
-    font-family: 'EffraMedium';
-    src: url('../fonts/Effra_Trial_Rg.ttf');
+    font-family: "EffraMedium";
+    src: url("../fonts/Effra_Trial_Rg.ttf");
   }
 
   @font-face {
-    font-family: 'SourceSansProRegular';
-    src: url('../fonts/SourceSansPro-Regular.ttf');
+    font-family: "SourceSansProRegular";
+    src: url("../fonts/SourceSansPro-Regular.ttf");
   }
 }
 
@@ -113,19 +118,19 @@
 }
 
 .grad_Bg {
-  background-image: linear-gradient(to bottom, #2B4FB9 50%, white 50%);
+  background-image: linear-gradient(to bottom, #2b4fb9 50%, white 50%);
 }
 
 .about_bg {
-  background-image: url('/images/about-page/bg.png');
+  background-image: url("/images/about-page/bg.png");
 }
 
 .offerbg {
-  background-image: url('/images/about-page/offer-bg.png');
+  background-image: url("/images/about-page/offer-bg.png");
 }
 
 .slider_bg {
-  background-image: url('/images/about-page/slider-bg.svg');
+  background-image: url("/images/about-page/slider-bg.svg");
 }
 
 .slider_bg2 {
@@ -213,7 +218,7 @@
 }
 
 .form_row {
-  @apply w-full flex flex-col
+  @apply w-full flex flex-col;
 }
 
 .form_btn {
@@ -319,19 +324,19 @@ footer ul li a span.marker {
 
 /* Track */
 .max_content ::-webkit-scrollbar-track {
-  background-color: #9C9C9C;
+  background-color: #9c9c9c;
   border-radius: 10px;
 }
 
 /* Handle */
 .max_content ::-webkit-scrollbar-thumb {
-  background: #1C2E42;
+  background: #1c2e42;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .max_content ::-webkit-scrollbar-thumb:hover {
-  background: #1C2E42;
+  background: #1c2e42;
 }
 
 .max_content .scroll_Left {
@@ -356,7 +361,7 @@ footer ul li a span.marker {
 }
 
 .video_overlay {
-  @apply md:py-44 py-24 bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:w-full before:bg-gradient-to-r before:from-black/30 before:from-10% before:via-black/10 before:h-full before:inset-0
+  @apply md:py-44 py-24 bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:w-full before:bg-gradient-to-r before:from-black/30 before:from-10% before:via-black/10 before:h-full before:inset-0;
 }
 
 .slick-slide {
@@ -441,10 +446,8 @@ footer ul li a span.marker {
 }
 
 .single-post .desc_content img {
-  @apply  w-full mx-auto;
+  @apply w-full mx-auto;
 }
-
-
 
 .desc_content table {
   @apply w-full mx-auto overflow-x-scroll border border-title_Clr/20 border-collapse my-8;
