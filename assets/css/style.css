@@ -3516,7 +3516,7 @@ footer ul li a span.marker {
     text-align: left;
   }
 }
-.cat_info_box p {
+.cat_info_box p, .cat_info_box ul {
   margin-bottom: calc(var(--spacing) * 4);
 }
 .cat_info_box a {
