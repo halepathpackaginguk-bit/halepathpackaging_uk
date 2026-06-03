@@ -33,7 +33,7 @@ get_header();
 
 			if (!empty($matches)) {
 
-				$toc .= '<div class="bg-gray-100 p-5 rounded-lg mb-8 table_OC">';
+				$toc .= '<aside class="md:col-span-1"> <div class="bg-[#f5f5f5] p-4 rounded-lg sticky top-20 table_OC">';
 				$toc .= '<h2 class="text-xl font-bold mb-4">Table of Contents</h2>';
 				$toc .= '<ol class="">';
 
@@ -43,7 +43,7 @@ get_header();
 					$heading_id = 'toc-' . $index;
 
 					$toc .= '<li class="mb-2">';
-					$toc .= '<a href="#' . esc_attr($heading_id) . '">';
+					$toc .= '<a href="#' . esc_attr($heading_id) . '" class="hover:underline">';
 					$toc .= esc_html($heading_text);
 					$toc .= '</a></li>';
 
@@ -54,17 +54,15 @@ get_header();
 					);
 				}
 
-				$toc .= '</ol></div>';
+				$toc .= '</ol></div></aside>';
 			}
 		}
 		?>
 		<section class="pt-6 pb-14">
-			<div class="container mx-auto px-4">
-				<div class="desc_content my-4">
-					<div class="desc_content my-4">
-						<?php echo $toc; ?>
-						<?php echo apply_filters('the_content', $content); ?>
-					</div>
+			<div class="container mx-auto px-4 grid md:grid-cols-4 gap-10">
+				<?php echo $toc; ?>
+				<div class="md:col-span-3 desc_content my-4">
+					<?php echo apply_filters('the_content', $content); ?>
 				</div>
 			</div>
 		</section>
