@@ -35,14 +35,14 @@ get_header();
 
 				$toc .= '<aside class="md:col-span-1"> <div class="bg-[#f5f5f5] p-4 rounded-lg sticky top-20 table_OC">';
 				$toc .= '<h2 class="text-xl font-bold mb-4">Table of Contents</h2>';
-				$toc .= '<ol class="">';
+				$toc .= '<ol class="space-y-3">';
 
 				foreach ($matches as $index => $match) {
 
 					$heading_text = wp_strip_all_tags($match[2]);
 					$heading_id = 'toc-' . $index;
 
-					$toc .= '<li class="mb-2">';
+					$toc .= '<li class="">';
 					$toc .= '<a href="#' . esc_attr($heading_id) . '" class="hover:underline">';
 					$toc .= esc_html($heading_text);
 					$toc .= '</a></li>';
