@@ -3,15 +3,13 @@
     <div class="hale_container flex items-center justify-between">
         <ul class="flex items-center divide-x-2 divide-white">
             <li>
-                <a href="tel:+4401213186768"
-                    class="top_links">
+                <a href="tel:+4401213186768" class="top_links">
                     <i class="fas fa-phone-alt"></i>
                     01213186768
                 </a>
             </li>
             <li>
-                <a href="mailto:sales@halepathpackaging.co.uk"
-                    class="top_links">
+                <a href="mailto:sales@halepathpackaging.co.uk" class="top_links">
                     <i class="fas fa-envelope"></i>
                     sales@halepathpackaging.co.uk
                 </a>
@@ -19,10 +17,21 @@
         </ul>
         <ul class="flex items-center divide-x-2 divide-white">
             <li>
-                <a href="https://halepathpackaging.co.uk/products/"
-                    class="top_links">
+                <a href="https://halepathpackaging.co.uk/products/" class="top_links">
 
                     All Products
+                </a>
+            </li>
+            <li>
+                <a href="https://halepathpackaging.co.uk/blog/" class="top_links">
+
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="https://halepathpackaging.co.uk/about-us/" class="top_links">
+
+                    About Us
                 </a>
             </li>
             <li class="px-2">
