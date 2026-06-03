@@ -6,7 +6,7 @@ get_header();
 		the_post(); ?>
 
 		<!-- Hero Section -->
-		<section class="pt-14">
+		<section class="py-14">
 			<div class="container mx-auto px-4">
 				<!-- Title -->
 				<h1 class="text-4xl text-2xl font-bold text-title_Clr text-center mb-4">
