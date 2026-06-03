@@ -24,12 +24,47 @@ get_header();
 
 			</div>
 		</section>
+		<?php
+		$content = get_the_content();
+		$toc = '';
 
-		<!-- Content Section -->
+		if (!empty($content)) {
+			preg_match_all('/<h([2-6])[^>]*>(.*?)<\/h\1>/is', $content, $matches, PREG_SET_ORDER);
+
+			if (!empty($matches)) {
+
+				$toc .= '<div class="bg-gray-100 p-5 rounded-lg mb-8 table_OC">';
+				$toc .= '<h2 class="text-xl font-bold mb-4">Table of Contents</h2>';
+				$toc .= '<ol class="">';
+
+				foreach ($matches as $index => $match) {
+
+					$heading_text = wp_strip_all_tags($match[2]);
+					$heading_id = 'toc-' . $index;
+
+					$toc .= '<li class="mb-2">';
+					$toc .= '<a href="#' . esc_attr($heading_id) . '">';
+					$toc .= esc_html($heading_text);
+					$toc .= '</a></li>';
+
+					$content = str_replace(
+						$match[0],
+						'<h' . $match[1] . ' id="' . $heading_id . '">' . $match[2] . '</h' . $match[1] . '>',
+						$content
+					);
+				}
+
+				$toc .= '</ol></div>';
+			}
+		}
+		?>
 		<section class="pt-6 pb-14">
 			<div class="container mx-auto px-4">
 				<div class="desc_content my-4">
-					<?php the_content(); ?>
+					<div class="desc_content my-4">
+						<?php echo $toc; ?>
+						<?php echo apply_filters('the_content', $content); ?>
+					</div>
 				</div>
 			</div>
 		</section>

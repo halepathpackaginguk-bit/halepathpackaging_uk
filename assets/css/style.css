@@ -3570,6 +3570,12 @@ footer ul li a span.marker {
     max-height: 240px;
   }
 }
+.table_OC ol {
+  list-style: decimal !important;
+  list-style-position: inside !important;
+  font-size: 16px;
+  line-height: 20.89px;
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;
