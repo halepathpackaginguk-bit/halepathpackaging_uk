@@ -34,7 +34,7 @@
             <img alt="Why Us Image" src="<?php echo esc_url($product_info_box1_image); ?>" height="auto" width="100%"
                 class="rounded-2xl">
         </figure>
-        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
             <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
                 <?php echo $product_info_box1_title; ?>
             </h2>
@@ -52,7 +52,7 @@
             <img alt="Why Us Image" src="<?php echo esc_url($product_info_box2_image); ?>" height="auto" width="100%"
                 class="rounded-2xl">
         </figure>
-        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col">
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
             <h2 class="text-[#111827] mt-5 md:mt-0 font-bold text-3xl text-center md:text-left mb-4">
                 <?php echo $product_info_box2_title; ?>
             </h2>
