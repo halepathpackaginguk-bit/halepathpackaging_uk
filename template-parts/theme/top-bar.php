@@ -60,9 +60,9 @@
         </div>
         <!-- Buttons -->
         <div class="xl:w-1/4 sm:w-1/3 hidden lg:flex gap-5 justify-end">
-            <a href="<?php echo home_url('/contact-us'); ?>"
+            <a href="https://wa.me/447893945259" target="_blank"
                 class="border-2 border-secondary px-5 py-2 text-[13px] uppercase font-medium text-secondary rounded-full hover:bg-secondary hover:text-white">
-                Contact Us
+                <i class="fab fa-whatsapp mr-1.5"></i>WhatsApp
             </a>
             <a href="<?php echo home_url('/get-quote-now'); ?>"
                 class="border-2 border-secondary bg-secondary px-5 py-2 text-[13px] uppercase font-medium text-white rounded-full hover:bg-transparent hover:text-secondary">
