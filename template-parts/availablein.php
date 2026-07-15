@@ -14,7 +14,9 @@
                                 England, Scotland, Wales & Northern Ireland
                             </span>
                         </span>
-                        <span class="text-xl"><i class="fa fa-chevron-down text-primary"></i></span>
+                        <span class="text-xl">
+                            <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </span>
                     </h3>
                     <div
                         class="avail-faq-content max-h-0 overflow-hidden transition-all duration-200 border-t-0 border-primary ">
@@ -68,7 +70,9 @@
                                 Serving customers across Europe, Asia, the Americas, Africa & Oceania
                             </span>
                         </span>
-                        <span class="text-xl"><i class="fa fa-chevron-down text-primary"></i></span>
+                        <span class="text-xl">
+                            <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </span>
                     </h3>
                     <div
                         class="avail-faq-content max-h-0 overflow-hidden transition-all duration-200 border-t-0 border-primary ">
@@ -123,6 +127,7 @@
         $('.avail-faq-title').on('click', function () {
             var parent = $(this).closest('.avail-faq-item');
             var content = parent.find('.avail-faq-content');
+            var icon = $(this).find('i');
 
             // Close other FAQs
             $('.avail-faq-item')
@@ -131,15 +136,25 @@
                 .removeClass('max-h-[450px] border-t')
                 .addClass('max-h-0 border-t-0');
 
+            // Reset other icons
+            $('.avail-faq-item')
+                .not(parent)
+                .find('i')
+                .removeClass('rotate-180');
+
             // Toggle current FAQ
             if (content.hasClass('max-h-0')) {
                 content
                     .removeClass('max-h-0 border-t-0')
                     .addClass('max-h-[450px] border-t');
+
+                icon.addClass('rotate-180');
             } else {
                 content
                     .removeClass('max-h-[450px] border-t')
                     .addClass('max-h-0 border-t-0');
+
+                icon.removeClass('rotate-180');
             }
         });
     });  
