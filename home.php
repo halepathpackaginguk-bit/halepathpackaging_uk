@@ -23,9 +23,8 @@
 <?php get_template_part('template-parts/testimonial-and-faq'); ?>
 <?php //get_template_part('template-parts/home-career'); ?>
 <section class="px-4">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cta-ban1.jpeg" alt="about us"
-        class="w-full">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cta-ban1.jpeg" alt="about us" class="w-full">
 </section>
-
+<?php get_template_part('template-parts/availablein'); ?>
 <?php get_template_part('template-parts/temp-instagram'); ?>
 <?php get_footer() ?>
