@@ -19,7 +19,7 @@
                         </span>
                     </h3>
                     <div
-                        class="avail-faq-content max-h-0 overflow-hidden transition-all duration-200 border-t-0 border-primary ">
+                         class="avail-faq-content max-h-[450px] overflow-hidden transition-all duration-200 border-t border-primary">
                         <div class="md:px-8 px-4 md:py-5.5 py-3 grid md:grid-cols-2 grid-cols-1 gap-5">
                             <div>
                                 <h4 class="text-base font-normal text-title_Clr mb-3">
