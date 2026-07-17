@@ -121,7 +121,6 @@
         </div>
     </div>
 </section>
-
 <script>
     jQuery(document).ready(function ($) {
         $('.avail-faq-title').on('click', function () {
