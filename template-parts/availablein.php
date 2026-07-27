@@ -1,10 +1,10 @@
-<section class="py-10">
+<section class="py-10  bg-[#F5F5F5]">
     <div class="hale_container flex flex-col justify-center items-center">
         <h2 class="h2">
             Available Worldwide
         </h2>
         <!-- FAQs -->
-        <div id="avail_faqs" class="pt-8">
+        <div id="avail_faqs" class="pt-8  bg-[#EAF6F9]" >
             <div class="max-w-[1080px] mt-10 grid gap-5 md:grid-cols-1 grid-cols-1 mx-auto">
                 <div class="avail-faq-item border border-primary rounded-xl">
                     <h3 class="avail-faq-title w-full flex items-center justify-between md:px-8 px-4 md:py-5.5 py-3">
