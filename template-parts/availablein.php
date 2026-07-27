@@ -4,11 +4,11 @@
             Available Worldwide
         </h2>
         <!-- FAQs -->
-        <div id="avail_faqs" class="pt-8  bg-[#EAF6F9]" >
-            <div class="max-w-[1080px] mt-10 grid gap-5 md:grid-cols-1 grid-cols-1 mx-auto">
+        <div id="avail_faqs" class="pt-8 " >
+            <div class="max-w-[1080px] mt-10 grid gap-5 md:grid-cols-1 grid-cols-1 mx-auto  bg-[#EAF6F9]">
                 <div class="avail-faq-item border border-primary rounded-xl">
                     <h3 class="avail-faq-title w-full flex items-center justify-between md:px-8 px-4 md:py-5.5 py-3">
-                        <span class="text-lg font-normal text-title_Clr">
+                        <span class="text-lg font-bold text-title_Clr">
                             United Kingdom
                             <span class="text-xs font-normal text-primary">
                                 England, Scotland, Wales & Northern Ireland
