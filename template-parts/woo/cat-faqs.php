@@ -2,7 +2,34 @@
 
 $cat_faqs = $args['cat_faqs'] ?? [];
 
-if (!empty($cat_faqs)) : ?>
+if (!empty($cat_faqs)) :
+
+    $faq_schema = array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array()
+    );
+
+    foreach ($cat_faqs as $faq) {
+        $question = $faq['title'] ?? '';
+        $answer   = $faq['description'] ?? '';
+        if (!$question) continue;
+
+        $faq_schema['mainEntity'][] = array(
+            '@type'          => 'Question',
+            'name'           => $question,
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => $answer
+            )
+        );
+    }
+
+    if (!empty($faq_schema['mainEntity'])) :
+?>
+<script type="application/ld+json">
+<?php echo json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?>
+</script>
 
 <section class="bg-[#F5F5F5] py-20 mt-28" id="faqs-section">
     <div class="hale_container gap-6">
