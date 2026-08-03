@@ -2,14 +2,6 @@
 /** Template Name: Thanks you */
 get_header(); ?>
 
-<!-- Event snippet for Submit lead form conversion page -->
-<script>
-  gtag('event', 'conversion', {
-      'send_to': 'AW-18062243619/uaWTCPDZl5UcEKPu36RD',
-      'value': 1.0,
-      'currency': 'PKR'
-  });
-</script>
 <section
     class="py-16 sm:h-[350px] h-[260px] flex items-center justify-center bg-cover bg-no-repeat bg-center bg-black/50 bg-blend-overlay"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/s2.webp'">
