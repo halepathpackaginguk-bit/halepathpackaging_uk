@@ -143,7 +143,7 @@
                         <i class="fab fa-instagram text-title_Clr hover:text-primary"></i></a></li>
                 <li><a href="https://www.tiktok.com/@halepathpackaging?_r=1&_t=ZS-957Rlv6JhMV" target="_blank" class="text-2xl inline-flex">
                         <i class="fa-brands fa-tiktok text-title_Clr hover:text-primary"></i></a></li>
-                <li><a href="#" target="_blank" class="text-2xl inline-flex">
+                <li><a href="https://wa.me/447893945259" target="_blank" class="text-2xl inline-flex">
                         <i class="fa-brands fa-whatsapp text-title_Clr hover:text-primary"></i></a></li>
             </ul>
         </div>
@@ -170,6 +170,62 @@
 <div id="quotePopup" class="fixed inset-0 w-full bg-transparent flex flex-col items-end justify-center z-50 
      translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
     <?php get_template_part('template-parts/main-popup'); ?>
+</div>
+
+<!-- WhatsApp Chat Widget -->
+<div id="waChatWidget" class="fixed bottom-5 left-5 z-[9999] flex flex-col items-start">
+    <!-- Chat Popup -->
+    <div id="waChatBox"
+        class="wa-chat-box mb-4 w-[calc(100vw-2.5rem)] max-w-[360px] bg-white rounded-[22px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.4)] hidden">
+        <!-- Header -->
+        <div class="wa-header relative px-5 py-4 flex items-center gap-3.5">
+            <span class="wa-header-deco absolute inset-0 pointer-events-none"></span>
+            <div class="relative shrink-0">
+                <div class="wa-avatar-ring w-12 h-12 rounded-full flex items-center justify-center">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
+                        alt="Hale Path Packaging" class="w-9 h-9 rounded-full object-contain bg-white p-1">
+                </div>
+                <span class="wa-online-dot absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#25D366] border-2 border-white rounded-full"></span>
+            </div>
+            <div class="text-white relative z-[1]">
+                <p class="font-bold text-[15px] leading-tight">Hale Path Packaging</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                    <span class="wa-typing"><i></i><i></i><i></i></span>
+                    <span class="text-xs opacity-90">Typically replies in minutes</span>
+                </div>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="wa-body relative px-4 py-5">
+            <div class="wa-bubble bg-white rounded-2xl rounded-tl-md px-4 py-3 shadow-[0_4px_14px_rgba(0,0,0,0.08)] max-w-[85%]">
+                <p class="text-sm text-[#1c1c1c] leading-relaxed">Hello there! 👋</p>
+            </div>
+            <div class="wa-bubble wa-bubble-2 bg-white rounded-2xl rounded-tl-md px-4 py-3 shadow-[0_4px_14px_rgba(0,0,0,0.08)] max-w-[92%] mt-2.5">
+                <p class="text-sm text-[#1c1c1c] leading-relaxed">Welcome to <strong>Hale Path Packaging</strong> — how can we help you today? 😊</p>
+                <p class="text-[10px] text-gray-400 mt-1.5 text-right flex items-center justify-end gap-1">
+                    12:30 <i class="fa-solid fa-check-double text-[#53BDEB] text-[10px]"></i>
+                </p>
+            </div>
+            <a href="https://wa.me/447893945259?text=<?php echo rawurlencode('Hello Hale Path Packaging! I have a question.'); ?>"
+                target="_blank"
+                class="wa-chat-btn group mt-4 flex items-center justify-center gap-2.5 w-full text-white font-bold text-[15px] py-3.5 rounded-full relative overflow-hidden">
+                <i class="fab fa-whatsapp text-2xl group-hover:rotate-12 transition-transform"></i>
+                Start Chat
+            </a>
+            <p class="text-center text-[11px] text-gray-500 mt-3">💬 Free & instant — no app install needed</p>
+        </div>
+    </div>
+    <!-- Toggle Button -->
+    <button id="waChatBtn"
+        class="wa-float-btn relative flex items-center justify-center w-16 h-16 rounded-full text-white text-4xl"
+        aria-label="Open WhatsApp chat">
+        <span class="wa-badge absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">1</span>
+        <i class="fa-brands fa-whatsapp wa-ico-open"></i>
+        <span class="wa-tooltip absolute left-[76px] top-1/2 -translate-y-1/2 whitespace-nowrap bg-[#075E54] text-white text-xs font-semibold px-3.5 py-2 rounded-lg opacity-0 pointer-events-none transition-all duration-300">
+            Chat with us
+            <span class="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#075E54] rotate-45"></span>
+        </span>
+    </button>
 </div>
 <?php wp_footer(); ?>
 <script>
@@ -212,6 +268,27 @@
             openBtn.style.right = "20px";
         }
 
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const waBox = document.getElementById('waChatBox');
+        const waBtn = document.getElementById('waChatBtn');
+        const waBadge = waBtn?.querySelector('.wa-badge');
+
+        waBtn?.addEventListener('click', () => {
+            waBox?.classList.toggle('hidden');
+            waBadge?.classList.add('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            const widget = document.getElementById('waChatWidget');
+            if (widget && !widget.contains(e.target)) {
+                waBox?.classList.add('hidden');
+                waBadge?.classList.remove('hidden');
+            }
+        });
     });
 </script>
 
