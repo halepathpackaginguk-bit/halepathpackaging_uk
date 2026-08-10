@@ -56,6 +56,6 @@
     ); ?>
     <a href="<?php echo home_url('/custom-game-cards'); ?>"
         class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
-        See All Offset Printing
+        See All Custom Card
     </a>
 </section>
