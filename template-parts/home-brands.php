@@ -41,4 +41,21 @@
                 width="200" height="101" />
         </div>
     </div>
+
+      <?php
+
+      $custom_game_cards = get_field('custom_game_cards');
+    get_template_part(
+        'template-parts/product-slider',
+        null,
+        [
+            'products' => $custom_game_cards,
+            'slidesToShow' => 4,
+            'direction' => 'ltr'
+        ]
+    ); ?>
+    <a href="<?php echo home_url('/custom-game-cards'); ?>"
+        class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
+        See All Offset Printing
+    </a>
 </section>
