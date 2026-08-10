@@ -34,9 +34,7 @@
                     About Us
                 </a>
             </li>
-            <li class="px-2">
-                <?php echo do_shortcode('[gtranslate]'); ?>
-            </li>
+         
         </ul>
     </div>
 </div>
