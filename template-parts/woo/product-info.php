@@ -1,5 +1,5 @@
 <?php get_template_part('template-parts/woo/product-brands'); ?>
-<?php get_template_part('template-parts/woo/product-videos'); ?>
+<?php //get_template_part('template-parts/woo/product-videos'); ?>
 <section class="mt-20 max-w-[2200px] mx-auto px-3 lg:px-0">
     <h2 class="text-2xl text-center mb-8 sm:text-3xl md:text-5xl font-bold">
         <?php the_title(); ?> Gallery
