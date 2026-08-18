@@ -1,3 +1,7 @@
+<?php get_template_part('template-parts/woo/product-brands'); ?>
+
+
+
 <section class="mt-20 max-w-[2200px] mx-auto px-3 lg:px-0">
     <h2 class="text-2xl text-center mb-8 sm:text-3xl md:text-5xl font-bold">
         <?php the_title(); ?> Gallery
@@ -14,13 +18,13 @@
     <div class="relative w-full py-8">
         <div class="full_gallery">
             <?php foreach ($product_gallery as $index => $image): ?>
-                <div class="px-2">
-                    <figure class="rounded-2xl h-[450px]">
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"
-                            data-index="<?php echo $index; ?>"
-                            class="gallery-img cursor-pointer !h-full w-full object-cover rounded-2xl">
-                    </figure>
-                </div>
+            <div class="px-2">
+                <figure class="rounded-2xl h-[450px]">
+                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"
+                        data-index="<?php echo $index; ?>"
+                        class="gallery-img cursor-pointer !h-full w-full object-cover rounded-2xl">
+                </figure>
+            </div>
             <?php endforeach; ?>
 
 
@@ -41,17 +45,17 @@
         <button id="lightbox-next" class="absolute right-5 text-white text-3xl">&#10095;</button>
     </div>
     <script>
-        jQuery(document).ready(function ($) {
-            $('.full_gallery').slick({
-                slidesToShow: 5,
-                slidesToScroll: 1,
-                arrows: true,
-                prevArrow: $('.gallery-prev'),
-                nextArrow: $('.gallery-next'),
-                dots: false,
-                infinite: true,
-                adaptiveHeight: false,
-                responsive: [{
+    jQuery(document).ready(function($) {
+        $('.full_gallery').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: true,
+            prevArrow: $('.gallery-prev'),
+            nextArrow: $('.gallery-next'),
+            dots: false,
+            infinite: true,
+            adaptiveHeight: false,
+            responsive: [{
                     breakpoint: 1024,
                     settings: {
                         slidesToShow: 3
@@ -69,62 +73,62 @@
                         slidesToShow: 1
                     }
                 }
-                ]
-            });
+            ]
+        });
+    });
+
+    jQuery(document).ready(function($) {
+
+        const images = $('.gallery-img');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            const src = $(images[index]).attr('src');
+            $('#lightbox-img').attr('src', src);
+            currentIndex = index;
+        }
+
+        // Open Lightbox
+        images.on('click', function() {
+            currentIndex = parseInt($(this).data('index'));
+            showImage(currentIndex);
+
+            $('#lightbox')
+                .removeClass('hidden')
+                .addClass('flex');
         });
 
-        jQuery(document).ready(function ($) {
+        // Close Lightbox
+        $('#lightbox-close').on('click', function() {
+            $('#lightbox')
+                .removeClass('flex')
+                .addClass('hidden');
+        });
 
-            const images = $('.gallery-img');
-            let currentIndex = 0;
+        // Previous Image
+        $('#lightbox-prev').on('click', function() {
+            currentIndex =
+                (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
 
-            function showImage(index) {
-                const src = $(images[index]).attr('src');
-                $('#lightbox-img').attr('src', src);
-                currentIndex = index;
-            }
+        // Next Image
+        $('#lightbox-next').on('click', function() {
+            currentIndex =
+                (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
 
-            // Open Lightbox
-            images.on('click', function () {
-                currentIndex = parseInt($(this).data('index'));
-                showImage(currentIndex);
-
-                $('#lightbox')
-                    .removeClass('hidden')
-                    .addClass('flex');
-            });
-
-            // Close Lightbox
-            $('#lightbox-close').on('click', function () {
-                $('#lightbox')
+        // Close on background click
+        $('#lightbox').on('click', function(e) {
+            if (e.target === this) {
+                $(this)
                     .removeClass('flex')
                     .addClass('hidden');
-            });
-
-            // Previous Image
-            $('#lightbox-prev').on('click', function () {
-                currentIndex =
-                    (currentIndex - 1 + images.length) % images.length;
-                showImage(currentIndex);
-            });
-
-            // Next Image
-            $('#lightbox-next').on('click', function () {
-                currentIndex =
-                    (currentIndex + 1) % images.length;
-                showImage(currentIndex);
-            });
-
-            // Close on background click
-            $('#lightbox').on('click', function (e) {
-                if (e.target === this) {
-                    $(this)
-                        .removeClass('flex')
-                        .addClass('hidden');
-                }
-            });
-
+            }
         });
+
+    });
     </script>
 
 </section>
@@ -155,13 +159,13 @@
     </div>
 </section>
 <style>
-    #tabs-header.sticky-tabs {
-        position: sticky;
-        top: 0;
-        /* will be updated dynamically via JS */
-        background: white;
-        z-index: 999;
-    }
+#tabs-header.sticky-tabs {
+    position: sticky;
+    top: 0;
+    /* will be updated dynamically via JS */
+    background: white;
+    z-index: 999;
+}
 </style>
 
 
