@@ -1,7 +1,5 @@
 <?php get_template_part('template-parts/woo/product-brands'); ?>
-
-
-
+<?php get_template_part('template-parts/woo/product-videos'); ?>
 <section class="mt-20 max-w-[2200px] mx-auto px-3 lg:px-0">
     <h2 class="text-2xl text-center mb-8 sm:text-3xl md:text-5xl font-bold">
         <?php the_title(); ?> Gallery
@@ -132,8 +130,6 @@
     </script>
 
 </section>
-
-
 <section id="product-tabs" class="mt-10">
 
     <!-- Tabs Buttons -->
@@ -158,24 +154,8 @@
         </div>
     </div>
 </section>
-<style>
-#tabs-header.sticky-tabs {
-    position: sticky;
-    top: 0;
-    /* will be updated dynamically via JS */
-    background: white;
-    z-index: 999;
-}
-</style>
-
-
-
-
 <section class="pt-14">
     <div class="hale_container">
-
         <?php get_template_part('template-parts/woo/related-products'); ?>
     </div>
 </section>
-
-<?php get_template_part('template-parts/woo/product-videos'); ?>

@@ -3795,6 +3795,12 @@ footer ul li a span.marker {
   display: block;
   border-radius: 38px;
 }
+#tabs-header.sticky-tabs {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 999;
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;
