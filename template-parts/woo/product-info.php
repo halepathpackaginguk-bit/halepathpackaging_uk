@@ -177,3 +177,5 @@
         <?php get_template_part('template-parts/woo/related-products'); ?>
     </div>
 </section>
+
+<?php get_template_part('template-parts/woo/product-videos'); ?>
