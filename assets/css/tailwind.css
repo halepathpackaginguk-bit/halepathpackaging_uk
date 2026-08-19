@@ -461,11 +461,11 @@ footer ul li a span.marker {
   @apply w-full mx-auto;
 }
 
-.desc_content table {
+.desc_content table, .cat_info_box table {
   @apply w-full mx-auto overflow-x-scroll border border-title_Clr/20 border-collapse my-8;
 }
 
-.desc_content table tr td {
+.desc_content table tr td , .cat_info_box table tr td ,.cat_info_box table tr th {
   @apply p-4 border border-title_Clr/20;
 }
 

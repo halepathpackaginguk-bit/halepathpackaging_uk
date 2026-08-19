@@ -3700,7 +3700,7 @@ footer ul li a span.marker {
   margin-inline: auto;
   width: 100%;
 }
-.desc_content table {
+.desc_content table, .cat_info_box table {
   margin-inline: auto;
   margin-block: calc(var(--spacing) * 8);
   width: 100%;
@@ -3713,7 +3713,7 @@ footer ul li a span.marker {
     border-color: color-mix(in oklab, var(--title_Clr) 20%, transparent);
   }
 }
-.desc_content table tr td {
+.desc_content table tr td , .cat_info_box table tr td ,.cat_info_box table tr th {
   border-style: var(--tw-border-style);
   border-width: 1px;
   border-color: var(--title_Clr);
