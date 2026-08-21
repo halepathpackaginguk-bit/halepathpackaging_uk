@@ -2,29 +2,29 @@
 get_header();
 ?>
 <main>
-	<?php while (have_posts()):
+    <?php while (have_posts()):
 		the_post(); ?>
 
-		<!-- Hero Section -->
-		<section class="py-14">
-			<div class="container mx-auto px-4">
-				<!-- Title -->
-				<h1 class="text-4xl text-2xl font-bold text-title_Clr text-center mb-4">
-					<?php the_title(); ?>
-				</h1>
-
-				<!-- Featured Image -->
-				<div class="container mx-auto max-h-[454px] h-full">
-					<?php if (has_post_thumbnail()): ?>
-						<?php the_post_thumbnail('full', [
+    <!-- Hero Section -->
+    <section class="py-14 bg-[#f5f5f5]">
+        <div class="container flex md:flex-row flex-col gap-6 items-center mx-auto px-4 ">
+            <div class="md:w-1/2 w-full ">
+                <h1 class="text-4xl text-2xl font-bold text-title_Clr  mb-4">
+                    <?php the_title(); ?>
+                </h1>
+            </div>
+            <!-- Featured Image -->
+            <div class="md:w-1/2 w-full">
+                <?php if (has_post_thumbnail()): ?>
+                <?php the_post_thumbnail('full', [
 							'class' => 'object-cover object-center rounded-[19px] mx-auto w-full h-full'
 						]); ?>
-					<?php endif; ?>
-				</div>
+                <?php endif; ?>
+            </div>
 
-			</div>
-		</section>
-		<?php
+        </div>
+    </section>
+    <?php
 		$content = get_the_content();
 		$toc = '';
 
@@ -58,28 +58,28 @@ get_header();
 			}
 		}
 		?>
-		<section class="pt-6 pb-14">
-			<div class="container mx-auto px-4 grid md:grid-cols-4 gap-10">
-				<?php echo $toc; ?>
-				<div class="md:col-span-3 desc_content my-4">
-					<?php echo apply_filters('the_content', $content); ?>
-				</div>
-			</div>
-		</section>
+    <section class="pt-6 pb-14">
+        <div class="container mx-auto px-4 grid md:grid-cols-4 gap-10">
+            <?php echo $toc; ?>
+            <div class="md:col-span-3 desc_content my-4">
+                <?php echo apply_filters('the_content', $content); ?>
+            </div>
+        </div>
+    </section>
 
-	<?php endwhile; ?>
+    <?php endwhile; ?>
 
-	<!-- Most Popular Blog Section -->
-	<section class="pb-14">
-		<div class="container mx-auto px-4">
+    <!-- Most Popular Blog Section -->
+    <section class="pb-14">
+        <div class="container mx-auto px-4">
 
-			<h2 class="md:text-[29px] md:leading-normal text-lg font-bold text-title_Clr text-center mb-4">
-				Most Popular Blog
-			</h2>
+            <h2 class="md:text-[29px] md:leading-normal text-lg font-bold text-title_Clr text-center mb-4">
+                Most Popular Blog
+            </h2>
 
-			<div class="grid md:grid-cols-3 grid-cols-1 md:gap-[30px] gap-7">
+            <div class="grid md:grid-cols-3 grid-cols-1 md:gap-[30px] gap-7">
 
-				<?php
+                <?php
 				$popular_posts = new WP_Query([
 					'post_type' => 'post',
 					'posts_per_page' => 3,
@@ -92,71 +92,71 @@ get_header();
 						$popular_posts->the_post();
 						?>
 
-						<div class="shadow-[-1px_3px_10px_0px_rgba(0,0,0,0.06)] border border-[#E5E5E5]">
+                <div class="shadow-[-1px_3px_10px_0px_rgba(0,0,0,0.06)] border border-[#E5E5E5]">
 
-							<!-- Image -->
-							<div class="h-[264px]">
-								<a href="<?php the_permalink(); ?>">
-									<?php if (has_post_thumbnail()): ?>
-										<?php the_post_thumbnail('medium_large', [
+                    <!-- Image -->
+                    <div class="h-[264px]">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()): ?>
+                            <?php the_post_thumbnail('medium_large', [
 											'class' => 'w-full h-full object-cover object-center'
 										]); ?>
-									<?php else: ?>
-										<img src="https://via.placeholder.com/480x264" alt="<?php the_title(); ?>"
-											class="w-full h-full object-cover object-center">
-									<?php endif; ?>
-								</a>
-							</div>
+                            <?php else: ?>
+                            <img src="https://via.placeholder.com/480x264" alt="<?php the_title(); ?>"
+                                class="w-full h-full object-cover object-center">
+                            <?php endif; ?>
+                        </a>
+                    </div>
 
-							<!-- Content -->
-							<div class="md:p-7 p-5">
+                    <!-- Content -->
+                    <div class="md:p-7 p-5">
 
-								<!-- Category -->
-								<p class="text-sm font-semibold text-secondary/80 bg-[#F1F5F9] px-2 py-1 rounded-lg w-fit">
-									<?php
+                        <!-- Category -->
+                        <p class="text-sm font-semibold text-secondary/80 bg-[#F1F5F9] px-2 py-1 rounded-lg w-fit">
+                            <?php
 									$categories = get_the_category();
 									if (!empty($categories)) {
 										echo esc_html($categories[0]->name);
 									}
 									?>
-								</p>
+                        </p>
 
-								<!-- Title -->
-								<h4>
-									<a href="<?php the_permalink(); ?>"
-										class="md:text-xl text-lg font-bold text-black inline-flex my-5">
-										<?php the_title(); ?>
-									</a>
-								</h4>
+                        <!-- Title -->
+                        <h4>
+                            <a href="<?php the_permalink(); ?>"
+                                class="md:text-xl text-lg font-bold text-black inline-flex my-5">
+                                <?php the_title(); ?>
+                            </a>
+                        </h4>
 
-								<!-- Read More -->
-								<p>
-									<a href="<?php the_permalink(); ?>"
-										class="text-base font-normal text-secondary inline-flex items-center gap-3">
-										Read More
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"
-											fill="currentColor">
-											<path
-												d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z">
-											</path>
-										</svg>
-									</a>
-								</p>
+                        <!-- Read More -->
+                        <p>
+                            <a href="<?php the_permalink(); ?>"
+                                class="text-base font-normal text-secondary inline-flex items-center gap-3">
+                                Read More
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"
+                                    fill="currentColor">
+                                    <path
+                                        d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </p>
 
-							</div>
+                    </div>
 
-						</div>
+                </div>
 
-						<?php
+                <?php
 					endwhile;
 					wp_reset_postdata();
 				endif;
 				?>
 
-			</div>
+            </div>
 
-		</div>
-	</section>
+        </div>
+    </section>
 </main>
 
 <?php
