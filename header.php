@@ -115,7 +115,7 @@ $megaMenus = require get_template_directory() . '/inc/mega-menu.php';
 
             <?php if (wp_is_mobile()) : ?>
             <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden lg:hidden bg-white px-4 pt-5">
+            <div id="mobileMenu" class="hidden lg:hidden bg-white px-4 pt-5" style="display:none;">
                 <ul class="space-y-3 h-full overflow-y-scroll">
                     <?php foreach ($megaMenus as $key => $menu): ?>
                     <li class="flex flex-col">
