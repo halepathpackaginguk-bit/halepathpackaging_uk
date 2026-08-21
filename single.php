@@ -17,7 +17,7 @@ get_header();
             <div class="md:w-1/2 w-full">
                 <?php if (has_post_thumbnail()): ?>
                 <?php the_post_thumbnail('full', [
-							'class' => 'object-cover object-center rounded-[19px] mx-auto w-full h-full'
+							'class' => 'object-cover object-center mx-auto w-full h-full'
 						]); ?>
                 <?php endif; ?>
             </div>
