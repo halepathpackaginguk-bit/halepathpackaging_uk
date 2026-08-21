@@ -6,10 +6,10 @@ get_header();
 		the_post(); ?>
 
     <!-- Hero Section -->
-    <section class="py-14 bg-[#f5f5f5]">
+    <section class=" bg-[#dedede]">
         <div class="container flex md:flex-row flex-col gap-6 items-center mx-auto px-4 ">
-            <div class="md:w-1/2 w-full ">
-                <h1 class="text-4xl text-2xl font-bold text-title_Clr  mb-4">
+            <div class="md:w-1/2 w-full py-14 ">
+                <h1 class="text-4xl text-2xl font-bold text-title_Clr  mb-4 ">
                     <?php the_title(); ?>
                 </h1>
             </div>
