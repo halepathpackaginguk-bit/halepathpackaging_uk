@@ -2437,6 +2437,11 @@
       position: absolute;
     }
   }
+  .lg\:\!hidden {
+    @media (width >= 64rem) {
+      display: none !important;
+    }
+  }
   .lg\:block {
     @media (width >= 64rem) {
       display: block;
