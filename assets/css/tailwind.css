@@ -479,11 +479,15 @@ footer ul li a span.marker {
 
 .cat_info_box p,
 .cat_info_box ul {
-  @apply mb-4;
+  @apply mb-4 ;
 }
 
 .cat_info_box a {
   @apply underline;
+}
+
+.cat_info_box ul {
+  @apply list-disc list-inside;
 }
 
 .corru_content p {
