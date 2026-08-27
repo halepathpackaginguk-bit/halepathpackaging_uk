@@ -212,9 +212,8 @@ elseif (is_product_category()) {
                                     class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
                             </div>
                         </section>
-                        <p id="price-display" data-price="<?php echo esc_attr($product_price); ?>"
+                        <p id="price-display" data-price="0.69"
                             style="margin-top:20px; font-size:16px;">
-
                         </p>
                     </div>
                     <!-- Submit Button -->
