@@ -12,6 +12,11 @@
  * @param array $entity The product schema entity.
  * @return array
  */
+add_filter( 'language_attributes', function ( $output ) {
+	$output = preg_replace( '/lang="[^"]*"/', 'lang="en-GB"', $output );
+	return $output;
+} );
+
 add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity ) {
 	if ( isset( $entity['offers'] ) || isset( $entity['review'] ) || isset( $entity['aggregateRating'] ) ) {
 		return $entity;
