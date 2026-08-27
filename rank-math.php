@@ -34,7 +34,7 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 		'url'                => get_permalink(),
 		'itemCondition'      => 'https://schema.org/NewCondition',
 		'availability'       => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-		'price'              => '0.69',
+		'price'              => $product->get_price() ? $product->get_price() : '0.69',
 		'priceCurrency'      => 'GBP',
 		'priceValidUntil'    => gmdate( 'Y-12-31', strtotime( '+1 year' ) ),
 		'inventoryLevel'     => array(
@@ -85,5 +85,16 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 		),
 	);
 
+	return $entity;
+}, 999 );
+
+/**
+ * Add Service schema for service pages
+ */
+add_filter( 'rank_math/snippet/rich_snippet_webpage_entity', function ( $entity ) {
+	if ( is_page() ) {
+		$entity['@type'] = 'WebPage';
+		$entity['inLanguage'] = 'en-GB';
+	}
 	return $entity;
 }, 999 );

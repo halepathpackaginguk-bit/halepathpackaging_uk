@@ -203,6 +203,375 @@ function custom_woocommerce_image_sizes() {
 
 
 
+/**
+ * Add Organization & LocalBusiness JSON-LD Schema Markup
+ */
+add_action('wp_head', 'halepath_add_schema_markup', 1);
+function halepath_add_schema_markup() {
+    if (is_admin()) return;
+
+    $site_url = home_url('/');
+    $site_name = get_bloginfo('name');
+    $site_desc = get_bloginfo('description');
+    $logo_url = get_template_directory_uri() . '/assets/images/logo.png';
+    $phone = '+44 01213186768';
+    $email = 'sales@halepathpackaging.co.uk';
+    $address = array(
+        '@type' => 'PostalAddress',
+        'streetAddress' => 'Unit 229, 32A Birmingham Road',
+        'addressLocality' => 'Bromsgrove',
+        'addressRegion' => 'West Midlands',
+        'postalCode' => 'B61 0DD',
+        'addressCountry' => 'GB'
+    );
+    $geo = array(
+        '@type' => 'GeoCoordinates',
+        'latitude' => '52.3182',
+        'longitude' => '-2.0575'
+    );
+    $opening_hours = 'Mo-Fr 09:00-17:00';
+
+    // Organization Schema
+    $org_schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        '@id' => $site_url . '#organization',
+        'name' => $site_name,
+        'alternateName' => 'Hale Path Packaging',
+        'url' => $site_url,
+        'logo' => array(
+            '@type' => 'ImageObject',
+            'url' => $logo_url,
+            'width' => 60,
+            'height' => 60
+        ),
+        'description' => $site_desc,
+        'foundingDate' => '2015',
+        'address' => $address,
+        'contactPoint' => array(
+            '@type' => 'ContactPoint',
+            'telephone' => $phone,
+            'contactType' => 'sales',
+            'email' => $email,
+            'availableLanguage' => 'English'
+        ),
+        'sameAs' => array(
+            'https://www.facebook.com/halepathpackaging',
+            'https://www.linkedin.com/company/halepathpackaging',
+            'https://www.instagram.com/halepathpackaging'
+        )
+    );
+
+    // LocalBusiness Schema (extends Organization)
+    $local_schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Manufacturer',
+        '@id' => $site_url . '#localbusiness',
+        'name' => $site_name,
+        'image' => $logo_url,
+        'url' => $site_url,
+        'telephone' => $phone,
+        'email' => $email,
+        'description' => $site_desc,
+        'address' => $address,
+        'geo' => $geo,
+        'openingHoursSpecification' => array(
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'),
+            'opens' => '09:00',
+            'closes' => '17:00'
+        ),
+        'priceRange' => '££',
+        'areaServed' => array(
+            '@type' => 'Country',
+            'name' => 'United Kingdom'
+        ),
+        'hasOfferCatalog' => array(
+            '@type' => 'OfferCatalog',
+            'name' => 'Custom Packaging Solutions',
+            'itemListElement' => array(
+                array(
+                    '@type' => 'OfferCatalog',
+                    'name' => 'Corrugated Packaging',
+                    'itemListElement' => array(
+                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Custom Corrugated Boxes')),
+                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Mailer Boxes')),
+                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Shipping Cartons'))
+                    )
+                ),
+                array(
+                    '@type' => 'OfferCatalog',
+                    'name' => 'Rigid & Premium Boxes',
+                    'itemListElement' => array(
+                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Rigid Gift Boxes')),
+                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Luxury Presentation Boxes'))
+                    )
+                ),
+                array(
+                    '@type' => 'OfferCatalog',
+                    'name' => 'Flexible Packaging',
+                    'itemListElement' => array(
+                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Stand-Up Pouches')),
+                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Mylar Bags'))
+                    )
+                )
+            )
+        )
+    );
+
+    // WebSite Schema with SearchAction
+    $website_schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        '@id' => $site_url . '#website',
+        'name' => $site_name,
+        'url' => $site_url,
+        'potentialAction' => array(
+            '@type' => 'SearchAction',
+            'target' => array(
+                '@type' => 'EntryPoint',
+                'urlTemplate' => $site_url . '?s={search_term_string}'
+            ),
+            'query-input' => 'required name=search_term_string'
+        )
+    );
+
+    // BreadcrumbList Schema (dynamic based on current page)
+    $breadcrumb_items = array();
+    $breadcrumb_items[] = array(
+        '@type' => 'ListItem',
+        'position' => 1,
+        'name' => 'Home',
+        'item' => $site_url
+    );
+
+    if (is_singular('post')) {
+        $breadcrumb_items[] = array(
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => 'Blog',
+            'item' => get_permalink(get_option('page_for_posts'))
+        );
+        $breadcrumb_items[] = array(
+            '@type' => 'ListItem',
+            'position' => 3,
+            'name' => get_the_title()
+        );
+    } elseif (is_singular('product')) {
+        $breadcrumb_items[] = array(
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => 'Products',
+            'item' => wc_get_page_permalink('shop')
+        );
+        $breadcrumb_items[] = array(
+            '@type' => 'ListItem',
+            'position' => 3,
+            'name' => get_the_title()
+        );
+    } elseif (is_page()) {
+        $breadcrumb_items[] = array(
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => get_the_title()
+        );
+    } elseif (is_archive()) {
+        $breadcrumb_items[] = array(
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => get_the_archive_title()
+        );
+    }
+
+    if (count($breadcrumb_items) > 1) {
+        $breadcrumb_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => $breadcrumb_items
+        );
+        echo '<script type="application/ld+json">' . wp_json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+    }
+
+    echo '<script type="application/ld+json">' . wp_json_encode($org_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($local_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($website_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+}
+
+/**
+ * Add FAQ Schema to pages with FAQ content
+ */
+add_action('wp_head', 'halepath_add_faq_schema', 2);
+function halepath_add_faq_schema() {
+    if (is_admin() || !is_singular()) return;
+
+    global $post;
+    $content = $post->post_content;
+
+    if (preg_match_all('/<h[2-6][^>]*>(.*?)<\/h[2-6]>/is', $content, $headings)) {
+        $faq_items = array();
+        foreach ($headings[1] as $index => $heading) {
+            $question = wp_strip_all_tags($heading);
+            if (strpos(strtolower($question), '?') !== false || strpos(strtolower($question), 'how') === 0 || strpos(strtolower($question), 'what') === 0 || strpos(strtolower($question), 'why') === 0) {
+                // Find the next paragraph after this heading
+                $pattern = '/<h[2-6][^>]*>' . preg_quote($heading, '/') . '<\/h[2-6]>\s*(?:<[^>]*>)*\s*<p>(.*?)<\/p>/is';
+                if (preg_match($pattern, $content, $match)) {
+                    $faq_items[] = array(
+                        '@type' => 'Question',
+                        'name' => $question,
+                        'acceptedAnswer' => array(
+                            '@type' => 'Answer',
+                            'text' => wp_strip_all_tags($match[1])
+                        )
+                    );
+                }
+            }
+        }
+
+        if (!empty($faq_items)) {
+            $faq_schema = array(
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => array_slice($faq_items, 0, 10)
+            );
+            echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+        }
+    }
+}
+
+/**
+ * Add custom meta descriptions for all pages
+ */
+add_action('wp_head', 'halepath_add_meta_descriptions', 5);
+function halepath_add_meta_descriptions() {
+    if (is_admin()) return;
+
+    $meta_description = '';
+    $current_url = home_url(add_query_arg(array(), $_SERVER['REQUEST_URI']));
+
+    if (is_front_page()) {
+        $meta_description = 'Hale Path Packaging - UK\'s leading custom packaging manufacturer. Corrugated boxes, rigid boxes, mailer boxes, and flexible packaging. FSC certified, eco-friendly. 11-14 day production. Free quotes.';
+    } elseif (is_home()) {
+        $meta_description = 'Packaging industry insights, tips, and news from Hale Path Packaging. Learn about custom packaging solutions, sustainable materials, and branding strategies.';
+    } elseif (is_single()) {
+        $meta_description = wp_strip_all_tags(get_the_excerpt());
+        $meta_description = substr($meta_description, 0, 160);
+        if (strlen($meta_description) >= 157) {
+            $meta_description = substr($meta_description, 0, 157) . '...';
+        }
+    } elseif (is_page()) {
+        $meta_description = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
+        if (empty($meta_description)) {
+            $meta_description = get_post_meta(get_the_ID(), 'rank_math_description', true);
+        }
+        if (empty($meta_description)) {
+            $meta_description = wp_strip_all_tags(get_the_excerpt());
+        }
+        if (empty($meta_description)) {
+            $meta_description = wp_strip_all_tags(get_the_content());
+        }
+        $meta_description = substr($meta_description, 0, 160);
+        if (strlen($meta_description) >= 157) {
+            $meta_description = substr($meta_description, 0, 157) . '...';
+        }
+    } elseif (is_archive()) {
+        $meta_description = 'Browse our collection of ' . get_the_archive_title() . ' at Hale Path Packaging. Custom packaging solutions for every industry.';
+    } elseif (is_search()) {
+        $meta_description = 'Search results for "' . get_search_query() . '" on Hale Path Packaging. Find custom packaging solutions.';
+    } elseif (is_404()) {
+        $meta_description = 'Page not found. Browse Hale Path Packaging for custom corrugated boxes, rigid boxes, mailer boxes, and flexible packaging solutions.';
+    }
+
+    if (!empty($meta_description)) {
+        echo '<meta name="description" content="' . esc_attr($meta_description) . '" />' . "\n";
+    }
+
+    // Open Graph tags
+    echo '<meta property="og:title" content="' . esc_attr(get_the_title()) . '" />' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($meta_description) . '" />' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($current_url) . '" />' . "\n";
+    echo '<meta property="og:type" content="' . (is_singular('post') ? 'article' : 'website') . '" />' . "\n";
+    echo '<meta property="og:site_name" content="Hale Path Packaging" />' . "\n";
+    echo '<meta property="og:locale" content="en_GB" />' . "\n";
+
+    if (has_post_thumbnail()) {
+        $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+        if ($thumb_url) {
+            echo '<meta property="og:image" content="' . esc_url($thumb_url) . '" />' . "\n";
+        }
+    }
+
+    // Twitter Card
+    echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr(get_the_title()) . '" />' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($meta_description) . '" />' . "\n";
+
+    if (has_post_thumbnail()) {
+        $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+        if ($thumb_url) {
+            echo '<meta name="twitter:image" content="' . esc_url($thumb_url) . '" />' . "\n";
+        }
+    }
+}
+
+/**
+ * Add Product schema for WooCommerce products
+ */
+add_action('wp_head', 'halepath_add_product_schema', 3);
+function halepath_add_product_schema() {
+    if (is_admin() || !is_singular('product')) return;
+
+    global $post;
+    $product = wc_get_product($post->ID);
+    if (!$product) return;
+
+    $image_url = '';
+    if (has_post_thumbnail($post->ID)) {
+        $image_url = get_the_post_thumbnail_url($post->ID, 'full');
+    }
+
+    $schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $product->get_name(),
+        'description' => wp_strip_all_tags($post->post_content),
+        'image' => $image_url,
+        'sku' => $product->get_sku(),
+        'brand' => array(
+            '@type' => 'Brand',
+            'name' => 'Hale Path Packaging'
+        ),
+        'manufacturer' => array(
+            '@type' => 'Organization',
+            'name' => 'Hale Path Packaging'
+        ),
+        'url' => get_permalink($post->ID),
+        'offers' => array(
+            '@type' => 'Offer',
+            'url' => get_permalink($post->ID),
+            'priceCurrency' => 'GBP',
+            'price' => $product->get_price() ? $product->get_price() : '0.69',
+            'priceValidUntil' => gmdate('Y-12-31', strtotime('+1 year')),
+            'availability' => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            'itemCondition' => 'https://schema.org/NewCondition',
+            'seller' => array(
+                '@type' => 'Organization',
+                'name' => 'Hale Path Packaging'
+            )
+        )
+    );
+
+    $aggregate_rating = $product->get_average_rating();
+    if ($aggregate_rating > 0) {
+        $schema['aggregateRating'] = array(
+            '@type' => 'AggregateRating',
+            'ratingValue' => $aggregate_rating,
+            'reviewCount' => $product->get_review_count()
+        );
+    }
+
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+}
+
 add_action('admin_footer', function () {
     ?>
     <script>
