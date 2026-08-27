@@ -30,17 +30,58 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 	$entity['inLanguage'] = 'en-GB';
 
 	$entity['offers'] = array(
-		array(
-			'@type'         => 'Offer',
-			'price'         => '0.69',
-			'priceCurrency' => 'GBP',
-			'availability'  => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-			'url'           => get_permalink(),
-			'seller'        => array(
-				'@type' => 'Organization',
-				'name'  => get_bloginfo( 'name' ),
+		'@type'              => 'Offer',
+		'url'                => get_permalink(),
+		'itemCondition'      => 'https://schema.org/NewCondition',
+		'availability'       => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+		'price'              => '0.69',
+		'priceCurrency'      => 'GBP',
+		'priceValidUntil'    => gmdate( 'Y-12-31', strtotime( '+1 year' ) ),
+		'inventoryLevel'     => array(
+			'@type' => 'QuantitativeValue',
+			'value' => $product->get_stock_quantity() ? (string) $product->get_stock_quantity() : '150',
+		),
+		'hasMerchantReturnPolicy' => array(
+			'@type'                  => 'MerchantReturnPolicy',
+			'applicableCountry'      => 'UK',
+			'returnPolicyCategory'   => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+			'merchantReturnDays'     => 30,
+			'returnMethod'           => 'ReturnByMail',
+			'returnFees'             => 'https://schema.org/ReturnShippingFeesCustomerResponsibility',
+			'restockingFee'          => array(
+				'@type'    => 'MonetaryAmount',
+				'value'    => 0.00,
+				'currency' => 'GBP',
 			),
-			'priceValidUntil' => gmdate( 'Y-12-31', strtotime( '+1 year' ) ),
+			'refundProcessingTime'   => array(
+				'@type'    => 'QuantitativeValue',
+				'minValue' => 3,
+				'maxValue' => 5,
+				'unitCode' => 'DAY',
+			),
+		),
+		'shippingDetails'    => array(
+			'@type'        => 'OfferShippingDetails',
+			'shippingRate' => array(
+				'@type'    => 'MonetaryAmount',
+				'value'    => 0,
+				'currency' => 'GBP',
+			),
+			'deliveryTime' => array(
+				'@type'         => 'ShippingDeliveryTime',
+				'handlingTime'  => array(
+					'@type'    => 'QuantitativeValue',
+					'minValue' => 1,
+					'maxValue' => 2,
+					'unitCode' => 'DAY',
+				),
+				'transitTime'   => array(
+					'@type'    => 'QuantitativeValue',
+					'minValue' => 3,
+					'maxValue' => 4,
+					'unitCode' => 'DAY',
+				),
+			),
 		),
 	);
 
