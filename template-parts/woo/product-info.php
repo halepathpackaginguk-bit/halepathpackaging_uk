@@ -1,5 +1,4 @@
-<?php get_template_part('template-parts/woo/product-brands'); ?>
-<?php //get_template_part('template-parts/woo/product-videos'); ?>
+<?php get_template_part('template-parts/woo/product-brand_slider'); ?>
 <section class="mt-20 max-w-[2200px] mx-auto px-3 lg:px-0">
     <h2 class="text-2xl text-center mb-8 sm:text-3xl md:text-5xl font-bold">
         <?php the_title(); ?> Gallery
@@ -131,31 +130,25 @@
 
 </section>
 <section id="product-tabs" class="mt-10">
-
-    <!-- Tabs Buttons -->
     <div id="tabs-header" class="hale_container !px-0 flex border-b border-gray-300 bg-white z-40">
-        <button class="tab-btn" data-tab="tab_details">Details</button>
         <button class="tab-btn" data-tab="tab_available_options">Available Options</button>
+        <button class="tab-btn" data-tab="tab_details">Details</button>
         <button class="tab-btn" data-tab="tab_order_process">Order Process</button>
     </div>
-
     <!-- Tabs Content -->
     <div class="tab-content mt-6">
-        <div class="tab-panels" id="tab_details">
-            <?php get_template_part('template-parts/woo/pro-tab1'); ?>
-        </div>
-
-        <div class="tab-panels hidden" id="tab_available_options">
+        <div class="tab-panels " id="tab_available_options">
             <?php get_template_part('template-parts/woo/pro-tab2'); ?>
         </div>
-
+        <div class="tab-panels hidden" id="tab_details">
+            <?php get_template_part('template-parts/woo/pro-tab1'); ?>
+        </div>
         <div class="tab-panels hidden" id="tab_order_process">
             <?php get_template_part('template-parts/woo/pro-tab3'); ?>
         </div>
     </div>
 </section>
-<section class="pt-14">
-    <div class="hale_container">
+<?php get_template_part('template-parts/woo/product-videos'); ?>
+
         <?php get_template_part('template-parts/woo/related-products'); ?>
-    </div>
-</section>
+    

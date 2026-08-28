@@ -1,4 +1,7 @@
-<?php
+<section class="pt-14">
+    <div class="hale_container">
+
+        <?php
 global $product;
 
 if (!$product) return;
@@ -47,3 +50,6 @@ if (!empty($terms)) {
     wp_reset_postdata();
 }
 ?>
+
+    </div>
+</section>

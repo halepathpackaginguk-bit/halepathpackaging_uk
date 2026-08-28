@@ -169,6 +169,14 @@ function theme_assets()
         true // load in footer
     );
 
+     wp_enqueue_script(
+        'hale-sliders',
+        get_template_directory_uri() . '/assets/js/sliders.js',
+        ['jquery', 'slick-js'],
+        wp_get_theme()->get('Version'),
+        true
+    );
+
 	 wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array(), null, true);
 
     wp_localize_script('custom-js', 'ajax_object', array(

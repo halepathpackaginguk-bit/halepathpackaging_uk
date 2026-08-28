@@ -57,6 +57,8 @@ if (empty($images))
     </div>
 </div>
 
+<?php get_template_part('template-parts/woo/product-trust'); ?>
+
 <script>
 jQuery(document).ready(function($) {
 
