@@ -1,7 +1,11 @@
+<?php
+/** Template Name: About */
+get_header();
+?>
 <?php 
 $testimonials = new WP_Query([
     'post_type' => 'testimonial',
-    'posts_per_page' => 3,
+    'posts_per_page' => -1,
     'post_status' => 'publish'
 ]); 
 ?>
@@ -32,7 +36,7 @@ $testimonials = new WP_Query([
 
         </div>
 
-        <div class="testi-slider">
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
 
             <?php if ($testimonials->have_posts()): ?>
             <?php while ($testimonials->have_posts()): 
@@ -44,47 +48,43 @@ $testimonials = new WP_Query([
                         $rating = get_field('rating') ?: 0; // fallback
                     ?>
 
-            <article class="px-1.5">
 
 
+            <article class="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
 
-
-                <div class="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-
-                    <div class="overflow-hidden">
-                        <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail('full', array(
+                <div class="overflow-hidden">
+                    <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('full', array(
                             'class' => 'w-full h-60 object-cover group-hover:scale-110 transition duration-500',
                             'alt' => get_the_title()
                         )); ?>
-                        <?php else : ?>
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/qoute-icon.png'); ?>"
-                            class="w-full h-60 object-cover group-hover:scale-110 transition duration-500"
-                            alt="<?php esc_attr_e('Default Image', 'textdomain'); ?>">
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="p-6">
-                        <ul class="flex gap-1 items-center text-sm">
-                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                            <li class="text-[#FFAE00]"><i class="fa-solid fa-star"></i></li>
-                            <?php endfor; ?>
-                        </ul>
-
-
-                        <h3 class="text-lg font-semibold text-coff_black mb-3 group-hover:text-secondary transition">
-
-                            <?php the_title()?>
-
-                        </h3>
-
-                        <p class="text-gray-600 leading-7 mb-6">
-
-                            <?php the_content()?>
-                        </p>
-                    </div>
-
+                    <?php else : ?>
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/qoute-icon.png'); ?>"
+                        class="w-full h-60 object-cover group-hover:scale-110 transition duration-500"
+                        alt="<?php esc_attr_e('Default Image', 'textdomain'); ?>">
+                    <?php endif; ?>
                 </div>
+
+                <div class="p-6">
+                    <ul class="flex gap-1 items-center text-sm">
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                        <li class="text-[#FFAE00]"><i class="fa-solid fa-star"></i></li>
+                        <?php endfor; ?>
+                    </ul>
+
+
+                    <h3 class="text-lg font-semibold text-coff_black mb-3 group-hover:text-secondary transition">
+
+                        <?php the_title()?>
+
+                    </h3>
+
+                    <p class="text-gray-600 leading-7 mb-6">
+
+                        <?php the_content()?>
+                    </p>
+                </div>
+
             </article>
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>
@@ -96,3 +96,7 @@ $testimonials = new WP_Query([
 
     </div>
 </section>
+
+
+
+<?php get_footer(); ?>
