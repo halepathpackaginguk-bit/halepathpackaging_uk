@@ -131,14 +131,12 @@
 </section>
 <section id="product-tabs" class="mt-10">
     <div id="tabs-header" class="hale_container !px-0 flex border-b border-gray-300 bg-white z-40">
-
         <button class="tab-btn" data-tab="tab_details">Details</button>
         <button class="tab-btn" data-tab="tab_available_options">Available Options</button>
         <button class="tab-btn" data-tab="tab_order_process">Order Process</button>
     </div>
     <!-- Tabs Content -->
     <div class="tab-content mt-6">
-
         <div class="tab-panels " id="tab_details">
             <?php get_template_part('template-parts/woo/pro-tab1'); ?>
         </div>
