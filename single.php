@@ -44,8 +44,8 @@ get_header();
 
 <!-- Hero Section -->
 <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
+    <div class="container mx-auto px-4 flex md:flex-row flex-col gap-6">
+        <div class="md:w-1/2 w-full">
             <!-- Category & Meta -->
             <div class="flex items-center gap-4 mb-6">
                 <?php
@@ -85,36 +85,25 @@ get_header();
                 <?php the_title(); ?>
             </h1>
 
-            <!-- Author Info -->
-            <div class="flex items-center gap-4">
-                <?php echo get_avatar(get_the_author_meta('ID'), 48, '', '', array('class' => 'rounded-full')); ?>
-                <div>
-                    <p class="font-semibold"><?php the_author(); ?></p>
-                    <p class="text-gray-400 text-sm">
-                        <?php if (get_the_author_meta('description')): ?>
-                        <?php echo wp_trim_words(get_the_author_meta('description'), 15); ?>
-                        <?php else: ?>
-                        Packaging Expert at Hale Path Packaging
-                        <?php endif; ?>
-                    </p>
-                </div>
-            </div>
+          
         </div>
-    </div>
-</section>
 
-<!-- Featured Image -->
+        <!-- Featured Image -->
 <?php if (has_post_thumbnail()): ?>
-<section class="bg-gray-900 pb-0">
-    <div class="container mx-auto px-4">
-        <div class="max-w-5xl mx-auto">
+
+  
+        <div class="md:w-1/2 w-full">
             <?php the_post_thumbnail('full', [
                 'class' => 'w-full h-auto rounded-t-2xl shadow-2xl object-cover max-h-[500px]'
             ]); ?>
-        </div>
+       
+    </div>
+
+<?php endif; ?>
     </div>
 </section>
-<?php endif; ?>
+
+
 
 <!-- Article Content -->
 <main class="py-16">
@@ -196,7 +185,7 @@ get_header();
 
             <!-- Article Body -->
             <article class="lg:col-span-2">
-                <div class="prose prose-lg prose-headings:text-gray-900 prose-a:text-primary prose-img:rounded-2xl max-w-none">
+                <div class="prose prose-lg prose-headings:text-gray-900 prose-a:text-primary prose-img:rounded-2xl max-w-none desc_content ">
                     <?php
                     $content = get_the_content();
                     echo apply_filters('the_content', $content);
