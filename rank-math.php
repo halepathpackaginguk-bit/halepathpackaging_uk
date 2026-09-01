@@ -27,8 +27,6 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 		return $entity;
 	}
 
-	$entity['inLanguage'] = 'en-GB';
-
 	$entity['offers'] = array(
 		'@type'              => 'Offer',
 		'url'                => get_permalink(),
