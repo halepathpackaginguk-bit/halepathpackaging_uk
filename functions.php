@@ -273,7 +273,7 @@ function halepath_add_schema_markup() {
     // LocalBusiness Schema (extends Organization)
     $local_schema = array(
         '@context' => 'https://schema.org',
-        '@type' => 'Manufacturer',
+        '@type' => 'LocalBusiness',
         '@id' => $site_url . '#localbusiness',
         'name' => $site_name,
         'image' => $logo_url,
@@ -413,36 +413,58 @@ function halepath_add_faq_schema() {
     if (is_admin() || !is_singular()) return;
 
     global $post;
-    $content = $post->post_content;
+    $faq_items = array();
 
-    if (preg_match_all('/<h[2-6][^>]*>(.*?)<\/h[2-6]>/is', $content, $headings)) {
-        $faq_items = array();
-        foreach ($headings[1] as $index => $heading) {
-            $question = wp_strip_all_tags($heading);
-            if (strpos(strtolower($question), '?') !== false || strpos(strtolower($question), 'how') === 0 || strpos(strtolower($question), 'what') === 0 || strpos(strtolower($question), 'why') === 0) {
-                // Find the next paragraph after this heading
-                $pattern = '/<h[2-6][^>]*>' . preg_quote($heading, '/') . '<\/h[2-6]>\s*(?:<[^>]*>)*\s*<p>(.*?)<\/p>/is';
-                if (preg_match($pattern, $content, $match)) {
-                    $faq_items[] = array(
-                        '@type' => 'Question',
-                        'name' => $question,
-                        'acceptedAnswer' => array(
-                            '@type' => 'Answer',
-                            'text' => wp_strip_all_tags($match[1])
-                        )
-                    );
+    // 1. Product FAQs from the ACF repeater 'faqs_sections' (title / description)
+    if (is_singular('product') && function_exists('get_field') && have_rows('faqs_sections', $post->ID)) {
+        while (have_rows('faqs_sections', $post->ID)) {
+            the_row();
+            $question = get_sub_field('title');
+            $answer   = get_sub_field('description');
+            if (!empty($question)) {
+                $faq_items[] = array(
+                    '@type'          => 'Question',
+                    'name'           => wp_strip_all_tags($question),
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text'  => wp_strip_all_tags($answer)
+                    )
+                );
+            }
+        }
+    }
+
+    // 2. FAQs parsed from page content headings
+    if (empty($faq_items)) {
+        $content = $post->post_content;
+        if (preg_match_all('/<h[2-6][^>]*>(.*?)<\/h[2-6]>/is', $content, $headings)) {
+            foreach ($headings[1] as $index => $heading) {
+                $question = wp_strip_all_tags($heading);
+                if (strpos(strtolower($question), '?') !== false || strpos(strtolower($question), 'how') === 0 || strpos(strtolower($question), 'what') === 0 || strpos(strtolower($question), 'why') === 0) {
+                    // Find the next paragraph after this heading
+                    $pattern = '/<h[2-6][^>]*>' . preg_quote($heading, '/') . '<\/h[2-6]>\s*(?:<[^>]*>)*\s*<p>(.*?)<\/p>/is';
+                    if (preg_match($pattern, $content, $match)) {
+                        $faq_items[] = array(
+                            '@type' => 'Question',
+                            'name' => $question,
+                            'acceptedAnswer' => array(
+                                '@type' => 'Answer',
+                                'text' => wp_strip_all_tags($match[1])
+                            )
+                        );
+                    }
                 }
             }
         }
+    }
 
-        if (!empty($faq_items)) {
-            $faq_schema = array(
-                '@context' => 'https://schema.org',
-                '@type' => 'FAQPage',
-                'mainEntity' => array_slice($faq_items, 0, 10)
-            );
-            echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
-        }
+    if (!empty($faq_items)) {
+        $faq_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => array_slice($faq_items, 0, 10)
+        );
+        echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
     }
 }
 
