@@ -4099,7 +4099,7 @@ footer ul li a span.marker {
     line-height: 1;
   }
 }
-.page_content ul, .desc_content ul {
+.page_content ul, .page_content ol, .desc_content ul ,.desc_content ol {
   margin-bottom: calc(var(--spacing) * 4);
   list-style-position: inside;
   list-style-type: disc;
@@ -4109,7 +4109,7 @@ footer ul li a span.marker {
     margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
   }
 }
-.page_content ul li, .desc_content ul li {
+.page_content ul li,.page_content ol li, .desc_content ul li ,.desc_content ol li {
   font-size: var(--text-base);
   line-height: var(--tw-leading, var(--text-base--line-height));
   --tw-font-weight: var(--font-weight-normal);
