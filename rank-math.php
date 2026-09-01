@@ -45,17 +45,11 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 			'returnPolicyCategory'   => 'https://schema.org/MerchantReturnFiniteReturnWindow',
 			'merchantReturnDays'     => 30,
 			'returnMethod'           => 'ReturnByMail',
-			'returnFees'             => 'https://schema.org/ReturnShippingFeesCustomerResponsibility',
+			'returnFees'             => 'https://schema.org/ReturnFeesCustomerResponsibility',
 			'restockingFee'          => array(
 				'@type'    => 'MonetaryAmount',
 				'value'    => 0.00,
 				'currency' => 'GBP',
-			),
-			'refundProcessingTime'   => array(
-				'@type'    => 'QuantitativeValue',
-				'minValue' => 3,
-				'maxValue' => 5,
-				'unitCode' => 'DAY',
 			),
 		),
 		'shippingDetails'    => array(
