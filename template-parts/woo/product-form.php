@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // ✅ get actual quantity (100, 200)
         const qty = parseInt(quantitySelect.value) || 1;
 
-        const total = basePrice * qty;
+        const total = (basePrice * qty).toFixed(2);
 
         const isFlexible =
             <?php echo has_term('flexible-packaging', 'product_cat', get_the_ID()) ? 'true' : 'false'; ?>;
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // ✅ If no input yet → show base price only
             if (l === 0 && w === 0 && d === 0) {
                 quotePriceDisplay.innerHTML =
-                    `<strong>Estimated Price:</strong> £${basePrice}`;
+                    `<strong>Estimated Price:</strong> £${parseFloat(basePrice).toFixed(2)}`;
                 return basePrice;
             }
 
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (priceDisplay && quantitySelect) {
                 const basePrice = parseFloat(priceDisplay.dataset.price) || 0;
                 const qty = parseInt(quantitySelect.value) || 1;
-                totalPrice = basePrice * qty;
+                totalPrice = (basePrice * qty).toFixed(2);
 
                 // ADD TO FORMDATA
                 formData.set('total_price', totalPrice);
