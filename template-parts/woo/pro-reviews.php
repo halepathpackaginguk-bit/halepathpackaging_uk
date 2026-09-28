@@ -1,7 +1,7 @@
 <?php 
 $testimonials = new WP_Query([
     'post_type' => 'testimonial',
-    'posts_per_page' => 3,
+    'posts_per_page' => -1,
     'post_status' => 'publish'
 ]); 
 ?>
