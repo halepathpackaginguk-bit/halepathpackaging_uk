@@ -4230,19 +4230,17 @@ footer ul li a span.marker {
   line-height: 20.89px;
 }
 .video-card {
-  position: relative;
-  flex: 0 0 353px;
-  height: 628px;
-  border-radius: 38px;
+  width: 100%;
   overflow: hidden;
-  background: #eee;
+  border-radius: var(--radius-xl);
+  @media (width >= 48rem) {
+    width: calc(1/4 * 100%);
+  }
 }
 .video-card video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
-  border-radius: 38px;
+  height: auto;
+  width: 100%;
 }
 #tabs-header.sticky-tabs {
   position: sticky;
