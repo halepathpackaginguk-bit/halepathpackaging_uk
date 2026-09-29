@@ -1,26 +1,18 @@
 <?php
 /** Template Name: Products By Category */
 get_header();
-
 $category_id = get_field('productbycategory');
-
-
-
-
 ?>
-
-
 <section class="">
     <section
         class="py-16 sm:h-[350px] h-[260px] flex items-center justify-center bg-cover bg-no-repeat bg-center bg-black/50 bg-blend-overlay"
-        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/s2.webp'">
+        style="background-image: url('<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : get_template_directory_uri() . '/assets/images/about-page/s2.webp'; ?>')">
         <div class="hale_container">
             <h1 class="text-white font-bold text-3xl md:text-5xl lg:text-[51px]">
                 <?php the_title(); ?>
             </h1>
         </div>
     </section>
-
 
     <div class="hale_container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
