@@ -28,7 +28,7 @@ if (!empty($cat_faqs)) :
     if (!empty($faq_schema['mainEntity'])) :
 ?>
 <script type="application/ld+json">
-<?php echo json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?>
+<?php echo json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>
 </script>
 
 <section class="bg-[#F5F5F5] py-20 mt-28" id="faqs-section">

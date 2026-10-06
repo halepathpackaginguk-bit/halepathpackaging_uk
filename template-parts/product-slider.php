@@ -20,7 +20,7 @@ $products = $args['products'] ?? [];
             <div class="p-3">
                 <a href="<?php the_permalink(); ?>">
                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title_attribute(); ?>"
-                        class="maskimage img-full">
+                        class="maskimage img-full" loading="lazy" decoding="async">
                 </a>
                 <a href="<?php the_permalink(); ?>" class="box_link">
                     <?php the_title(); ?>

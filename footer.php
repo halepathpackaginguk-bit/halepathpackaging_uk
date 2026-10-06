@@ -292,16 +292,29 @@
     });
 </script>
 
-<!--Start of Tawk.to Script-->
+<!--Start of Tawk.to Script (deferred until first interaction to keep it out of the critical path)-->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6158671cd326717cb68465b2/1fh0l5idi';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+(function () {
+    var loaded = false;
+    function loadTawk() {
+        if (loaded) return;
+        loaded = true;
+        window.Tawk_API = window.Tawk_API || {};
+        window.Tawk_LoadStart = new Date();
+        var s1 = document.createElement('script');
+        var s0 = document.getElementsByTagName('script')[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/6158671cd326717cb68465b2/1fh0l5idi';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    }
+    ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function (evt) {
+        window.addEventListener(evt, loadTawk, { once: true, passive: true });
+    });
+    window.addEventListener('load', function () {
+        setTimeout(loadTawk, 3500);
+    });
 })();
 </script>
 <!--End of Tawk.to Script-->

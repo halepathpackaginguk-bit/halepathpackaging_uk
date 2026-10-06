@@ -40,6 +40,17 @@ $theme_uri = get_template_directory_uri();
 
     <link rel="shortcut icon" href="<?php echo esc_url($theme_uri . '/favicon.ico'); ?>">
     <link rel="pingback" href="<?php echo esc_url(get_bloginfo('pingback_url')); ?>">
+
+    <!-- Resource hints for third-party origins -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://embed.tawk.to">
+
     <link rel="stylesheet" href="<?php echo esc_url(get_stylesheet_uri()); ?>">
     <link rel="stylesheet" href="<?php echo esc_url($theme_uri . '/custom.css'); ?>">
 

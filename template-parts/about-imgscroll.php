@@ -23,17 +23,20 @@ $images = [
                 <?php foreach ($images as $index => $img): ?>
                     <figure class="image-slide  <?php echo $index === 0 ? 'block' : 'hidden'; ?>"
                         data-index="<?php echo $index; ?>">
-                        <img src="<?php echo esc_url($img); ?>" alt="Image <?php echo $index + 1; ?>" class="rounded_img" />
+                        <img src="<?php echo esc_url($img); ?>" alt="Image <?php echo $index + 1; ?>" class="rounded_img"
+                            <?php echo $index === 0 ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"'; ?> />
                     </figure>
                 <?php endforeach; ?>
 
                 <!-- BACKGROUND SHADOW IMAGES -->
                 <figure>
-                    <img src="<?php echo esc_url($images[0]); ?>" class="w-[80%] -top-10 fixed_img" alt="" />
+                    <img src="<?php echo esc_url($images[0]); ?>" class="w-[80%] -top-10 fixed_img" alt=""
+                        loading="lazy" decoding="async" />
                 </figure>
 
                 <figure>
-                    <img src="<?php echo esc_url($images[1]); ?>" class="w-[90%] -top-5 fixed_img" alt="" />
+                    <img src="<?php echo esc_url($images[1]); ?>" class="w-[90%] -top-5 fixed_img" alt=""
+                        loading="lazy" decoding="async" />
                 </figure>
             </div>
 

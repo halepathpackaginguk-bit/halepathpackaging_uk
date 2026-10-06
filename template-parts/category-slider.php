@@ -28,7 +28,7 @@ if (!empty($categories)):
             <div class="w-full p-2">
                 <a href="<?php echo esc_url($category_link); ?>">
                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($category->name); ?>" width="363"
-                        height="375" class="cat_image img-full" loading="lazy" />
+                        height="375" class="cat_image img-full" loading="lazy" decoding="async" />
                 </a>
                 <a href="<?php echo esc_url($category_link); ?>" class="box_link">
                     <?php echo esc_html($category->name); ?>

@@ -243,6 +243,9 @@
   .relative {
     position: relative;
   }
+  .static {
+    position: static;
+  }
   .sticky {
     position: sticky;
   }
@@ -2024,6 +2027,9 @@
   .outline-none {
     --tw-outline-style: none;
     outline-style: none;
+  }
+  .\[xml\:lang\] {
+    xml: lang;
   }
   .group-hover\:scale-105 {
     &:is(:where(.group):hover *) {

@@ -146,28 +146,11 @@ function theme_assets()
         ['slick-css'],
         '1.8.1'
     );
-	// Swiper CSS
-	wp_enqueue_style(
-		'swiper-css',
-		'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css',
-		array(),
-		'10.0.0'
-	);
-
 	// jQuery (WordPress includes it)
 	wp_enqueue_script('jquery');
 
 	// Slick JS
 	wp_enqueue_script('slick-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', ['jquery'], '1.8.1', true);
-
-	 // Swiper JS
-    wp_enqueue_script(
-        'swiper-js',
-        'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js',
-        array(), // dependencies
-        '10.0.0',
-        true // load in footer
-    );
 
      wp_enqueue_script(
         'hale-sliders',
@@ -193,7 +176,23 @@ function theme_assets()
 }
 add_action('wp_enqueue_scripts', 'theme_assets');
 
-
+/**
+ * Load Font Awesome asynchronously so it no longer blocks first paint.
+ * Falls back to a normal stylesheet when JS is disabled.
+ */
+function halepath_async_font_awesome($tag, $handle, $href, $media)
+{
+	if ('font-awesome' !== $handle) {
+		return $tag;
+	}
+	$async = sprintf(
+		'<link rel="preload" as="style" href="%1$s" onload="this.onload=null;this.rel=\'stylesheet\';" media="all" />' . "\n" .
+		'<noscript><link rel="stylesheet" href="%1$s" media="all" /></noscript>' . "\n",
+		esc_url($href)
+	);
+	return $async;
+}
+add_filter('style_loader_tag', 'halepath_async_font_awesome', 10, 4);
 
 function mytheme_add_woocommerce_support()
 {
@@ -402,12 +401,12 @@ function halepath_add_schema_markup() {
             '@type' => 'BreadcrumbList',
             'itemListElement' => $breadcrumb_items
         );
-        echo '<script type="application/ld+json">' . wp_json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+        echo '<script type="application/ld+json">' . wp_json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
     }
 
-    echo '<script type="application/ld+json">' . wp_json_encode($org_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
-    echo '<script type="application/ld+json">' . wp_json_encode($local_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
-    echo '<script type="application/ld+json">' . wp_json_encode($website_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($org_schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($local_schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($website_schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
 }
 
 /**
@@ -469,7 +468,7 @@ function halepath_add_faq_schema() {
             '@type' => 'FAQPage',
             'mainEntity' => array_slice($faq_items, 0, 10)
         );
-        echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+        echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
     }
 }
 
@@ -604,7 +603,7 @@ function halepath_add_product_schema() {
         );
     }
 
-    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
 }
 
 add_action('admin_footer', function () {
