@@ -4,49 +4,42 @@
         <ul class="flex items-center divide-x-2 divide-white">
             <li>
                 <a href="tel:+4401213186768" class="top_links">
-                    <i class="fas fa-phone-alt"></i>
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
                     01213186768
                 </a>
             </li>
             <li>
                 <a href="mailto:sales@halepathpackaging.co.uk" class="top_links">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
                     sales@halepathpackaging.co.uk
                 </a>
             </li>
         </ul>
         <ul class="flex items-center divide-x-2 divide-white">
             <li>
-                <a href="https://halepathpackaging.co.uk/products/" class="top_links">
-
-                    All Products
-                </a>
+                <a href="<?php echo esc_url(home_url('/products/')); ?>" class="top_links">All Products</a>
             </li>
             <li>
-                <a href="https://halepathpackaging.co.uk/blog/" class="top_links">
-
-                    Blog
-                </a>
+                <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="top_links">Blog</a>
             </li>
             <li>
-                <a href="https://halepathpackaging.co.uk/about-us/" class="top_links">
-
-                    About Us
-                </a>
+                <a href="<?php echo esc_url(home_url('/about-us/')); ?>" class="top_links">About Us</a>
             </li>
-         
         </ul>
     </div>
 </div>
+
 <div class="bg-white py-1.5 hidden lg:block">
     <div class="hale_container flex items-center justify-between">
         <!-- Logo -->
         <div class="lg:block hidden sm:w-[25%] w-1/2">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="inline-flex">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>"
                     alt="Hale Path Packaging Logo" height="90" width="90" class="h-full w-full" />
             </a>
         </div>
+
+        <!-- Live search -->
         <div class="lg:block hidden w-1/2">
             <div class="relative w-full">
                 <input type="text" id="live-search" placeholder="Search products..." autocomplete="off"
@@ -56,13 +49,14 @@
                 </div>
             </div>
         </div>
+
         <!-- Buttons -->
         <div class="xl:w-1/4 sm:w-1/3 hidden lg:flex gap-5 justify-end">
-            <a href="https://wa.me/447893945259" target="_blank"
+            <a href="https://wa.me/447893945259" target="_blank" rel="noopener noreferrer"
                 class="border-2 border-secondary px-5 py-2 text-[13px] uppercase font-medium text-secondary rounded-full hover:bg-secondary hover:text-white">
-                <i class="fab fa-whatsapp mr-1.5"></i> WhatsApp
+                <i class="fab fa-whatsapp mr-1.5" aria-hidden="true"></i> WhatsApp
             </a>
-            <a href="<?php echo home_url('/get-quote-now'); ?>"
+            <a href="<?php echo esc_url(home_url('/get-quote-now')); ?>"
                 class="border-2 border-secondary bg-secondary px-5 py-2 text-[13px] uppercase font-medium text-white rounded-full hover:bg-transparent hover:text-secondary">
                 Get Quote Now
             </a>

@@ -177,11 +177,16 @@ function theme_assets()
         true
     );
 
-	 wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array(), null, true);
+    wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array(), null, true);
 
     wp_localize_script('custom-js', 'ajax_object', array(
         'ajax_url' => admin_url('admin-ajax.php')
     ));
+
+    // Reply-to-comment script on singular content.
+    if (is_singular()) {
+        wp_enqueue_script('comment-reply');
+    }
 
 	// Slick Init JS
 //    wp_enqueue_script('slick-init', get_template_directory_uri() . '/assets/js/slick-init.js', ['jquery', 'slick-js'], filemtime(get_template_directory() . '/assets/js/slick-init.js'), true);
