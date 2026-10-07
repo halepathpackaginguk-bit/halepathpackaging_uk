@@ -38,7 +38,7 @@ $theme_uri = get_template_directory_uri();
     <meta name="google-site-verification" content="vxJVqkHpw-YU0K97Hbs-wFEVtQhadmF2d19hVFWCuSU">
     <meta name="trustpilot-one-time-domain-verification-id" content="ae39cbe4-c17f-458d-ad5d-f78d10d14bdd">
 
-    <link rel="shortcut icon" href="<?php echo esc_url($theme_uri . '/favicon.ico'); ?>">
+    <!-- <link rel="shortcut icon" href="<?php //wp_head(); ?>"> -->
     <link rel="pingback" href="<?php echo esc_url(get_bloginfo('pingback_url')); ?>">
 
     <!-- Resource hints for third-party origins -->
@@ -54,7 +54,7 @@ $theme_uri = get_template_directory_uri();
     <link rel="stylesheet" href="<?php echo esc_url(get_stylesheet_uri()); ?>">
     <link rel="stylesheet" href="<?php echo esc_url($theme_uri . '/custom.css'); ?>">
 
-    <?php wp_head(); ?>
+   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
     <!-- Google Tag Manager (noscript) -->
