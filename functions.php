@@ -297,37 +297,6 @@ function halepath_add_schema_markup() {
         'areaServed' => array(
             '@type' => 'Country',
             'name' => 'United Kingdom'
-        ),
-        'hasOfferCatalog' => array(
-            '@type' => 'OfferCatalog',
-            'name' => 'Custom Packaging Solutions',
-            'itemListElement' => array(
-                array(
-                    '@type' => 'OfferCatalog',
-                    'name' => 'Corrugated Packaging',
-                    'itemListElement' => array(
-                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Custom Corrugated Boxes')),
-                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Mailer Boxes')),
-                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Shipping Cartons'))
-                    )
-                ),
-                array(
-                    '@type' => 'OfferCatalog',
-                    'name' => 'Rigid & Premium Boxes',
-                    'itemListElement' => array(
-                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Rigid Gift Boxes')),
-                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Luxury Presentation Boxes'))
-                    )
-                ),
-                array(
-                    '@type' => 'OfferCatalog',
-                    'name' => 'Flexible Packaging',
-                    'itemListElement' => array(
-                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Stand-Up Pouches')),
-                        array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Product', 'name' => 'Mylar Bags'))
-                    )
-                )
-            )
         )
     );
 
