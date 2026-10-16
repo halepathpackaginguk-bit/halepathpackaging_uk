@@ -209,6 +209,64 @@ function halepath_needs_slider_assets()
 add_action('wp_enqueue_scripts', 'theme_assets');
 
 /**
+ * Drop WordPress' emoji detection: it adds an inline style block, an inline
+ * script and an extra DNS-prefetch to every page for a feature the site does
+ * not use.
+ */
+function halepath_disable_emojis()
+{
+	remove_action('wp_head', 'print_emoji_detection_script', 7);
+	remove_action('wp_print_styles', 'print_emoji_styles');
+	remove_action('admin_print_scripts', 'print_emoji_detection_script');
+	remove_action('admin_print_styles', 'print_emoji_styles');
+	remove_filter('the_content_feed', 'wp_staticize_emoji');
+	remove_filter('comment_text_rss', 'wp_staticize_emoji');
+	remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+}
+add_action('init', 'halepath_disable_emojis');
+add_filter('emoji_svg_url', '__return_false');
+
+/**
+ * Remove front-end render-blocking CSS this classic theme never uses.
+ *
+ * - wp-block-library / classic-theme-styles / global-styles are the block
+ *   editor + global (theme.json) stylesheets. The site uses the Classic Editor
+ *   and classic PHP templates, so on the front end they only add ~14 KB of
+ *   render-blocking CSS (mostly inline) to every request.
+ * - The Instagram Feed plugin enqueues its styles on every page, but the feed
+ *   is only rendered on the home, contact and single-product templates.
+ *
+ * Disable either part with a filter:
+ *   add_filter('halepath_dequeue_core_block_css', '__return_false');
+ *   add_filter('halepath_dequeue_instagram_css', '__return_false');
+ */
+function halepath_dequeue_unused_assets()
+{
+	if (apply_filters('halepath_dequeue_core_block_css', true)) {
+		foreach (array('wp-block-library', 'wp-block-library-theme', 'classic-theme-styles', 'global-styles') as $handle) {
+			wp_dequeue_style($handle);
+		}
+	}
+
+	if (apply_filters('halepath_dequeue_instagram_css', true)) {
+		$renders_feed = is_front_page()
+			|| is_page_template('home.php')
+			|| is_page_template('temp-contact.php')
+			|| is_singular('product');
+
+		if (!$renders_feed) {
+			foreach (array('sbi_styles', 'sbi-tokens-local', 'sb-font-awesome') as $handle) {
+				wp_dequeue_style($handle);
+			}
+		}
+	}
+}
+add_action('wp_enqueue_scripts', 'halepath_dequeue_unused_assets', 100);
+
+// Global styles are also printed from wp_footer on some WordPress versions.
+remove_action('wp_footer', 'wp_enqueue_global_styles', 1);
+
+/**
  * Load Font Awesome asynchronously so it no longer blocks first paint.
  * Falls back to a normal stylesheet when JS is disabled.
  */

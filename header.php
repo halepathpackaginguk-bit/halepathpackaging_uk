@@ -51,9 +51,12 @@ $theme_uri = get_template_directory_uri();
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link rel="dns-prefetch" href="https://embed.tawk.to">
 
-    <!-- Preload the primary body/heading fonts (fetched from the blocking stylesheet) -->
-    <link rel="preload" as="font" type="font/ttf" href="<?php echo esc_url($theme_uri); ?>/assets/fonts/Poppins-Regular.ttf" crossorigin>
-    <link rel="preload" as="font" type="font/ttf" href="<?php echo esc_url($theme_uri); ?>/assets/fonts/Poppins-Medium.ttf" crossorigin>
+    <?php
+    // NOTE: the web fonts are NOT preloaded on purpose. The TTFs are very large
+    // (~155 KB each) and, because @font-face uses font-display:swap, text paints
+    // with the fallback font first anyway. Preloading them only steals bandwidth
+    // from the render-blocking stylesheet and delays first paint.
+    ?>
 
     <?php if (is_front_page() || is_page_template('home.php')) : ?>
     <link rel="preconnect" href="https://i.ytimg.com">
@@ -139,52 +142,10 @@ $theme_uri = get_template_directory_uri();
                 </nav>
             </div>
 
-            <!-- Mobile Menu -->
+            <!-- Mobile Menu: built at runtime from the desktop navigation so the
+                 (duplicate) 220 KB of markup is not shipped on every request. -->
             <div id="mobileMenu" class="hidden lg:!hidden bg-white px-4 pt-5">
-                <ul class="space-y-3 h-full overflow-y-scroll">
-                    <?php foreach ($megaMenus as $key => $menu) : ?>
-                    <li class="flex flex-col">
-                        <span class="flex">
-                            <a href="<?php echo esc_url($menu['link']); ?>"
-                                class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary flex items-center justify-between">
-                                <?php echo esc_html($menu['title']); ?>
-                            </a>
-                            <?php if (!empty($menu['groups'])) : ?>
-                            <i class="fa fa-chevron-down ml-2" aria-hidden="true"></i>
-                            <?php endif; ?>
-                        </span>
-
-                        <?php if (!empty($menu['groups'])) : ?>
-                        <div class="mobileMegaContent hidden px-2 pt-2 space-y-2">
-                            <?php foreach ($menu['groups'] as $groupName => $groupData) : ?>
-                            <div>
-                                <ul class="space-y-2 list-none">
-                                    <li>
-                                        <a href="<?php echo esc_url($groupData['link']); ?>"
-                                            class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
-                                            <?php echo esc_html($groupName); ?>
-                                        </a>
-                                        <?php if (!empty($groupData['items'])) : ?>
-                                        <ul class="pt-2 px-2 space-y-2 list-none">
-                                            <?php foreach ($groupData['items'] as $item) : ?>
-                                            <li>
-                                                <a href="<?php echo esc_url($item['link']); ?>"
-                                                    class="text-[15px] font-medium uppercase text-title_Clr hover:text-primary">
-                                                    <?php echo esc_html($item['title']); ?>
-                                                </a>
-                                            </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                        <?php endif; ?>
-                                    </li>
-                                </ul>
-                            </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <?php endif; ?>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
+                <ul class="space-y-3 h-full overflow-y-scroll"></ul>
             </div>
 
             <!-- Desktop Mega Menus -->
@@ -234,7 +195,109 @@ $theme_uri = get_template_directory_uri();
         </header>
 
         <script>
+        // Build the mobile menu from the desktop navigation. The desktop markup is
+        // already in the HTML (good for SEO / no-JS), so rebuilding it here avoids
+        // shipping the same ~220 KB of links a second time.
+        function buildMobileMenu() {
+            const list = document.querySelector('#mobileMenu > ul');
+            const navItems = document.querySelectorAll('#desktopNav > li');
+            if (!list || !navItems.length) return;
+
+            const linkClass = 'text-[15px] font-medium uppercase text-title_Clr hover:text-primary';
+            const chevronClass = 'fa fa-chevron-down ml-2';
+
+            navItems.forEach(function (navItem) {
+                const navLink = navItem.querySelector(':scope > a');
+                if (!navLink) return;
+
+                const item = document.createElement('li');
+                item.className = 'flex flex-col';
+
+                const head = document.createElement('span');
+                head.className = 'flex';
+
+                const link = document.createElement('a');
+                link.href = navLink.getAttribute('href') || '#';
+                link.className = linkClass + ' flex items-center justify-between';
+                link.textContent = navLink.textContent.trim();
+                head.appendChild(link);
+
+                const mega = navItem.dataset.megaTarget ? document.getElementById(navItem.dataset.megaTarget) : null;
+                const sub = navItem.dataset.subTarget ? document.getElementById(navItem.dataset.subTarget) : null;
+
+                if (mega || sub) {
+                    const icon = document.createElement('i');
+                    icon.className = chevronClass;
+                    icon.setAttribute('aria-hidden', 'true');
+                    head.appendChild(icon);
+                }
+
+                let content = null;
+
+                if (mega) {
+                    content = document.createElement('div');
+                    content.className = 'mobileMegaContent hidden px-2 pt-2 space-y-2';
+
+                    mega.querySelectorAll('.mainCat').forEach(function (parent) {
+                        const groupLink = parent.querySelector('a');
+                        const group = mega.querySelector('.childGroups[data-group="' + parent.dataset.index + '"]');
+                        const wrapper = document.createElement('div');
+                        const groupList = document.createElement('ul');
+                        groupList.className = 'space-y-2 list-none';
+                        const groupItem = document.createElement('li');
+
+                        const groupAnchor = document.createElement('a');
+                        groupAnchor.href = groupLink ? (groupLink.getAttribute('href') || '#') : '#';
+                        groupAnchor.className = linkClass;
+                        groupAnchor.textContent = groupLink ? groupLink.textContent.trim() : '';
+                        groupItem.appendChild(groupAnchor);
+
+                        const childAnchors = group ? group.querySelectorAll('li > a') : [];
+                        if (childAnchors.length) {
+                            const childList = document.createElement('ul');
+                            childList.className = 'pt-2 px-2 space-y-2 list-none';
+                            childAnchors.forEach(function (childAnchor) {
+                                const childItem = document.createElement('li');
+                                const a = document.createElement('a');
+                                a.href = childAnchor.getAttribute('href') || '#';
+                                a.className = linkClass;
+                                a.textContent = childAnchor.textContent.trim();
+                                childItem.appendChild(a);
+                                childList.appendChild(childItem);
+                            });
+                            groupItem.appendChild(childList);
+                        }
+
+                        groupList.appendChild(groupItem);
+                        wrapper.appendChild(groupList);
+                        content.appendChild(wrapper);
+                    });
+                } else if (sub) {
+                    content = document.createElement('div');
+                    content.className = 'mobileMegaContent hidden px-2 pt-2 space-y-2';
+                    const ul = document.createElement('ul');
+                    ul.className = 'space-y-2 list-none';
+                    sub.querySelectorAll('ul > li > a').forEach(function (childAnchor) {
+                        const childItem = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = childAnchor.getAttribute('href') || '#';
+                        a.className = linkClass;
+                        a.textContent = childAnchor.textContent.trim();
+                        childItem.appendChild(a);
+                        ul.appendChild(childItem);
+                    });
+                    content.appendChild(ul);
+                }
+
+                item.appendChild(head);
+                if (content) item.appendChild(content);
+                list.appendChild(item);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
+            buildMobileMenu();
+
             // ----------------------------
             // Desktop navigation
             // ----------------------------
