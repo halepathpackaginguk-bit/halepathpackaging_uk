@@ -111,19 +111,19 @@
             <h6 class="text-base font-semibold text-title_Clr mb-6">Where We’re Trusted</h6>
             <div class="flex flex-wrap sm:flex-nowrap sm:gap-5 gap-2 items-center">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/google-reviws.png"
-                    alt="google-reviws" class="md:w-full w-1/3">
+                    alt="google-reviws" class="md:w-full w-1/3" loading="lazy" decoding="async">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trustpilot.png" alt="trustpilot"
-                    class="md:w-full w-1/3">
+                    class="md:w-full w-1/3" loading="lazy" decoding="async">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bbb.png" alt="bbb"
-                    class="md:w-full w-1/3">
+                    class="md:w-full w-1/3" loading="lazy" decoding="async">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/reviews-io.png" alt="reviews-io"
-                    class="md:w-full w-1/3">
+                    class="md:w-full w-1/3" loading="lazy" decoding="async">
             </div>
         </div>
         <div>
             <h6 class="text-base font-semibold text-title_Clr mb-6">Our Logistics Partners</h6>
             <div class="flex justify-end items-end">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fedex.png" alt="fedex">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fedex.png" alt="fedex" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -133,7 +133,7 @@
         class="hale_container flex md:flex-row flex-col md:items-center justify-between 2xl:gap-7 md:gap-4 gap-7 mt-7 py-2.5">
         <div class="flex gap-3 items-center">
             <a href="<?php echo home_url(); ?>"><img
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo"></a>
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo" loading="lazy" decoding="async"></a>
             <ul class="flex items-center gap-3">
                 <li><a href="https://www.facebook.com/profile.php?id=61586916928562" target="_blank"
                         class="text-2xl inline-flex">

@@ -33,6 +33,7 @@ $testimonials = new WP_Query([
                         $incentivized = get_field('incentivized');
                         $address = get_field('address');
                         $rating = get_field('rating');
+                        $rating = is_numeric($rating) ? (float) $rating : 0.0;
                         ?>
 
                         <div class="px-2 w-full h-full">

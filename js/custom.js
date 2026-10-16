@@ -27,7 +27,92 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
   initFileUpload();
 
+  // =========================
+  // MEDIA (deferred loading)
+  // =========================
+  initYoutubeFacades();
+  initLazyVideos();
+
 });
+
+
+// =========================
+// YOUTUBE HERO FACADE
+// Loads the YouTube player only after the user clicks the poster.
+// =========================
+function initYoutubeFacades() {
+  document.querySelectorAll(".yt-facade").forEach(function (facade) {
+    var load = function () {
+      var id = facade.getAttribute("data-video-id");
+      if (!id) return;
+      var iframe = document.createElement("iframe");
+      iframe.className =
+        "absolute top-1/2 left-1/2 sm:w-[120vw] sm:h-[120vh] w-[220vw] h-[220vh] -translate-x-1/2 -translate-y-1/2";
+      iframe.src =
+        "https://www.youtube.com/embed/" +
+        id +
+        "?autoplay=1&mute=1&controls=0&loop=1&playlist=" +
+        id;
+      iframe.allow = "autoplay; fullscreen";
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute("title", "Background video");
+      facade.replaceWith(iframe);
+    };
+
+    facade.addEventListener("click", load);
+    facade.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        load();
+      }
+    });
+  });
+}
+
+
+// =========================
+// LAZY VIDEOS
+// <source data-src="..."> is only fetched when the video scrolls into view.
+// =========================
+function initLazyVideos() {
+  var videos = Array.prototype.slice
+    .call(document.querySelectorAll("video"))
+    .filter(function (video) {
+      return video.querySelector("source[data-src]");
+    });
+  if (!videos.length) return;
+
+  var activate = function (video) {
+    var source = video.querySelector("source[data-src]");
+    if (!source || source.dataset.activated) return;
+    source.dataset.activated = "1";
+    source.src = source.dataset.src;
+    video.load();
+    var play = video.play();
+    if (play && typeof play.catch === "function") play.catch(function () {});
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    videos.forEach(activate);
+    return;
+  }
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          activate(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "200px 0px" }
+  );
+
+  videos.forEach(function (video) {
+    observer.observe(video);
+  });
+}
 
 
 // =========================

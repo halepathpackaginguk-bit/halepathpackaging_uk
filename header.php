@@ -51,8 +51,13 @@ $theme_uri = get_template_directory_uri();
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link rel="dns-prefetch" href="https://embed.tawk.to">
 
-    <link rel="stylesheet" href="<?php echo esc_url(get_stylesheet_uri()); ?>">
-    <link rel="stylesheet" href="<?php echo esc_url($theme_uri . '/custom.css'); ?>">
+    <!-- Preload the primary body/heading fonts (fetched from the blocking stylesheet) -->
+    <link rel="preload" as="font" type="font/ttf" href="<?php echo esc_url($theme_uri); ?>/assets/fonts/Poppins-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" type="font/ttf" href="<?php echo esc_url($theme_uri); ?>/assets/fonts/Poppins-Medium.ttf" crossorigin>
+
+    <?php if (is_front_page() || is_page_template('home.php')) : ?>
+    <link rel="preconnect" href="https://i.ytimg.com">
+    <?php endif; ?>
 
    <?php wp_head(); ?>
 </head>

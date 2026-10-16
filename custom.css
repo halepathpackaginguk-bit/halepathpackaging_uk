@@ -9,6 +9,65 @@
   mask-size: contain;
 }
 
+/* ---- YouTube hero facade (loads the player only on click) ---- */
+.video_overlay {
+  pointer-events: none;
+}
+
+.video_overlay a,
+.video_overlay button {
+  pointer-events: auto;
+}
+
+.yt-facade {
+  background: #10151d;
+}
+
+.yt-facade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.yt-play-btn {
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1c2e42;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+.yt-facade:hover .yt-play-btn {
+  transform: translateY(-50%) scale(1.08);
+  background: #fff;
+}
+
+@media (max-width: 767px) {
+  .yt-play-btn {
+    width: 56px;
+    height: 56px;
+    top: auto;
+    bottom: 8%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .yt-facade:hover .yt-play-btn {
+    transform: translateX(50%) scale(1.08);
+  }
+}
+
 .slider-full .slick-dots {
   bottom: 10px;
 }

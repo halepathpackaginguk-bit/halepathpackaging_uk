@@ -124,55 +124,87 @@ add_action('widgets_init', 'halepath_theme_widgets_init');
 
 function theme_assets()
 {
-	// Tailwind
-	wp_enqueue_style('tailwind', get_template_directory_uri() . '/assets/css/style.css', [], filemtime(get_template_directory() . '/assets/css/style.css'));
+	// NOTE: order matters. These were previously hard-coded <link> tags in
+	// header.php, printed *before* wp_head() (i.e. before the Tailwind sheet),
+	// so they must keep that position in the cascade.
+	// A child theme's style.css first, then the theme overrides.
+	if (is_child_theme()) {
+		wp_enqueue_style('child-style', get_stylesheet_uri(), [], filemtime(get_stylesheet_directory() . '/style.css'));
+	}
 
+	$custom_css = get_template_directory() . '/custom.css';
+	wp_enqueue_style('hale-custom', get_template_directory_uri() . '/custom.css', [], filemtime($custom_css));
+
+	// Tailwind (compiled output)
+	wp_enqueue_style('tailwind', get_template_directory_uri() . '/assets/css/style.css', [], filemtime(get_template_directory() . '/assets/css/style.css'));
 
 	wp_enqueue_style(
 		'font-awesome',
 		'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
 	);
-	// Slick CSS
-	 wp_enqueue_style(
-        'slick-css',
-        get_template_directory_uri() . '/assets/css/slick.css',
-        [],
-        '1.8.1'
-    );
 
-    wp_enqueue_style(
-        'slick-theme-css',
-        get_template_directory_uri() . '/assets/css/slick-theme.css',
-        ['slick-css'],
-        '1.8.1'
-    );
+	// Slick assets are only needed on templates that actually render a slider.
+	if (halepath_needs_slider_assets()) {
+		wp_enqueue_style(
+			'slick-css',
+			get_template_directory_uri() . '/assets/css/slick.css',
+			[],
+			'1.8.1'
+		);
+
+		wp_enqueue_style(
+			'slick-theme-css',
+			get_template_directory_uri() . '/assets/css/slick-theme.css',
+			['slick-css'],
+			'1.8.1'
+		);
+	}
+
 	// jQuery (WordPress includes it)
 	wp_enqueue_script('jquery');
 
-	// Slick JS
-	wp_enqueue_script('slick-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', ['jquery'], '1.8.1', true);
+	if (halepath_needs_slider_assets()) {
+		// Slick JS
+		wp_enqueue_script('slick-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', ['jquery'], '1.8.1', true);
 
-     wp_enqueue_script(
-        'hale-sliders',
-        get_template_directory_uri() . '/assets/js/sliders.js',
-        ['jquery', 'slick-js'],
-        wp_get_theme()->get('Version'),
-        true
-    );
+		wp_enqueue_script(
+			'hale-sliders',
+			get_template_directory_uri() . '/assets/js/sliders.js',
+			['jquery', 'slick-js'],
+			filemtime(get_template_directory() . '/assets/js/sliders.js'),
+			true
+		);
+	}
 
-    wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array(), null, true);
+	wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array(), filemtime(get_template_directory() . '/js/custom.js'), true);
 
-    wp_localize_script('custom-js', 'ajax_object', array(
-        'ajax_url' => admin_url('admin-ajax.php')
-    ));
+	wp_localize_script('custom-js', 'ajax_object', array(
+		'ajax_url' => admin_url('admin-ajax.php')
+	));
 
-    // Reply-to-comment script on singular content.
-    if (is_singular()) {
-        wp_enqueue_script('comment-reply');
-    }
+	// Reply-to-comment script on singular content.
+	if (is_singular()) {
+		wp_enqueue_script('comment-reply');
+	}
+}
 
-	// Slick Init JS
-//    wp_enqueue_script('slick-init', get_template_directory_uri() . '/assets/js/slick-init.js', ['jquery', 'slick-js'], filemtime(get_template_directory() . '/assets/js/slick-init.js'), true);
+/**
+ * Whether the current request renders a Slick slider.
+ * Keeps slick.css, slick-theme.css, slick.min.js and sliders.js off every
+ * other page (contact pages, blog, shop index, search, 404, ...).
+ *
+ * Force-enable with: add_filter( 'halepath_needs_slider_assets', '__return_true' );
+ */
+function halepath_needs_slider_assets()
+{
+	$needs = is_singular('product')          // product gallery / info / brand + testimonial sliders
+		|| is_post_type_archive('product')    // shop index includes pro-reviews (.testi-slider)
+		|| (function_exists('is_product_taxonomy') && is_product_taxonomy()) // product category/tag archives
+		|| is_front_page()
+		|| is_page_template('home.php')
+		|| is_page_template('temp-contact.php'); // includes home-reviews slider
+
+	return (bool) apply_filters('halepath_needs_slider_assets', $needs);
 }
 add_action('wp_enqueue_scripts', 'theme_assets');
 
