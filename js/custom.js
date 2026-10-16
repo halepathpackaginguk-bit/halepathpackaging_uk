@@ -38,35 +38,114 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // =========================
 // YOUTUBE HERO FACADE
-// Loads the YouTube player only after the user clicks the poster.
+// Shows the video thumbnail first, then loads the player in the background
+// (after window load) and fades it in once playback actually starts.
+// Clicking the thumbnail loads it immediately.
 // =========================
 function initYoutubeFacades() {
-  document.querySelectorAll(".yt-facade").forEach(function (facade) {
-    var load = function () {
-      var id = facade.getAttribute("data-video-id");
-      if (!id) return;
-      var iframe = document.createElement("iframe");
-      iframe.className =
-        "absolute top-1/2 left-1/2 sm:w-[120vw] sm:h-[120vh] w-[220vw] h-[220vh] -translate-x-1/2 -translate-y-1/2";
-      iframe.src =
-        "https://www.youtube.com/embed/" +
-        id +
-        "?autoplay=1&mute=1&controls=0&loop=1&playlist=" +
-        id;
-      iframe.allow = "autoplay; fullscreen";
-      iframe.setAttribute("frameborder", "0");
-      iframe.setAttribute("title", "Background video");
-      facade.replaceWith(iframe);
-    };
+  var facades = Array.prototype.slice.call(document.querySelectorAll(".yt-facade"));
+  if (!facades.length) return;
 
-    facade.addEventListener("click", load);
+  var ytApi = null;
+  var ytApiFailed = false;
+
+  function loadYtApi() {
+    if (ytApi) return ytApi;
+    ytApi = new Promise(function (resolve, reject) {
+      if (window.YT && window.YT.Player) {
+        resolve(window.YT);
+        return;
+      }
+      var previous = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function () {
+        if (typeof previous === "function") previous();
+        resolve(window.YT);
+      };
+      var script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      script.async = true;
+      script.onerror = function () {
+        ytApiFailed = true;
+        reject(new Error("YouTube IFrame API failed to load"));
+      };
+      document.head.appendChild(script);
+    });
+    return ytApi;
+  }
+
+  function reveal(facade) {
+    facade.classList.add("yt-ready");
+  }
+
+  function load(facade) {
+    if (facade.dataset.videoLoaded) return;
+    var id = facade.getAttribute("data-video-id");
+    if (!id) return;
+    facade.dataset.videoLoaded = "1";
+
+    var iframe = document.createElement("iframe");
+    iframe.className = "yt-frame";
+    iframe.src =
+      "https://www.youtube.com/embed/" +
+      id +
+      "?autoplay=1&mute=1&controls=0&loop=1&playlist=" +
+      id +
+      "&playsinline=1&rel=0&enablejsapi=1";
+    iframe.allow = "autoplay; fullscreen";
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("title", "Background video");
+    facade.appendChild(iframe);
+
+    var safety = setTimeout(function () {
+      reveal(facade);
+    }, 8000);
+
+    loadYtApi()
+      .then(function (YT) {
+        new YT.Player(iframe, {
+          events: {
+            onReady: function (event) {
+              event.target.mute();
+              event.target.playVideo();
+            },
+            onStateChange: function (event) {
+              if (event.data === YT.PlayerState.PLAYING) {
+                clearTimeout(safety);
+                reveal(facade);
+              }
+            }
+          }
+        });
+      })
+      .catch(function () {
+        clearTimeout(safety);
+        reveal(facade);
+      });
+  }
+
+  facades.forEach(function (facade) {
+    facade.addEventListener("click", function () {
+      load(facade);
+    });
     facade.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        load();
+        load(facade);
       }
     });
   });
+
+  var startAutoLoad = function () {
+    setTimeout(function () {
+      facades.forEach(load);
+    }, 1200);
+  };
+
+  if (document.readyState === "complete") {
+    startAutoLoad();
+  } else {
+    window.addEventListener("load", startAutoLoad);
+  }
 }
 
 

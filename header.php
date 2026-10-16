@@ -57,6 +57,7 @@ $theme_uri = get_template_directory_uri();
 
     <?php if (is_front_page() || is_page_template('home.php')) : ?>
     <link rel="preconnect" href="https://i.ytimg.com">
+    <link rel="preconnect" href="https://www.youtube.com">
     <?php endif; ?>
 
    <?php wp_head(); ?>
