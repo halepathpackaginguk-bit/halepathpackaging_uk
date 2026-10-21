@@ -124,3 +124,23 @@ add_filter( 'rank_math/snippet/rich_snippet_webpage_entity', function ( $entity 
 	}
 	return $entity;
 }, 999 );
+
+/**
+ * Keep a single Product entity per product page.
+ *
+ * The theme publishes its own Product entity built from the visible page
+ * content (product name, sku, images, real price and the real customer
+ * ratings). Rank Math would publish a second, weaker entity for the same URL,
+ * so it is removed here.
+ */
+add_filter( 'rank_math/json_ld', function ( $data ) {
+	if ( ! is_singular( 'product' ) ) {
+		return $data;
+	}
+
+	if ( isset( $data['richSnippet'] ) ) {
+		unset( $data['richSnippet'] );
+	}
+
+	return $data;
+}, 99 );

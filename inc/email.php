@@ -42,6 +42,26 @@ function handle_quote_form() {
     $to = 'enquiry@halepathpackaging.co.uk';
     $subject = "New Quote Request";
 
+    $lead_fields = array(
+        'name'    => $name,
+        'phone'   => $phone,
+        'email'   => $email,
+        'product' => $product,
+        'colors'  => $colors,
+        'length'  => $length,
+        'width'   => $width,
+        'depth'   => $depth,
+        'unit'    => $unit,
+        'message' => $message,
+    );
+
+    if ( isset( $uploaded['file'] ) ) {
+        $lead_fields['file']     = wp_basename( $uploaded['file'] );
+        $lead_fields['file_url'] = wp_get_upload_url() . '/' . basename( $uploaded['file'] );
+    }
+
+    halepath_capture_lead( 'get-quote', array_merge( halepath_lead_request_fields(), $lead_fields ) );
+
     $body = "
     Name: $name
     Phone: $phone
@@ -104,6 +124,17 @@ function handle_contact_form() {
     $to = 'enquiry@halepathpackaging.co.uk';
     $subject = "New Contact Message";
 
+    halepath_capture_lead( 'contact-us', array_merge(
+        halepath_lead_request_fields(),
+        array(
+            'name'    => $name,
+            'phone'   => $phone,
+            'email'   => $email,
+            'product' => $product,
+            'message' => $message,
+        )
+    ) );
+
     $body = "
     Name: $name
     Phone: $phone
@@ -145,6 +176,17 @@ function submit_box_form() {
         $printing  = sanitize_text_field($_POST['printing']);
         $price     = sanitize_text_field($_POST['total_price']);
 
+        halepath_capture_lead( 'checkout', array_merge(
+            halepath_lead_request_fields(),
+            array(
+                'dimension' => $dimension,
+                'box_stock' => $box_stock,
+                'quantity'  => $quantity,
+                'printing'  => $printing,
+                'total_price' => $price,
+            )
+        ) );
+
         $body = "
         NEW SIZES ORDER
 
@@ -181,6 +223,24 @@ function submit_box_form() {
         $stock   = sanitize_text_field($_POST['stock']);
         $message = sanitize_textarea_field($_POST['message']);
         $price   = sanitize_text_field($_POST['quote_price']);
+
+        halepath_capture_lead( 'get-quote', array_merge(
+            halepath_lead_request_fields(),
+            array(
+                'name'       => $name,
+                'phone'      => $phone,
+                'email'      => $email,
+                'product'    => $product,
+                'length'     => $length,
+                'width'      => $width,
+                'depth'      => $depth,
+                'colors'     => $colors,
+                'unit'       => $unit,
+                'stock'      => $stock,
+                'message'    => $message,
+                'quote_price' => $price,
+            )
+        ) );
 
         $body = "
         NEW QUOTE REQUEST
@@ -227,6 +287,22 @@ function submit_final_order() {
     $quantity  = sanitize_text_field($_POST['quantity']);
     $printing  = sanitize_text_field($_POST['printing']);
     $price     = sanitize_text_field($_POST['total_price']);
+
+    halepath_capture_lead( 'checkout', array_merge(
+        halepath_lead_request_fields(),
+        array(
+            'name'       => $name,
+            'email'      => $email,
+            'phone'      => $phone,
+            'address'    => isset( $_POST['address'] ) ? sanitize_textarea_field( wp_unslash( $_POST['address'] ) ) : '',
+            'product'    => isset( $_POST['product'] ) ? sanitize_text_field( wp_unslash( $_POST['product'] ) ) : '',
+            'dimension'  => $dimension,
+            'box_stock'  => $box_stock,
+            'quantity'   => $quantity,
+            'printing'   => $printing,
+            'total_price' => $price,
+        )
+    ) );
 
     $body = "
     NEW ORDER

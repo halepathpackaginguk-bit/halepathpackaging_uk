@@ -12,6 +12,7 @@ include_once get_template_directory() . '/inc/extra.php';
 include_once get_template_directory() . '/inc/ajax.php';
 include_once get_template_directory() . '/inc/woo-extra.php';
 include_once get_template_directory() . '/inc/email.php';
+include_once get_template_directory() . '/inc/leads.php';
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
@@ -857,21 +858,67 @@ function halepath_get_product_description($product) {
 }
 
 /**
+ * Base unit price of a product, the price the page is built from.
+ *
+ * The product page shows the price of the default quantity, so the schema
+ * uses the same number as the visible price.
+ *
+ * @param WC_Product|null $product
+ * @return float
+ */
+function halepath_get_product_base_price($product = null) {
+    if (!$product) {
+        $product = wc_get_product(get_the_ID());
+    }
+
+    $base = $product ? get_post_meta($product->get_id(), 'base_price', true) : '';
+
+    if ('' === $base || null === $base) {
+        $base = 0.69;
+    }
+
+    return (float) apply_filters('halepath_product_base_price', (float) $base, $product);
+}
+
+/**
+ * Default quantity offered on the product page.
+ *
+ * @param WC_Product|null $product
+ * @return int
+ */
+function halepath_get_product_default_quantity($product = null) {
+    return (int) apply_filters('halepath_product_default_quantity', 10, $product);
+}
+
+/**
+ * Price shown on the product page for the default quantity.
+ *
+ * @param WC_Product $product
+ * @return string
+ */
+function halepath_get_product_visible_price($product) {
+    $price = halepath_get_product_base_price($product) * halepath_get_product_default_quantity($product);
+
+    return wc_format_decimal($price, wc_get_price_decimals());
+}
+
+/**
  * Offers of a product.
  *
- * Variable products are published as an AggregateOffer built from the real
- * price range of their variations instead of a made up price.
+ * The price is the one the visitor sees on the page, the price of the
+ * default quantity.
  *
  * @param WC_Product $product
  * @return array
  */
 function halepath_get_product_offers($product) {
     $permalink = get_permalink($product->get_id());
-    $currency  = get_woocommerce_currency();
+    $currency  = apply_filters('halepath_schema_currency', 'GBP');
 
     $offers = array(
         '@type'           => 'Offer',
         'url'             => $permalink,
+        'price'           => halepath_get_product_visible_price($product),
         'priceCurrency'   => $currency,
         'priceValidUntil' => gmdate('Y-12-31', strtotime('+1 year')),
         'availability'    => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
@@ -888,14 +935,14 @@ function halepath_get_product_offers($product) {
                 'currency' => $currency
             ),
             'deliveryTime' => array(
-                '@type'        => 'ShippingDeliveryTime',
-                'handlingTime' => array(
+                '@type'         => 'ShippingDeliveryTime',
+                'handlingTime'  => array(
                     '@type'    => 'QuantitativeValue',
                     'minValue' => 1,
                     'maxValue' => 2,
                     'unitCode' => 'DAY'
                 ),
-                'transitTime' => array(
+                'transitTime'   => array(
                     '@type'    => 'QuantitativeValue',
                     'minValue' => 3,
                     'maxValue' => 4,
@@ -912,42 +959,6 @@ function halepath_get_product_offers($product) {
             'returnFees'           => 'https://schema.org/ReturnFeesCustomerResponsibility'
         )
     );
-
-    if ($product->is_type('variable')) {
-        $prices = array();
-
-        foreach ($product->get_children() as $variation_id) {
-            $variation = wc_get_product($variation_id);
-
-            if (!$variation) {
-                continue;
-            }
-
-            $price = $variation->get_price();
-
-            if ('' === $price || null === $price) {
-                continue;
-            }
-
-            $prices[] = (float) $price;
-        }
-
-        if (!empty($prices)) {
-            $offers['@type']      = 'AggregateOffer';
-            $offers['lowPrice']   = min($prices);
-            $offers['highPrice']  = max($prices);
-            $offers['offerCount'] = count($prices);
-
-            unset($offers['price']);
-
-            return $offers;
-        }
-    }
-
-    $price = $product->get_price();
-    $offers['price'] = ('' !== $price && null !== $price)
-        ? wc_format_decimal($price, wc_get_price_decimals())
-        : '0.69';
 
     return $offers;
 }

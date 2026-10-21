@@ -212,9 +212,17 @@ elseif (is_product_category()) {
                                     class="absolute right-4 top-1/2 text-xl text-gray-500 -translate-y-1/2 fa fa-chevron-down"></i>
                             </div>
                         </section>
-                        <p id="price-display" data-price="0.69"
-                            style="margin-top:20px; font-size:16px;">
-                        </p>
+                    <?php
+                    $hale_base_price     = halepath_get_product_base_price();
+                    $hale_default_qty    = halepath_get_product_default_quantity();
+                    $hale_visible_price  = wc_format_decimal($hale_base_price * $hale_default_qty, wc_get_price_decimals());
+                    ?>
+                    <p id="price-display" data-price="<?php echo esc_attr($hale_base_price); ?>"
+                        style="margin-top:20px; font-size:16px;">
+                        <strong>Price:</strong>
+                        £<?php echo esc_html($hale_visible_price); ?> for <?php echo esc_html($hale_default_qty); ?>000
+                        items
+                    </p>
                     </div>
                     <!-- Submit Button -->
                     <section class="flex items-center gap-2 justify-between mt-2.5">
