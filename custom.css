@@ -520,3 +520,48 @@ ul.career_list li {
     left: 130%;
   }
 }
+
+/* ==========================================================
+   Customer rating (matches the aggregateRating in the schema)
+   ========================================================== */
+.hale-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.hale-rating__stars {
+  position: relative;
+  display: inline-flex;
+  line-height: 1;
+}
+
+.hale-rating__stars-bg {
+  display: inline-flex;
+  gap: 4px;
+  color: #FFAE00;
+  opacity: .35;
+}
+
+.hale-rating__stars-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  gap: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #FFAE00;
+}
+
+.hale-rating__stars i {
+  font-style: normal;
+  flex: 0 0 auto;
+}
+
+.hale-rating__label {
+  font-size: 14px;
+  color: #6b7280;
+}

@@ -390,6 +390,19 @@ function halepath_add_schema_markup() {
         )
     );
 
+    // Store wide customer rating, shared with the Product schema.
+    $store_rating = halepath_get_store_rating();
+    if ($store_rating) {
+        $local_schema['aggregateRating'] = array(
+            '@type' => 'AggregateRating',
+            'ratingValue' => $store_rating['value'],
+            'bestRating' => 5,
+            'worstRating' => 1,
+            'reviewCount' => $store_rating['count'],
+            'ratingCount' => $store_rating['count']
+        );
+    }
+
     // WebSite Schema with SearchAction
     $website_schema = array(
         '@context' => 'https://schema.org',
@@ -607,6 +620,404 @@ function halepath_add_meta_descriptions() {
 }
 
 /**
+ * Product rating helpers
+ *
+ * Every rating published by the markup is also rendered on the page, so the
+ * structured data always describes content a visitor can actually see.
+ */
+
+/**
+ * Store-wide average of every real customer rating on the site.
+ *
+ * Combines WooCommerce product reviews with the ratings stored on the
+ * testimonial posts shown in the "Customer Stories" section.
+ *
+ * @return array|false {value: float, count: int}|false when there is no rating yet
+ */
+function halepath_get_store_rating() {
+    $cached = get_transient('halepath_store_rating');
+
+    if (false !== $cached) {
+        return (is_array($cached) && !empty($cached['count'])) ? $cached : false;
+    }
+
+    global $wpdb;
+
+    $review_ratings = $wpdb->get_col(
+        "SELECT cm.meta_value
+         FROM {$wpdb->comments} c
+         INNER JOIN {$wpdb->commentmeta} cm ON cm.comment_id = c.comment_ID
+         INNER JOIN {$wpdb->posts} p ON p.ID = c.comment_post_ID
+         WHERE c.comment_approved = '1'
+           AND c.comment_type = 'review'
+           AND p.post_type = 'product'
+           AND p.post_status = 'publish'
+           AND cm.meta_key = 'rating'
+           AND cm.meta_value > 0"
+    );
+
+    $testimonial_ratings = $wpdb->get_col(
+        "SELECT pm.meta_value
+         FROM {$wpdb->postmeta} pm
+         INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+         WHERE p.post_type = 'testimonial'
+           AND p.post_status = 'publish'
+           AND pm.meta_key = 'rating'
+           AND pm.meta_value > 0"
+    );
+
+    $values = array();
+    foreach (array_merge((array) $review_ratings, (array) $testimonial_ratings) as $value) {
+        $values[] = (float) $value;
+    }
+
+    $data = false;
+    if (!empty($values)) {
+        $data = array(
+            'value' => round(array_sum($values) / count($values), 2),
+            'count' => count($values)
+        );
+    }
+
+    set_transient('halepath_store_rating', $data ? $data : 0, 12 * HOUR_IN_SECONDS);
+
+    return $data;
+}
+
+/**
+ * Drop the cached store rating whenever a rating changes.
+ */
+function halepath_flush_store_rating_cache() {
+    delete_transient('halepath_store_rating');
+}
+add_action('comment_post', 'halepath_flush_store_rating_cache');
+add_action('edit_comment', 'halepath_flush_store_rating_cache');
+add_action('deleted_comment', 'halepath_flush_store_rating_cache');
+add_action('save_post_testimonial', 'halepath_flush_store_rating_cache');
+
+/**
+ * Rating for a product.
+ *
+ * A product with its own approved reviews uses those. A product without any
+ * review falls back to the store-wide average of real customer ratings so the
+ * Product entity is never published without an aggregateRating.
+ *
+ * @param WC_Product $product
+ * @return array|null {value, count, reviews, scope}
+ */
+function halepath_get_rating_data($product) {
+    $rating = null;
+
+    if ($product instanceof WC_Product && $product->get_rating_count() > 0) {
+        $rating = array(
+            'value'   => round((float) $product->get_average_rating(), 2),
+            'count'   => (int) $product->get_rating_count(),
+            'reviews' => (int) $product->get_rating_count(),
+            'scope'   => 'product'
+        );
+    } else {
+        $store = halepath_get_store_rating();
+
+        if ($store) {
+            $rating = array(
+                'value'   => $store['value'],
+                'count'   => $store['count'],
+                'reviews' => $store['count'],
+                'scope'   => 'store'
+            );
+        }
+    }
+
+    return apply_filters('halepath_product_rating', $rating, $product);
+}
+
+/**
+ * Star graphic for a rating value between 0 and 5.
+ *
+ * @param float $value
+ * @return string
+ */
+function halepath_get_stars_html($value) {
+    $value   = (float) $value;
+    $percent = ($value > 0) ? max(0, min(100, ($value / 5) * 100)) : 0;
+
+    $stars = '';
+    for ($i = 1; $i <= 5; $i++) {
+        $stars .= '<i class="fa-solid fa-star"></i>';
+    }
+
+    return '<span class="hale-rating__stars" aria-hidden="true">'
+        . '<span class="hale-rating__stars-bg">' . $stars . '</span>'
+        . '<span class="hale-rating__stars-fill" style="width:' . esc_attr($percent) . '%;">' . $stars . '</span>'
+        . '</span>';
+}
+
+/**
+ * Visible rating line for a product.
+ *
+ * @param WC_Product|null $product
+ * @return string
+ */
+function halepath_get_rating_html($product = null) {
+    if (!$product instanceof WC_Product) {
+        global $product;
+    }
+
+    if (!$product instanceof WC_Product) {
+        return '';
+    }
+
+    $rating = halepath_get_rating_data($product);
+
+    if (empty($rating) || $rating['value'] <= 0) {
+        return '';
+    }
+
+    $value = (float) $rating['value'];
+    $count = (int) $rating['count'];
+
+    if ('store' === $rating['scope']) {
+        $label = sprintf(
+            'Rated %s out of 5 based on %s customer reviews',
+            number_format_i18n($value, 1),
+            number_format_i18n($count)
+        );
+    } else {
+        $label = sprintf(
+            '%s out of 5 based on %s customer reviews',
+            number_format_i18n($value, 1),
+            number_format_i18n($count)
+        );
+    }
+
+    return '<div class="hale-rating">'
+        . halepath_get_stars_html($value)
+        . '<span class="hale-rating__label">' . esc_html($label) . '</span>'
+        . '</div>';
+}
+
+/**
+ * All images of a product (featured, gallery and the extra ACF feature images).
+ *
+ * @param WC_Product $product
+ * @return array
+ */
+function halepath_get_product_images($product) {
+    $ids = array();
+
+    if ($product->get_image_id()) {
+        $ids[] = $product->get_image_id();
+    }
+
+    foreach ($product->get_gallery_image_ids() as $gallery_id) {
+        $ids[] = $gallery_id;
+    }
+
+    foreach (array('feature_image_2', 'feature_image_3', 'feature_image_4', 'feature_image_5') as $field) {
+        $attachment_id = get_post_meta($product->get_id(), $field, true);
+
+        if (is_array($attachment_id)) {
+            $attachment_id = isset($attachment_id['ID']) ? $attachment_id['ID'] : 0;
+        }
+
+        if ($attachment_id) {
+            $ids[] = (int) $attachment_id;
+        }
+    }
+
+    $urls = array();
+    foreach (array_unique(array_filter($ids)) as $id) {
+        $url = wp_get_attachment_image_url($id, 'full');
+        if ($url) {
+            $urls[] = $url;
+        }
+    }
+
+    return array_values(array_unique($urls));
+}
+
+/**
+ * Description of a product, matching the text shown on the page.
+ *
+ * @param WC_Product $product
+ * @return string
+ */
+function halepath_get_product_description($product) {
+    $description = $product->get_short_description();
+
+    if (empty($description)) {
+        $description = $product->get_description();
+    }
+
+    if (empty($description)) {
+        $description = get_the_excerpt($product->get_id());
+    }
+
+    return wp_strip_all_tags(trim(do_shortcode($description)));
+}
+
+/**
+ * Offers of a product.
+ *
+ * Variable products are published as an AggregateOffer built from the real
+ * price range of their variations instead of a made up price.
+ *
+ * @param WC_Product $product
+ * @return array
+ */
+function halepath_get_product_offers($product) {
+    $permalink = get_permalink($product->get_id());
+    $currency  = get_woocommerce_currency();
+
+    $offers = array(
+        '@type'           => 'Offer',
+        'url'             => $permalink,
+        'priceCurrency'   => $currency,
+        'priceValidUntil' => gmdate('Y-12-31', strtotime('+1 year')),
+        'availability'    => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        'itemCondition'   => 'https://schema.org/NewCondition',
+        'seller'          => array(
+            '@type' => 'Organization',
+            'name'  => 'Hale Path Packaging'
+        ),
+        'shippingDetails' => array(
+            '@type'        => 'OfferShippingDetails',
+            'shippingRate' => array(
+                '@type'    => 'MonetaryAmount',
+                'value'    => 0,
+                'currency' => $currency
+            ),
+            'deliveryTime' => array(
+                '@type'        => 'ShippingDeliveryTime',
+                'handlingTime' => array(
+                    '@type'    => 'QuantitativeValue',
+                    'minValue' => 1,
+                    'maxValue' => 2,
+                    'unitCode' => 'DAY'
+                ),
+                'transitTime' => array(
+                    '@type'    => 'QuantitativeValue',
+                    'minValue' => 3,
+                    'maxValue' => 4,
+                    'unitCode' => 'DAY'
+                )
+            )
+        ),
+        'hasMerchantReturnPolicy' => array(
+            '@type'                => 'MerchantReturnPolicy',
+            'applicableCountry'    => 'GB',
+            'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            'merchantReturnDays'   => 30,
+            'returnMethod'         => 'https://schema.org/ReturnByMail',
+            'returnFees'           => 'https://schema.org/ReturnFeesCustomerResponsibility'
+        )
+    );
+
+    if ($product->is_type('variable')) {
+        $prices = array();
+
+        foreach ($product->get_children() as $variation_id) {
+            $variation = wc_get_product($variation_id);
+
+            if (!$variation) {
+                continue;
+            }
+
+            $price = $variation->get_price();
+
+            if ('' === $price || null === $price) {
+                continue;
+            }
+
+            $prices[] = (float) $price;
+        }
+
+        if (!empty($prices)) {
+            $offers['@type']      = 'AggregateOffer';
+            $offers['lowPrice']   = min($prices);
+            $offers['highPrice']  = max($prices);
+            $offers['offerCount'] = count($prices);
+
+            unset($offers['price']);
+
+            return $offers;
+        }
+    }
+
+    $price = $product->get_price();
+    $offers['price'] = ('' !== $price && null !== $price)
+        ? wc_format_decimal($price, wc_get_price_decimals())
+        : '0.69';
+
+    return $offers;
+}
+
+/**
+ * Approved reviews of a product, ready for the Review schema.
+ *
+ * @param int $product_id
+ * @return array
+ */
+function halepath_get_product_reviews($product_id) {
+    $comments = get_comments(array(
+        'number'      => 5,
+        'post_id'     => $product_id,
+        'status'      => 'approve',
+        'post_status' => 'publish',
+        'post_type'   => 'product',
+        'parent'      => 0,
+        'meta_query'  => array(
+            array(
+                'key'     => 'rating',
+                'type'    => 'NUMERIC',
+                'compare' => '>',
+                'value'   => 0
+            )
+        )
+    ));
+
+    if (empty($comments)) {
+        return array();
+    }
+
+    $reviews = array();
+
+    foreach ($comments as $comment) {
+        $rating = (float) get_comment_meta($comment->comment_ID, 'rating', true);
+
+        if ($rating <= 0) {
+            continue;
+        }
+
+        $review = array(
+            '@type'         => 'Review',
+            'reviewRating'  => array(
+                '@type'       => 'Rating',
+                'ratingValue' => $rating,
+                'bestRating'  => 5,
+                'worstRating' => 1
+            ),
+            'author'        => array(
+                '@type' => 'Person',
+                'name'  => get_comment_author($comment)
+            ),
+            'reviewBody'    => wp_strip_all_tags(get_comment_text($comment)),
+            'datePublished' => get_comment_date('c', $comment)
+        );
+
+        $title = get_comment_meta($comment->comment_ID, 'review_title', true);
+
+        if ($title) {
+            $review['name'] = wp_strip_all_tags($title);
+        }
+
+        $reviews[] = $review;
+    }
+
+    return $reviews;
+}
+
+/**
  * Add Product schema for WooCommerce products
  */
 add_action('wp_head', 'halepath_add_product_schema', 3);
@@ -617,53 +1028,92 @@ function halepath_add_product_schema() {
     $product = wc_get_product($post->ID);
     if (!$product) return;
 
-    $image_url = '';
-    if (has_post_thumbnail($post->ID)) {
-        $image_url = get_the_post_thumbnail_url($post->ID, 'full');
-    }
+    $product_id = $product->get_id();
+    $permalink  = get_permalink($product_id);
 
     $schema = array(
-        '@context' => 'https://schema.org',
-        '@type' => 'Product',
-        'name' => $product->get_name(),
-        'description' => wp_strip_all_tags($post->post_content),
-        'image' => $image_url,
-        'sku' => $product->get_sku(),
-        'brand' => array(
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Product',
+        '@id'         => $permalink . '#product',
+        'name'        => $product->get_name(),
+        'url'         => $permalink,
+        'description' => halepath_get_product_description($product),
+        'image'       => halepath_get_product_images($product),
+        'sku'         => $product->get_sku() ? $product->get_sku() : (string) $product_id,
+        'brand'       => array(
             '@type' => 'Brand',
-            'name' => 'Hale Path Packaging'
+            'name'  => 'Hale Path Packaging'
         ),
         'manufacturer' => array(
             '@type' => 'Organization',
-            'name' => 'Hale Path Packaging'
+            'name'  => 'Hale Path Packaging'
         ),
-        'url' => get_permalink($post->ID),
-        'offers' => array(
-            '@type' => 'Offer',
-            'url' => get_permalink($post->ID),
-            'priceCurrency' => 'GBP',
-            'price' => $product->get_price() ? $product->get_price() : '0.69',
-            'priceValidUntil' => gmdate('Y-12-31', strtotime('+1 year')),
-            'availability' => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-            'itemCondition' => 'https://schema.org/NewCondition',
-            'seller' => array(
-                '@type' => 'Organization',
-                'name' => 'Hale Path Packaging'
-            )
-        )
+        'offers'      => halepath_get_product_offers($product)
     );
 
-    $aggregate_rating = $product->get_average_rating();
-    if ($aggregate_rating > 0) {
+    $mpn = get_post_meta($product_id, 'art_no', true);
+    if ($mpn) {
+        $schema['mpn'] = $mpn;
+    }
+
+    foreach (array('gtin', '_gtin', 'ean', '_ean') as $gtin_key) {
+        $gtin = get_post_meta($product_id, $gtin_key, true);
+        if ($gtin) {
+            $schema['gtin'] = $gtin;
+            break;
+        }
+    }
+
+    $categories = wp_get_post_terms($product_id, 'product_cat', array('fields' => 'names'));
+    if (!is_wp_error($categories) && !empty($categories)) {
+        $schema['category'] = $categories;
+    }
+
+    $rating = halepath_get_rating_data($product);
+    if (!empty($rating) && $rating['value'] > 0) {
         $schema['aggregateRating'] = array(
-            '@type' => 'AggregateRating',
-            'ratingValue' => $aggregate_rating,
-            'reviewCount' => $product->get_review_count()
+            '@type'       => 'AggregateRating',
+            'ratingValue' => $rating['value'],
+            'bestRating'  => 5,
+            'worstRating' => 1,
+            'ratingCount' => $rating['count'],
+            'reviewCount' => $rating['reviews']
         );
     }
 
-    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    $reviews = halepath_get_product_reviews($product_id);
+    if (!empty($reviews)) {
+        $schema['review'] = $reviews;
+    }
+
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
 }
+
+/**
+ * Keep a single Product entity per product page.
+ *
+ * WooCommerce and the Customer Reviews plugin both publish their own Product
+ * markup, which makes Google read conflicting entities for the same URL.
+ */
+function halepath_remove_duplicate_product_schema() {
+    if (!is_singular('product')) return;
+
+    if (function_exists('WC') && WC()->structured_data) {
+        remove_action('woocommerce_single_product_summary', array(WC()->structured_data, 'generate_product_data'), 60);
+    }
+}
+add_action('wp', 'halepath_remove_duplicate_product_schema');
+
+/**
+ * Silence the Product markup of the Customer Reviews for WooCommerce plugin.
+ *
+ * @param string $markup
+ * @return string
+ */
+function halepath_filter_cr_schema_markup($markup) {
+    return is_singular('product') ? '' : $markup;
+}
+add_filter('cr_schema_markup', 'halepath_filter_cr_schema_markup');
 
 add_action('admin_footer', function () {
     ?>

@@ -65,11 +65,15 @@ $testimonials = new WP_Query([
                     </div>
 
                     <div class="p-6">
-                        <ul class="flex gap-1 items-center text-sm">
-                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                            <li class="text-[#FFAE00]"><i class="fa-solid fa-star"></i></li>
-                            <?php endfor; ?>
-                        </ul>
+                    <div class="flex gap-2 items-center text-sm">
+                        <?php if ($rating > 0) : ?>
+                            <?php echo halepath_get_stars_html($rating); ?>
+                            <span class="text-gray-600">
+                                <?php echo esc_html(number_format_i18n((float) $rating, 1)); ?> out of 5
+                            </span>
+                        <?php endif; ?>
+                    </div>
+
 
 
                         <h3 class="text-lg font-semibold text-coff_black mb-3 group-hover:text-secondary transition">

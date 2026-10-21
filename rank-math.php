@@ -41,10 +41,10 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 		),
 		'hasMerchantReturnPolicy' => array(
 			'@type'                  => 'MerchantReturnPolicy',
-			'applicableCountry'      => 'UK',
+			'applicableCountry'      => 'GB',
 			'returnPolicyCategory'   => 'https://schema.org/MerchantReturnFiniteReturnWindow',
 			'merchantReturnDays'     => 30,
-			'returnMethod'           => 'ReturnByMail',
+			'returnMethod'           => 'https://schema.org/ReturnByMail',
 			'returnFees'             => 'https://schema.org/ReturnFeesCustomerResponsibility',
 			'restockingFee'          => array(
 				'@type'    => 'MonetaryAmount',
@@ -79,6 +79,40 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 
 	return $entity;
 }, 999 );
+
+/**
+ * Make sure the Rank Math Product entity always carries an aggregateRating.
+ *
+ * Products without their own reviews use the store wide average of the real
+ * customer ratings, the same value the theme renders on the page.
+ */
+add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity ) {
+	if ( isset( $entity['aggregateRating'] ) || ! function_exists( 'halepath_get_rating_data' ) ) {
+		return $entity;
+	}
+
+	$product = wc_get_product( get_the_ID() );
+	if ( ! $product ) {
+		return $entity;
+	}
+
+	$rating = halepath_get_rating_data( $product );
+
+	if ( empty( $rating ) || $rating['value'] <= 0 ) {
+		return $entity;
+	}
+
+	$entity['aggregateRating'] = array(
+		'@type'       => 'AggregateRating',
+		'ratingValue' => $rating['value'],
+		'bestRating'  => 5,
+		'worstRating' => 1,
+		'ratingCount' => $rating['count'],
+		'reviewCount' => $rating['reviews'],
+	);
+
+	return $entity;
+}, 1000 );
 
 /**
  * Add Service schema for service pages

@@ -109,6 +109,8 @@ if (is_product_category()) {
                 <?php echo esc_html($title); ?>
             </h1>
 
+            <?php echo halepath_get_rating_html($product); ?>
+
             <div class="text-lg font-normal text-title_Clr mb-5">
                 <?php global $product;
                 if ($product->get_short_description()) {
