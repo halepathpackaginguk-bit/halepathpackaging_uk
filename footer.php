@@ -95,7 +95,7 @@
             </h6>
             <ul class="flex flex-col gap-2.5">
                 <li>
-                    Unit 229, 32A Birmingham Road Bromsgrove B61 0DD
+                    Unit 32A, 229 Birmingham Road Bromsgrove B61 0DD
                 </li>
                 <li><a href="tel:+4401213186768" class="footer_link">
                         +44 01213186768</a></li>
