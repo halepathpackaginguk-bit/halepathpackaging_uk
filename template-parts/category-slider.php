@@ -25,12 +25,15 @@ if (!empty($categories)):
                 ? wp_get_attachment_url($thumbnail_id)
                 : get_template_directory_uri() . '/assets/images/category.jpg';
             ?>
-            <div class="w-full p-2">
-                <a href="<?php echo esc_url($category_link); ?>">
+            <div class="w-full p-2 flex flex-col" style="min-height: clamp(220px, 30vw, 320px);">
+                <a href="<?php echo esc_url($category_link); ?>" class="block overflow-hidden rounded-full shrink-0"
+                    style="height: clamp(130px, 18vw, 250px);">
                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($category->name); ?>" width="363"
-                        height="375" class="cat_image img-full" loading="lazy" decoding="async" />
+                        height="375" class="cat_image img-full block" loading="lazy" decoding="async" />
                 </a>
-                <a href="<?php echo esc_url($category_link); ?>" class="box_link">
+                <a href="<?php echo esc_url($category_link); ?>" class="box_link"
+                    style="display: block; margin-top: auto; padding-top: 1.5rem; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                    title="<?php echo esc_attr($category->name); ?>">
                     <?php echo esc_html($category->name); ?>
                 </a>
             </div>
