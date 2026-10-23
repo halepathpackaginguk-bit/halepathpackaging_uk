@@ -331,6 +331,10 @@ footer ul li a {
   @apply sm:text-base text-sm font-normal text-title_Clr flex items-center gap-2 w-fit cursor-pointer break-all leading-none;
 }
 
+.cat_imagehome {
+  @apply w-full h-full object-cover object-center rounded-2xl;
+}
+
 .cat_image {
   @apply w-full h-full object-cover object-center rounded-full;
 }
