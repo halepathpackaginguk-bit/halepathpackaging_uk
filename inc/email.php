@@ -273,6 +273,108 @@ function submit_box_form() {
 }
 
 
+/**
+ * Handle the custom packaging quote form posted to admin-post.php.
+ *
+ * This form is the only one that sends to mufaqar@gmail.com.
+ */
+add_action('admin_post_custom_packaging_quote', 'halepath_handle_custom_packaging_quote');
+add_action('admin_post_nopriv_custom_packaging_quote', 'halepath_handle_custom_packaging_quote');
+
+function halepath_handle_custom_packaging_quote() {
+    $redirect = wp_get_referer() ? wp_get_referer() : home_url('/');
+    $redirect = remove_query_arg('quote_status', $redirect);
+
+    $fail = function () use ($redirect) {
+        wp_safe_redirect(add_query_arg('quote_status', 'error', $redirect) . '#custom-packaging-quote');
+        exit;
+    };
+
+    if (
+        ! isset($_POST['custom_packaging_quote_nonce']) ||
+        ! wp_verify_nonce(
+            sanitize_text_field(wp_unslash($_POST['custom_packaging_quote_nonce'])),
+            'custom_packaging_quote_action'
+        )
+    ) {
+        $fail();
+    }
+
+    $fields = array(
+        'full_name'     => sanitize_text_field(wp_unslash($_POST['full_name'] ?? '')),
+        'phone'         => sanitize_text_field(wp_unslash($_POST['phone'] ?? '')),
+        'email'         => sanitize_email(wp_unslash($_POST['email'] ?? '')),
+        'company'       => sanitize_text_field(wp_unslash($_POST['company'] ?? '')),
+        'length'        => sanitize_text_field(wp_unslash($_POST['length'] ?? '')),
+        'width'         => sanitize_text_field(wp_unslash($_POST['width'] ?? '')),
+        'height'        => sanitize_text_field(wp_unslash($_POST['height'] ?? '')),
+        'unit'          => sanitize_text_field(wp_unslash($_POST['unit'] ?? '')),
+        'material'      => sanitize_text_field(wp_unslash($_POST['material'] ?? '')),
+        'print_sides'   => sanitize_text_field(wp_unslash($_POST['print_sides'] ?? '')),
+        'quantity'      => sanitize_text_field(wp_unslash($_POST['quantity'] ?? '')),
+        'coating'       => sanitize_text_field(wp_unslash($_POST['coating'] ?? '')),
+        'product_style' => sanitize_text_field(wp_unslash($_POST['product_style'] ?? '')),
+        'requirements'  => sanitize_textarea_field(wp_unslash($_POST['requirements'] ?? '')),
+    );
+
+    foreach (array('full_name', 'phone', 'email', 'length', 'width', 'height', 'unit', 'material', 'quantity') as $required) {
+        if ('' === $fields[$required]) {
+            $fail();
+        }
+    }
+
+    if (! is_email($fields['email'])) {
+        $fail();
+    }
+
+    $labels = array(
+        'full_name'     => 'Full Name',
+        'phone'         => 'Phone Number',
+        'email'         => 'Email',
+        'company'       => 'Company',
+        'length'        => 'Length',
+        'width'         => 'Width',
+        'height'        => 'Height',
+        'unit'          => 'Unit',
+        'material'      => 'Material Type',
+        'print_sides'   => 'Print Sides',
+        'quantity'      => 'Quantity',
+        'coating'       => 'Coating',
+        'product_style' => 'Product Style',
+        'requirements'  => 'Requirements',
+    );
+
+    $lines = array();
+
+    foreach ($fields as $key => $value) {
+        if ('' === $value) {
+            continue;
+        }
+
+        $label   = isset($labels[$key]) ? $labels[$key] : ucwords(str_replace('_', ' ', $key));
+        $lines[] = $label . ': ' . $value;
+    }
+
+    $to      = 'mufaqar@gmail.com';
+    $subject = 'New Custom Packaging Quote Request';
+
+    $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'Reply-To: ' . $fields['full_name'] . ' <' . $fields['email'] . '>',
+    );
+
+    halepath_capture_lead('get-quote', array_merge(
+        $fields,
+        array('name' => $fields['full_name'])
+    ));
+
+    $sent = wp_mail($to, $subject, implode("\n", $lines), $headers);
+
+    wp_safe_redirect(add_query_arg('quote_status', $sent ? 'success' : 'error', $redirect) . '#custom-packaging-quote');
+    exit;
+}
+
+
 add_action('wp_ajax_submit_final_order', 'submit_final_order');
 add_action('wp_ajax_nopriv_submit_final_order', 'submit_final_order');
 
