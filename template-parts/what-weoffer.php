@@ -1,281 +1,246 @@
 <?php
-$services_sec = get_field('home_services');
-$title = $services_sec['title'] ?? '';
-$subtitle = $services_sec['subtitle'] ?? '';
-$services = $services_sec['service'] ?? [];
-?>
-
-
-<?php
 $finishing_categories = [
-    'coating' => 'Coating',
-    'paper-boards' => 'Paper Boards',
-    'special-finishing' => 'Special Finishing',
+    'special-finishing' => 'Special Finishes',
     'printing' => 'Printing',
-    'foiled-trade' => 'Foiled Trade',
+    'fluted-grade' => 'Fluted Grade',
     'corrugated' => 'Corrugated',
     'color-options' => 'Color Options',
 ];
 
 $finishing_options = [
 
-    // 1. Coating
+    // 1. Special Finishes
     [
-        'title' => 'Varnish',
-        'category' => 'coating',
-        'image' => 'varnish.webp',
-        'description' => 'A transparent liquid finish that enhances gloss, satin, or matte effects while adding a protective layer to printed packaging.',
+        'title' => 'Window Patching',
+        'category' => 'special-finishing',
+        'image' => 'tab1.webp',
+        'description' => 'A clear window lets customers see the product inside the packaging while maintaining an attractive, professional presentation.',
+    ],
+    [
+        'title' => 'Registered Embossing',
+        'category' => 'special-finishing',
+        'image' => 'addition/op018.jpg',
+        'description' => 'Precisely aligned embossing adds raised details to logos, text, and artwork for a refined tactile finish.',
+    ],
+    [
+        'title' => 'Hot Foil Stamping',
+        'category' => 'special-finishing',
+        'image' => 'addition/op019.jpg',
+        'description' => 'Heat-applied metallic foil creates elegant gold, silver, and other reflective accents on custom packaging.',
+    ],
+    [
+        'title' => 'Combination Embossing',
+        'category' => 'special-finishing',
+        'image' => 'addition/op020.jpg',
+        'description' => 'Combines embossing with foil or other finishing effects to create dimensional and eye-catching packaging details.',
+    ],
+    [
+        'title' => 'Cold Foil Stamping',
+        'category' => 'special-finishing',
+        'image' => 'addition/op022.jpg',
+        'description' => 'Cold foil adds metallic effects to printed designs, helping packaging achieve a distinctive, premium appearance.',
+    ],
+    [
+        'title' => 'Blind Embossing',
+        'category' => 'special-finishing',
+        'image' => 'addition/op023.jpg',
+        'description' => 'Creates raised designs without ink or foil, adding subtle depth and texture to packaging surfaces.',
+    ],
+    [
+        'title' => 'Blind Debossing',
+        'category' => 'special-finishing',
+        'image' => 'addon/ci006.jpg',
+        'description' => 'Presses artwork into the material to create recessed details with an understated, sophisticated finish.',
+    ],
+
+    // 2. Printing
+    [
+        'title' => 'UV Printing',
+        'category' => 'printing',
+        'image' => 'printing/op024.jpg',
+        'description' => 'UV-cured inks deliver vibrant colours and crisp graphics with rapid curing on suitable packaging materials.',
+    ],
+    [
+        'title' => 'Screen Printing',
+        'category' => 'printing',
+        'image' => 'printing/op027.jpg',
+        'description' => 'Applies ink through a mesh screen to produce bold colours and distinctive designs on compatible surfaces.',
+    ],
+    [
+        'title' => 'Offset Printing',
+        'category' => 'printing',
+        'image' => 'tab1.webp',
+        'description' => 'Provides consistent, high-quality printing with detailed artwork and reliable colour reproduction for larger print runs.',
+    ],
+    [
+        'title' => 'Digital Printing',
+        'category' => 'printing',
+        'image' => 'addition/op021.jpg',
+        'description' => 'Ideal for short runs and custom designs, digital printing supports flexible artwork and quick production changes.',
+    ],
+    [
+        'title' => 'Offset Printing',
+        'category' => 'printing',
+        'image' => 'printing/op024.jpg',
+        'description' => 'Produces sharp text, detailed graphics, and consistent results for professional custom packaging projects.',
+    ],
+    [
+        'title' => 'Digital Printing',
+        'category' => 'printing',
+        'image' => 'printing/op027.jpg',
+        'description' => 'Makes personalised packaging and short production runs practical without requiring traditional printing plates.',
+    ],
+    [
+        'title' => 'Flexographic Printing',
+        'category' => 'printing',
+        'image' => 'printing/op030.jpg',
+        'description' => 'A versatile printing method commonly used for labels, flexible packaging, and corrugated packaging materials.',
+    ],
+    [
+        'title' => 'Gravure Printing',
+        'category' => 'printing',
+        'image' => 'addition/op021.jpg',
+        'description' => 'Uses engraved printing cylinders to deliver consistent, detailed images and colour across high-volume print runs.',
     ],
     [
         'title' => 'Spot UV',
-        'category' => 'coating',
-        'image' => 'spot-uv.webp',
-        'description' => 'A specialized UV coating applied to selected areas to create contrast and draw attention to important design details.',
-    ],
-    [
-        'title' => 'Soft Touch Coating',
-        'category' => 'coating',
-        'image' => 'soft-touch.webp',
-        'description' => 'A premium coating with a smooth, velvety feel that gives packaging an elegant and luxurious finish.',
-    ],
-    [
-        'title' => 'Silk Lamination',
-        'category' => 'coating',
-        'image' => 'silk-lamination.webp',
-        'description' => 'A smooth satin-like finish that protects packaging and creates a refined, premium appearance.',
-    ],
-    [
-        'title' => 'Spot Gloss UV',
-        'category' => 'coating',
-        'image' => 'spot-gloss-uv.webp',
-        'description' => 'A high-gloss finish applied to selected areas for striking contrast against matte surfaces.',
-    ],
-    [
-        'title' => 'Hexagonal Coating',
-        'category' => 'coating',
-        'image' => 'maqsoos-coating.webp',
-        'description' => 'A distinctive textured finish that adds tactile detail and visual interest to premium packaging.',
-    ],
-    [
-        'title' => 'Anti-Scratch',
-        'category' => 'coating',
-        'image' => 'anti-scratch.webp',
-        'description' => 'A protective finish that helps reduce scratches, scuffs, and fingerprints to keep packaging looking its best.',
-    ],
-
-    // 2. Paper Boards
-    [
-        'title' => 'Kraft Paper Board',
-        'category' => 'paper-boards',
-        'image' => 'kraft-board.webp',
-        'description' => 'Natural brown kraft board with a distinctive organic appearance, ideal for sustainable and minimalist packaging.',
-    ],
-    [
-        'title' => 'White Cardboard',
-        'category' => 'paper-boards',
-        'image' => 'white-cardboard.webp',
-        'description' => 'Smooth white cardboard that delivers clean printing, crisp colours, and a professional presentation.',
-    ],
-    [
-        'title' => 'SBS Paperboard',
-        'category' => 'paper-boards',
-        'image' => 'sbs-board.webp',
-        'description' => 'Premium solid bleached board with a bright white surface for high-quality printing and retail packaging.',
-    ],
-    [
-        'title' => 'Recycled Paperboard',
-        'category' => 'paper-boards',
-        'image' => 'recycled-board.webp',
-        'description' => 'Paperboard made with recycled fibre for brands looking for practical and environmentally conscious packaging.',
-    ],
-
-    // 3. Special Finishing
-    [
-        'title' => 'Gold Foil Stamping',
-        'category' => 'special-finishing',
-        'image' => 'gold-foil.webp',
-        'description' => 'Metallic gold details create a premium appearance and help logos and design elements stand out.',
-    ],
-    [
-        'title' => 'Silver Foil Stamping',
-        'category' => 'special-finishing',
-        'image' => 'silver-foil.webp',
-        'description' => 'Reflective silver accents add a sophisticated metallic finish to luxury and promotional packaging.',
-    ],
-    [
-        'title' => 'Embossing',
-        'category' => 'special-finishing',
-        'image' => 'embossing.webp',
-        'description' => 'Raised design elements add depth and texture to logos, typography, and decorative packaging details.',
-    ],
-    [
-        'title' => 'Debossing',
-        'category' => 'special-finishing',
-        'image' => 'debossing.webp',
-        'description' => 'Pressed-in design details create a subtle tactile effect for a refined and understated finish.',
-    ],
-
-    // 4. Printing
-    [
-        'title' => 'CMYK Printing',
         'category' => 'printing',
-        'image' => 'cmyk-printing.webp',
-        'description' => 'Full-colour four-colour printing reproduces detailed artwork, photographs, and colourful brand designs.',
+        'image' => 'finishing/op011.jpg',
+        'description' => 'Highlights selected areas with a glossy coating to create contrast and draw attention to key design elements.',
     ],
     [
-        'title' => 'Pantone Printing',
+        'title' => 'Screen Printing',
         'category' => 'printing',
-        'image' => 'pantone-printing.webp',
-        'description' => 'Spot-colour printing helps maintain consistent brand colours across packaging and print runs.',
+        'image' => 'printing/op024.jpg',
+        'description' => 'Creates bold printed graphics and strong colour coverage for suitable packaging surfaces and designs.',
     ],
     [
-        'title' => 'Inside Printing',
+        'title' => 'Letterpress (Specialty)',
         'category' => 'printing',
-        'image' => 'inside-printing.webp',
-        'description' => 'Printed interior panels add branded messages, patterns, and delightful details to the unboxing experience.',
+        'image' => 'printing/op027.jpg',
+        'description' => 'Uses pressure to create distinctive printed impressions with a tactile, traditional look and feel.',
     ],
     [
-        'title' => 'Outside Printing',
+        'title' => 'UV Offset Printing',
         'category' => 'printing',
-        'image' => 'outside-printing.webp',
-        'description' => 'Custom exterior artwork showcases your brand, product information, and packaging design.',
+        'image' => 'printing/op030.jpg',
+        'description' => 'Combines offset printing with UV curing to produce crisp graphics and efficient production on suitable materials.',
+    ],
+    [
+        'title' => 'Foil Printing',
+        'category' => 'printing',
+        'image' => 'tab1.webp',
+        'description' => 'Adds metallic or decorative foil effects to logos, lettering, and artwork for a more distinctive package design.',
     ],
 
-    // 5. Foiled Trade
+    // 3. Fluted Grade
     [
-        'title' => 'Gold Foil',
-        'category' => 'foiled-trade',
-        'image' => 'gold-foil.webp',
-        'description' => 'Add a metallic gold effect to logos, text, and decorative details for a premium presentation.',
+        'title' => 'Triple Wall Flute',
+        'category' => 'fluted-grade',
+        'image' => 'material/op505.jpg',
+        'description' => 'Three corrugated layers provide substantial strength and cushioning for demanding shipping and heavy-duty packaging.',
     ],
     [
-        'title' => 'Silver Foil',
-        'category' => 'foiled-trade',
-        'image' => 'silver-foil.webp',
-        'description' => 'Create striking silver highlights that give your packaging a polished, contemporary look.',
+        'title' => 'Single Wall Flute',
+        'category' => 'fluted-grade',
+        'image' => 'material/op506.jpg',
+        'description' => 'One corrugated layer between liners offers practical protection for everyday shipping and packaging applications.',
     ],
     [
-        'title' => 'Holographic Foil',
-        'category' => 'foiled-trade',
-        'image' => 'holographic-foil.webp',
-        'description' => 'Colour-shifting reflective foil creates eye-catching accents for distinctive product packaging.',
+        'title' => 'Single Flute',
+        'category' => 'fluted-grade',
+        'image' => 'material/op507.jpg',
+        'description' => 'A lightweight fluted structure provides cushioning and rigidity for a variety of packaging requirements.',
+    ],
+    [
+        'title' => 'F-Flute',
+        'category' => 'fluted-grade',
+        'image' => 'material/op509.jpg',
+        'description' => 'Fine fluting supports compact packaging designs and a relatively smooth surface for printed graphics.',
+    ],
+    [
+        'title' => 'E-Flute',
+        'category' => 'fluted-grade',
+        'image' => 'tab1.webp',
+        'description' => 'Fine corrugation provides a smooth printable surface and practical protection for retail boxes and mailers.',
+    ],
+    [
+        'title' => 'Double Wall Flute',
+        'category' => 'fluted-grade',
+        'image' => 'material/op506.jpg',
+        'description' => 'Two corrugated layers increase rigidity and cushioning for heavier products and more demanding transport.',
+    ],
+    [
+        'title' => 'C-Flute',
+        'category' => 'fluted-grade',
+        'image' => 'material/op507.jpg',
+        'description' => 'A widely used flute profile offering a balance of cushioning, stacking strength, and versatility.',
+    ],
+    [
+        'title' => 'B-Flute',
+        'category' => 'fluted-grade',
+        'image' => 'material/op509.jpg',
+        'description' => 'A relatively compact flute profile provides good crush resistance and supports many shipping box applications.',
+    ],
+    [
+        'title' => 'A-Flute',
+        'category' => 'fluted-grade',
+        'image' => 'tab1.webp',
+        'description' => 'A larger flute profile provides cushioning and compression resistance for suitable protective packaging.',
     ],
 
-    // 6. Corrugated
+    // 4. Corrugated
     [
-        'title' => 'Single Wall Corrugated',
+        'title' => 'Oyster White Board',
         'category' => 'corrugated',
-        'image' => 'single-wall.webp',
-        'description' => 'A versatile corrugated construction offering everyday cushioning and protection for shipping and storage.',
+        'image' => 'material/op501.jpg',
+        'description' => 'A white-faced board option for packaging that requires a clean, bright exterior appearance.',
     ],
     [
-        'title' => 'Double Wall Corrugated',
+        'title' => 'Natural Kraft Board',
         'category' => 'corrugated',
-        'image' => 'double-wall.webp',
-        'description' => 'Two corrugated layers provide additional strength and protection for heavier products and demanding transit.',
+        'image' => 'tab1.webp',
+        'description' => 'Natural brown board offers a simple, earthy appearance for shipping boxes and kraft-style packaging.',
     ],
     [
-        'title' => 'E-Flute Board',
+        'title' => 'Kemi White Board',
         'category' => 'corrugated',
-        'image' => 'e-flute.webp',
-        'description' => 'Fine corrugated fluting offers a smooth printable surface for retail-ready boxes and premium mailers.',
+        'image' => 'material/op503.jpg',
+        'description' => 'A white board option for packaging projects that need a bright surface and a polished presentation.',
     ],
     [
-        'title' => 'F-Flute Board',
+        'title' => 'Bleached White Board',
         'category' => 'corrugated',
-        'image' => 'f-flute.webp',
-        'description' => 'Fine-flute corrugated board supports detailed printing and compact packaging designs.',
+        'image' => 'material/op504.jpg',
+        'description' => 'A bleached white surface provides a clean appearance suitable for branded packaging and printed designs.',
     ],
 
-    // 7. Color Options
+    // 5. Color Options
     [
-        'title' => 'Full Colour',
+        'title' => 'UV Ink',
         'category' => 'color-options',
-        'image' => 'full-colour.webp',
-        'description' => 'Bring packaging artwork to life with vibrant multi-colour printing and detailed graphics.',
+        'image' => 'finishing/op016.jpg',
+        'description' => 'UV-curable inks are cured using ultraviolet light and can produce vivid graphics on suitable packaging materials.',
     ],
     [
-        'title' => 'Black & White',
+        'title' => 'Soy Ink',
         'category' => 'color-options',
-        'image' => 'black-white.webp',
-        'description' => 'A timeless monochrome palette for bold typography, minimal designs, and elegant packaging.',
+        'image' => 'tab1.webp',
+        'description' => 'Soy-based inks use soybean oil as part of their formulation and are an alternative to some petroleum-based inks.',
     ],
     [
-        'title' => 'Custom Brand Colours',
+        'title' => 'Pantone',
         'category' => 'color-options',
-        'image' => 'brand-colours.webp',
-        'description' => 'Coordinate packaging colours with your brand identity for a consistent and recognisable presentation.',
+        'image' => 'material/op510.jpg',
+        'description' => 'Pantone spot colours help brands specify and reproduce particular colours consistently across print projects.',
     ],
     [
-        'title' => 'Natural Kraft',
+        'title' => 'CMYK',
         'category' => 'color-options',
-        'image' => 'natural-kraft.webp',
-        'description' => 'Natural kraft tones provide a warm, understated appearance for organic and minimalist brand styles.',
+        'image' => 'material/op511.jpg',
+        'description' => 'Four-colour process printing combines cyan, magenta, yellow, and black inks to reproduce a wide range of artwork.',
     ],
 ];
-
-$finishing_image_sets = [
-    'coating' => [
-        'finishing/op009.jpg',
-        'finishing/op010.jpg',
-        'finishing/op011.jpg',
-        'finishing/op012.jpg',
-        'finishing/op013.jpg',
-        'finishing/op014.jpg',
-        'finishing/op015.jpg',
-    ],
-    'paper-boards' => [
-        'material/op501.jpg',
-        'material/op502.jpg',
-        'material/op503.jpg',
-        'material/op504.jpg',
-    ],
-    'special-finishing' => [
-        'addition/op017.jpg',
-        'addition/op018.jpg',
-        'addition/op019.jpg',
-        'addition/op020.jpg',
-    ],
-    'printing' => [
-        'printing/op024.jpg',
-        'printing/op027.jpg',
-        'printing/op030.jpg',
-        'addition/op021.jpg',
-    ],
-    'foiled-trade' => [
-        'addition/op022.jpg',
-        'addition/op023.jpg',
-        'addon/ci006.jpg',
-    ],
-    'corrugated' => [
-        'material/op505.jpg',
-        'material/op506.jpg',
-        'material/op507.jpg',
-        'material/op509.jpg',
-    ],
-    'color-options' => [
-        'finishing/op016.jpg',
-        'finishing/op028.jpg',
-        'material/op510.jpg',
-        'material/op511.jpg',
-    ],
-];
-
-$finishing_image_indexes = [];
-
-foreach ($finishing_options as $index => $option) {
-    $category = $option['category'];
-
-    if (!isset($finishing_image_sets[$category])) {
-        continue;
-    }
-
-    $position = isset($finishing_image_indexes[$category]) ? $finishing_image_indexes[$category] : 0;
-    $images = $finishing_image_sets[$category];
-
-    $finishing_options[$index]['image'] = $images[$position % count($images)];
-    $finishing_image_indexes[$category] = $position + 1;
-}
 ?>
 
 <section class="bg-gray-50 py-12 sm:px-6 lg:py-16">
@@ -285,17 +250,16 @@ foreach ($finishing_options as $index => $option) {
         <div class="mx-auto mb-7 max-w-2xl text-center">
             <span
                 class="mb-3 inline-flex rounded-full border border-secondary/20 bg-white px-3 py-1 text-xs font-medium text-secondary">
-                Finishing & Material Options
+                Finishing &amp; Material Options
             </span>
 
             <h2 class="mb-3 text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
-                Flexible Packaging & Custom Mylar Bags’
+                Flexible Packaging &amp; Custom Mylar Bags
             </h2>
 
             <p class="text-sm leading-6 text-txt_Clr md:text-base">
                 Give your brand the exemplary presentation it deserves. From custom boxes to vibrant mylar bags, we
-                create retail & custom packaging bags that turn first-time buyers into lifetime fans.
-
+                create retail &amp; custom packaging bags that turn first-time buyers into lifetime fans.
             </p>
         </div>
 
@@ -305,7 +269,8 @@ foreach ($finishing_options as $index => $option) {
             <?php $first_category = true; ?>
 
             <?php foreach ($finishing_categories as $slug => $label): ?>
-                <button type="button" role="tab" aria-selected="<?php echo $first_category ? 'true' : 'false'; ?>"
+                <button type="button" role="tab" id="finishing-tab-<?php echo esc_attr($slug); ?>"
+                    aria-controls="finishing-panel" aria-selected="<?php echo $first_category ? 'true' : 'false'; ?>"
                     data-category="<?php echo esc_attr($slug); ?>"
                     class="finishing-tab rounded-full border border-primary/20 px-3 py-2 text-xs font-semibold transition duration-200 sm:text-sm <?php echo $first_category ? 'is-active bg-secondary text-white' : 'bg-white text-secondary'; ?>">
                     <?php echo esc_html($label); ?>
@@ -316,12 +281,13 @@ foreach ($finishing_options as $index => $option) {
         </div>
 
         <!-- Finishing Cards -->
-        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div id="finishing-panel" class="finishing-grid grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+            role="tabpanel" aria-live="polite">
             <?php foreach ($finishing_options as $index => $option): ?>
                 <article
                     class="finishing-card rounded-xl border border-secondary/20 bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
-                    data-category="<?php echo esc_attr($option['category']); ?>" role="tabpanel">
-                    <div class="mb-3 flex h-[130px] items-center justify-center overflow-hidden rounded-lg bg-secondary/10">
+                    data-category="<?php echo esc_attr($option['category']); ?>">
+                    <div class="mb-3 flex h-[295px] items-center justify-center overflow-hidden rounded-lg bg-secondary/10">
                         <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/' . $option['image']); ?>"
                             alt="<?php echo esc_attr($option['title']); ?>" class="h-full w-full object-cover"
                             loading="lazy">
@@ -340,3 +306,83 @@ foreach ($finishing_options as $index => $option) {
 
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabContainers = document.querySelectorAll('.finishing-tabs');
+
+        tabContainers.forEach(function (tabContainer) {
+            const section = tabContainer.closest('section');
+
+            if (!section) {
+                return;
+            }
+
+            const tabs = Array.from(
+                tabContainer.querySelectorAll('.finishing-tab')
+            );
+
+            const cards = Array.from(
+                section.querySelectorAll('.finishing-card')
+            );
+
+            function activateTab(activeTab) {
+                const category = activeTab.dataset.category;
+
+                tabs.forEach(function (tab) {
+                    const isActive = tab === activeTab;
+
+                    tab.classList.toggle('is-active', isActive);
+                    tab.setAttribute('aria-selected', String(isActive));
+
+                    tab.classList.toggle('bg-secondary', isActive);
+                    tab.classList.toggle('text-white', isActive);
+                    tab.classList.toggle('bg-white', !isActive);
+                    tab.classList.toggle('text-secondary', !isActive);
+                });
+
+                cards.forEach(function (card) {
+                    const matches = card.dataset.category === category;
+
+                    card.hidden = !matches;
+                });
+            }
+
+            tabs.forEach(function (tab, index) {
+                tab.addEventListener('click', function () {
+                    activateTab(tab);
+                });
+
+                tab.addEventListener('keydown', function (event) {
+                    let nextIndex = index;
+
+                    if (event.key === 'ArrowRight') {
+                        nextIndex = (index + 1) % tabs.length;
+                    } else if (event.key === 'ArrowLeft') {
+                        nextIndex = (index - 1 + tabs.length) % tabs.length;
+                    } else if (event.key === 'Home') {
+                        nextIndex = 0;
+                    } else if (event.key === 'End') {
+                        nextIndex = tabs.length - 1;
+                    } else {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    tabs[nextIndex].focus();
+                    activateTab(tabs[nextIndex]);
+                });
+            });
+
+            if (tabs.length > 0) {
+                activateTab(tabs[0]);
+            }
+        });
+    });
+</script>
+
+<style>
+    .finishing-card[hidden] {
+        display: none !important;
+    }
+</style>
