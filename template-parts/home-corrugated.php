@@ -21,11 +21,6 @@ $btn_link = $corrug['aboutlink'] ?? '';
 
             <!-- Text Card -->
             <div class="relative z-20 mx-auto w-full max-w-[480px] rounded-lg bg-white p-5 shadow-sm md:mx-0 lg:p-7">
-
-                <span class="mb-2 block text-xs font-medium tracking-wide text-primary sm:text-sm">
-                    What Sets Us Apart From Others
-                </span>
-
                 <h2 class="mb-2 text-xl font-bold leading-tight text-title_Clr sm:text-2xl">
                     Better Packaging Choices for a Better Environment: Eco-friendly Packaging
                 </h2>
