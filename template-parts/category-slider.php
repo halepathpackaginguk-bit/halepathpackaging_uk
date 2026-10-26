@@ -84,11 +84,11 @@ if (!empty($categories) && is_array($categories)):
                             <!-- Description -->
                             <p class="mb-3 line-clamp-2 min-h-[32px] text-xs leading-5 text-txt_Clr sm:text-sm">
                                 <?php
-                                echo esc_html(
-                                    !empty($category_description)
-                                    ? $category_description
-                                    : 'Explore our packaging solutions for your products.'
-                                );
+                                $description = !empty($category_description)
+                                    ? wp_strip_all_tags($category_description, true)
+                                    : 'Explore our packaging solutions for your products.';
+
+                                echo esc_html(trim($description));
                                 ?>
                             </p>
 
