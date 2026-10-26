@@ -3,8 +3,8 @@ $categories = get_field('latest_categories');
 
 if (!empty($categories) && is_array($categories)):
 
-    // Display only 8 selected categories
-    $categories = array_slice($categories, 0, 8);
+    // Display only 12 selected categories
+    $categories = array_slice($categories, 0, 12);
     ?>
 
     <section class="py-10 sm:px-6 lg:py-14">
