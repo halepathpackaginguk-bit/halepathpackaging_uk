@@ -16,18 +16,22 @@ $video_id = 'dfViGz8LoZE';
                     onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/<?php echo esc_attr($video_id); ?>/hqdefault.jpg';"
                     alt="" class="w-full h-full object-cover" fetchpriority="high">
                 <span class="yt-play-btn" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
                 </span>
             </div>
             <div class="video_overlay">
                 <div class="hale_container relative z-10">
-                    <div class="md:w-1/2 w-full">
+                    <div class="md:w-2/3 w-full">
                         <h1 class="h1">
-                            <?php echo esc_html($title); ?>
+                            Custom Packaging & Boxes for UK Startups & Businesses
                         </h1>
 
                         <p class="text-white sm:text-2xl text-lg font-medium mb-8">
-                            <?php echo esc_html($desc); ?>
+                            Hale Path Packaging delivers custom boxes & custom packaging UK services for small to large
+                            businesses in the UK. From e-commerce mailers to luxury retail & flexible packaging, we
+                            fully customize every order to match your brand, product, and budget.
                         </p>
 
                         <a href="<?php echo esc_url($btn_link); ?>" class="btn_primary">

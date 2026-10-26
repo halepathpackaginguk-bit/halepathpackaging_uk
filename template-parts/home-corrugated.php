@@ -6,17 +6,49 @@ $content = $corrug['content'] ?? '';
 $btn_link = $corrug['aboutlink'] ?? '';
 ?>
 
-<section class="bg-cover mt-10 bg-no-repeat about_bg"
-    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-page/bg.png'">
-    <div class="hale_container sm:pt-[110px]! pt-10">
-        <h2 class="text-white font-bold text-2xl md:text-5xl lg:text-[51px]">
-           <?php echo esc_html($title); ?>
-        </h2>
-    </div>
+<section class="relative overflow-hidden bg-gray-50">
     <div
-        class="bg-secondary/20 backdrop-blur-[10px] py-10 sm:pr-8 md:p-[46px] max-w-full md:max-w-[80%] lg:max-w-[70%] rounded-tr-[140px] sm:mt-[110px] mt-8">
-        <div class="hale_container corru_content">
-           <?php echo $content; ?>
+        class="mx-auto flex min-h-[220px] container items-center px-5 py-8 sm:min-h-[280px] sm:px-10 lg:min-h-[340px] lg:px-16">
+
+        <!-- Background Decorative Image -->
+        <div class="absolute inset-0">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/offer-bg.png'); ?>"
+                alt="" aria-hidden="true" class="h-full w-full object-cover">
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 w-full md:grid md:grid-cols-2 md:items-center">
+
+            <!-- Text Card -->
+            <div class="relative z-20 mx-auto w-full max-w-[480px] rounded-lg bg-white p-5 shadow-sm md:mx-0 lg:p-7">
+
+                <span class="mb-2 block text-xs font-medium tracking-wide text-primary sm:text-sm">
+                    What Sets Us Apart From Others
+                </span>
+
+                <h2 class="mb-2 text-xl font-bold leading-tight text-title_Clr sm:text-2xl">
+                    Better Packaging Choices for a Better Environment: Eco-friendly Packaging
+                </h2>
+
+                <p class="mb-4 text-sm leading-6 text-txt_Clr">
+                    At Hale Path Packaging, we provide eco-friendly packaging made from recyclable and sustainable
+                    materials to help businesses reduce waste. And best of all, we offer free design support, free
+                    shipping, and 10% off on first and bulk orders. Contact us at sales@halepathpackaging.co.uk and get
+                    a free quote!
+                </p>
+
+                <a href="<?php echo esc_url(home_url('/request-quote/')); ?>"
+                    class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit">
+                    Request a Quote
+                    <span aria-hidden="true">→</span>
+                </a>
+
+
+            </div>
+
+            <!-- Right-side space for packaging products in background image -->
+            <div class="hidden md:block" aria-hidden="true"></div>
+
         </div>
     </div>
 </section>

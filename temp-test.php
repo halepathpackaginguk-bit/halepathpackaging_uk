@@ -1,23 +1,223 @@
 <?php /** Template Name: Test */ get_header();
 
 ?>
+
+<?php get_template_part('template-parts/about-imgscroll'); ?>
+<?php get_template_part('template-parts/category-slider'); ?>
+
+<?php
+$packaging_categories = [
+    [
+        'title' => 'Rigid Boxes',
+        'image' => 'pack/1.png',
+        'rating' => '4.8',
+        'reviews' => '128',
+        'description' => 'Create custom rigid boxes for luxury products and premium gifts.',
+        'url' => '/rigid-boxes/',
+    ],
+    [
+        'title' => 'Custom Mailer Boxes',
+        'image' => 'product/gallery1.jpg',
+        'rating' => '4.9',
+        'reviews' => '96',
+        'description' => 'Durable custom mailer boxes designed for a memorable unboxing.',
+        'url' => '/custom-mailer-boxes/',
+    ],
+    [
+        'title' => 'Apparel Boxes',
+        'image' => 'pack/2.png',
+        'rating' => '4.8',
+        'reviews' => '82',
+        'description' => 'Premium packaging solutions for clothing and fashion brands.',
+        'url' => '/apparel-boxes/',
+    ],
+    [
+        'title' => 'Round Boxes',
+        'image' => 'product/gallery2.jpg',
+        'rating' => '4.7',
+        'reviews' => '65',
+        'description' => 'Round boxes made to showcase your products in style.',
+        'url' => '/round-boxes/',
+    ],
+    [
+        'title' => 'Custom Food Boxes',
+        'image' => 'pack/3.png',
+        'rating' => '4.9',
+        'reviews' => '114',
+        'description' => 'Custom food boxes are specially designed for your food products.',
+        'url' => '/custom-food-boxes/',
+    ],
+    [
+        'title' => 'Custom Pizza Boxes',
+        'image' => 'product/gallery3.jpg',
+        'rating' => '4.8',
+        'reviews' => '91',
+        'description' => 'Custom pizza boxes designed to keep your pizzas protected.',
+        'url' => '/custom-pizza-boxes/',
+    ],
+    [
+        'title' => 'Custom Cake Boxes',
+        'image' => 'pack/4.png',
+        'rating' => '4.9',
+        'reviews' => '76',
+        'description' => 'Custom cake boxes are printed to showcase your baked treats.',
+        'url' => '/custom-cake-boxes/',
+    ],
+    [
+        'title' => 'Gift Boxes',
+        'image' => 'product/gallery4.jpg',
+        'rating' => '4.8',
+        'reviews' => '103',
+        'description' => 'Create custom gift boxes designed to make every gift special.',
+        'url' => '/gift-boxes/',
+    ],
+];
+?>
+
+<section class="py-10 sm:px-6 lg:py-14">
+    <div class="mx-auto container px-4">
+
+        <!-- Section Heading -->
+        <div class="mb-7 text-center">
+            <h2 class="text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
+                Packaging That Best Suits Your Products
+            </h2>
+
+            <p class="mt-2 text-sm leading-6 text-txt_Clr md:text-base">
+                Choose the packaging of your choice that gives your items the perfect feel.
+            </p>
+        </div>
+
+        <!-- Product Categories -->
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
+
+            <?php foreach ($packaging_categories as $category): ?>
+
+                <article
+                    class="group overflow-hidden rounded-xl border border-secondary/20 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+
+                    <!-- Product Image -->
+                    <a href="<?php echo esc_url(home_url($category['url'])); ?>"
+                        class="relative block h-[125px] overflow-hidden bg-secondary/10 sm:h-[155px] lg:h-[170px]"
+                        aria-label="<?php echo esc_attr($category['title']); ?>">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/' . $category['image']); ?>"
+                            alt="<?php echo esc_attr($category['title']); ?>" loading="lazy"
+                            class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                    </a>
+
+                    <!-- Product Details -->
+                    <div class="p-3 sm:p-4">
+
+                        <!-- Rating -->
+                        <div class="mb-2 flex flex-wrap items-center gap-1.5">
+                            <span class="text-xs tracking-tight text-primary" aria-label="Star rating">
+                                ★★★★★
+                            </span>
+
+                            <span class="text-xs text-txt_Clr">
+                                (<?php echo esc_html($category['rating']); ?>)
+                            </span>
+
+                            <span class="text-xs text-txt_Clr">
+                                <?php echo esc_html($category['reviews']); ?> Reviews
+                            </span>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="mb-1 text-base font-bold leading-snug text-title_Clr sm:text-lg">
+                            <a href="<?php echo esc_url(home_url($category['url'])); ?>"
+                                class="transition hover:text-primary">
+                                <?php echo esc_html($category['title']); ?>
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="mb-3 line-clamp-2 min-h-[32px] text-xs leading-5 text-txt_Clr sm:text-sm">
+                            <?php echo esc_html($category['description']); ?>
+                        </p>
+
+                        <!-- Category Link -->
+                        <a href="<?php echo esc_url(home_url($category['url'])); ?>"
+                            class="inline-flex items-center gap-1 text-xs font-semibold text-primary transition hover:text-secondary">
+                            View Category
+                            <span aria-hidden="true">›</span>
+                        </a>
+
+                    </div>
+                </article>
+
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+</section>
+
+<section class="relative overflow-hidden bg-gray-50">
+    <div
+        class="mx-auto flex min-h-[220px] container items-center px-5 py-8 sm:min-h-[280px] sm:px-10 lg:min-h-[340px] lg:px-16">
+
+        <!-- Background Decorative Image -->
+        <div class="absolute inset-0">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/offer-bg.png'); ?>"
+                alt="" aria-hidden="true" class="h-full w-full object-cover">
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 w-full md:grid md:grid-cols-2 md:items-center">
+
+            <!-- Text Card -->
+            <div class="relative z-20 mx-auto w-full max-w-[480px] rounded-lg bg-white p-5 shadow-sm md:mx-0 lg:p-7">
+
+                <span class="mb-2 block text-xs font-medium tracking-wide text-primary sm:text-sm">
+                    What Sets Us Apart From Others
+                </span>
+
+                <h2 class="mb-2 text-xl font-bold leading-tight text-title_Clr sm:text-2xl">
+                    Better Packaging Choices for a Better Environment: Eco-friendly Packaging
+                </h2>
+
+                <p class="mb-4 text-sm leading-6 text-txt_Clr">
+                    At Hale Path Packaging, we provide eco-friendly packaging made from recyclable and sustainable
+                    materials to help businesses reduce waste. And best of all, we offer free design support, free
+                    shipping, and 10% off on first and bulk orders. Contact us at sales@halepathpackaging.co.uk and get
+                    a free quote!
+                </p>
+
+                <a href="<?php echo esc_url(home_url('/request-quote/')); ?>"
+                    class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit">
+                    Request a Quote
+                    <span aria-hidden="true">→</span>
+                </a>
+
+
+            </div>
+
+            <!-- Right-side space for packaging products in background image -->
+            <div class="hidden md:block" aria-hidden="true"></div>
+
+        </div>
+    </div>
+</section>
+
 <section class="bg-gray-50 py-12 lg:py-16">
     <div class="mx-auto container px-4">
         <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-[1fr_1.15fr] lg:gap-12">
 
             <!-- Left Content -->
             <div>
+                <span
+                    class="mb-3 inline-flex rounded-full border border-secondary/20 bg-white px-3 py-1 text-xs font-medium text-secondary">
+                    What Sets Us Apart From Others
+                </span>
+
                 <h2 class="mb-3 text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
-                    What Sets Us Apart
+                    Why Choose Hale Path Packaging?
                 </h2>
 
                 <p class="mb-6 text-sm leading-6 text-txt_Clr md:text-base">
-                    With our track record of success and a simple customer-centric approach,
-                    we have earned the trust of businesses worldwide. Our commitment to
-                    excellence and innovation allows us to provide solutions that meet
-                    your unique needs. From design to delivery, we make sure your
-                    packaging stands out. We focus on quality, efficiency, and
-                    exceptional service to help your business succeed.
+                    Because Hale Path Packaging helps businesses protect and present their products with custom,
+                    eco-friendly, and durable packaging. If you sell online, serve food and drinks, or run a retail
+                    store, we design solutions that fit your brand.
                 </p>
 
                 <!-- Feature Cards -->
@@ -25,34 +225,35 @@
 
                     <div
                         class="flex min-h-[105px] flex-col items-center justify-center rounded-lg border border-secondary/20 px-3 py-4 text-center">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/glob.png'); ?>" alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/glob.png'); ?>"
+                            alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
                         <h3 class="text-sm font-semibold text-title_Clr">
-                            No Plastic
-                            <br>Options
+                            No Plastic Options
                         </h3>
                     </div>
 
                     <div
                         class="flex min-h-[105px] flex-col items-center justify-center rounded-lg border border-secondary/20 px-3 py-4 text-center">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/studio.png'); ?>" alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/studio.png'); ?>"
+                            alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
                         <h3 class="text-sm font-semibold text-title_Clr">
-                            Customisation
-                            <br>Solutions
+                            Customisation Solutions
                         </h3>
                     </div>
 
                     <div
                         class="flex min-h-[105px] flex-col items-center justify-center rounded-lg border border-secondary/20 px-3 py-4 text-center">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/price_icon.png'); ?>" alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/price_icon.png'); ?>"
+                            alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
                         <h3 class="text-sm font-semibold text-title_Clr">
-                            Low Minimum
-                            <br>Order Qty
+                            Low Minimum Order Qty
                         </h3>
                     </div>
 
                     <div
                         class="flex min-h-[105px] flex-col items-center justify-center rounded-lg border border-secondary/20 px-3 py-4 text-center">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/house.png'); ?>" alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/house.png'); ?>"
+                            alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
                         <h3 class="text-sm font-semibold text-title_Clr">
                             Free Shipping
                         </h3>
@@ -60,19 +261,19 @@
 
                     <div
                         class="flex min-h-[105px] flex-col items-center justify-center rounded-lg border border-secondary/20 px-3 py-4 text-center">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/agent.png'); ?>" alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/agent.png'); ?>"
+                            alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
                         <h3 class="text-sm font-semibold text-title_Clr">
-                            Free Graphic
-                            <br>Designing
+                            Free Graphic Design
                         </h3>
                     </div>
 
                     <div
                         class="flex min-h-[105px] flex-col items-center justify-center rounded-lg border border-secondary/20 px-3 py-4 text-center">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/capacity.png'); ?>" alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/category/capacity.png'); ?>"
+                            alt="" aria-hidden="true" class="mb-2 h-8 w-8 object-contain" loading="lazy">
                         <h3 class="text-sm font-semibold text-title_Clr">
-                            Quick
-                            <br>Turnaround Time
+                            Quick Turnaround Time
                         </h3>
                     </div>
 
@@ -248,10 +449,6 @@
         </div>
     </div>
 </section>
-
-
-
-
 
 <?php
 $finishing_categories = [
@@ -532,16 +729,17 @@ foreach ($finishing_options as $index => $option) {
         <div class="mx-auto mb-7 max-w-2xl text-center">
             <span
                 class="mb-3 inline-flex rounded-full border border-secondary/20 bg-white px-3 py-1 text-xs font-medium text-secondary">
-                ✦ Finishing Options
+                Finishing & Material Options
             </span>
 
             <h2 class="mb-3 text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
-                Finishing &amp; Material Options
+                Flexible Packaging & Custom Mylar Bags’
             </h2>
 
             <p class="text-sm leading-6 text-txt_Clr md:text-base">
-                Choose from premium coating, board, printing and finishing options
-                for your insert boxes.
+                Give your brand the exemplary presentation it deserves. From custom boxes to vibrant mylar bags, we
+                create retail & custom packaging bags that turn first-time buyers into lifetime fans.
+
             </p>
         </div>
 
@@ -586,211 +784,5 @@ foreach ($finishing_options as $index => $option) {
 
     </div>
 </section>
-
-
-
-
-
-<?php
-$packaging_categories = [
-    [
-        'title' => 'Rigid Boxes',
-        'image' => 'pack/1.png',
-        'rating' => '4.8',
-        'reviews' => '128',
-        'description' => 'Create custom rigid boxes for luxury products and premium gifts.',
-        'url' => '/rigid-boxes/',
-    ],
-    [
-        'title' => 'Custom Mailer Boxes',
-        'image' => 'product/gallery1.jpg',
-        'rating' => '4.9',
-        'reviews' => '96',
-        'description' => 'Durable custom mailer boxes designed for a memorable unboxing.',
-        'url' => '/custom-mailer-boxes/',
-    ],
-    [
-        'title' => 'Apparel Boxes',
-        'image' => 'pack/2.png',
-        'rating' => '4.8',
-        'reviews' => '82',
-        'description' => 'Premium packaging solutions for clothing and fashion brands.',
-        'url' => '/apparel-boxes/',
-    ],
-    [
-        'title' => 'Round Boxes',
-        'image' => 'product/gallery2.jpg',
-        'rating' => '4.7',
-        'reviews' => '65',
-        'description' => 'Round boxes made to showcase your products in style.',
-        'url' => '/round-boxes/',
-    ],
-    [
-        'title' => 'Custom Food Boxes',
-        'image' => 'pack/3.png',
-        'rating' => '4.9',
-        'reviews' => '114',
-        'description' => 'Custom food boxes are specially designed for your food products.',
-        'url' => '/custom-food-boxes/',
-    ],
-    [
-        'title' => 'Custom Pizza Boxes',
-        'image' => 'product/gallery3.jpg',
-        'rating' => '4.8',
-        'reviews' => '91',
-        'description' => 'Custom pizza boxes designed to keep your pizzas protected.',
-        'url' => '/custom-pizza-boxes/',
-    ],
-    [
-        'title' => 'Custom Cake Boxes',
-        'image' => 'pack/4.png',
-        'rating' => '4.9',
-        'reviews' => '76',
-        'description' => 'Custom cake boxes are printed to showcase your baked treats.',
-        'url' => '/custom-cake-boxes/',
-    ],
-    [
-        'title' => 'Gift Boxes',
-        'image' => 'product/gallery4.jpg',
-        'rating' => '4.8',
-        'reviews' => '103',
-        'description' => 'Create custom gift boxes designed to make every gift special.',
-        'url' => '/gift-boxes/',
-    ],
-];
-?>
-
-<section class="py-10 sm:px-6 lg:py-14">
-    <div class="mx-auto container px-4">
-
-        <!-- Section Heading -->
-        <div class="mb-7 text-center">
-            <h2 class="text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
-                Packaging That Best Suits Your Products
-            </h2>
-
-            <p class="mt-2 text-sm leading-6 text-txt_Clr md:text-base">
-                Choose the packaging of your choice that gives your items the perfect feel.
-            </p>
-        </div>
-
-        <!-- Product Categories -->
-        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
-
-            <?php foreach ($packaging_categories as $category): ?>
-
-                <article
-                    class="group overflow-hidden rounded-xl border border-secondary/20 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
-
-                    <!-- Product Image -->
-                    <a href="<?php echo esc_url(home_url($category['url'])); ?>"
-                        class="relative block h-[125px] overflow-hidden bg-secondary/10 sm:h-[155px] lg:h-[170px]"
-                        aria-label="<?php echo esc_attr($category['title']); ?>">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/' . $category['image']); ?>"
-                            alt="<?php echo esc_attr($category['title']); ?>" loading="lazy"
-                            class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
-
-                        <!-- Optional Brand Mark -->
-                        <span
-                            class="absolute right-2 top-2 rounded-sm bg-white/90 px-1.5 py-1 text-xs font-bold tracking-wide text-secondary">
-                            YOUR BRAND
-                        </span>
-                    </a>
-
-                    <!-- Product Details -->
-                    <div class="p-3 sm:p-4">
-
-                        <!-- Rating -->
-                        <div class="mb-2 flex flex-wrap items-center gap-1.5">
-                            <span class="text-xs tracking-tight text-primary" aria-label="Star rating">
-                                ★★★★★
-                            </span>
-
-                            <span class="text-xs text-txt_Clr">
-                                (<?php echo esc_html($category['rating']); ?>)
-                            </span>
-
-                            <span class="text-xs text-txt_Clr">
-                                <?php echo esc_html($category['reviews']); ?> Reviews
-                            </span>
-                        </div>
-
-                        <!-- Title -->
-                        <h3 class="mb-1 text-base font-bold leading-snug text-title_Clr sm:text-lg">
-                            <a href="<?php echo esc_url(home_url($category['url'])); ?>"
-                                class="transition hover:text-primary">
-                                <?php echo esc_html($category['title']); ?>
-                            </a>
-                        </h3>
-
-                        <!-- Description -->
-                        <p class="mb-3 line-clamp-2 min-h-[32px] text-xs leading-5 text-txt_Clr sm:text-sm">
-                            <?php echo esc_html($category['description']); ?>
-                        </p>
-
-                        <!-- Category Link -->
-                        <a href="<?php echo esc_url(home_url($category['url'])); ?>"
-                            class="inline-flex items-center gap-1 text-xs font-semibold text-primary transition hover:text-secondary">
-                            View Category
-                            <span aria-hidden="true">›</span>
-                        </a>
-
-                    </div>
-                </article>
-
-            <?php endforeach; ?>
-
-        </div>
-    </div>
-</section>
-
-
-
-<section class="relative overflow-hidden bg-gray-50">
-    <div
-        class="mx-auto flex min-h-[220px] container items-center px-5 py-8 sm:min-h-[280px] sm:px-10 lg:min-h-[340px] lg:px-16">
-
-        <!-- Background Decorative Image -->
-        <div class="absolute inset-0">
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/offer-bg.png'); ?>"
-                alt="" aria-hidden="true" class="h-full w-full object-cover">
-        </div>
-
-        <!-- Content -->
-        <div class="relative z-10 w-full md:grid md:grid-cols-2 md:items-center">
-
-            <!-- Text Card -->
-            <div class="relative z-20 mx-auto w-full max-w-[380px] rounded-lg bg-white p-5 shadow-sm md:mx-0 lg:p-7">
-
-                <span class="mb-2 block text-xs font-medium tracking-wide text-primary sm:text-sm">
-                    Premium Packaging Solutions
-                </span>
-
-                <h1 class="mb-2 text-xl font-bold leading-tight text-title_Clr sm:text-2xl">
-                    Premium Quality Packages You Can Trust
-                </h1>
-
-                <p class="mb-4 text-sm leading-6 text-txt_Clr">
-                    We provide high-quality custom packaging solutions designed to
-                    protect your products and elevate your brand. From premium
-                    boxes to sustainable packaging, we bring your ideas to life
-                    with quality and care.
-                </p>
-
-                <a href="<?php echo esc_url(home_url('/request-quote/')); ?>"
-                    class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit">
-                    Request a Quote
-                    <span aria-hidden="true">→</span>
-                </a>
-
-            </div>
-
-            <!-- Right-side space for packaging products in background image -->
-            <div class="hidden md:block" aria-hidden="true"></div>
-
-        </div>
-    </div>
-</section>
-
 
 <?php get_footer() ?>

@@ -1,5 +1,3 @@
-
-
 <?php
 $about_sec = get_field('about_section');
 $about_content = $about_sec['content'] ?? '';
@@ -17,68 +15,82 @@ $images = [
 ];
 ?>
 
-<section class="max_content mt-14 py-8">
-    <div class="hale_container hale_flex !flex-row items-start!">
-        <!-- LEFT: IMAGES -->
-        <div class="md:w-2/5 relative w-1/2">
-            <div class="overflow-hidden sm:h-[400px] h-[220px]" id="imageContainer">
-                <?php foreach ($images as $index => $img): ?>
-                    <figure class="image-slide  <?php echo $index === 0 ? 'block' : 'hidden'; ?>"
-                        data-index="<?php echo $index; ?>">
-                        <img src="<?php echo esc_url($img); ?>" alt="Image <?php echo $index + 1; ?>" class="rounded_img"
-                            <?php echo $index === 0 ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"'; ?> />
-                    </figure>
-                <?php endforeach; ?>
 
-                <!-- BACKGROUND SHADOW IMAGES -->
-                <figure>
-                    <img src="<?php echo esc_url($images[0]); ?>" class="w-[80%] -top-10 fixed_img" alt=""
-                        loading="lazy" decoding="async" />
-                </figure>
+<section class="py-10 md:py-12">
+    <div class="mx-auto container px-4">
+        <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2 lg:gap-10">
 
-                <figure>
-                    <img src="<?php echo esc_url($images[1]); ?>" class="w-[90%] -top-5 fixed_img" alt=""
-                        loading="lazy" decoding="async" />
-                </figure>
+            <!-- Left Image -->
+            <div class="overflow-hidden rounded-[24px]">
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/slid1.jpeg'); ?>"
+                    alt="Custom printed packaging boxes and pouches" class="h-[300px] w-full object-cover lg:h-full"
+                    loading="lazy">
             </div>
 
-            <div class="sm:mt-10 mt-5 flex justify-center">
-                <a href="<?php echo esc_url($btn_link); ?>" class="btn_secondry">
+            <!-- Right Content -->
+            <div class="py-1">
+                <h6 class="sub_title">
+                    About us
+                    <div class="sub_title_line"></div>
+                </h6>
+                <!-- Heading -->
+                <h2 class="h2 md:!text-left text-center">
+                    Your Entire Custom Packaging Solutions Under One Roof
+                </h2>
+
+                <!-- Description -->
+                <p class="mb-4 text-sm">
+                    Explore packaging options that suit your products and business needs. All our boxes are made in the
+                    UK from certified eco materials. From design to delivery, we manufacture premium custom boxes,
+                    labels, and eco-friendly packaging tailored to your brand. Get high-quality materials, fast kaging
+                    suppliers.
+                </p>
+
+                <!-- Features -->
+                <ul class="mb-6 space-y-2">
+                    <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                        <span
+                            class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
+                        <span>Free expert design support</span>
+                    </li>
+
+                    <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                        <span
+                            class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
+                        <span>Free UK delivery</span>
+                    </li>
+
+                    <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                        <span
+                            class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
+                        <span>Minimum 100-Unit MOQ</span>
+                    </li>
+
+                    <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                        <span
+                            class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
+                        <span>10% Bulk Order Savings</span>
+                    </li>
+                     <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                        <span
+                            class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
+                        <span>Logo printing in CMYK or PMS colours for packaging</span>
+                    </li>
+                     <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                        <span
+                            class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
+                        <span>Foil, embossing, and window cut options</span>
+                    </li>
+                </ul>
+
+                <!-- Button -->
+                <a href="<?php echo esc_url(home_url('/about-us/')); ?>"
+                    class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit">
                     About Us
+                    <span aria-hidden="true">→</span>
                 </a>
-            </div>
-        </div>
-        <!-- RIGHT: SCROLL TEXT -->
-        <div class="relative md:w-3/5 w-1/2">
-            <div id="scrollText" class="w-full sm:max-h-[400px] max-h-[220px] overflow-y-scroll scroll_Left">
-                <p> <?php echo $about_content; ?></p>
-            </div>
 
-            <div class="slide_text_overlay">
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const scrollBox = document.getElementById('scrollText');
-        const images = document.querySelectorAll('.image-slide');
-
-        if (!scrollBox || images.length === 0) return;
-
-        scrollBox.addEventListener('scroll', function () {
-            const scrollTop = scrollBox.scrollTop;
-            const scrollHeight = scrollBox.scrollHeight - scrollBox.clientHeight;
-            const totalImages = images.length;
-
-            let index = Math.floor((scrollTop / scrollHeight) * totalImages);
-            index = Math.min(totalImages - 1, index);
-
-            images.forEach((img, i) => {
-                img.classList.toggle('hidden', i !== index);
-                img.classList.toggle('block', i === index);
-            });
-        });
-    });
-</script>

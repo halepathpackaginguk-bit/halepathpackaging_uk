@@ -355,8 +355,8 @@ function halepath_handle_custom_packaging_quote() {
         $lines[] = $label . ': ' . $value;
     }
 
-    $to      = 'mufaqar@gmail.com';
-    $subject = 'New Custom Packaging Quote Request';
+    $to      = 'sales@halepathpackaging.co.uk';
+    $subject = 'Custom Packaging Quote Request-Home';
 
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',

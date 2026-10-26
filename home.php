@@ -3,7 +3,7 @@
 ?>
 <?php get_template_part('template-parts/main-banner'); ?>
 <?php get_template_part('template-parts/home-brands'); ?>
-<?php get_template_part('template-parts/home-about'); ?>
+<?php get_template_part('template-parts/about-imgscroll'); ?>
 <section class="bg-[#F5F5F5] py-10">
     <h2 class="h2 md:text-left text-center">Our Latest Category</h2>
     <?php get_template_part('template-parts/home-categories'); ?>
@@ -12,7 +12,7 @@
 <?php get_template_part('template-parts/home-offset'); ?>
 <?php get_template_part('template-parts/home-trusted'); ?>
 <?php get_template_part('template-parts/home-corrugated'); ?>
-<?php get_template_part('template-parts/get-qoute', ); ?>
+<?php get_template_part('template-parts/home-qoute', ); ?>
 <?php get_template_part('template-parts/what-weoffer', ); ?>
 <?php get_template_part('template-parts/home-flexible', ); ?>
 <?php get_template_part('template-parts/home-cta'); ?>
