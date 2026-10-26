@@ -44,58 +44,61 @@ $products_query = new WP_Query($args);
 
             <?php if (!empty($category_description)): ?>
                 <div class="mb-4 text-sm">
-                    <?php echo wp_kses_post(wpautop($category_description)); ?>
+                    <?php
+                    echo esc_html(
+                        wp_strip_all_tags($category_description, true)
+                    );
+                    ?>
                 </div>
             <?php endif; ?>
-        </div>
-        <div>
-            <a href="<?php echo esc_url(get_term_link('gifts-celebrations', 'product_cat')); ?>"
-                class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
-                See All <?php echo esc_html($category_title); ?>
-            </a>
-        </div>
-    </div>
-
-    <?php if ($products_query->have_posts()): ?>
-        <div class="product-slider" data-direction="<?php echo esc_attr($direction); ?>"
-            data-slides="<?php echo esc_attr($slidesToShow); ?>">
-            <?php while ($products_query->have_posts()):
-                $products_query->the_post();
-
-                $product = wc_get_product(get_the_ID());
-
-                if (!$product) {
-                    continue;
-                }
-
-                $image_id = $product->get_image_id();
-                $image_url = $image_id
-                    ? wp_get_attachment_image_url($image_id, 'large')
-                    : wc_placeholder_img_src();
-                ?>
-
-                <div class="p-3">
-                    <a href="<?php the_permalink(); ?>">
-                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
-                            class="rounded-full img-full" loading="lazy" decoding="async">
-                    </a>
-
-                    <a href="<?php the_permalink(); ?>" class="box_link">
-                        <?php the_title(); ?>
-                    </a>
-                </div>
-
-            <?php endwhile; ?>
+            <div>
+                <a href="<?php echo esc_url(get_term_link('gifts-celebrations', 'product_cat')); ?>"
+                    class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
+                    See All <?php echo esc_html($category_title); ?>
+                </a>
+            </div>
         </div>
 
-        <?php wp_reset_postdata(); ?>
+        <?php if ($products_query->have_posts()): ?>
+            <div class="product-slider" data-direction="<?php echo esc_attr($direction); ?>"
+                data-slides="<?php echo esc_attr($slidesToShow); ?>">
+                <?php while ($products_query->have_posts()):
+                    $products_query->the_post();
 
-    <?php else: ?>
+                    $product = wc_get_product(get_the_ID());
 
-        <p class="mt-6 text-center">
-            No products found in this category.
-        </p>
+                    if (!$product) {
+                        continue;
+                    }
 
-    <?php endif; ?>
+                    $image_id = $product->get_image_id();
+                    $image_url = $image_id
+                        ? wp_get_attachment_image_url($image_id, 'large')
+                        : wc_placeholder_img_src();
+                    ?>
+
+                    <div class="p-3">
+                        <a href="<?php the_permalink(); ?>">
+                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
+                                class="rounded-full img-full" loading="lazy" decoding="async">
+                        </a>
+
+                        <a href="<?php the_permalink(); ?>" class="box_link">
+                            <?php the_title(); ?>
+                        </a>
+                    </div>
+
+                <?php endwhile; ?>
+            </div>
+
+            <?php wp_reset_postdata(); ?>
+
+        <?php else: ?>
+
+            <p class="mt-6 text-center">
+                No products found in this category.
+            </p>
+
+        <?php endif; ?>
 </section>
 <!-- Product Slider end -->
