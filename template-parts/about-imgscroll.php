@@ -30,22 +30,26 @@ $images = [
             <!-- Right Content -->
             <div class="py-1">
                 <h6 class="sub_title">
-                    About us
+                    Premium Custom Boxes
                     <div class="sub_title_line"></div>
                 </h6>
                 <!-- Heading -->
                 <h2 class="h2 md:!text-left text-center">
-                    Your Entire Custom Packaging Solutions Under One Roof
+                    Trusted Custom Packaging UK Manufacturers
                 </h2>
 
                 <!-- Description -->
                 <p class="mb-4 text-sm">
-                    Explore packaging options that suit your products and business needs. All our boxes are made in the
-                    UK from certified eco materials. From design to delivery, we manufacture premium custom boxes,
-                    labels, and eco-friendly packaging tailored to your brand. Get high-quality materials, fast kaging
-                    suppliers.
+                    Ever noticed how a simple product feels premium the moment it arrives at your door? Often, the
+                    difference is the custom box packaging around it. Hale Path Packaging is a UK-based custom packaging
+                    manufacturer with a 32,000 sq ft in-house production facility. Because we control production
+                    ourselves, we deliver in just 7-12 business days without compromising on quality. We make every
+                    order to size, so your packaging design fits your product perfectly. From small businesses to large
+                    wholesale orders, we offer flexible options to suit every budget.
                 </p>
-
+                <h3 class="text-base font-semibold text-title_Clr mb-3">
+                    What We Offer
+                </h3>
                 <!-- Features -->
                 <ul class="mb-6 space-y-2">
                     <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
@@ -71,12 +75,12 @@ $images = [
                             class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
                         <span>10% Bulk Order Savings</span>
                     </li>
-                     <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                    <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
                         <span
                             class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
                         <span>Logo printing in CMYK or PMS colours for packaging</span>
                     </li>
-                     <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
+                    <li class="flex items-start gap-2.5 text-sm font-semibold leading-5">
                         <span
                             class="mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#f9d9c4] text-[13px] font-bold text-[#236273]">✓</span>
                         <span>Foil, embossing, and window cut options</span>

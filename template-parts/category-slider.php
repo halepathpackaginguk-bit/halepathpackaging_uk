@@ -2,145 +2,109 @@
 $categories = get_field('latest_categories');
 
 if (!empty($categories) && is_array($categories)):
+
+    // Display only 8 selected categories
+    $categories = array_slice($categories, 0, 8);
     ?>
-    <div class="slider-container category-slider">
 
-        <?php foreach ($categories as $category):
+    <section class="py-10 sm:px-6 lg:py-14">
+        <div class="container mx-auto px-4">
 
-            // Resolve category IDs into term objects.
-            if (is_numeric($category)) {
-                $category = get_term((int) $category, 'product_cat');
-            }
+            <!-- Section Heading -->
+            <div class="mb-7 text-center">
+                <h2 class="text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
+                    Your Entire Custom Packaging Solutions Under One Roof
+                </h2>
 
-            // Skip invalid terms.
-            if (
-                !($category instanceof WP_Term) ||
-                is_wp_error($category)
-            ) {
-                continue;
-            }
+                <p class="mt-2 text-sm leading-6 text-txt_Clr md:text-base">
+                    Explore packaging options that suit your products and business needs. All our boxes are made in the UK
+                    from certified eco materials. From design to delivery, we manufacture premium custom boxes, labels, and
+                    eco-friendly packaging tailored to your brand. Get high-quality materials and fast packaging suppliers.
+                </p>
+            </div>
 
-            // Get the category URL.
-            $category_link = get_term_link($category);
+            <!-- Product Categories -->
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
 
-            if (is_wp_error($category_link)) {
-                continue;
-            }
+                <?php foreach ($categories as $category): ?>
 
-            // Remove this only if your custom permalink structure supports it.
-            $category_link = str_replace(
-                '/product-category/',
-                '/',
-                $category_link
-            );
-
-            // Get category thumbnail ID.
-            $thumbnail_id = (int) get_term_meta(
-                $category->term_id,
-                'thumbnail_id',
-                true
-            );
-
-            ?>
-            <div class="w-full p-2 flex flex-col" style="min-height: clamp(220px, 30vw, 320px);">
-
-                <a href="<?php echo esc_url($category_link); ?>" class="block overflow-hidden rounded-full shrink-0"
-                    style="height: clamp(130px, 18vw, 250px);" aria-label="<?php echo esc_attr(
-                        sprintf('View %s products', $category->name)
-                    ); ?>">
                     <?php
-                    if ($thumbnail_id) {
-                        echo wp_get_attachment_image(
-                            $thumbnail_id,
-                            'woocommerce_thumbnail',
-                            false,
-                            [
-                                'alt' => $category->name,
-                                'class' => 'cat_image img-full block w-full h-full object-cover',
-                                'loading' => 'lazy',
-                                'decoding' => 'async',
-                            ]
-                        );
-                    } else {
-                        ?>
-                        <img src="<?php echo esc_url(
-                            get_template_directory_uri()
-                            . '/assets/images/category.jpg'
-                        ); ?>" alt="<?php echo esc_attr($category->name); ?>"
-                            class="cat_image img-full block w-full h-full object-cover" loading="lazy" decoding="async">
-                        <?php
+                    // Support ACF fields returning either term objects or term IDs
+                    if (is_numeric($category)) {
+                        $category = get_term((int) $category, 'product_cat');
+                    }
+
+                    if (!$category || is_wp_error($category) || !isset($category->term_id)) {
+                        continue;
+                    }
+
+                    $category_id = $category->term_id;
+                    $category_title = $category->name;
+                    $category_description = $category->description;
+
+                    // WooCommerce category image
+                    $thumbnail_id = get_term_meta(
+                        $category_id,
+                        'thumbnail_id',
+                        true
+                    );
+
+                    $category_image = $thumbnail_id
+                        ? wp_get_attachment_image_url($thumbnail_id, 'large')
+                        : get_template_directory_uri() . '/assets/images/category.jpg';
+
+                    // Category URL
+                    $category_url = get_term_link($category);
+                    if (is_wp_error($category_url)) {
+                        continue;
                     }
                     ?>
-                </a>
 
-                <a href="<?php echo esc_url($category_link); ?>"
-                    class="box_link block mt-auto pt-6 max-w-full overflow-hidden text-ellipsis whitespace-nowrap"
-                    title="<?php echo esc_attr($category->name); ?>">
-                    <?php echo esc_html($category->name); ?>
-                </a>
+                    <article
+                        class="group overflow-hidden rounded-xl border border-secondary/20 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+
+                        <!-- Product Image -->
+                        <a href="<?php echo esc_url($category_url); ?>"
+                            class="relative block h-[125px] overflow-hidden bg-secondary/10 sm:h-[155px] lg:h-[170px]"
+                            aria-label="<?php echo esc_attr($category_title); ?>">
+                            <img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category_title); ?>"
+                                loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                        </a>
+
+                        <!-- Product Details -->
+                        <div class="p-3 sm:p-4">
+
+                            <!-- Title -->
+                            <h3 class="mb-1 text-base font-bold leading-snug text-title_Clr sm:text-lg">
+                                <a href="<?php echo esc_url($category_url); ?>" class="transition hover:text-primary">
+                                    <?php echo esc_html($category_title); ?>
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="mb-3 line-clamp-2 min-h-[32px] text-xs leading-5 text-txt_Clr sm:text-sm">
+                                <?php
+                                echo esc_html(
+                                    !empty($category_description)
+                                    ? $category_description
+                                    : 'Explore our packaging solutions for your products.'
+                                );
+                                ?>
+                            </p>
+
+                            <!-- Category Link -->
+                            <a href="<?php echo esc_url($category_url); ?>"
+                                class="inline-flex items-center gap-1 text-xs font-semibold text-primary transition hover:text-secondary">
+                                View Category
+                                <span aria-hidden="true">›</span>
+                            </a>
+
+                        </div>
+                    </article>
+
+                <?php endforeach; ?>
 
             </div>
-        <?php endforeach; ?>
-
-    </div>
+        </div>
+    </section>
 <?php endif; ?>
-
-
-<script>
-
-    jQuery(function ($) {
-        $('.category-slider').each(function () {
-            const $slider = $(this);
-
-            // Avoid initializing Slick more than once.
-            if ($slider.hasClass('slick-initialized')) {
-                return;
-            }
-
-            $slider.slick({
-                dots: false,
-                arrows: false,
-                infinite: true,
-
-                slidesToShow: 4,
-                slidesToScroll: 1,
-
-                autoplay: true,
-                autoplaySpeed: 0,
-                speed: 12000,
-                cssEase: 'linear',
-
-                pauseOnHover: true,
-                pauseOnFocus: true,
-                swipeToSlide: true,
-                draggable: true,
-                accessibility: true,
-
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-        });
-    });
-
-</script>
