@@ -35,21 +35,21 @@ $category_title = 'Gifts Celebrations';
         </div>
 
         <?php if ($products_query->have_posts()): ?>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-8">
             <?php while ($products_query->have_posts()): $products_query->the_post();
                 $product = wc_get_product(get_the_ID());
                 if (!$product) continue;
 
                 $image_id  = $product->get_image_id();
                 $image_url = $image_id
-                    ? wp_get_attachment_image_url($image_id, 'large')
+                    ? wp_get_attachment_image_url($image_id, '')
                     : wc_placeholder_img_src();
             ?>
             <div class="p-3">
                 <a href="<?php the_permalink(); ?>">
                     <img src="<?php echo esc_url($image_url); ?>"
                          alt="<?php echo esc_attr(get_the_title()); ?>"
-                         class="rounded-full img-full" loading="lazy" decoding="async">
+                         class="rounded-full sm:h-[220px] lg:h-[250px]" loading="lazy" decoding="async">
                 </a>
                 <a href="<?php the_permalink(); ?>" class="box_link">
                     <?php the_title(); ?>

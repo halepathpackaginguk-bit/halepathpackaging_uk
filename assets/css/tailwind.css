@@ -510,7 +510,7 @@ footer ul li a span.marker {
 
 @media (max-width: 600px) {
   .slick-slide {
-    max-height: 240px;
+    max-height: 360px;
   }
 }
 
