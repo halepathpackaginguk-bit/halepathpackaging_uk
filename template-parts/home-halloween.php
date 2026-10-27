@@ -1,105 +1,67 @@
 <?php
-$slidesToShow = 4;
-$direction = 'left';
+$products = get_field('gift_products'); // relationship field -> array of posts/IDs
 
-// Get WooCommerce product category
-$category = get_term_by(
-    'slug',
-    'gifts-celebrations',
-    'product_cat'
-);
+// Build a query from the relationship field
+$products_query = new WP_Query([
+    'post_type'      => 'product',
+    'post__in'       => $products ? $products : [0], // force empty if none
+    'posts_per_page' => -1,
+    'orderby'        => 'post__in', // keep ACF relationship order
+    'post_status'    => 'publish',
+]);
 
-// Get category title and description
-$category_title = $category ? $category->name : 'Gifts & Celebrations';
-$category_description = $category ? $category->description : '';
-
-// Query products from this category
-$args = [
-    'post_type' => 'product',
-    'post_status' => 'publish',
-    'posts_per_page' => 8,
-    'tax_query' => [
-        [
-            'taxonomy' => 'product_cat',
-            'field' => 'slug',
-            'terms' => 'gifts-celebrations',
-        ],
-    ],
-];
-
-$products_query = new WP_Query($args);
+$category_title = 'Gifts Celebrations';
 ?>
 
 <section class="py-12">
     <div class="hale_container">
         <div class="flex md:flex-row flex-col gap-5 justify-between items-center">
             <div>
-                <h6 class="sub_title">
-                    Our Products
-                    <div class="sub_title_line"></div>
-                </h6>
-
                 <h2 class="h2 md:!text-left text-center !mb-2">
-                    <?php echo esc_html($category_title); ?>
+                    Gifts Celebrations Boxes
                 </h2>
-
-                <?php if (!empty($category_description)): ?>
-                    <div class="mb-4 text-sm leading-6 text-txt_Clr md:text-base max-w-2xl">
-                        <?php
-                        echo esc_html(
-                            wp_strip_all_tags($category_description, true)
-                        );
-                        ?>
-                    </div>
-                <?php endif; ?>
+                <div class="mb-4 text-sm leading-6 text-txt_Clr md:text-base max-w-2xl">
+                    Make Every Celebration Unforgettable
+                    From Halloween and Black Friday to Christmas, Easter, and New Year, your customers deserve an
+                    unboxing worth sharing. Get your seasonal boxes & bespoke packaging ready before the rush.
+                </div>
             </div>
             <div>
-                <a href="<?php echo esc_url(get_term_link('gifts-celebrations', 'product_cat')); ?>"
+                <a href="#"
                     class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
-                    See All <?php echo esc_html($category_title); ?>
+                    See All 
                 </a>
             </div>
         </div>
+
         <?php if ($products_query->have_posts()): ?>
-            <div class="product-slider" data-direction="<?php echo esc_attr($direction); ?>"
-                data-slides="<?php echo esc_attr($slidesToShow); ?>">
-                <?php while ($products_query->have_posts()):
-                    $products_query->the_post();
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-8">
+            <?php while ($products_query->have_posts()): $products_query->the_post();
+                $product = wc_get_product(get_the_ID());
+                if (!$product) continue;
 
-                    $product = wc_get_product(get_the_ID());
-
-                    if (!$product) {
-                        continue;
-                    }
-
-                    $image_id = $product->get_image_id();
-                    $image_url = $image_id
-                        ? wp_get_attachment_image_url($image_id, 'large')
-                        : wc_placeholder_img_src();
-                    ?>
-
-                    <div class="p-3">
-                        <a href="<?php the_permalink(); ?>">
-                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
-                                class="rounded-full img-full" loading="lazy" decoding="async">
-                        </a>
-
-                        <a href="<?php the_permalink(); ?>" class="box_link">
-                            <?php the_title(); ?>
-                        </a>
-                    </div>
-
-                <?php endwhile; ?>
+                $image_id  = $product->get_image_id();
+                $image_url = $image_id
+                    ? wp_get_attachment_image_url($image_id, 'large')
+                    : wc_placeholder_img_src();
+            ?>
+            <div class="p-3">
+                <a href="<?php the_permalink(); ?>">
+                    <img src="<?php echo esc_url($image_url); ?>"
+                         alt="<?php echo esc_attr(get_the_title()); ?>"
+                         class="rounded-full img-full" loading="lazy" decoding="async">
+                </a>
+                <a href="<?php the_permalink(); ?>" class="box_link">
+                    <?php the_title(); ?>
+                </a>
             </div>
+            <?php endwhile; ?>
+        </div>
 
-            <?php wp_reset_postdata(); ?>
+        <?php wp_reset_postdata(); ?>
 
         <?php else: ?>
-
-            <p class="mt-6 text-center">
-                No products found in this category.
-            </p>
-
+            <p class="mt-6 text-center">No products found.</p>
         <?php endif; ?>
+    </div>
 </section>
-<!-- Product Slider end -->

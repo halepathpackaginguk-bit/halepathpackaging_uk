@@ -28,7 +28,7 @@ $btn_link = $corrug['aboutlink'] ?? '';
                 <p class="mb-4 text-sm leading-6 text-txt_Clr">
                     At Hale Path Packaging, we provide eco-friendly packaging made from recyclable and sustainable
                     materials to help businesses reduce waste. And best of all, we offer free design support, free
-                    shipping, and 10% off on first and bulk orders. Contact us at sales@halepathpackaging.co.uk and get
+                    shipping, and 10% off on first and bulk orders. Contact us at <a href="mailto:sales@halepathpackaging.co.uk">sales@halepathpackaging.co.uk</a> and get
                     a free quote!
                 </p>
 
