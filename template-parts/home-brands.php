@@ -3,75 +3,44 @@
         <div class="brand-slider">
 
             <?php
-            $brands = [
-                [
-                    'name' => 'Perrin',
-                    'logo' => '/assets/images/brands/1.png',
-                ],
-                [
-                    'name' => 'StellaTerra',
-                    'logo' => '/assets/images/brands/2.png',
-                ],
-                [
-                    'name' => "Mozart's",
-                    'logo' => '/assets/images/brands/3.png',
-                ],
-                [
-                    'name' => 'Brooke Lane Design',
-                    'logo' => '/assets/images/brands/4.png',
-                ],
-                [
-                    'name' => 'Everlast Epoxy',
-                    'logo' => '/assets/images/brands/5.png',
-                ],
-                [
-                    'name' => 'Verdant Vitality',
-                    'logo' => '/assets/images/brands/6.svg',
-                ],
-                [
-                    'name' => 'Cheese',
-                    'logo' => '/assets/images/brands/7.svg',
-                ],
-                [
-                    'name' => 'One More',
-                    'logo' => '/assets/images/brands/8.svg',
-                ],
-                [
-                    'name' => 'One More',
-                    'logo' => '/assets/images/brands/9.svg',
-                ],
-                [
-                    'name' => 'One More',
-                    'logo' => '/assets/images/brands/10.svg',
-                ],
-                [
-                    'name' => 'One More',
-                    'logo' => '/assets/images/brands/11.svg',
-                ],
-                [
-                    'name' => 'One More',
-                    'logo' => '/assets/images/brands/12.svg',
-                ],
-                [
-                    'name' => 'One More',
-                    'logo' => '/assets/images/brands/13.svg',
-                ],
-                [
-                    'name' => 'One More',
-                    'logo' => '/assets/images/brands/14.svg',
-                ],
-            ];
+            $brands_query = new WP_Query([
+                'post_type'      => 'brands', // your CPT slug
+                'posts_per_page' => -1,
+                'post_status'    => 'publish',
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+            ]);
 
-            foreach ($brands as $brand):
-                ?>
-                <div class="px-2.5">
-                    <div class="flex h-[66px] items-center justify-center">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . $brand['logo']); ?>"
-                            alt="<?php echo esc_attr($brand['name']); ?>"
-                            class="block max-h-[44px] w-full max-w-[150px] object-contain" loading="lazy">
+            if ($brands_query->have_posts()):
+                while ($brands_query->have_posts()): $brands_query->the_post();
+
+                    $image_id  = get_post_thumbnail_id(get_the_ID());
+                    $image_url = $image_id
+                        ? wp_get_attachment_image_url($image_id, 'medium')
+                        : '';
+                    ?>
+                    <div class="px-2.5">
+                        <div class="flex h-[66px] items-center justify-center">
+                            <?php if ($image_url): ?>
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                    <img src="<?php echo esc_url($image_url); ?>"
+                                        alt="<?php echo esc_attr(get_the_title()); ?>"
+                                        class="block max-h-[44px] w-full max-w-[150px] object-contain"
+                                        loading="lazy"
+                                        decoding="async">
+                                </a>
+                            <?php else: ?>
+                                <a href="<?php the_permalink(); ?>" class="text-sm font-semibold text-gray-600">
+                                    <?php the_title(); ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endwhile;
+                wp_reset_postdata();
+            else: ?>
+                <p class="text-center text-sm text-gray-500">No brands found.</p>
+            <?php endif; ?>
 
         </div>
     </div>
