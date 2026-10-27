@@ -65,7 +65,7 @@ if (!empty($categories) && is_array($categories)):
 
                         <!-- Product Image -->
                         <a href="<?php echo esc_url($category_url); ?>"
-                            class="relative block h-[125px] overflow-hidden bg-secondary/10 sm:h-[155px] lg:h-[170px]"
+                            class="relative block h-[125px] overflow-hidden bg-secondary/10 sm:h-[220px] lg:h-[250px]"
                             aria-label="<?php echo esc_attr($category_title); ?>">
                             <img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category_title); ?>"
                                 loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
@@ -81,24 +81,8 @@ if (!empty($categories) && is_array($categories)):
                                 </a>
                             </h3>
 
-                            <!-- Description -->
-                            <p class="mb-3 line-clamp-2 min-h-[32px] text-xs leading-5 text-txt_Clr sm:text-sm">
-                                <?php
-                                $description = !empty($category_description)
-                                    ? wp_strip_all_tags($category_description, true)
-                                    : 'Explore our packaging solutions for your products.';
-
-                                echo esc_html(trim($description));
-                                ?>
-                            </p>
-
-                            <!-- Category Link -->
-                            <a href="<?php echo esc_url($category_url); ?>"
-                                class="inline-flex items-center gap-1 text-xs font-semibold text-primary transition hover:text-secondary">
-                                View Category
-                                <span aria-hidden="true">›</span>
-                            </a>
-
+                           
+                          
                         </div>
                     </article>
 

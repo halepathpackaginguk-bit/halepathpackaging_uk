@@ -93,15 +93,15 @@
                 </div>
 
                 <?php if (isset($_GET['quote_status'])): ?>
-                    <?php if ('success' === $_GET['quote_status']): ?>
-                        <div class="mx-5 mt-5 rounded border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-                            Thank you! Your quote request has been sent successfully.
-                        </div>
-                    <?php else: ?>
-                        <div class="mx-5 mt-5 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
-                            Sorry, your request could not be sent. Please check the required fields and try again.
-                        </div>
-                    <?php endif; ?>
+                <?php if ('success' === $_GET['quote_status']): ?>
+                <div class="mx-5 mt-5 rounded border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+                    Thank you! Your quote request has been sent successfully.
+                </div>
+                <?php else: ?>
+                <div class="mx-5 mt-5 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                    Sorry, your request could not be sent. Please check the required fields and try again.
+                </div>
+                <?php endif; ?>
                 <?php endif; ?>
 
                 <form id="custom-packaging-quote" action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
@@ -153,26 +153,26 @@
 
                     <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-title_Clr">Length *</label>
-                            <input type="number" name="length" min="0" step="any" placeholder="Length" required
+                            <label class="mb-1 block text-sm font-medium text-title_Clr">Length </label>
+                            <input type="number" name="length" min="0" step="any" placeholder="Length"
                                 class="w-full rounded border border-secondary/20 px-2 py-2 text-sm outline-none focus:border-primary">
                         </div>
 
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-title_Clr">Width *</label>
-                            <input type="number" name="width" min="0" step="any" placeholder="Width" required
+                            <label class="mb-1 block text-sm font-medium text-title_Clr">Width </label>
+                            <input type="number" name="width" min="0" step="any" placeholder="Width"
                                 class="w-full rounded border border-secondary/20 px-2 py-2 text-sm outline-none focus:border-primary">
                         </div>
 
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-title_Clr">Height *</label>
-                            <input type="number" name="height" min="0" step="any" placeholder="Height" required
+                            <label class="mb-1 block text-sm font-medium text-title_Clr">Height </label>
+                            <input type="number" name="height" min="0" step="any" placeholder="Height"
                                 class="w-full rounded border border-secondary/20 px-2 py-2 text-sm outline-none focus:border-primary">
                         </div>
 
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-title_Clr">Unit *</label>
-                            <select name="unit" required
+                            <label class="mb-1 block text-sm font-medium text-title_Clr">Unit </label>
+                            <select name="unit"
                                 class="w-full rounded border border-secondary/20 bg-white px-2 py-2 text-sm outline-none focus:border-primary">
                                 <option value="inches">Inches</option>
                                 <option value="cm">CM</option>
@@ -181,8 +181,8 @@
                         </div>
 
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-title_Clr">Material Type *</label>
-                            <select name="material" required
+                            <label class="mb-1 block text-sm font-medium text-title_Clr">Material Type </label>
+                            <select name="material"
                                 class="w-full rounded border border-secondary/20 bg-white px-2 py-2 text-sm outline-none focus:border-primary">
                                 <option value="">Select material</option>
                                 <option value="cardboard">Cardboard</option>
@@ -202,8 +202,8 @@
                         </div>
 
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-title_Clr">Quantity *</label>
-                            <input type="number" name="quantity" min="1" placeholder="Quantity" required
+                            <label class="mb-1 block text-sm font-medium text-title_Clr">Quantity </label>
+                            <input type="number" name="quantity" min="1" placeholder="Quantity"
                                 class="w-full rounded border border-secondary/20 px-2 py-2 text-sm outline-none focus:border-primary">
                         </div>
 
