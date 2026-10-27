@@ -4,10 +4,10 @@
         <!-- Left Text + Button -->
         <div class="md:w-1/2 w-full">
             <p class="md:text-4xl text-xl font-normal text-white sm:mb-5 mb-3 sm:text-left text-center">
-                Globally Expertise Delivered Locally
+              Packaging Expertise You Can Count On
             </p>
             <p class="font-medium text-white sm:text-xl text-sm leading-normal sm:mb-10 mb-5 sm:text-left text-center">
-                Trusted by Leading Brands Worldwide for Precision, Quality & Reliability.
+                Custom packaging solutions built on quality materials, high-impact printing techniques, and trustworthiness.  
             </p>
             <a href="<?php echo site_url('/products'); ?>" class="btn_primary sm:ml-0 ml-auto mr-auto">
                 See All Products
