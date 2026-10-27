@@ -44,7 +44,7 @@ $products_query = new WP_Query($args);
                 </h2>
 
                 <?php if (!empty($category_description)): ?>
-                    <div class="mb-4 text-sm">
+                    <div class="mb-4 text-sm leading-6 text-txt_Clr md:text-base max-w-2xl">
                         <?php
                         echo esc_html(
                             wp_strip_all_tags($category_description, true)
