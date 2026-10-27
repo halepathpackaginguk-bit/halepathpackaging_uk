@@ -31,26 +31,28 @@ $products_query = new WP_Query($args);
 ?>
 
 <section class="py-12">
-    <div class="hale_container flex md:flex-row flex-col gap-5 justify-between items-center">
-        <div>
-            <h6 class="sub_title">
-                Our Products
-                <div class="sub_title_line"></div>
-            </h6>
+    <div class="hale_container">
+        <div class="flex md:flex-row flex-col gap-5 justify-between items-center">
+            <div>
+                <h6 class="sub_title">
+                    Our Products
+                    <div class="sub_title_line"></div>
+                </h6>
 
-            <h2 class="h2 md:!text-left text-center !mb-2">
-                <?php echo esc_html($category_title); ?>
-            </h2>
+                <h2 class="h2 md:!text-left text-center !mb-2">
+                    <?php echo esc_html($category_title); ?>
+                </h2>
 
-            <?php if (!empty($category_description)): ?>
-                <div class="mb-4 text-sm">
-                    <?php
-                    echo esc_html(
-                        wp_strip_all_tags($category_description, true)
-                    );
-                    ?>
-                </div>
-            <?php endif; ?>
+                <?php if (!empty($category_description)): ?>
+                    <div class="mb-4 text-sm">
+                        <?php
+                        echo esc_html(
+                            wp_strip_all_tags($category_description, true)
+                        );
+                        ?>
+                    </div>
+                <?php endif; ?>
+            </div>
             <div>
                 <a href="<?php echo esc_url(get_term_link('gifts-celebrations', 'product_cat')); ?>"
                     class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
@@ -58,7 +60,6 @@ $products_query = new WP_Query($args);
                 </a>
             </div>
         </div>
-
         <?php if ($products_query->have_posts()): ?>
             <div class="product-slider" data-direction="<?php echo esc_attr($direction); ?>"
                 data-slides="<?php echo esc_attr($slidesToShow); ?>">
