@@ -6,13 +6,10 @@ $advertising_products = get_field('print_advertising');
 <section class="py-16 bg-[#EAF6F9]">
     <div class="mb-16">
         <h2 class="h2 md:mb-5!">
-            Print & Advertising & Office Supplies
+          Print, Advertising & Office Supplies
         </h2>
         <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
-            Start designing unique boxes with different styles, sizes, and
-            choices. Custom rigid boxes or Kraft boxes for retail products and
-            many more?We can help, Custom printing and packaging services ideas
-            abound.
+          At Hale Path Packaging, we provide print, advertising, and office supply solutions to help businesses maintain a professional image and promote their brand effectively. From custom packaging printing & materials to promotional products and everyday office essentials, we focus on delivering practical solutions that support your business needs and keep your brand looking consistent. 
         </p>
     </div>
 
