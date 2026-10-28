@@ -12,7 +12,7 @@ $btn_link = $corrug['aboutlink'] ?? '';
 
         <!-- Background Decorative Image -->
         <div class="absolute inset-0">
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/ctanew.jpg'); ?>" alt=""
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/packaging1.jpg'); ?>" alt=""
                 aria-hidden="true" class="h-full w-full object-cover">
         </div>
 
