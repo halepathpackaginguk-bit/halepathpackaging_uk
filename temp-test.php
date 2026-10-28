@@ -722,67 +722,6 @@ foreach ($finishing_options as $index => $option) {
 }
 ?>
 
-<section class="bg-gray-50 py-12 sm:px-6 lg:py-16">
-    <div class="mx-auto container px-4">
 
-        <!-- Section Heading -->
-        <div class="mx-auto mb-7 max-w-2xl text-center">
-            <span
-                class="mb-3 inline-flex rounded-full border border-secondary/20 bg-white px-3 py-1 text-xs font-medium text-secondary">
-                Finishing & Material Options
-            </span>
-
-            <h2 class="mb-3 text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
-                Flexible Packaging & Custom Mylar Bags’
-            </h2>
-
-            <p class="text-sm leading-6 text-txt_Clr md:text-base">
-                Give your brand the exemplary presentation it deserves. From custom boxes to vibrant mylar bags, we
-                create retail & custom packaging bags that turn first-time buyers into lifetime fans.
-
-            </p>
-        </div>
-
-        <!-- Category Tabs -->
-        <div class="finishing-tabs mb-8 flex flex-wrap items-center justify-center gap-2" role="tablist"
-            aria-label="Finishing categories">
-            <?php $first_category = true; ?>
-
-            <?php foreach ($finishing_categories as $slug => $label): ?>
-                <button type="button" role="tab" aria-selected="<?php echo $first_category ? 'true' : 'false'; ?>"
-                    data-category="<?php echo esc_attr($slug); ?>"
-                    class="finishing-tab rounded-full border border-primary/20 px-3 py-2 text-xs font-semibold transition duration-200 sm:text-sm <?php echo $first_category ? 'is-active bg-secondary text-white' : 'bg-white text-secondary'; ?>">
-                    <?php echo esc_html($label); ?>
-                </button>
-
-                <?php $first_category = false; ?>
-            <?php endforeach; ?>
-        </div>
-
-        <!-- Finishing Cards -->
-        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <?php foreach ($finishing_options as $index => $option): ?>
-                <article
-                    class="finishing-card rounded-xl border border-secondary/20 bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
-                    data-category="<?php echo esc_attr($option['category']); ?>" role="tabpanel">
-                    <div class="mb-3 flex h-[130px] items-center justify-center overflow-hidden rounded-lg bg-secondary/10">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/' . $option['image']); ?>"
-                            alt="<?php echo esc_attr($option['title']); ?>" class="h-full w-full object-cover"
-                            loading="lazy">
-                    </div>
-
-                    <h3 class="mb-2 text-center text-base font-bold text-title_Clr sm:text-lg">
-                        <?php echo esc_html($option['title']); ?>
-                    </h3>
-
-                    <p class="text-center text-sm leading-6 text-txt_Clr">
-                        <?php echo esc_html($option['description']); ?>
-                    </p>
-                </article>
-            <?php endforeach; ?>
-        </div>
-
-    </div>
-</section>
 
 <?php get_footer() ?>

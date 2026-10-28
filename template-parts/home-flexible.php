@@ -5,10 +5,10 @@ $flexible_products = get_field('flexible_packaging');
 <section class="py-12">
     <div class="hale_container flex flex-col justify-center items-center">
         <h2 class="h2">
-            Flexible Packaging & Custom Mylar Bags
+            Finishing & Material Options
         </h2>
-         <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
-        Give your brand the exemplary presentation it deserves. From custom boxes to vibrant mylar bags, we create retail & custom packaging bags that turn first-time buyers into lifetime fans.
+        <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
+            Choose from premium coating, board, printing and finishing options for your insert boxes.
         </p>
     </div>
 
@@ -22,7 +22,8 @@ $flexible_products = get_field('flexible_packaging');
                 'direction'    => 'ltr'
             ]
         );?>
-    <a href="<?php echo home_url('/all-flexible-packaging'); ?>" class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
+    <a href="<?php echo home_url('/all-flexible-packaging'); ?>"
+        class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit mx-auto">
         See All Flexible Packaging
     </a>
 </section>
