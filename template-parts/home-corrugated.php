@@ -12,8 +12,8 @@ $btn_link = $corrug['aboutlink'] ?? '';
 
         <!-- Background Decorative Image -->
         <div class="absolute inset-0">
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/ctanew.jpg'); ?>"
-                alt="" aria-hidden="true" class="h-full w-full object-cover">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/ctanew.jpg'); ?>" alt=""
+                aria-hidden="true" class="h-full w-full object-cover">
         </div>
 
         <!-- Content -->
@@ -28,7 +28,8 @@ $btn_link = $corrug['aboutlink'] ?? '';
                 <p class="mb-4 text-sm leading-6 text-txt_Clr">
                     At Hale Path Packaging, we provide eco-friendly packaging made from recyclable and sustainable
                     materials to help businesses reduce waste. And best of all, we offer free design support, free
-                    shipping, and 10% off on first and bulk orders. Contact us at <a href="mailto:sales@halepathpackaging.co.uk">sales@halepathpackaging.co.uk</a> and get
+                    shipping, and 10% off on first and bulk orders. Contact us at <a
+                        href="mailto:sales@halepathpackaging.co.uk">sales@halepathpackaging.co.uk</a> and get
                     a free quote!
                 </p>
 
@@ -49,13 +50,13 @@ $btn_link = $corrug['aboutlink'] ?? '';
 </section>
 <section class="pt-12">
     <div class="hale_container flex flex-col justify-center items-center">
-        <h6 class="sub_title">
-            Our Products
-            <div class="sub_title_line"></div>
-        </h6>
+
         <h2 class="h2">
-            Corrugated Packaging
+            Get Our Custom Corrugated Packaging UK
         </h2>
+        <p class="mt-2 text-sm leading-6 text-txt_Clr md:text-base">If you want to enhance brand value and deliver
+            premium packaging, our custom corrugated packaging are tailored with durable materials, luxury printing, and
+            reliable finishing.</p>
     </div>
 </section>
 
