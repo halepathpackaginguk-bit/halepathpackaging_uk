@@ -20,15 +20,14 @@
             <div class="px-2.5">
                 <div class="flex h-[66px] items-center justify-center">
                     <?php if ($image_url): ?>
-                    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
-                            class="block max-h-[44px] w-full max-w-[150px] object-contain" loading="lazy"
-                            decoding="async">
-                    </a>
+
+                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
+                        class="block max-h-[44px] w-full max-w-[150px] object-contain" loading="lazy" decoding="async">
+
                     <?php else: ?>
-                    <a href="<?php the_permalink(); ?>" class="text-sm font-semibold text-gray-600">
-                        <?php the_title(); ?>
-                    </a>
+
+                    <?php the_title(); ?>
+
                     <?php endif; ?>
                 </div>
             </div>
