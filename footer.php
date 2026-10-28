@@ -11,7 +11,7 @@
 
 
 
- ?>
+?>
 
 
 
@@ -97,6 +97,9 @@
                 <li>
                     Unit 32A, 229 Birmingham Road Bromsgrove B61 0DD
                 </li>
+                <li>
+                    Unit C4 113 Euro Space Business Park Kings Road Tyseley Birmingham B11 2AL
+                </li>
                 <li><a href="tel:+4401213186768" class="footer_link">
                         +44 01213186768</a></li>
                 <li><a href="mailto:sales@halepathpackaging.co.uk" target="_blank" class="footer_link">
@@ -123,7 +126,8 @@
         <div>
             <h6 class="text-base font-semibold text-title_Clr mb-6">Our Logistics Partners</h6>
             <div class="flex justify-end items-end">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fedex.png" alt="fedex" loading="lazy" decoding="async">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fedex.png" alt="fedex"
+                    loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -133,7 +137,8 @@
         class="hale_container flex md:flex-row flex-col md:items-center justify-between 2xl:gap-7 md:gap-4 gap-7 mt-7 py-2.5">
         <div class="flex gap-3 items-center">
             <a href="<?php echo home_url(); ?>"><img
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo" loading="lazy" decoding="async"></a>
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo" loading="lazy"
+                    decoding="async"></a>
             <ul class="flex items-center gap-3">
                 <li><a href="https://www.facebook.com/profile.php?id=61586916928562" target="_blank"
                         class="text-2xl inline-flex">
@@ -141,7 +146,8 @@
                 <li><a href="https://www.instagram.com/halepathpackaging.uk?igsh=MW1tY3pyczV2emdzNw%3D%3D"
                         target="_blank" class="text-2xl inline-flex">
                         <i class="fab fa-instagram text-title_Clr hover:text-primary"></i></a></li>
-                <li><a href="https://www.tiktok.com/@halepathpackaging?_r=1&_t=ZS-957Rlv6JhMV" target="_blank" class="text-2xl inline-flex">
+                <li><a href="https://www.tiktok.com/@halepathpackaging?_r=1&_t=ZS-957Rlv6JhMV" target="_blank"
+                        class="text-2xl inline-flex">
                         <i class="fa-brands fa-tiktok text-title_Clr hover:text-primary"></i></a></li>
                 <li><a href="https://wa.me/447893945259" target="_blank" class="text-2xl inline-flex">
                         <i class="fa-brands fa-whatsapp text-title_Clr hover:text-primary"></i></a></li>
@@ -185,7 +191,8 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
                         alt="Hale Path Packaging" class="w-9 h-9 rounded-full object-contain bg-white p-1">
                 </div>
-                <span class="wa-online-dot absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#25D366] border-2 border-white rounded-full"></span>
+                <span
+                    class="wa-online-dot absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#25D366] border-2 border-white rounded-full"></span>
             </div>
             <div class="text-white relative z-[1]">
                 <p class="font-bold text-[15px] leading-tight">Hale Path Packaging</p>
@@ -197,11 +204,14 @@
         </div>
         <!-- Body -->
         <div class="wa-body relative px-4 py-5">
-            <div class="wa-bubble bg-white rounded-2xl rounded-tl-md px-4 py-3 shadow-[0_4px_14px_rgba(0,0,0,0.08)] max-w-[85%]">
+            <div
+                class="wa-bubble bg-white rounded-2xl rounded-tl-md px-4 py-3 shadow-[0_4px_14px_rgba(0,0,0,0.08)] max-w-[85%]">
                 <p class="text-sm text-[#1c1c1c] leading-relaxed">Hello there! 👋</p>
             </div>
-            <div class="wa-bubble wa-bubble-2 bg-white rounded-2xl rounded-tl-md px-4 py-3 shadow-[0_4px_14px_rgba(0,0,0,0.08)] max-w-[92%] mt-2.5">
-                <p class="text-sm text-[#1c1c1c] leading-relaxed">Welcome to <strong>Hale Path Packaging</strong> — how can we help you today? 😊</p>
+            <div
+                class="wa-bubble wa-bubble-2 bg-white rounded-2xl rounded-tl-md px-4 py-3 shadow-[0_4px_14px_rgba(0,0,0,0.08)] max-w-[92%] mt-2.5">
+                <p class="text-sm text-[#1c1c1c] leading-relaxed">Welcome to <strong>Hale Path Packaging</strong> — how
+                    can we help you today? 😊</p>
                 <p class="text-[10px] text-gray-400 mt-1.5 text-right flex items-center justify-end gap-1">
                     12:30 <i class="fa-solid fa-check-double text-[#53BDEB] text-[10px]"></i>
                 </p>
@@ -219,9 +229,11 @@
     <button id="waChatBtn"
         class="wa-float-btn relative flex items-center justify-center w-16 h-16 rounded-full text-white text-4xl"
         aria-label="Open WhatsApp chat">
-        <span class="wa-badge absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">1</span>
+        <span
+            class="wa-badge absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">1</span>
         <i class="fa-brands fa-whatsapp wa-ico-open"></i>
-        <span class="wa-tooltip absolute left-[76px] top-1/2 -translate-y-1/2 whitespace-nowrap bg-[#075E54] text-white text-xs font-semibold px-3.5 py-2 rounded-lg opacity-0 pointer-events-none transition-all duration-300">
+        <span
+            class="wa-tooltip absolute left-[76px] top-1/2 -translate-y-1/2 whitespace-nowrap bg-[#075E54] text-white text-xs font-semibold px-3.5 py-2 rounded-lg opacity-0 pointer-events-none transition-all duration-300">
             Chat with us
             <span class="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#075E54] rotate-45"></span>
         </span>
@@ -232,8 +244,8 @@
     document.addEventListener("DOMContentLoaded", function () {
         const popup = document.getElementById('quotePopup');
         const closeBtn = document.getElementById('closeQuote_Popup');
-        const openBtn = document.getElementById('openQuotePopup');      
-        const popupWidth = 850; 
+        const openBtn = document.getElementById('openQuotePopup');
+        const popupWidth = 850;
         // OPEN POPUP
         openBtn?.addEventListener('click', () => {
             popup?.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
@@ -294,28 +306,28 @@
 
 <!--Start of Tawk.to Script (deferred until first interaction to keep it out of the critical path)-->
 <script type="text/javascript">
-(function () {
-    var loaded = false;
-    function loadTawk() {
-        if (loaded) return;
-        loaded = true;
-        window.Tawk_API = window.Tawk_API || {};
-        window.Tawk_LoadStart = new Date();
-        var s1 = document.createElement('script');
-        var s0 = document.getElementsByTagName('script')[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/6158671cd326717cb68465b2/1fh0l5idi';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    }
-    ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function (evt) {
-        window.addEventListener(evt, loadTawk, { once: true, passive: true });
-    });
-    window.addEventListener('load', function () {
-        setTimeout(loadTawk, 3500);
-    });
-})();
+    (function () {
+        var loaded = false;
+        function loadTawk() {
+            if (loaded) return;
+            loaded = true;
+            window.Tawk_API = window.Tawk_API || {};
+            window.Tawk_LoadStart = new Date();
+            var s1 = document.createElement('script');
+            var s0 = document.getElementsByTagName('script')[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6158671cd326717cb68465b2/1fh0l5idi';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        }
+        ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function (evt) {
+            window.addEventListener(evt, loadTawk, { once: true, passive: true });
+        });
+        window.addEventListener('load', function () {
+            setTimeout(loadTawk, 3500);
+        });
+    })();
 </script>
 <!--End of Tawk.to Script-->
 
