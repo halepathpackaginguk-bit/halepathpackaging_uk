@@ -95,10 +95,10 @@
             </h6>
             <ul class="flex flex-col gap-2.5">
                 <li>
-                    Unit 32A, 229 Birmingham Road Bromsgrove B61 0DD
+                    Address1: Unit 32A, 229 Birmingham Road Bromsgrove B61 0DD
                 </li>
                 <li>
-                    Unit C4 113 Euro Space Business Park Kings Road Tyseley Birmingham B11 2AL
+                    Address2: Unit C4 113 Euro Space Business Park Kings Road Tyseley Birmingham B11 2AL
                 </li>
                 <li><a href="tel:+4401213186768" class="footer_link">
                         +44 01213186768</a></li>
