@@ -5,13 +5,11 @@ $offset_products = get_field('offset_printing_products');
 ?>
 <section class="py-12">
     <div class="hale_container flex flex-col justify-center items-center">
-        <h6 class="sub_title">
-            Our Products
-            <div class="sub_title_line"></div>
-        </h6>
+       
         <h2 class="h2">
-            Offset Printing
+          Premium Offset Printing for Growing Brands
         </h2>
+        <p class="mt-2 text-sm leading-6 text-txt_Clr md:text-base">Wanna grow your brand's presentation? Opting for offset printing is the best solution. Offset printing is typically used for mass production projects, such as printing large quantities of newspapers, brochures, stationery, magazines, and, of course, boxes.  It offers exceptional printing quality and color output for a range of different materials.</p>
     </div>
 
     <?php
