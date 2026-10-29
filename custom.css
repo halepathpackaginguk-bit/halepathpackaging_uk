@@ -567,11 +567,11 @@ ul.career_list li {
 }
 
  .slick-next {
-  right: 25px;
+  right: 25px!important;
   z-index: 2;
 }
 
  .slick-prev {
-  left: 25px;
+  left: 25px!important;
   z-index: 2;
 }
