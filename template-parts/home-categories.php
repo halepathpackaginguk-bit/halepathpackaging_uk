@@ -49,8 +49,9 @@ if (!empty($categories)):
             infinite: true,
             slidesToShow: 4,  // <-- Changed here
             autoplay: true,
-            speed: 12000,
-            cssEase: 'linear',
+            autoplaySpeed: 4000,
+            speed: 600,
+            cssEase: 'ease',
             pauseOnHover: true,
             swipeToSlide: true,
             draggable: true,

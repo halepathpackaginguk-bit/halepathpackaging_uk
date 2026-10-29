@@ -34,7 +34,7 @@ $products = $args['products'] ?? [];
 
 <script>
     jQuery(document).ready(function ($) {
-        $('.product-slider').each(function () {
+        $('.product-slider:not(.slick-initialized)').each(function () {
             const slides = $(this).data('slides') || 4;
             const direction = $(this).data('direction') || 'ltr';
             $(this).slick({
@@ -42,9 +42,9 @@ $products = $args['products'] ?? [];
                 dots: false,
                 infinite: true,
                 autoplay: true,
-                autoplaySpeed: 0,
-                speed: 12000,
-                cssEase: 'linear',
+                autoplaySpeed: 4000,
+                speed: 600,
+                cssEase: 'ease',
                 pauseOnHover: true,
                 swipeToSlide: true,
                 draggable: true,
