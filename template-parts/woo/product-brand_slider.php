@@ -2,7 +2,7 @@
     <div class="w-full px-4">
         <div class="text-center mb-8">
             <span class="text-secondary font-semibold text-base uppercase tracking-wider">Trusted Brands</span>
-            <h2 class="md:text-4xl text-2xl font-bold text-coff_black capitalize mt-1">Trusted by 10,000+ awesome brands
+            <h2 class="md:text-4xl text-2xl font-bold text-coff_black capitalize mt-1">Trusted by 2,000+ awesome brands
             </h2>
         </div>
         <div class="brand-slider">
