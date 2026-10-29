@@ -33,7 +33,7 @@ $btn_link = $corrug['aboutlink'] ?? '';
                     a free quote!
                 </p>
 
-                <a href="<?php echo esc_url(home_url('/request-quote/')); ?>"
+                <a href="<?php echo esc_url(home_url('/get-quote-now/')); ?>"
                     class="btn_secondry flex items-center gap-2 sm:mt-12 mt-6 w-fit">
                     Request a Quote
                     <span aria-hidden="true">→</span>
