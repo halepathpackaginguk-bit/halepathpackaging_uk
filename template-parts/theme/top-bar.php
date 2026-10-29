@@ -1,3 +1,14 @@
+<?php
+$marquee_items = [
+    'Free expert design support',
+    'Free UK delivery',
+    'Minimum 100-Unit MOQ',
+    '10% Bulk Order Savings',
+    'Logo printing in CMYK or PMS colours for packaging',
+    'Foil, embossing, and window cut options',
+];
+?>
+
 <!-- Top Bar -->
 <div class="bg-secondary py-2.5 hidden md:block">
     <div class="hale_container flex items-center justify-between">
@@ -15,6 +26,27 @@
                 </a>
             </li>
         </ul>
+        <!-- Top Announcement Marquee -->
+        <div class="md:w-1/2 md:mx-auto w-full overflow-hidden text-white">
+            <div
+                class="marquee-track flex w-max items-center motion-safe:animate-marquee hover:[animation-play-state:paused]">
+
+                <?php for ($copy = 0; $copy < 2; $copy++): ?>
+                    <div
+                        class="marquee-group flex shrink-0 items-center gap-8 py-3 pr-8 text-sm font-medium tracking-wide sm:gap-12">
+
+                        <?php foreach ($marquee_items as $item): ?>
+                            <div class="flex shrink-0 items-center gap-3 whitespace-nowrap">
+                                <span class="text-white" aria-hidden="true">|</span>
+                                <span><?php echo esc_html($item); ?></span>
+                            </div>
+                        <?php endforeach; ?>
+
+                    </div>
+                <?php endfor; ?>
+
+            </div>
+        </div>
         <ul class="flex items-center divide-x-2 divide-white">
             <li>
                 <a href="<?php echo esc_url(home_url('/products/')); ?>" class="top_links">All Products</a>

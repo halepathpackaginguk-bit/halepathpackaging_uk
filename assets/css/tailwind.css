@@ -16,13 +16,9 @@
     --color-txt_Clr: var(--txt_Clr);
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);
-    --backgroundImage-gradient-radial: radial-gradient(
-      var(--tw-gradient-stops)
-    );
-    --backgroundImage-gradient-conic: conic-gradient(
-      from 180deg at 50% 50%,
-      var(--tw-gradient-stops)
-    );
+    --backgroundImage-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+    --backgroundImage-gradient-conic: conic-gradient(from 180deg at 50% 50%,
+        var(--tw-gradient-stops));
   }
 
   *,
@@ -445,13 +441,17 @@ footer ul li a span.marker {
   @apply md:text-xl md:leading-none text-lg font-bold text-title_Clr mb-3;
 }
 
-.page_content ul, .page_content ol,
-.desc_content ul ,.desc_content ol {
+.page_content ul,
+.page_content ol,
+.desc_content ul,
+.desc_content ol {
   @apply list-inside list-disc mb-4 space-y-4;
 }
 
-.page_content ul li,.page_content ol li,
-.desc_content ul li ,.desc_content ol li  {
+.page_content ul li,
+.page_content ol li,
+.desc_content ul li,
+.desc_content ol li {
   @apply text-base font-normal text-title_Clr;
 }
 
@@ -475,11 +475,14 @@ footer ul li a span.marker {
   @apply w-full mx-auto;
 }
 
-.desc_content table, .cat_info_box table {
+.desc_content table,
+.cat_info_box table {
   @apply w-full mx-auto overflow-x-scroll border border-title_Clr/20 border-collapse my-8;
 }
 
-.desc_content table tr td , .cat_info_box table tr td ,.cat_info_box table tr th {
+.desc_content table tr td,
+.cat_info_box table tr td,
+.cat_info_box table tr th {
   @apply p-4 border border-title_Clr/20;
 }
 
@@ -493,7 +496,7 @@ footer ul li a span.marker {
 
 .cat_info_box p,
 .cat_info_box ul {
-  @apply mb-4 ;
+  @apply mb-4;
 }
 
 .cat_info_box a {
@@ -522,7 +525,7 @@ footer ul li a span.marker {
 }
 
 .video-card {
- @apply w-full overflow-hidden rounded-xl md:w-1/4;
+  @apply w-full overflow-hidden rounded-xl md:w-1/4;
 }
 
 .video-card video {
@@ -531,8 +534,30 @@ footer ul li a span.marker {
 
 
 #tabs-header.sticky-tabs {
-    position: sticky;
-    top: 0;
-    background: white;
-    z-index: 999;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 999;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-safe\:animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
 }

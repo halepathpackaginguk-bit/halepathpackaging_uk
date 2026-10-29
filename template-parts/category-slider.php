@@ -37,18 +37,15 @@ if (!empty($categories) && is_array($categories)):
                     if (!$category || is_wp_error($category) || !isset($category->term_id)) {
                         continue;
                     }
-
                     $category_id = $category->term_id;
                     $category_title = $category->name;
                     $category_description = $category->description;
-
                     // WooCommerce category image
                     $thumbnail_id = get_term_meta(
                         $category_id,
                         'thumbnail_id',
                         true
                     );
-
                     $category_image = $thumbnail_id
                         ? wp_get_attachment_image_url($thumbnail_id, 'large')
                         : get_template_directory_uri() . '/assets/images/category.jpg';
@@ -59,10 +56,8 @@ if (!empty($categories) && is_array($categories)):
                         continue;
                     }
                     ?>
-
                     <article
                         class="group overflow-hidden rounded-xl border border-secondary/20 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
-
                         <!-- Product Image -->
                         <a href="<?php echo esc_url($category_url); ?>"
                             class="relative block h-[125px] overflow-hidden bg-secondary/10 sm:h-[220px] lg:h-[250px]"
@@ -70,24 +65,21 @@ if (!empty($categories) && is_array($categories)):
                             <img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category_title); ?>"
                                 loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
                         </a>
-
                         <!-- Product Details -->
                         <div class="p-3 sm:p-4">
-
+                            <div class="text-sm text-amber-300">★★★★★ <span class="text-txt_Clr">4.8 (150)</span></div>
                             <!-- Title -->
-                            <h3 class="mb-1 text-base font-bold leading-snug text-title_Clr sm:text-lg">
+                            <h3 class="my-1 text-base font-bold leading-snug text-title_Clr sm:text-lg">
                                 <a href="<?php echo esc_url($category_url); ?>" class="transition hover:text-primary">
                                     <?php echo esc_html($category_title); ?>
                                 </a>
                             </h3>
-
-                           
-                          
+                            <p class="text-sm leading-6 text-txt_Clr line-clamp-1">
+                                <?php echo esc_html($category_description); ?>
+                            </p>
                         </div>
                     </article>
-
                 <?php endforeach; ?>
-
             </div>
         </div>
     </section>
