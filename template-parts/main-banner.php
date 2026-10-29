@@ -35,7 +35,7 @@ $video_id = 'dfViGz8LoZE';
                         </p>
 
                         <a href="<?php echo esc_url($btn_link); ?>" class="btn_primary">
-                            Explore Packaging <i class="fa fa-chevron-right"></i>
+                            Get a quote <i class="fa fa-chevron-right"></i>
                         </a>
                     </div>
                 </div>
