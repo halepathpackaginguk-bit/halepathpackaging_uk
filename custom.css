@@ -600,7 +600,7 @@ ul.career_list li {
 
 .slick-prev:before,
 .slick-next:before {
-  font-size: 36px;
-  opacity: 1;
-  color: #1c2e42;
+  font-size: 36px!important;
+  opacity: 1!important;
+  color: #1c2e42!important;
 }
