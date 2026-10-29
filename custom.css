@@ -565,3 +565,13 @@ ul.career_list li {
   font-size: 14px;
   color: #6b7280;
 }
+
+ .slick-next {
+  right: 25px;
+  z-index: 2;
+}
+
+ .slick-prev {
+  left: 25px;
+  z-index: 2;
+}
