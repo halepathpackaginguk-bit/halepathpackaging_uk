@@ -38,7 +38,7 @@ $products = $args['products'] ?? [];
             const slides = $(this).data('slides') || 4;
             const direction = $(this).data('direction') || 'ltr';
             $(this).slick({
-                arrows: false,
+                arrows: true,
                 dots: false,
                 infinite: true,
                 autoplay: true,

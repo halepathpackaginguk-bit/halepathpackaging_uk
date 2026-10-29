@@ -74,9 +74,9 @@ if (!empty($categories) && is_array($categories)):
                                     <?php echo esc_html($category_title); ?>
                                 </a>
                             </h3>
-                            <p class="text-sm leading-6 text-txt_Clr line-clamp-1">
-                                <?php echo esc_html($category_description); ?>
-                            </p>
+                            <!-- <p class="text-sm leading-6 text-txt_Clr line-clamp-1">
+                                <?php //echo esc_html($category_description); ?>
+                            </p> -->
                         </div>
                     </article>
                 <?php endforeach; ?>

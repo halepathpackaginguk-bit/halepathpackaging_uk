@@ -21,10 +21,11 @@
 <?php get_template_part('template-parts/woo/pro-reviews'); ?>
 <?php get_template_part('template-parts/testimonial-and-faq'); ?>
 <?php //get_template_part('template-parts/home-career'); ?>
-<section class="px-4">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cta-ban1.jpeg" alt="about us" class="w-full"
+<?php get_template_part('template-parts/client-success'); ?>
+<!-- <section class="px-4">
+    <img src="<?php //echo get_template_directory_uri(); ?>/assets/images/cta-ban1.jpeg" alt="about us" class="w-full"
         loading="lazy" decoding="async">
-</section>
+</section> -->
 
 <?php get_template_part('template-parts/temp-instagram'); ?>
 <?php get_footer() ?>

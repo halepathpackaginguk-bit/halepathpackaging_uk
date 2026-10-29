@@ -45,7 +45,7 @@ if (!empty($categories)):
     jQuery(document).ready(function ($) {
         $('.category-slider').slick({
             dots: false,
-            arrows: false,
+            arrows: true,
             infinite: true,
             slidesToShow: 4,  // <-- Changed here
             autoplay: true,
