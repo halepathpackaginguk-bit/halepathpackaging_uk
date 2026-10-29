@@ -4,19 +4,16 @@ $flexible_products = get_field('flexible_packaging');
 
 <section class="py-12">
     <div class="hale_container flex flex-col justify-center items-center">
-         <span
-                class="mb-3 inline-flex rounded-full border border-secondary/20 bg-white px-3 py-1 text-xs font-medium text-secondary">
-                Finishing &amp; Material Options
-            </span>
 
-            <h2 class="mb-3 text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
-                Flexible Packaging &amp; Custom Mylar Bags
-            </h2>
 
-            <p class="text-sm leading-6 text-txt_Clr md:text-base">
-                Give your brand the exemplary presentation it deserves. From custom boxes to vibrant mylar bags, we
-                create retail &amp; custom packaging bags that turn first-time buyers into lifetime fans.
-            </p>
+        <h2 class="mb-3 text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
+            Flexible Packaging &amp; Custom Mylar Bags
+        </h2>
+
+        <p class="text-sm leading-6 text-txt_Clr md:text-base">
+            Give your brand the exemplary presentation it deserves. From custom boxes to vibrant mylar bags, we
+            create retail &amp; custom packaging bags that turn first-time buyers into lifetime fans.
+        </p>
     </div>
 
     <?php
