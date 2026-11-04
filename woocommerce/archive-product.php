@@ -127,34 +127,37 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
         </div>
     </div>
     <script>
-        jQuery(document).ready(function ($) {
-            $('.cat_gallery').each(function () {
-                var $gallery = $(this);
-                var $wrap = $gallery.closest('.relative');
+    jQuery(document).ready(function($) {
+        $('.cat_gallery').each(function() {
+            var $gallery = $(this);
+            var $wrap = $gallery.closest('.relative');
 
-                $gallery.slick({
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: true,
-                    prevArrow: $wrap.find('.cat-prev'),
-                    nextArrow: $wrap.find('.cat-next'),
-                    dots: false,
-                    infinite: true,
-                    autoplay: false,
-                    speed: 500,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: { slidesToShow: 2 }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: { slidesToShow: 1 }
+            $gallery.slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: true,
+                prevArrow: $wrap.find('.cat-prev'),
+                nextArrow: $wrap.find('.cat-next'),
+                dots: false,
+                infinite: true,
+                autoplay: false,
+                speed: 500,
+                responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2
                         }
-                    ]
-                });
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
             });
         });
+    });
     </script>
 </section>
 <?php endif; ?>
@@ -259,20 +262,20 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
         </figure>
         <?php endif; ?>
 
-        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box scrollContent">
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box ">
+            <div class="scrollContent">
+                <?php if (!empty($product_info_box1_title)): ?>
+                <h2>
+                    <?php echo esc_html($product_info_box1_title); ?>
+                </h2>
+                <?php endif; ?>
 
-            <?php if (!empty($product_info_box1_title)): ?>
-            <h2>
-                <?php echo esc_html($product_info_box1_title); ?>
-            </h2>
-            <?php endif; ?>
-
-            <?php if (!empty($product_info_box1_description)): ?>
-            <p class="mb-7 text-center md:text-left">
-                <?php echo ($product_info_box1_description); ?>
-            </p>
-            <?php endif; ?>
-
+                <?php if (!empty($product_info_box1_description)): ?>
+                <p class="mb-7 text-center md:text-left">
+                    <?php echo ($product_info_box1_description); ?>
+                </p>
+                <?php endif; ?>
+            </div>
             <a class="py-[9px] px-[41px] text-white bg-[#1C2E42] rounded-md" href="/get-quote-now">
                 Get Custom Quote
             </a>
@@ -290,17 +293,19 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
                 class="rounded-2xl w-full h-auto">
         </figure>
         <?php endif; ?>
-        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box scrollContent">
-            <?php if (!empty($product_info_box2_title)): ?>
-            <h2 class="">
-                <?php echo esc_html($product_info_box2_title); ?>
-            </h2>
-            <?php endif; ?>
-            <?php if (!empty($product_info_box2_description)): ?>
-            <p class="mb-7 text-center md:text-left">
-                <?php echo ($product_info_box2_description); ?>
-            </p>
-            <?php endif; ?>
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box ">
+            <div class="scrollContent">
+                <?php if (!empty($product_info_box2_title)): ?>
+                <h2 class="">
+                    <?php echo esc_html($product_info_box2_title); ?>
+                </h2>
+                <?php endif; ?>
+                <?php if (!empty($product_info_box2_description)): ?>
+                <p class="mb-7 text-center md:text-left">
+                    <?php echo ($product_info_box2_description); ?>
+                </p>
+                <?php endif; ?>
+            </div>
             <a class="py-[9px] px-[41px] text-white bg-[#1C2E42] rounded-md" href="/get-quote-now">
                 Get Custom Quote
             </a>
