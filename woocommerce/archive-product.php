@@ -259,7 +259,7 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
         </figure>
         <?php endif; ?>
 
-        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box scrollContent">
 
             <?php if (!empty($product_info_box1_title)): ?>
             <h2>
@@ -290,7 +290,7 @@ if (have_rows('categories_videos', 'product_cat_' . $term_id)): ?>
                 class="rounded-2xl w-full h-auto">
         </figure>
         <?php endif; ?>
-        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box">
+        <div class="flex md:w-1/2 justify-center md:justify-start items-center md:items-start flex-col cat_info_box scrollContent">
             <?php if (!empty($product_info_box2_title)): ?>
             <h2 class="">
                 <?php echo esc_html($product_info_box2_title); ?>

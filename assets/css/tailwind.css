@@ -374,6 +374,32 @@ footer ul li a span.marker {
   width: 0px;
 }
 
+/* Scrollable info boxes */
+.scrollContent {
+  @apply overflow-y-auto px-[18px] h-[500px];
+}
+
+/* Scrollbar styling */
+.scrollContent::-webkit-scrollbar {
+  width: 8px;
+  height: 2px;
+}
+
+.scrollContent::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.scrollContent::-webkit-scrollbar-thumb {
+  background: var(--RC_Green, var(--secondary));
+  border-radius: 10px;
+}
+
+.scrollContent::-webkit-scrollbar-thumb:hover {
+  background: var(--RC_Green, var(--secondary));
+  /* darker on hover */
+}
+
 /* =========================
    UTILITIES
 ========================= */
