@@ -376,7 +376,7 @@ footer ul li a span.marker {
 
 /* Scrollable info boxes */
 .scrollContent {
-  @apply overflow-y-auto px-[18px] h-[500px];
+  @apply overflow-y-auto px-[18px] h-[660px];
 }
 
 /* Scrollbar styling */
