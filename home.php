@@ -28,5 +28,5 @@
         loading="lazy" decoding="async">
 </section> -->
 
-<?php get_template_part('template-parts/temp-instagram'); ?>
+<?php //get_template_part('template-parts/temp-instagram'); ?>
 <?php get_footer() ?>
