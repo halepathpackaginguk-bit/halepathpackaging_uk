@@ -11,7 +11,7 @@
 <?php get_template_part('template-parts/home-offset'); ?>
 <?php get_template_part('template-parts/home-trusted'); ?>
 <?php get_template_part('template-parts/home-corrugated'); ?>
-<?php get_template_part('template-parts/home-qoute', ); ?>
+<?php get_template_part('template-parts/get-qoute', ); ?>
 <?php get_template_part('template-parts/what-weoffer', ); ?>
 <?php get_template_part('template-parts/home-flexible', ); ?>
 <?php get_template_part('template-parts/home-cta'); ?>
