@@ -2,8 +2,9 @@
 
 ?>
 <?php get_template_part('template-parts/main-banner'); ?>
-<?php get_template_part('template-parts/home-brands'); ?>
-<?php get_template_part('template-parts/home-halloween'); ?>
+<?php //get_template_part('template-parts/home-brands'); ?>
+<?php get_template_part('template-parts/woo/product-brand_slider'); ?>
+<?php //get_template_part('template-parts/home-halloween'); ?>
 <?php get_template_part('template-parts/about-imgscroll'); ?>
 <?php get_template_part('template-parts/category-slider'); ?>
 <?php get_template_part('template-parts/home-cta'); ?>
