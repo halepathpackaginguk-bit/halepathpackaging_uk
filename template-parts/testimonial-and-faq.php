@@ -31,9 +31,9 @@ if (!empty($faqRes)):
             </div>
 
             <!-- FAQ Container -->
-            <div class="mx-auto max-w-[1040px]">
+            <div class="mx-auto">
 
-                <div class="grid gap-0 lg:grid-cols-[513px_1fr]">
+                <div class="grid gap-0 lg:grid-cols-[60%_40%]">
 
                     <!-- LEFT -->
                     <div class="relative z-10">
@@ -56,7 +56,7 @@ if (!empty($faqRes)):
 
                             <?php foreach ($faqRes as $index => $faq): ?>
                                 <button type="button"
-                                    class="faq-item group flex min-h-[57px] w-full items-center gap-3 px-3 text-left transition-colors duration-200 <?php echo $index === 0 ? 'bg-gray-200' : 'bg-white hover:bg-gray-200'; ?>"
+                                    class="faq-item group flex min-h-[57px] w-full items-center gap-3 px-3 py-2 text-left transition-colors duration-200 <?php echo $index === 0 ? 'bg-gray-200' : 'bg-white hover:bg-gray-200'; ?>"
                                     data-index="<?php echo esc_attr($index); ?>"
                                     data-question="<?php echo esc_attr(strtolower((string) $faq['question'])); ?>"
                                     data-answer="<?php echo esc_attr((string) $faq['answer']); ?>">
@@ -66,7 +66,7 @@ if (!empty($faqRes)):
                                         class="faq-dot flex h-[18px] w-[18px] shrink-0 rounded-full <?php echo $index === 0 ? 'bg-gray-400' : 'bg-gray-300'; ?>"></span>
 
                                     <!-- Question -->
-                                    <span class="faq-question flex-1 text-xl leading-5 text-[#171717]">
+                                    <span class="faq-question flex-1 text-base leading-5 text-[#171717]">
                                         <?php echo esc_html($faq['question']); ?>
                                     </span>
 
