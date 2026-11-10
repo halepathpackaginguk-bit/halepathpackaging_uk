@@ -1,4 +1,4 @@
-<section class="py-16 bg-[#f5f5f5] mt-8">
+<section class="py-12 bg-[#f5f5f5]">
     <div class="w-full px-4">
         <div class="text-center mb-8">
             <span class="text-secondary font-semibold text-base uppercase tracking-wider">Trusted Brands</span>
