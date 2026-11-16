@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-   initTabs();
+  initTabs();
 
   // =========================
   // CONTACT FORM
@@ -168,7 +168,7 @@ function initLazyVideos() {
     source.src = source.dataset.src;
     video.load();
     var play = video.play();
-    if (play && typeof play.catch === "function") play.catch(function () {});
+    if (play && typeof play.catch === "function") play.catch(function () { });
   };
 
   if (!("IntersectionObserver" in window)) {
@@ -372,67 +372,243 @@ function initFileUpload() {
 }
 
 function initTabs() {
-    const buttons = document.querySelectorAll(".tab-btn");
-    const panels = document.querySelectorAll(".tab-panels");
-    
-  
-    
-    if (!buttons.length || !panels.length) return;
-    
-    function showTab(tabId, clickedBtn = null) {
-        // Hide all panels
-        panels.forEach(panel => {
-            panel.classList.add("hidden");
-        });
-        
-        // Remove active class from all buttons
-        buttons.forEach(btn => {
-            btn.classList.remove("tab_active");
-        });
-        
-        // Show selected panel - IMPORTANT: Remove hidden class
-        const activePanel = document.getElementById(tabId);
-        if (activePanel) {
-            activePanel.classList.remove("hidden");           
-        } else {
-            console.error("Panel not found with ID:", tabId);
-          
-        }
-        
-        // Activate button
-        if (clickedBtn) {
-            clickedBtn.classList.add("tab_active");
-        }
-    }
-    
-    // Attach click events
-    buttons.forEach(btn => {
-        btn.addEventListener("click", function(e) {
-            e.preventDefault();
-            const tabId = this.getAttribute("data-tab");
-            console.log("Tab clicked:", tabId);
-            showTab(tabId, this);
-        });
+  const buttons = document.querySelectorAll(".tab-btn");
+  const panels = document.querySelectorAll(".tab-panels");
+
+
+
+  if (!buttons.length || !panels.length) return;
+
+  function showTab(tabId, clickedBtn = null) {
+    // Hide all panels
+    panels.forEach(panel => {
+      panel.classList.add("hidden");
     });
-    
-    // Auto-open first tab (REMOVE the hidden class from first panel)
-    const firstBtn = buttons[0];
-    if (firstBtn) {
-        firstBtn.classList.add("tab_active");
-        const firstTabId = firstBtn.getAttribute("data-tab");
-        const firstPanel = document.getElementById(firstTabId);
-        
-        // Remove hidden class from first panel
-        if (firstPanel) {
-            firstPanel.classList.remove("hidden");
-            console.log("First tab activated:", firstTabId);
-        }
-        
-        // Make sure other panels are hidden
-        panels.forEach(panel => {
-            if (panel.id !== firstTabId) {
-                panel.classList.add("hidden");
-            }
-        });
+
+    // Remove active class from all buttons
+    buttons.forEach(btn => {
+      btn.classList.remove("tab_active");
+    });
+
+    // Show selected panel - IMPORTANT: Remove hidden class
+    const activePanel = document.getElementById(tabId);
+    if (activePanel) {
+      activePanel.classList.remove("hidden");
+    } else {
+      console.error("Panel not found with ID:", tabId);
+
     }
+
+    // Activate button
+    if (clickedBtn) {
+      clickedBtn.classList.add("tab_active");
+    }
+  }
+
+  // Attach click events
+  buttons.forEach(btn => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      const tabId = this.getAttribute("data-tab");
+      console.log("Tab clicked:", tabId);
+      showTab(tabId, this);
+    });
+  });
+
+  // Auto-open first tab (REMOVE the hidden class from first panel)
+  const firstBtn = buttons[0];
+  if (firstBtn) {
+    firstBtn.classList.add("tab_active");
+    const firstTabId = firstBtn.getAttribute("data-tab");
+    const firstPanel = document.getElementById(firstTabId);
+
+    // Remove hidden class from first panel
+    if (firstPanel) {
+      firstPanel.classList.remove("hidden");
+      console.log("First tab activated:", firstTabId);
+    }
+
+    // Make sure other panels are hidden
+    panels.forEach(panel => {
+      if (panel.id !== firstTabId) {
+        panel.classList.add("hidden");
+      }
+    });
+  }
 }
+
+// Circular Slider
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slider = document.getElementById("circularEconomySlider");
+
+  if (!slider) return;
+
+  const slides = JSON.parse(slider.dataset.slides);
+
+  const title = document.getElementById("circularTitle");
+  const description = document.getElementById("circularDescription");
+  const mainImage = document.getElementById("circularMainImage");
+  const learnMore = document.getElementById("circularLearnMore");
+
+  const prevBtn = document.getElementById("circularPrev");
+  const nextBtn = document.getElementById("circularNext");
+
+  const topicsContainer = document.getElementById("circularTopics");
+
+  let currentIndex = 0;
+  let imageRequest = 0;
+
+  const positions = [
+    "topic-one",
+    "topic-two",
+    "topic-three"
+  ];
+
+  // Restart CSS Animation
+  function restartAnimation(element, className, delay = 0) {
+
+    if (!element) return;
+
+    element.classList.remove(className);
+
+    void element.offsetWidth;
+
+    element.style.animationDelay = `${delay}s`;
+
+    element.classList.add(className);
+
+  }
+
+  // Update Slider
+  function updateSlider(index) {
+
+    currentIndex = (index + slides.length) % slides.length;
+
+    const activeSlide = slides[currentIndex];
+
+    // Update Heading
+    title.textContent = activeSlide.title;
+
+    restartAnimation(title, "circular-fade-in", 0);
+
+    // Update Description
+    description.innerHTML = "";
+
+    activeSlide.description.forEach(function (paragraph, i) {
+
+      const p = document.createElement("p");
+
+      p.textContent = paragraph;
+
+      description.appendChild(p);
+
+      restartAnimation(p, "circular-fade-in", 0.1 + (i * 0.15));
+
+    });
+
+    // Update Main Image
+    const requestId = ++imageRequest;
+
+    mainImage.classList.remove("circular-image-fade");
+    mainImage.style.opacity = "0";
+
+    const newImage = new Image();
+
+    newImage.onload = function () {
+
+      if (requestId !== imageRequest) return;
+
+      mainImage.src = activeSlide.image;
+      mainImage.alt = activeSlide.title;
+      mainImage.style.opacity = "1";
+
+      restartAnimation(mainImage, "circular-image-fade", 0);
+
+    };
+
+    newImage.onerror = function () {
+
+      if (requestId !== imageRequest) return;
+
+      mainImage.src = activeSlide.image;
+      mainImage.alt = activeSlide.title;
+      mainImage.style.opacity = "1";
+
+    };
+
+    newImage.src = activeSlide.image;
+
+    // Update Learn More Link
+    learnMore.href = activeSlide.link;
+
+    restartAnimation(learnMore, "circular-fade-in", 0.35);
+
+    // Update Small Topic Images
+    topicsContainer.innerHTML = "";
+
+    for (let i = 1; i < slides.length; i++) {
+
+      const nextIndex = (currentIndex + i) % slides.length;
+      const slide = slides[nextIndex];
+
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.dataset.slideIndex = nextIndex;
+
+      button.className = "circular-topic " + positions[i - 1];
+
+      button.style.animationDelay = `${0.15 + (i * 0.18)}s`;
+
+      const imageWrapper = document.createElement("span");
+      imageWrapper.className = "circular-topic-image";
+
+      const image = document.createElement("img");
+
+      image.src = slide.image;
+      image.alt = slide.title;
+      image.width = 300;
+      image.height = 300;
+      image.loading = "lazy";
+
+      imageWrapper.appendChild(image);
+
+      const label = document.createElement("span");
+
+      // label.className = "circular-topic-title";
+      // label.textContent = slide.title;
+
+      button.appendChild(imageWrapper);
+      button.appendChild(label);
+
+      button.addEventListener("click", function () {
+
+        updateSlider(nextIndex);
+
+      });
+
+      topicsContainer.appendChild(button);
+
+    }
+
+  }
+
+  // Previous Slide
+  prevBtn.addEventListener("click", function () {
+
+    updateSlider(currentIndex - 1);
+
+  });
+
+  // Next Slide
+  nextBtn.addEventListener("click", function () {
+
+    updateSlider(currentIndex + 1);
+
+  });
+
+  // Initial Render
+  updateSlider(0);
+
+});
