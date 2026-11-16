@@ -75,7 +75,7 @@ $uid = wp_unique_id('faq-');
                     </div>
 
                     <!-- FAQ List -->
-                    <div class="overflow-hidden rounded-b-[14px] bg-white">
+                    <div class="overflow-hidden rounded-b-[14px] bg-white space-y-1">
 
                         <?php foreach ($faqs as $index => $faq): ?>
                             <button type="button"
@@ -89,7 +89,7 @@ $uid = wp_unique_id('faq-');
                                     class="faq-dot flex h-[18px] w-[18px] shrink-0 rounded-full <?php echo $index === 0 ? 'bg-gray-400' : 'bg-gray-300'; ?>"></span>
 
                                 <!-- Question -->
-                                <span class="faq-question flex-1 text-lg leading-5 text-[#171717]">
+                                <span class="faq-question flex-1 text-base leading-5 text-[#171717]">
                                     <?php echo esc_html($faq['question']); ?>
                                 </span>
 
