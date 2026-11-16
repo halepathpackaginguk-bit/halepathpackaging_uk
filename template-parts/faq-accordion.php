@@ -23,13 +23,13 @@ if (empty($faqs)) {
     return;
 }
 
-$section_id   = $args['id'] ?? 'faqs';
-$heading      = $args['heading'] ?? 'Frequently Asked Questions';
+$section_id = $args['id'] ?? 'faqs';
+$heading = $args['heading'] ?? 'Frequently Asked Questions';
 $heading_html = $args['heading_html'] ?? '';
-$subheading   = $args['subheading'] ?? '';
-$cta_text     = $args['cta_text'] ?? '';
-$cta_url      = $args['cta_url'] ?? '#custom-packaging-quote';
-$extra_class  = $args['class'] ?? '';
+$subheading = $args['subheading'] ?? '';
+$cta_text = $args['cta_text'] ?? '';
+$cta_url = $args['cta_url'] ?? '#custom-packaging-quote';
+$extra_class = $args['class'] ?? '';
 
 $uid = wp_unique_id('faq-');
 ?>
@@ -37,7 +37,7 @@ $uid = wp_unique_id('faq-');
 <section id="<?php echo esc_attr($section_id); ?>"
     class="bg-[#f5f5f5] py-16 sm:py-20 <?php echo esc_attr($extra_class); ?>"
     data-faq-root="<?php echo esc_attr($uid); ?>">
-    <div class="mx-auto max-w-[1240px] px-5">
+    <div class="container mx-auto px-4">
 
         <!-- Heading -->
         <div class="mb-7 text-center">
@@ -62,14 +62,15 @@ $uid = wp_unique_id('faq-');
 
                     <!-- Search -->
                     <div class="mb-3 flex h-[45px] items-center bg-white px-4">
-                        <svg class="mr-3 h-[17px] w-[17px] shrink-0 text-[#333]" fill="none"
-                            stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <svg class="mr-3 h-[17px] w-[17px] shrink-0 text-[#333]" fill="none" stroke="currentColor"
+                            stroke-width="1.5" viewBox="0 0 24 24">
                             <circle cx="11" cy="11" r="7"></circle>
                             <path d="m20 20-4-4"></path>
                         </svg>
 
                         <label for="<?php echo esc_attr($uid); ?>-search" class="sr-only">Search FAQs</label>
-                        <input id="<?php echo esc_attr($uid); ?>-search" type="text" placeholder="Search something you wonder"
+                        <input id="<?php echo esc_attr($uid); ?>-search" type="text"
+                            placeholder="Search something you wonder"
                             class="faq-search w-full bg-transparent text-sm text-[#222] outline-none placeholder:text-[#b6b6b6]">
                     </div>
 
@@ -88,13 +89,12 @@ $uid = wp_unique_id('faq-');
                                     class="faq-dot flex h-[18px] w-[18px] shrink-0 rounded-full <?php echo $index === 0 ? 'bg-gray-400' : 'bg-gray-300'; ?>"></span>
 
                                 <!-- Question -->
-                                <span class="faq-question flex-1 text-xl leading-5 text-[#171717]">
+                                <span class="faq-question flex-1 text-lg leading-5 text-[#171717]">
                                     <?php echo esc_html($faq['question']); ?>
                                 </span>
 
                                 <!-- Arrow -->
-                                <svg
-                                    class="faq-arrow h-5 w-5 shrink-0 text-primary transition-transform duration-200"
+                                <svg class="faq-arrow h-5 w-5 shrink-0 text-primary transition-transform duration-200"
                                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
@@ -121,7 +121,8 @@ $uid = wp_unique_id('faq-');
                 </div>
 
                 <!-- RIGHT ANSWER -->
-                <div class="min-h-[490px] rounded-[14px] bg-gray-200 px-8 py-8 lg:col-span-2 lg:-ml-[34px] lg:pl-[72px]">
+                <div
+                    class="min-h-[490px] rounded-[14px] bg-gray-200 px-8 py-8 lg:col-span-2 lg:-ml-[34px] lg:pl-[72px]">
 
                     <div class="max-w-[310px]">
 
@@ -143,79 +144,80 @@ $uid = wp_unique_id('faq-');
     </div>
 </section>
 
-<?php if (empty($GLOBALS['hale_faq_script_printed'])): $GLOBALS['hale_faq_script_printed'] = true; ?>
-<script>
-    jQuery(document).ready(function ($) {
-        $('[data-faq-root]').each(function () {
-            var $root = $(this);
-            var $items = $root.find('.faq-item');
-            var $input = $root.find('.faq-search');
-            var $title = $root.find('.faq-answer-title');
-            var $text = $root.find('.faq-answer-text');
-            var $noResults = $root.find('.faq-no-results');
-            var activeIndex = 0;
+<?php if (empty($GLOBALS['hale_faq_script_printed'])):
+    $GLOBALS['hale_faq_script_printed'] = true; ?>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('[data-faq-root]').each(function () {
+                var $root = $(this);
+                var $items = $root.find('.faq-item');
+                var $input = $root.find('.faq-search');
+                var $title = $root.find('.faq-answer-title');
+                var $text = $root.find('.faq-answer-text');
+                var $noResults = $root.find('.faq-no-results');
+                var activeIndex = 0;
 
-            if (!$items.length) {
-                return;
-            }
+                if (!$items.length) {
+                    return;
+                }
 
-            function select($item) {
-                activeIndex = $items.index($item);
+                function select($item) {
+                    activeIndex = $items.index($item);
 
-                $items.each(function (i) {
-                    var active = i === activeIndex;
-                    $(this)
-                        .toggleClass('bg-gray-200', active)
-                        .toggleClass('bg-white', !active);
-                    $(this).find('.faq-dot')
-                        .toggleClass('bg-gray-400', active)
-                        .toggleClass('bg-gray-300', !active);
-                    $(this).find('.faq-arrow')
-                        .toggleClass('rotate-90', active);
+                    $items.each(function (i) {
+                        var active = i === activeIndex;
+                        $(this)
+                            .toggleClass('bg-gray-200', active)
+                            .toggleClass('bg-white', !active);
+                        $(this).find('.faq-dot')
+                            .toggleClass('bg-gray-400', active)
+                            .toggleClass('bg-gray-300', !active);
+                        $(this).find('.faq-arrow')
+                            .toggleClass('rotate-90', active);
+                    });
+
+                    $title.html($item.find('.faq-question').html());
+                    $text.html($item.attr('data-answer'));
+                }
+
+                $items.on('click', function () {
+                    select($(this));
                 });
 
-                $title.html($item.find('.faq-question').html());
-                $text.html($item.attr('data-answer'));
-            }
+                function search() {
+                    var term = $.trim($input.val()).toLowerCase();
+                    var $visible = $();
 
-            $items.on('click', function () {
-                select($(this));
-            });
+                    $items.each(function () {
+                        var $item = $(this);
+                        var question = String($item.attr('data-question') || '').toLowerCase();
+                        var answer = String($item.attr('data-answer') || '').toLowerCase();
+                        var match = term === '' || question.indexOf(term) !== -1 || answer.indexOf(term) !== -1;
 
-            function search() {
-                var term = $.trim($input.val()).toLowerCase();
-                var $visible = $();
+                        $item.toggleClass('hidden', !match);
+                        if (match) {
+                            $visible = $visible.add($item);
+                        }
+                    });
 
-                $items.each(function () {
-                    var $item = $(this);
-                    var question = String($item.attr('data-question') || '').toLowerCase();
-                    var answer = String($item.attr('data-answer') || '').toLowerCase();
-                    var match = term === '' || question.indexOf(term) !== -1 || answer.indexOf(term) !== -1;
+                    // Keep the selected item visible; otherwise select the first match.
+                    if ($visible.length && $items.eq(activeIndex).hasClass('hidden')) {
+                        select($visible.first());
+                    }
 
-                    $item.toggleClass('hidden', !match);
-                    if (match) {
-                        $visible = $visible.add($item);
+                    $noResults.toggleClass('hidden', term === '' || $visible.length > 0);
+                }
+
+                $input.on('input', search);
+                $input.on('keydown', function (e) {
+                    if (e.key === 'Escape') {
+                        $(this).val('').trigger('input');
                     }
                 });
 
-                // Keep the selected item visible; otherwise select the first match.
-                if ($visible.length && $items.eq(activeIndex).hasClass('hidden')) {
-                    select($visible.first());
-                }
-
-                $noResults.toggleClass('hidden', term === '' || $visible.length > 0);
-            }
-
-            $input.on('input', search);
-            $input.on('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    $(this).val('').trigger('input');
-                }
+                // Highlight the first item on load.
+                select($items.first());
             });
-
-            // Highlight the first item on load.
-            select($items.first());
         });
-    });
-</script>
+    </script>
 <?php endif; ?>
