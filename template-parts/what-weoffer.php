@@ -62,14 +62,16 @@ if (!$material_tabs) {
         aria-live="polite">
 
         <?php
-        $card_index = 0;
-
         foreach ($material_tabs as $tab):
 
             $category_slug = sanitize_title($tab['name']);
-            $products_data = $tab['products_data'];
+            $products_data = $tab['products_data'] ?? [];
 
             if (!empty($products_data)):
+
+                // Reset the counter for every tab so each tab uses the
+                // exact same card layout (2 featured + normal cards).
+                $card_index = 0;
 
                 foreach ($products_data as $option):
 
