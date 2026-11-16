@@ -3,46 +3,47 @@ $theme_uri = get_template_directory_uri();
 
 $circular_slides = [
     [
-        'title' => 'Forestry',
+        'title' => 'Custom Packaging',
         'image' => $theme_uri . '/assets/images/design/1.png',
         'description' => [
-            'Our virgin fiber raw material is renewable, recyclable and biodegradable. By practicing and supporting sustainable forestry, we help secure the future supply of virgin fiber while delivering a range of environmental and social benefits.',
-            'We source fiber from small, private landowners as well as our own forests which are FSC and/or PEFC certified. All forests from which we source fiber are chain-of-custody certified.',
-            'We are committed to maintaining biodiversity and natural habitats supporting reforestation, research, education and preservation efforts in the communities where we operate.'
+            'Hale Path Packaging delivers custom boxes and bespoke packaging solutions for small to large businesses across the UK. Every order is tailored to your brand, product and budget.',
+            'From e-commerce mailers and shipping boxes to luxury retail packaging, we create packaging that protects your products while making your brand stand out.',
+            'Our custom packaging solutions combine quality materials, creative designs and practical functionality to deliver packaging that makes a lasting impression.'
         ],
         'link' => '#'
     ],
     [
-        'title' => 'Paper',
+        'title' => 'Printing & Finishes',
         'image' => $theme_uri . '/assets/images/design/2.png',
         'description' => [
-            'We manufacture a wide range of renewable, recyclable and recycled paper and board, helping create sustainable solutions for businesses and communities.',
-            'Our global paper and board manufacturing capabilities provide the materials needed for innovative, high-performance paper-based packaging.',
-            'We continue to focus on responsible resource use, efficient production and improving the circularity of paper products.'
+            'Bring your packaging designs to life with high-quality printing and premium finishing options from Hale Path Packaging.',
+            'Choose from digital, offset, flexographic and screen printing, along with special finishes such as foil stamping, embossing, debossing and spot UV.',
+            'We help businesses create visually appealing packaging that reflects their brand identity and delivers a memorable unboxing experience.'
         ],
         'link' => '#'
     ],
     [
-        'title' => 'Recycling',
+        'title' => 'Sustainable Packaging',
         'image' => $theme_uri . '/assets/images/design/3.png',
         'description' => [
-            'We provide recycling solutions to support the responsible and efficient recycling of our customers’ packaging.',
-            'We consume approximately 13.1 million tons of recovered fiber each year around the world, bringing valuable fiber back into the packaging production loop.',
-            'By recovering and reusing paper fibers, we help keep valuable materials in circulation and reduce waste.'
+            'We offer packaging solutions using responsibly selected materials to help businesses make more environmentally conscious packaging choices.',
+            'Explore recyclable paperboard, corrugated cardboard and other material options designed to balance product protection, durability and presentation.',
+            'Our goal is to help UK businesses reduce unnecessary packaging waste while maintaining the quality and appearance their products deserve.'
         ],
         'link' => '#'
     ],
     [
-        'title' => 'Packaging',
+        'title' => 'Packaging Solutions',
         'image' => $theme_uri . '/assets/images/design/4.png',
         'description' => [
-            'We create, design and manufacture paper-based packaging made from renewable materials that protect and promote our customers’ products.',
-            'Our packaging solutions combine intelligent design, renewable materials and innovation to help customers meet their sustainability goals.',
-            'From corrugated boxes to consumer packaging, we develop solutions that support a more circular economy.'
+            'From product packaging and retail boxes to flexible packaging and e-commerce mailers, Hale Path Packaging provides solutions for a wide range of industries.',
+            'Whether you need packaging for cosmetics, food, gifts, electronics or everyday products, we customize every order around your specific requirements.',
+            'From initial design to final production, we help turn your packaging ideas into practical, high-quality solutions that fit your brand and budget.'
         ],
         'link' => '#'
     ],
 ];
+
 ?>
 
 <section class="circular-economy-section overflow-hidden bg-white pt-12 pb-24 sm:py-20">
