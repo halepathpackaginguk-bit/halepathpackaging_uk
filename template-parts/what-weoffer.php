@@ -119,7 +119,7 @@ if (!$material_tabs) {
                             <div class="relative z-20 max-w-[65%] sm:max-w-[60%]">
 
                                 <span class="text-[11px] font-bold uppercase tracking-wide text-[#00c3ff]">
-                                    Retail Packaging
+                                    <?php echo esc_html($tab['name']); ?>
                                 </span>
 
                                 <h3 class="mt-2 text-xl font-bold leading-tight sm:text-[22px]">
