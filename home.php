@@ -13,7 +13,7 @@
 <?php get_template_part('template-parts/home-corrugated'); ?>
 <?php get_template_part('template-parts/circular-slider'); ?>
 <?php get_template_part('template-parts/get-qoute', ); ?>
-<?php get_template_part('template-parts/what-weoffer', ); ?>
+<?php get_template_part('template-parts/finishing-tabs', ); ?>
 <?php get_template_part('template-parts/home-flexible', ); ?>
 <?php get_template_part('template-parts/home-cta'); ?>
 <?php get_template_part('template-parts/home-services'); ?>
@@ -24,6 +24,7 @@
 <?php get_template_part('template-parts/testimonial-and-faq'); ?>
 <?php //get_template_part('template-parts/home-career'); ?>
 <?php get_template_part('template-parts/client-success'); ?>
+<?php get_template_part('template-parts/what-weoffer', ); ?>
 <!-- <section class="px-4">
     <img src="<?php //echo get_template_directory_uri(); ?>/assets/images/cta-ban1.jpeg" alt="about us" class="w-full"
         loading="lazy" decoding="async">

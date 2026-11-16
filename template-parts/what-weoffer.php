@@ -1,302 +1,81 @@
-<?php
-// Get the ACF Repeater field
-$material_tabs = get_field('material_tabs');
 
-// Default fallback in case there are no tabs
-if (!$material_tabs) {
-    $material_tabs = [];
-}
+<?php
+$packaging_content = [
+    [
+        'title' => 'Custom Packaging Solutions',
+        'description' => "Great packaging does more than wrap a product — it tells your brand's story. Our corrugated and bespoke solutions are built tough, printed sharp, and shaped around your exact specs. Whether you sell online, in-store, or wholesale, expect packaging that turns heads and holds up.",
+    ],
+    [
+        'title' => 'Recycling & Circularity',
+        'description' => "We don't just tick the recycling box — we build it into everything. Our paper and board materials stay in circulation, cutting waste before it starts. Fully compatible with USA recycling systems, our packaging helps your brand stay green without sacrificing a thing.",
+    ],
+    [
+        'title' => 'Eco-Friendly Kraft Paper',
+        'description' => "Strong, natural, and endlessly reusable — our kraft paper is sourced from responsibly managed forests and breaks down without a trace. It's a straightforward swap away from plastic that your customers will actually notice and appreciate.",
+    ],
+    [
+        'title' => 'Performance-Driven Sustainability',
+        'description' => "Eco claims are easy to make. Proving them is another story. Our packaging cuts material use, ditches harmful inks, and meets strict USA environmental standards — all without compromising on protection. Real sustainability that works as hard as your product does.",
+    ],
+];
 ?>
 
-<section class="bg-gray-50 py-12 sm:px-6 lg:py-16">
-    <div class="mx-auto container px-4">
+<section class="pt-[60px] bg-[#F5F5F5]">
+    <div class="hale_container flex flex-col justify-center items-center">
 
-        <!-- Section Heading -->
-        <div class="mx-auto mb-7 max-w-2xl text-center">
-            <h2 class="h2">
-                Finishing & Material Options
-            </h2>
-            <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
-                Choose from premium coating, board, printing and finishing options for your insert boxes.
-            </p>
+        <h6 class="text-[#1C2E42] font-semibold flex gap-2 items-center">
+            Sustainable Products & Services
+            <div class="sub_title_line"></div>
+        </h6>
+
+        <h2 class="h2">
+            Eco-Smart Packaging That Builds Stronger Brands and a Greener Future.
+        </h2>
+
+    </div>
+
+    <div class="offerbg bg-cover bg-no-repeat sm:mt-44 mt-32 border">
+        <div class="hale_container">
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 sm:mb-32 mb-10 sm:-mt-48 -mt-36">
+
+                <?php foreach ($packaging_content as $idx => $item) : ?>
+
+                    <div class="service_box ms:h-[520px] h-[380px] sm:p-5 p-2 bg-white/5 backdrop-blur-[10px]">
+
+                        <div
+                            class="h-full w-full bg-no-repeat bg-center bg-cover flex items-end justify-end pt-6 pb-1"
+                            style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/images/eco/' . ($idx + 1) . '.jpg'); ?>');"
+                        >
+
+                            <div class="service_inner">
+                                <div class="content">
+
+                                    <h5 class="group">
+                                        <?php echo esc_html($item['title']); ?>
+
+                                        <img
+                                            src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-page/li_move-up-right.svg'); ?>"
+                                            alt=""
+                                            class="group-hover:scale-110 transition-all duration-300"
+                                            width="30"
+                                            height="30"
+                                        >
+                                    </h5>
+
+                                    <p class="mt-3 text-white sm:text-sm text-xs">
+                                        <?php echo esc_html($item['description']); ?>
+                                    </p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                <?php endforeach; ?>
+
+            </div>
         </div>
-
-       
-<?php if (!empty($material_tabs)): ?>
-
-    <!-- Category Tabs -->
-    <div class="finishing-tabs mb-8 flex flex-wrap items-center justify-center gap-2"
-        role="tablist"
-        aria-label="Finishing categories">
-
-        <?php $first_category = true; ?>
-
-        <?php foreach ($material_tabs as $tab):
-            $category_slug = sanitize_title($tab['name']);
-        ?>
-
-            <button
-                type="button"
-                role="tab"
-                id="finishing-tab-<?php echo esc_attr($category_slug); ?>"
-                aria-controls="finishing-panel"
-                aria-selected="<?php echo $first_category ? 'true' : 'false'; ?>"
-                data-category="<?php echo esc_attr($category_slug); ?>"
-                class="finishing-tab rounded-full border border-primary/20 px-3 py-2 text-xs font-semibold transition duration-200 sm:text-sm <?php echo $first_category ? 'is-active bg-secondary text-white' : 'bg-white text-secondary'; ?>">
-
-                <?php echo esc_html($tab['name']); ?>
-
-            </button>
-
-            <?php $first_category = false; ?>
-
-        <?php endforeach; ?>
-
-    </div>
-
-
-    <!-- Finishing Cards -->
-    <div id="finishing-panel"
-        class="finishing-grid grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
-        role="tabpanel"
-        aria-live="polite">
-
-        <?php
-        foreach ($material_tabs as $tab):
-
-            $category_slug = sanitize_title($tab['name']);
-            $products_data = $tab['products_data'] ?? [];
-
-            if (!empty($products_data)):
-
-                // Reset the counter for every tab so each tab uses the
-                // exact same card layout (2 featured + normal cards).
-                $card_index = 0;
-
-                foreach ($products_data as $option):
-
-                    // Get Image URL
-                    $image_url = '';
-
-                    if (!empty($option['image'])) {
-
-                        $image_url = is_array($option['image'])
-                            ? ($option['image']['url'] ?? '')
-                            : $option['image'];
-
-                    }
-
-                    // Fallback Image
-                    if (empty($image_url)) {
-                        $image_url = get_template_directory_uri() . '/assets/images/tab1.webp';
-                    }
-
-                    // Product Details
-                    $title = $option['title'] ?? '';
-                    $description = $option['short_desription'] ?? '';
-
-                    ?>
-
-                    <?php if ($card_index < 2): ?>
-
-                        <!-- Featured Card 1 & 2 -->
-                        <article
-                            class="finishing-card relative col-span-1 min-h-[390px] overflow-visible rounded-2xl bg-[#06245f] p-6 text-white sm:p-8 lg:col-span-2"
-                            data-category="<?php echo esc_attr($category_slug); ?>">
-
-                            <!-- Product Image -->
-                            <div class="sm:absolute -mt-12 right-2 z-10 w-[35%] sm:right-5">
-
-                                <img
-                                    src="<?php echo esc_url($image_url); ?>"
-                                    alt="<?php echo esc_attr($title); ?>"
-                                    class="w-full rounded-2xl"
-                                    width="175"
-                                    height="175"
-                                    loading="lazy">
-
-                            </div>
-
-                            <!-- Heading & Button -->
-                            <div class="relative z-20 max-w-[65%] sm:max-w-[60%]">
-
-                                <span class="text-[11px] font-bold uppercase tracking-wide text-[#00c3ff]">
-                                    <?php echo esc_html($tab['name']); ?>
-                                </span>
-
-                                <h3 class="mt-2 text-xl font-bold leading-tight sm:text-[22px]">
-                                    <?php echo esc_html($title); ?>
-                                </h3>
-
-                                <a
-                                    href="#"
-                                    class="mt-3 flex h-8 w-8 items-center justify-center rounded-full bg-[#00baff] transition-all hover:bg-white hover:text-[#06245f]"
-                                    aria-label="<?php echo esc_attr('View ' . $title); ?>">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-4 w-4"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor">
-
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5 12h14m-7-7 7 7-7 7" />
-
-                                    </svg>
-
-                                </a>
-
-                            </div>
-
-                            <!-- Description -->
-                            <p class="relative z-20 mt-10 text-[15px] font-normal leading-6">
-
-                                <?php echo esc_html($description); ?>
-
-                            </p>
-
-                        </article>
-
-                    <?php else: ?>
-
-                        <!-- Normal Cards (Remaining Products) -->
-                        <article
-                            class="finishing-card col-span-1 rounded-xl border border-secondary/20 bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
-                            data-category="<?php echo esc_attr($category_slug); ?>">
-
-                            <!-- Product Image -->
-                            <div class="mb-3 flex h-[295px] items-center justify-center overflow-hidden rounded-lg bg-secondary/10">
-
-                                <img
-                                    src="<?php echo esc_url($image_url); ?>"
-                                    alt="<?php echo esc_attr($title); ?>"
-                                    class="h-full w-full object-cover"
-                                    loading="lazy">
-
-                            </div>
-
-                            <!-- Product Title -->
-                            <h3 class="mb-2 text-center text-base font-bold text-title_Clr sm:text-lg">
-
-                                <?php echo esc_html($title); ?>
-
-                            </h3>
-
-                            <!-- Product Description -->
-                            <p class="text-center text-sm leading-6 text-txt_Clr">
-
-                                <?php echo esc_html($description); ?>
-
-                            </p>
-
-                        </article>
-
-                    <?php endif; ?>
-
-                    <?php
-                    $card_index++;
-
-                endforeach;
-
-            endif;
-
-        endforeach;
-        ?>
-
-    </div>
-
-<?php else: ?>
-
-    <p class="text-center text-gray-500">
-        No material tabs found. Please add them in the ACF options.
-    </p>
-
-<?php endif; ?>
-
-
     </div>
 </section>
-
-<!-- The JavaScript remains exactly the same as your original -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const tabContainers = document.querySelectorAll('.finishing-tabs');
-
-        tabContainers.forEach(function (tabContainer) {
-            const section = tabContainer.closest('section');
-
-            if (!section) {
-                return;
-            }
-
-            const tabs = Array.from(
-                tabContainer.querySelectorAll('.finishing-tab')
-            );
-
-            const cards = Array.from(
-                section.querySelectorAll('.finishing-card')
-            );
-
-            function activateTab(activeTab) {
-                const category = activeTab.dataset.category;
-
-                tabs.forEach(function (tab) {
-                    const isActive = tab === activeTab;
-
-                    tab.classList.toggle('is-active', isActive);
-                    tab.setAttribute('aria-selected', String(isActive));
-
-                    tab.classList.toggle('bg-secondary', isActive);
-                    tab.classList.toggle('text-white', isActive);
-                    tab.classList.toggle('bg-white', !isActive);
-                    tab.classList.toggle('text-secondary', !isActive);
-                });
-
-                cards.forEach(function (card) {
-                    const matches = card.dataset.category === category;
-
-                    card.hidden = !matches;
-                });
-            }
-
-            tabs.forEach(function (tab, index) {
-                tab.addEventListener('click', function () {
-                    activateTab(tab);
-                });
-
-                tab.addEventListener('keydown', function (event) {
-                    let nextIndex = index;
-
-                    if (event.key === 'ArrowRight') {
-                        nextIndex = (index + 1) % tabs.length;
-                    } else if (event.key === 'ArrowLeft') {
-                        nextIndex = (index - 1 + tabs.length) % tabs.length;
-                    } else if (event.key === 'Home') {
-                        nextIndex = 0;
-                    } else if (event.key === 'End') {
-                        nextIndex = tabs.length - 1;
-                    } else {
-                        return;
-                    }
-
-                    event.preventDefault();
-                    tabs[nextIndex].focus();
-                    activateTab(tabs[nextIndex]);
-                });
-            });
-
-            if (tabs.length > 0) {
-                activateTab(tabs[0]);
-            }
-        });
-    });
-</script>
-
-<style>
-    .finishing-card[hidden] {
-        display: none !important;
-    }
-</style>
