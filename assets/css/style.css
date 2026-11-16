@@ -846,6 +846,9 @@
   .max-h-\[220px\] {
     max-height: 220px;
   }
+  .max-h-\[350px\] {
+    max-height: 350px;
+  }
   .max-h-\[450px\] {
     max-height: 450px;
   }
