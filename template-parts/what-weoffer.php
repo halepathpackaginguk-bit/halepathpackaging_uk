@@ -105,12 +105,12 @@ if (!$material_tabs) {
                             data-category="<?php echo esc_attr($category_slug); ?>">
 
                             <!-- Product Image -->
-                            <div class="sm:absolute -mt-12 right-2 z-10 w-[45%] sm:right-5">
+                            <div class="sm:absolute -mt-12 right-2 z-10 w-[35%] sm:right-5">
 
                                 <img
                                     src="<?php echo esc_url($image_url); ?>"
                                     alt="<?php echo esc_attr($title); ?>"
-                                    class="w-full"
+                                    class="w-full rounded-2xl"
                                     width="175"
                                     height="175"
                                     loading="lazy">
