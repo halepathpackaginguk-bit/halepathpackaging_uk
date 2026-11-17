@@ -4,7 +4,7 @@ $theme_uri = get_template_directory_uri();
 $circular_slides = [
     [
         'title' => 'Custom Packaging',
-        'image' => $theme_uri . '/assets/images/design/1.png',
+        'image' => $theme_uri . '/assets/images/circular/packaging.png',
         'description' => [
             'Hale Path Packaging delivers custom boxes and bespoke packaging solutions for small to large businesses across the UK. Every order is tailored to your brand, product and budget.',
             'From e-commerce mailers and shipping boxes to luxury retail packaging, we create packaging that protects your products while making your brand stand out.',
@@ -14,7 +14,7 @@ $circular_slides = [
     ],
     [
         'title' => 'Printing & Finishes',
-        'image' => $theme_uri . '/assets/images/design/2.png',
+        'image' => $theme_uri . '/assets/images/circular/forestry.png',
         'description' => [
             'Bring your packaging designs to life with high-quality printing and premium finishing options from Hale Path Packaging.',
             'Choose from digital, offset, flexographic and screen printing, along with special finishes such as foil stamping, embossing, debossing and spot UV.',
@@ -24,7 +24,7 @@ $circular_slides = [
     ],
     [
         'title' => 'Sustainable Packaging',
-        'image' => $theme_uri . '/assets/images/design/3.png',
+        'image' => $theme_uri . '/assets/images/circular/paper.png',
         'description' => [
             'We offer packaging solutions using responsibly selected materials to help businesses make more environmentally conscious packaging choices.',
             'Explore recyclable paperboard, corrugated cardboard and other material options designed to balance product protection, durability and presentation.',
@@ -34,7 +34,7 @@ $circular_slides = [
     ],
     [
         'title' => 'Packaging Solutions',
-        'image' => $theme_uri . '/assets/images/design/4.png',
+        'image' => $theme_uri . '/assets/images/circular/recycling.png',
         'description' => [
             'From product packaging and retail boxes to flexible packaging and e-commerce mailers, Hale Path Packaging provides solutions for a wide range of industries.',
             'Whether you need packaging for cosmetics, food, gifts, electronics or everyday products, we customize every order around your specific requirements.',
