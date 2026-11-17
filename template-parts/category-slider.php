@@ -12,7 +12,7 @@ if (!empty($categories) && is_array($categories)):
         <div class="mx-auto px-4">
 
             <!-- Section Heading -->
-            <div class="container mb-7 text-center">
+            <div class="container mx-auto mb-7 text-center">
                 <h2 class="text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
                     Your Entire Custom Packaging Solutions Under One Roof
                 </h2>
