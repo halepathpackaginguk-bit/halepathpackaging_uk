@@ -75,7 +75,7 @@ $uid = wp_unique_id('faq-');
                     </div>
 
                     <!-- FAQ List -->
-                    <div class="overflow-y-scroll max-h-[350px] rounded-b-[14px] bg-white space-y-1">
+                    <div class="overflow-y-scroll max-h-[350px] rounded-b-[14px] space-y-1">
 
                         <?php foreach ($faqs as $index => $faq): ?>
                             <button type="button"
@@ -124,7 +124,7 @@ $uid = wp_unique_id('faq-');
                 <div
                     class="min-h-[490px] rounded-[14px] bg-gray-200 px-8 py-8 lg:col-span-2 lg:-ml-[34px] lg:pl-[72px]">
 
-                    <div class="max-w-[310px]">
+                    <div class="">
 
                         <h3 class="faq-answer-title text-lg text-title_Clr">
                             <?php echo esc_html($faqs[0]['question']); ?>
