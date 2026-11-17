@@ -8,11 +8,11 @@ if (!empty($categories) && is_array($categories)):
     $categories = array_slice($categories, 0, 12);
     ?>
 
-    <section class="py-10 sm:px-6 lg:py-14">
-        <div class="container mx-auto px-4">
+    <section class="py-10 lg:py-14">
+        <div class="mx-auto px-4">
 
             <!-- Section Heading -->
-            <div class="mb-7 text-center">
+            <div class="container mb-7 text-center">
                 <h2 class="text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
                     Your Entire Custom Packaging Solutions Under One Roof
                 </h2>
@@ -25,7 +25,7 @@ if (!empty($categories) && is_array($categories)):
             </div>
 
             <!-- Product Categories Slider -->
-            <div class="px-8 sm:px-10">
+            <div class="">
                 <div class="category-slider" data-slides="<?php echo esc_attr($slidesToShow); ?>">
 
                     <?php foreach ($categories as $category): ?>
