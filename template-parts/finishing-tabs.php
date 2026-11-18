@@ -156,8 +156,8 @@ $material_tabs = get_field('material_tabs') ?: [];
                                 </div>
 
                                 <!-- Description -->
-                                <p class="relative z-20 mt-10 text-[15px] font-normal leading-6">
-                                    <?php echo esc_html($description); ?>
+                                <p class="relative z-20 mt-20 text-[15px] font-normal leading-6">
+                                    <?php echo esc_html(wp_strip_all_tags($description)); ?>
                                 </p>
 
                             </article>
@@ -184,7 +184,7 @@ $material_tabs = get_field('material_tabs') ?: [];
 
                                 <!-- Product Description -->
                                 <p class="text-center text-sm leading-6 text-txt_Clr">
-                                    <?php echo esc_html($description); ?>
+                                  <?php echo esc_html(wp_strip_all_tags($description)); ?>
                                 </p>
 
                             </article>
