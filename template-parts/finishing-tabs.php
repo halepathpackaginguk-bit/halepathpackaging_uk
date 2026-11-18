@@ -63,6 +63,9 @@ $material_tabs = get_field('material_tabs') ?: [];
                     continue;
                 }
 
+                // Each tab gets its own set of featured cards (first 3 products).
+                $featured_count = 0;
+
                 foreach ($products as $product):
 
                     $product_id = is_object($product) ? $product->ID : $product;
@@ -97,8 +100,9 @@ $material_tabs = get_field('material_tabs') ?: [];
                         'description' => $description,
                         'product_link' => get_permalink($product_id),
                     ];
-                    if (count($featured_cards) < 3) {
-                        $featured_cards[] = $card;
+                    if ($featured_count < 3) {
+                        $featured_cards[]   = $card;
+                        $featured_count++;
                     } else {
                         $normal_cards[] = $card;
                     }
