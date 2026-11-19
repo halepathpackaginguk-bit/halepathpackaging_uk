@@ -7,7 +7,7 @@ $material_tabs = get_field('material_tabs') ?: [];
     <div class="mx-auto px-4">
 
         <!-- Section Heading -->
-        <div class="mx-auto mb-7 max-w-2xl text-center">
+        <div class="mx-auto mb-7 max-w-4xl text-center">
             <h2 class="h2">
                Explore Our Range of Custom Corrugated Packaging Solutions for Different Business Needs
             </h2>
