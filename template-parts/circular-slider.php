@@ -3,42 +3,39 @@ $theme_uri = get_template_directory_uri();
 
 $circular_slides = [
     [
-        'title' => 'Custom Packaging',
-        'image' => $theme_uri . '/assets/images/circular/packaging.png',
-        'description' => [
-            'Hale Path Packaging delivers custom boxes and bespoke packaging solutions for small to large businesses across the UK. Every order is tailored to your brand, product and budget.',
-            'From e-commerce mailers and shipping boxes to luxury retail packaging, we create packaging that protects your products while making your brand stand out.',
-            'Our custom packaging solutions combine quality materials, creative designs and practical functionality to deliver packaging that makes a lasting impression.'
-        ],
-        'link' => '#'
-    ],
-    [
-        'title' => 'Printing & Finishes',
+        'title' => 'Eco-Conscious Packaging Choices',
         'image' => $theme_uri . '/assets/images/circular/forestry.png',
         'description' => [
-            'Bring your packaging designs to life with high-quality printing and premium finishing options from Hale Path Packaging.',
-            'Choose from digital, offset, flexographic and screen printing, along with special finishes such as foil stamping, embossing, debossing and spot UV.',
-            'We help businesses create visually appealing packaging that reflects their brand identity and delivers a memorable unboxing experience.'
+            "Better packaging choices don't have to cost the earth. We offer materials chosen with the environment in mind, including recyclable paperboard and corrugated cardboard, so you can go greener without losing strength or good looks.",
+            "We want to help UK businesses cut down on packaging waste. That means the right amount of material, in the right size, doing its job properly.",
         ],
         'link' => '#'
     ],
     [
-        'title' => 'Sustainable Packaging',
-        'image' => $theme_uri . '/assets/images/circular/paper.png',
+        'title' => 'Made-to-Order Boxes for Your Brand',
+        'image' => $theme_uri . '/assets/images/circular/packaging.png',
         'description' => [
-            'We offer packaging solutions using responsibly selected materials to help businesses make more environmentally conscious packaging choices.',
-            'Explore recyclable paperboard, corrugated cardboard and other material options designed to balance product protection, durability and presentation.',
-            'Our goal is to help UK businesses reduce unnecessary packaging waste while maintaining the quality and appearance their products deserve.'
+            "We make custom boxes for UK businesses, from small start-ups to large brands. Every order is built around your brand, your product, and your budget.",
+            "That could be an e-commerce mailer, a shipping box, or a premium retail box. Whatever it is, it should protect what's inside and help your brand get noticed. We use good materials and practical designs, so the box works as well as it looks.",
         ],
         'link' => '#'
     ],
     [
-        'title' => 'Packaging Solutions',
+        'title' => 'Recyclable Packaging for Every Industry',
         'image' => $theme_uri . '/assets/images/circular/recycling.png',
         'description' => [
-            'From product packaging and retail boxes to flexible packaging and e-commerce mailers, Hale Path Packaging provides solutions for a wide range of industries.',
-            'Whether you need packaging for cosmetics, food, gifts, electronics or everyday products, we customize every order around your specific requirements.',
-            'From initial design to final production, we help turn your packaging ideas into practical, high-quality solutions that fit your brand and budget.'
+            "We supply eco-friendly & recyclable packaging for many different industries, including product packaging, retail boxes, flexible packaging, and e-commerce mailers.",
+            "Whether you sell cosmetics, food, gifts, electronics, or everyday goods, we tailor your order to what you need. We'll work with you from the first design idea to final production, so the result suits your brand and your budget.",
+        ],
+        'link' => '#'
+    ],
+    [
+        'title' => 'Forestry and Renewable Paper Fibre',
+        'image' => $theme_uri . '/assets/images/circular/paper.png',
+        'description' => [
+            "Paper and board start with wood fibre, and wood is a renewable raw material. It can be replanted and regrown. Packaging made from it can be recycled, and in the right conditions it breaks down naturally.",
+            "Well-managed forestry matters because it keeps that supply going for the long term. It also protects wildlife habitats and supports the communities that depend on forests. That's one reason we favour paper-based packaging where it suits the product.",
+            "If responsible sourcing matters to you, ask us about your options, and we'll talk you through them."
         ],
         'link' => '#'
     ],
@@ -54,12 +51,12 @@ $circular_slides = [
         <div class="mb-5">
 
             <h2 class="text-2xl font-bold leading-tight text-title_Clr sm:text-3xl">
-                Circular economy is at the core of our business
+                Packaging Made to Be Recycled and Used Again
             </h2>
 
             <p class="mt-2 text-sm leading-6 text-txt_Clr md:text-base">
-                As a global leader in sustainable paper-based packaging, we're proud to create solutions from renewable,
-                recyclable materials—helping deliver a better future for all.
+                Packaging shouldn't end up as waste after one use. Wherever the product allows, we choose renewable,
+                recyclable materials, so more of what we make can be recycled and used again.
             </p>
 
         </div>

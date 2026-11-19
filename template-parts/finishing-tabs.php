@@ -9,11 +9,11 @@ $material_tabs = get_field('material_tabs') ?: [];
         <!-- Section Heading -->
         <div class="mx-auto mb-7 max-w-2xl text-center">
             <h2 class="h2">
-                Finishing & Material Options
+               Explore Our Range of Custom Corrugated Packaging Solutions for Different Business Needs
             </h2>
 
             <p class="sm:text-lg text-sm font-normal text-txt_Clr text-center md:w-5/6 mx-auto">
-                Choose from premium coating, board, printing and finishing options for your insert boxes.
+                Choose from a range of coatings, board types, print options, and finishes for your insert boxes, so the inside looks as good as the outside.
             </p>
         </div>
 
