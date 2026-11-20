@@ -119,28 +119,27 @@ $material_tabs = get_field('material_tabs') ?: [];
                     <article
                         class="finishing-card relative min-h-[390px] overflow-visible rounded-2xl bg-[#06245f] p-6 text-white sm:p-8"
                         data-category="<?php echo esc_attr($card['category_slug']); ?>">
-
                         <!-- Product Image -->
                         <div class="sm:absolute -mt-12 right-2 z-10 w-[35%] sm:right-5">
-                            <img src="<?php echo esc_url($card['image_url']); ?>" alt="<?php echo esc_attr($card['title']); ?>"
-                                class="w-full rounded-2xl" width="175" height="175" loading="lazy">
+                            <a href="<?php echo esc_url($card['product_link']); ?>"
+                                aria-label="<?php echo esc_attr('View ' . $card['title']); ?>">
+                                <img src="<?php echo esc_url($card['image_url']); ?>" alt="<?php echo esc_attr($card['title']); ?>"
+                                    class="w-full rounded-2xl" width="175" height="175" loading="lazy">
+                            </a>
                         </div>
-
                         <!-- Product Details -->
                         <div class="relative z-20 max-w-[65%] sm:max-w-[60%]">
-
                             <span class="text-[11px] font-bold uppercase tracking-wide text-[#00c3ff]">
                                 <?php echo esc_html($card['category_name']); ?>
                             </span>
-
                             <h3 class="mt-2 text-xl font-bold leading-tight sm:text-[22px]">
-                                <?php echo esc_html($card['title']); ?>
+                                <a href="<?php echo esc_url($card['product_link']); ?>" class="hover:underline">
+                                    <?php echo esc_html($card['title']); ?>
+                                </a>
                             </h3>
-
                             <a href="<?php echo esc_url($card['product_link']); ?>"
                                 class="mt-3 flex h-8 w-8 items-center justify-center rounded-full bg-[#00baff] transition-all hover:bg-white hover:text-[#06245f]"
                                 aria-label="<?php echo esc_attr('View ' . $card['title']); ?>">
-
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -172,14 +171,19 @@ $material_tabs = get_field('material_tabs') ?: [];
                         <!-- Product Image -->
                         <div class="mb-3 flex h-[295px] items-center justify-center overflow-hidden rounded-lg bg-secondary/10">
 
-                            <img src="<?php echo esc_url($card['image_url']); ?>" alt="<?php echo esc_attr($card['title']); ?>"
-                                class="h-full w-full object-cover" loading="lazy">
+                            <a href="<?php echo esc_url($card['product_link']); ?>" class="h-full w-full"
+                                aria-label="<?php echo esc_attr('View ' . $card['title']); ?>">
+                                <img src="<?php echo esc_url($card['image_url']); ?>" alt="<?php echo esc_attr($card['title']); ?>"
+                                    class="h-full w-full object-cover" loading="lazy">
+                            </a>
 
                         </div>
 
                         <!-- Product Title -->
                         <h3 class="mb-2 text-center text-base font-bold text-title_Clr sm:text-lg">
-                            <?php echo esc_html($card['title']); ?>
+                            <a href="<?php echo esc_url($card['product_link']); ?>" class="hover:underline">
+                                <?php echo esc_html($card['title']); ?>
+                            </a>
                         </h3>
 
                     </article>
