@@ -867,15 +867,8 @@ function halepath_get_product_description($product) {
  * @return float
  */
 function halepath_get_product_base_price($product = null) {
-    if (!$product) {
-        $product = wc_get_product(get_the_ID());
-    }
-
-    $base = $product ? get_post_meta($product->get_id(), 'base_price', true) : '';
-
-    if ('' === $base || null === $base) {
-        $base = 0.69;
-    }
+    // Static unit price for every product.
+    $base = 0.69;
 
     return (float) apply_filters('halepath_product_base_price', (float) $base, $product);
 }

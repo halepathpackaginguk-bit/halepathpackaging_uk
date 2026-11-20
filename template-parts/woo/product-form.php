@@ -4,13 +4,13 @@ $quote_form_class = "container mx-auto mt-5 rounded-[19px] bg-[#CCCCCCB5]/70";
 
 global $product;
 $product_name = 'Product';
-$product_price = 65;
+$product_price = halepath_get_product_base_price();
 $products_in_cat = wc_get_products($args);
 
 // If viewing a single product
 if (is_product() && $product) {
     $product_name = $product->get_name();
-    $product_price = 65;
+    $product_price = halepath_get_product_base_price($product);
 }
 
 // If viewing a product category archive
@@ -18,7 +18,7 @@ elseif (is_product_category()) {
     $category = get_queried_object();
     if ($category && isset($category->name)) {
         $product_name = $category->name;
-        $product_price = 65;
+        $product_price = halepath_get_product_base_price();
     }
 }
 
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!quantitySelect || !priceDisplay) return;
 
-        const basePrice = parseFloat(priceDisplay.dataset.price) || 65;
+        const basePrice = parseFloat(priceDisplay.dataset.price) || 0.69;
 
         // ✅ get actual quantity (100, 200)
         const qty = parseInt(quantitySelect.value) || 1;
