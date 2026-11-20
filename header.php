@@ -194,6 +194,10 @@ $theme_uri = get_template_directory_uri();
             <?php endforeach; ?>
         </header>
 
+        <?php if (!is_front_page()) : ?>
+            <?php get_template_part('template-parts/theme/breadcrumbs'); ?>
+        <?php endif; ?>
+
         <script>
         // Build the mobile menu from the desktop navigation. The desktop markup is
         // already in the HTML (good for SEO / no-JS), so rebuilding it here avoids
