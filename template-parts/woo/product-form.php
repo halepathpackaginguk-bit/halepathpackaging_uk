@@ -213,15 +213,12 @@ elseif (is_product_category()) {
                             </div>
                         </section>
                     <?php
-                    $hale_base_price     = halepath_get_product_base_price();
-                    $hale_default_qty    = halepath_get_product_default_quantity();
-                    $hale_visible_price  = wc_format_decimal($hale_base_price * $hale_default_qty, wc_get_price_decimals());
+                    $hale_base_price   = halepath_get_product_base_price();
+                    $hale_unit_price   = wc_format_decimal($hale_base_price, wc_get_price_decimals());
                     ?>
                     <p id="price-display" data-price="<?php echo esc_attr($hale_base_price); ?>"
                         style="margin-top:20px; font-size:16px;">
-                        <strong>Price:</strong>
-                        £<?php echo esc_html($hale_visible_price); ?> for <?php echo esc_html($hale_default_qty); ?>000
-                        items
+                        <strong>Price:</strong> £<?php echo esc_html($hale_unit_price); ?> per unit
                     </p>
                     </div>
                     <!-- Submit Button -->
@@ -285,42 +282,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-    /* ========= PRICE + TITLE UPDATE ========= */
-
-    const quantitySelect = document.getElementById('quantity');
-    const priceDisplay = document.getElementById('price-display');
-
-    function updatePrice() {
-
-        if (!quantitySelect || !priceDisplay) return;
-
-        const basePrice = parseFloat(priceDisplay.dataset.price) || 0.69;
-
-        // ✅ get actual quantity (100, 200)
-        const qty = parseInt(quantitySelect.value) || 1;
-
-        const total = (basePrice * qty).toFixed(2);
-
-        const isFlexible =
-            <?php echo has_term('flexible-packaging', 'product_cat', get_the_ID()) ? 'true' : 'false'; ?>;
-
-        if (isFlexible) {
-            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}000 items`;
-        } else {
-            priceDisplay.innerHTML = `<strong>Price:</strong> £${total} for ${qty}000 items`;
-        }
-
-        // ✅ UPDATE INPUT FIELD
-        const totalPriceInput = document.getElementById('total_price');
-        if (totalPriceInput) {
-            totalPriceInput.value = total;
-        }
-    }
-    if (quantitySelect) {
-        quantitySelect.addEventListener('change', updatePrice);
-        updatePrice();
-    }
 
     /* ========= QUOTE FORM PRICE CALCULATION ========= */
 
