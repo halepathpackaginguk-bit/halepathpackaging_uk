@@ -191,12 +191,12 @@ elseif (is_product_category()) {
                                 <select name="quantity" id="quantity" class="hale_input h-full appearance-none"
                                     required>
                                     <?php if (has_term('flexible-packaging', 'product_cat', get_the_ID())) : ?>
-                                    <option value="10">10000</option>
-                                    <option value="20">20000</option>
+                                    <option value="10000">10000</option>
+                                    <option value="20000">20000</option>
 
                                     <?php else : ?>
-                                    <option value="10">10000</option>
-                                    <option value="20">20000</option>
+                                    <option value="10000">10000</option>
+                                    <option value="20000">20000</option>
                                     <?php endif; ?>
                                 </select>
 
