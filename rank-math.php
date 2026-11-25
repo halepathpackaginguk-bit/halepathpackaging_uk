@@ -32,7 +32,7 @@ add_filter( 'rank_math/snippet/rich_snippet_product_entity', function ( $entity 
 		'url'                => get_permalink(),
 		'itemCondition'      => 'https://schema.org/NewCondition',
 		'availability'       => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-		'price'              => $product->get_price() ? $product->get_price() : '0.69',
+		'price'              => $product->get_price() ? $product->get_price() : '0.10',
 		'priceCurrency'      => 'GBP',
 		'priceValidUntil'    => gmdate( 'Y-12-31', strtotime( '+1 year' ) ),
 		'inventoryLevel'     => array(

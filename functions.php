@@ -868,7 +868,7 @@ function halepath_get_product_description($product) {
  */
 function halepath_get_product_base_price($product = null) {
     // Static unit price for every product.
-    $base = 0.69;
+    $base = 0.10;
 
     return (float) apply_filters('halepath_product_base_price', (float) $base, $product);
 }
