@@ -37,7 +37,7 @@
             <div class="count_box">
                 <span></span>
                 <h3>
-                    2000+
+                    50,000+
                 </h3>
                 <p>
                     Active Brand Partners
